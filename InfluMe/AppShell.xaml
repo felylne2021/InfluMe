@@ -30,8 +30,8 @@
     </Shell.Resources>
 
     <ShellContent Title="Home" Route="HomePage" ContentTemplate="{DataTemplate local:HomePage}" />
-    <ShellContent Title="SignUp" Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}" />
-    <ShellContent Title="EmailSignUp" Route="EmailSignUpPage" ContentTemplate="{DataTemplate local:EmailSignUpPage}" />
+    <ShellContent Title="Sign Up" Route="SignUpPage" ContentTemplate="{DataTemplate local:SignUpPage}" />
+    <ShellContent Title="Email Verification" Route="EmailSignUpPage" ContentTemplate="{DataTemplate local:EmailSignUpPage}" />
     <ShellContent Title="Profile" Route="ProfilePage" ContentTemplate="{DataTemplate local:ProfilePage}" />
     <ShellContent Title="Login" Route="MainLoginPage" ContentTemplate="{DataTemplate local:MainLoginPage}" />
     
