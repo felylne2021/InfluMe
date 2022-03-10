@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.SignUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:InfluMe.Controls"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    x:Name="signUpPage"
+    Title="Sign Up Page"
+    BackgroundColor="{DynamicResource Gray-Bg}"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--  Binding context for Profile Page  -->
+    <ContentPage.BindingContext>
+        <viewModel:ProfilePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="Buat Akun" BackgroundColor="{DynamicResource Blue}">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference signUpPage}}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"                            
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Spacing="0">
+                
+
+                <!--  Grid for email READONLY -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"                        
+                        Text="Email" />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="juliagrant@email.com"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--  Grid for name  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Nama" />
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Text="Julia Grant"
+                        WidthRequest="250"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--  Grid for password  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Password" />
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        IsPassword="True"
+                        WidthRequest="250"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--  Grid for password  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Konfirmasi Password" />
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        IsPassword="True"
+                        WidthRequest="250"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+                <!--  Sign Up button  -->
+                <buttons:SfButton 
+                            Margin="16,16"
+                            Command="{Binding LoginCommand}"
+                            HorizontalOptions="Fill"
+                            Style="{StaticResource LoginButtonStyle}"
+                            Text="Daftar" />
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.EmailSignUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviour="clr-namespace:InfluMe.Behaviors"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:InfluMe.Controls"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:local="clr-namespace:InfluMe.Views"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False">
+    <!--BackgroundImageSource="{core:OnPlatformOrientationStringValue Default=LoginBackground.png,
+                                                                  iOSPhoneLandscape=LoginBackground-Landscape.png,
+                                                                  iOSTabletLandscape=LoginBackground-Landscape.png}"-->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!--  Binding context for login page  -->
+    <ContentPage.BindingContext>
+        <viewModel:LoginPageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <gradient:SfGradientView Style="{StaticResource OceanGradientStyle}" />
+
+            <ScrollView HorizontalOptions="Center">
+                <ScrollView.VerticalOptions>
+                    <OnIdiom
+                        x:TypeArguments="LayoutOptions"
+                        Default="CenterAndExpand"
+                        Phone="FillAndExpand" />
+                </ScrollView.VerticalOptions>
+
+                <StackLayout
+                    Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                                 PhoneLandscape='150,32',
+                                                                 TabletPortrait='200,50',
+                                                                 TabletLandscape='300,50',
+                                                                 Desktop='30'}"
+                    Spacing="0"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="{OnPlatform Default='-1',
+                                              UWP='350'}">
+
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"                     
+                        RowSpacing="7"
+                        VerticalOptions="CenterAndExpand">
+
+                        <!--  Label to display the title of this page  -->
+                        <Label
+                            FontSize="25"
+                            Style="{StaticResource TitleLabelStyle}"
+                            Text="Daftar"
+                            TextColor="{DynamicResource Gray-White}" 
+                            Grid.Row="1"/>
+
+                        <!--  Entry to get email ID from user  -->
+                        <local:EmailEntry Grid.Row="3" />
+                        
+                        <!--  Sign Up button  -->
+                        <buttons:SfButton
+                            Grid.Row="4"
+                            Margin="0,16"
+                            Command="{Binding LoginCommand}"
+                            HorizontalOptions="Fill"
+                            Style="{StaticResource LoginButtonStyle}"
+                            Text="Lanjut" />
+
+
+                    </Grid>
+
+                   
+
+                </StackLayout>
+            </ScrollView>
+
+            <!--  Close button  -->
+            <buttons:SfButton
+                Margin="8"
+                Command="{Binding BackButtonCommand}"
+                FontSize="20"
+                HorizontalOptions="End"
+                Style="{StaticResource IconButtonStyle}"
+                Text="{StaticResource Close}"
+                TextColor="{DynamicResource Gray-White}"
+                VerticalOptions="Start" />
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

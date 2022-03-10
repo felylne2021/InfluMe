@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.ProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:InfluMe.Controls"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    x:Name="profilePage"
+    Title="Profile Page"
+    BackgroundColor="{DynamicResource Gray-Bg}"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <!--  Binding context for Profile Page  -->
+    <ContentPage.BindingContext>
+        <viewModel:ProfilePageViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView BackgroundColor="{DynamicResource Blue}">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference profilePage}}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"                            
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Spacing="0">
+
+                <!--  Profile image with edit label  -->
+                <buttons:SfButton
+                    Margin="0,10,0,0"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource Gray-Bg}"
+                    BorderWidth="2"
+                    Command="{Binding EditProfileCommand}"
+                    CornerRadius="60"
+                    HorizontalOptions="Center"
+                    WidthRequest="120">
+                    <buttons:SfButton.Content>
+                        <Grid HeightRequest="120" WidthRequest="120">
+
+                            <Image
+                                x:Name="ProfileImage"
+                                Aspect="AspectFill"
+                                BackgroundColor="{DynamicResource Gray-200}" />
+                            <BoxView
+                                BackgroundColor="{DynamicResource Gray-700}"
+                                HeightRequest="32"
+                                Opacity="0.6"
+                                VerticalOptions="End" />
+                            <Label
+                                FontFamily="Montserrat-SemiBold"
+                                FontSize="12"
+                                HeightRequest="32"
+                                HorizontalTextAlignment="Center"
+                                Text="UBAH"
+                                TextColor="{DynamicResource Gray-100}"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />
+                        </Grid>
+                    </buttons:SfButton.Content>
+                </buttons:SfButton>
+
+                <!--  Grid for name  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"                        
+                        Text="Nama" />
+                    
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Julia Grant"
+                        VerticalOptions="Center" />
+
+                </Grid>
+                
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for bio  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Niche" />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Food, Fashion, Sport, Beauty"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for password  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Password" />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="password***"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for email  -->
+                <Grid
+                    x:Name="EmailGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding EmailCommand}" CommandParameter="{x:Reference EmailGrid}" />
+                    </Grid.GestureRecognizers>
+
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Email" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="juliagrant@email.com"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />
+
+                </Grid>
+
+                <!--  Grid for IG  -->
+                <Grid
+                    x:Name="InstagramGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding InstagramCommand}" CommandParameter="{x:Reference InstagramGrid}" />
+                    </Grid.GestureRecognizers>
+
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Instagram" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="juliagrant"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />
+
+                </Grid>
+
+                <!--  Grid for TikTok  -->
+                <Grid
+                    x:Name="TikTokGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TikTokCommand}" CommandParameter="{x:Reference TikTokGrid}" />
+                    </Grid.GestureRecognizers>
+
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="TikTok" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="juju_grande"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />
+
+                </Grid>
+
+                <!--  Grid for WA  -->
+                <Grid
+                    x:Name="WhatsappGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+
+                    <Grid.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding WhatsappCommand}" CommandParameter="{x:Reference WhatsappGrid}" />
+                    </Grid.GestureRecognizers>
+
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Whatsapp" />
+
+                    <Label
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="+62878-7722-9900"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        Style="{StaticResource IconLabelStyle}"
+                        Text="{StaticResource Next}" />
+
+                </Grid>
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>
