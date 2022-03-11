@@ -52,7 +52,7 @@
             <StackLayout Spacing="0">
                 <Image BackgroundColor="{DynamicResource Gray-200}" Source="{Binding BannerImage}" />
 
-                <StackLayout
+                <!--<StackLayout
                     x:Name="stackLayout"
                     Margin="16,25,16,0"
                     Orientation="Horizontal"
@@ -75,9 +75,9 @@
                         Style="{StaticResource TransparentButtonStyle}"
                         Text="VIEW ALL" />
 
-                </StackLayout>
+                </StackLayout>-->
 
-                <listView:SfListView
+                <!--<listView:SfListView
                     x:Name="listView"
                     Margin="8,0"
                     AutoFitMode="Height"
@@ -93,7 +93,7 @@
 
                         <DataTemplate>
 
-                            <!--  Frame to have rounded corners  -->
+                            --><!--  Frame to have rounded corners  --><!--
                             <control:CustomShadowFrame
                                 Margin="8"
                                 Padding="0"
@@ -118,7 +118,7 @@
                                             Spacing="0"
                                             VerticalOptions="CenterAndExpand">
 
-                                            <!--  Product image  -->
+                                            --><!--  Product image  --><!--
 
                                             <Image
                                                 Margin="0,0,0,8"
@@ -130,7 +130,7 @@
                                                 VerticalOptions="Center"
                                                 WidthRequest="165" />
 
-                                            <!--  Product name  -->
+                                            --><!--  Product name  --><!--
                                             <Label
                                                 Margin="0,0,0,8"
                                                 FontFamily="Montserrat-Medium"
@@ -147,11 +147,11 @@
                         <behavior:SfListViewExtendHeightBehavior />
                     </listView:SfListView.Behaviors>
 
-                    <!--  Layout to customize number of columns in SfListView  -->
+                    --><!--  Layout to customize number of columns in SfListView, exists in HomePage.xaml.cs method OnSizeAllocated  --><!--
                     <listView:SfListView.LayoutManager>
                         <listView:GridLayout SpanCount="{core:OnPlatformOrientationIntValue Desktop=4, PhonePortrait=2, PhoneLandscape=4, TabletPortrait=4, TabletLandscape=5}" />
                     </listView:SfListView.LayoutManager>
-                </listView:SfListView>
+                </listView:SfListView>-->
 
                 <StackLayout
                     Margin="16,25,16,0"
@@ -163,7 +163,7 @@
                         FontSize="12"
                         HorizontalOptions="StartAndExpand"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="OFFERS"
+                        Text="INSTAGRAM JOBS"
                         TextColor="{DynamicResource Gray-800}"
                         VerticalOptions="Center" />
 
@@ -271,7 +271,7 @@
                         LineHeight="{OnPlatform Android=1.25,
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="RECOMMENDED"
+                        Text="TIKTOK JOBS"
                         TextColor="{DynamicResource Gray-800}"
                         VerticalOptions="Center" />
 
@@ -335,11 +335,11 @@
                                                 Margin="0,0,0,16"
                                                 Aspect="AspectFill"
                                                 BackgroundColor="Transparent"
-                                                HeightRequest="150"
+                                                HeightRequest="120"
                                                 HorizontalOptions="Center"
                                                 Source="{Binding PreviewImage}"
                                                 VerticalOptions="Center"
-                                                WidthRequest="230" />
+                                                WidthRequest="200" />
 
                                             <!--  Product name  -->
                                             <Label
