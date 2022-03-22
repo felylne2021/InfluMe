@@ -143,7 +143,13 @@
     <PackageReference Include="Syncfusion.Xamarin.Buttons">
       <Version>19.4.0.42</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.Cards">
+      <Version>19.4.0.42</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
+      <Version>19.4.0.42</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
       <Version>19.4.0.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">

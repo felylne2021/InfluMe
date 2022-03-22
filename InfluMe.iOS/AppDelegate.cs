@@ -1,3 +1,5 @@
+using Syncfusion.XForms.iOS.BadgeView;
+using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.EffectsView;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.SfRating.XForms.iOS;
@@ -33,6 +35,8 @@ namespace InfluMe.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfCardViewRenderer.Init();
+            SfBadgeViewRenderer.Init();
             SfEffectsViewRenderer.Init();
             Core.Init();
             SfRatingRenderer.Init();

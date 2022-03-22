@@ -25,7 +25,9 @@
 
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.42" />
@@ -112,6 +114,9 @@
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\JobListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\MainLoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
@@ -119,6 +124,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ProductListTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
