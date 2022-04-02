@@ -58,7 +58,7 @@
                             <Grid RowDefinitions="Auto, Auto" RowSpacing="8">
 
                                 <!--  Category Image  -->
-                                <Image
+                                <!--<Image
                                     Grid.Row="0"
                                     Aspect="AspectFill"
                                     BackgroundColor="{DynamicResource Gray-200}"
@@ -74,14 +74,21 @@
                                             CachingEnabled="true"
                                             Uri="{Binding Icon}" />
                                     </Image.Source>
-                                </Image>
+                                </Image>-->
 
-                                <!--  Category Name  -->
-                                <Label
+                                <!--  Menu Button  -->
+                                <buttons:SfButton
                                     Grid.Row="1"
+                                    BackgroundColor="DarkCyan"                                    
+                                    VerticalTextAlignment="Center"
+                                    HeightRequest="{OnIdiom Phone=150,
+                                                            Tablet=240,
+                                                            Desktop=120}"
+                                    WidthRequest="{OnIdiom Phone=160,
+                                                           Tablet=224,
+                                                           Desktop=200}"
                                     Margin="0,0,0,8"
-                                    FontSize="14"
-                                    Style="{StaticResource TitleLabelStyle}"
+                                    CornerRadius="20"
                                     Text="{Binding Name}" />
 
                             </Grid>
