@@ -29,6 +29,7 @@
         </ResourceDictionary>
     </Shell.Resources>
 
+    <ShellContent Title="View Profile" Route="ViewProfilePage" ContentTemplate="{DataTemplate local:ViewProfilePage}" />
     <ShellContent Title="Admin Home" Route="AdminHomePage" ContentTemplate="{DataTemplate local:AdminHomePage}" />
     <ShellContent Title="Job Detail" Route="JobDetailPage" ContentTemplate="{DataTemplate local:JobDetailPage}" />
     <ShellContent Title="Job List" Route="JobListPage" ContentTemplate="{DataTemplate local:JobListPage}" />

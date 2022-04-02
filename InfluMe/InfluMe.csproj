@@ -8,6 +8,13 @@
   <ItemGroup>
     <None Remove="Data\detail.json" />
     <None Remove="Data\ecommerce.json" />
+    <None Remove="Data\profile.json" />
+    <None Remove="Images\CaloriesEaten.svg" />
+    <None Remove="Images\HeartRate.svg" />
+    <None Remove="Images\instagram.svg" />
+    <None Remove="Images\SleepDuration.svg" />
+    <None Remove="Images\tiktok.svg" />
+    <None Remove="Images\WaterConsumed.svg" />
     <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
     <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
     <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
@@ -18,6 +25,13 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\detail.json" />
     <EmbeddedResource Include="Data\ecommerce.json" />
+    <EmbeddedResource Include="Data\profile.json" />
+    <EmbeddedResource Include="Images\CaloriesEaten.svg" />
+    <EmbeddedResource Include="Images\HeartRate.svg" />
+    <EmbeddedResource Include="Images\instagram.svg" />
+    <EmbeddedResource Include="Images\SleepDuration.svg" />
+    <EmbeddedResource Include="Images\tiktok.svg" />
+    <EmbeddedResource Include="Images\WaterConsumed.svg" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Medium.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
@@ -26,6 +40,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.42" />
@@ -142,6 +159,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
