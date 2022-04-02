@@ -9,22 +9,22 @@ namespace InfluMe.DataService
     /// Data service to load the data from json file.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class CatalogDataService
+    public class CategoryDataService
     {
         #region fields
 
-        private static CatalogDataService catalogDataService;
+        private static CategoryDataService categoryDataService;
 
-        private AdminHomeViewModel catalogPageViewModel;
+        private AdminHomePageViewModel adminHomePageViewModel;
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Creates an instance for the <see cref="CatalogDataService"/> class.
+        /// Creates an instance for the <see cref="CategoryDataService"/> class.
         /// </summary>
-        private CatalogDataService()
+        private CategoryDataService()
         {
         }
 
@@ -33,16 +33,16 @@ namespace InfluMe.DataService
         #region Properties
 
         /// <summary>
-        /// Gets an instance of the <see cref="CatalogDataService"/>.
+        /// Gets an instance of the <see cref="CategoryDataService"/>.
         /// </summary>
-        public static CatalogDataService Instance => catalogDataService ?? (catalogDataService = new CatalogDataService());
+        public static CategoryDataService Instance => categoryDataService ?? (categoryDataService = new CategoryDataService());
 
         /// <summary>
-        /// Gets or sets the value of catalog page view model.
+        /// Gets or sets the value of category page view model.
         /// </summary>
-        public AdminHomeViewModel CatalogPageViewModel =>
-            this.catalogPageViewModel ??
-            (this.catalogPageViewModel = PopulateData<AdminHomeViewModel>("ecommerce.json"));
+        public AdminHomePageViewModel AdminHomePageViewModel =>
+            this.adminHomePageViewModel ??
+            (this.adminHomePageViewModel = PopulateData<AdminHomePageViewModel>("ecommerce.json"));
 
         #endregion
 

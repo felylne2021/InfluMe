@@ -1,3 +1,4 @@
+using Syncfusion.SfRotator.XForms.iOS;
 using Syncfusion.XForms.iOS.BadgeView;
 using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.EffectsView;
@@ -35,6 +36,7 @@ namespace InfluMe.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfRotatorRenderer.Init();
             SfCardViewRenderer.Init();
             SfBadgeViewRenderer.Init();
             SfEffectsViewRenderer.Init();

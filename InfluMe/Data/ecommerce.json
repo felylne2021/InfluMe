@@ -99,7 +99,7 @@
   "categories": [
     {
       "icon": "Electronics.png",
-      "name": "Electronics",
+      "name": "Manage Influencer",
       "subcategories": [
 
         "Laptops",
@@ -112,7 +112,7 @@
     },
     {
       "icon": "Fashion.png",
-      "name": "Fashion",
+      "name": "Add Job",
       "subcategories": [
 
         "Shirts",
@@ -125,7 +125,7 @@
     },
     {
       "icon": "HomeFurniture.png",
-      "name": "Home and Furniture",
+      "name": "Manage Job",
       "subcategories": [
 
         "Diwans",
@@ -136,7 +136,7 @@
     },
     {
       "icon": "PersonalCare.png",
-      "name": "Personal Care",
+      "name": "Settings",
       "subcategories": [
 
         "Laptops",
@@ -146,72 +146,7 @@
         "Printers and Monitors"
 
       ]
-    },
-    {
-      "icon": "Books.png",
-      "name": "Books",
-      "subcategories": [
-
-        "Laptops",
-        "Mobiles",
-        "Tablets",
-        "Televisions",
-        "Printers and Monitors"
-
-      ]
-    },
-    {
-      "icon": "Clothes.png",
-      "name": "Clothes",
-      "subcategories": [
-
-        "Laptops",
-        "Mobiles",
-        "Tablets",
-        "Televisions",
-        "Printers and Monitors"
-
-      ]
-    },
-    {
-      "icon": "MobilePhones.png",
-      "name": "Mobile Phones",
-      "subcategories": [
-
-        "Laptops",
-        "Mobiles",
-        "Tablets",
-        "Televisions",
-        "Printers and Monitors"
-
-      ]
-    },
-    {
-      "icon": "Accessories.png",
-      "name": "Accessories",
-      "subcategories": [
-
-        "Laptops",
-        "Mobiles",
-        "Tablets",
-        "Televisions",
-        "Printers and Monitors"
-
-      ]
-    },
-    {
-      "icon": "Toys.png",
-      "name": "Toys and Baby",
-      "subcategories": [
-
-        "Laptops",
-        "Mobiles",
-        "Tablets",
-        "Televisions",
-        "Printers and Monitors"
-
-      ]
-    }
+    }    
   ],
 
   "orders": [

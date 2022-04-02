@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\detail.json" />
     <None Remove="Data\ecommerce.json" />
     <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
     <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
@@ -15,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\detail.json" />
     <EmbeddedResource Include="Data\ecommerce.json" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Medium.ttf" />
@@ -31,6 +33,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="19.4.0.42" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
@@ -105,13 +108,22 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\EmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EmailSignUpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\FeedbackView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\JobDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\JobListPage.xaml">
@@ -127,6 +139,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\ProductListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
