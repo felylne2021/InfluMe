@@ -28,6 +28,8 @@
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
+    <ShellContent Title="Add Job" Route="AddJobPage" ContentTemplate="{DataTemplate local:AddJobPage}" />
+    <ShellContent Title="Product Delivery Tracking" Route="ProductDeliveryTrackingPage" ContentTemplate="{DataTemplate local:ProductDeliveryTrackingPage}" />
     <ShellContent Title="Manage Influencer" Route="ManageInfluencerPage" ContentTemplate="{DataTemplate local:ManageInfluencerPage}" />
     <ShellContent Title="View Profile" Route="ViewProfilePage" ContentTemplate="{DataTemplate local:ViewProfilePage}" />
     <ShellContent Title="Admin Home" Route="AdminHomePage" ContentTemplate="{DataTemplate local:AdminHomePage}" />

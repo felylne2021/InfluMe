@@ -170,6 +170,12 @@
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
       <Version>19.4.0.42</Version>
     </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker">
+      <Version>19.4.0.42</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
+      <Version>19.4.0.42</Version>
+    </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">
       <Version>19.4.0.42</Version>
     </PackageReference>

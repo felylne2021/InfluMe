@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Data\deliverytracking.json" />
     <None Remove="Data\detail.json" />
     <None Remove="Data\ecommerce.json" />
     <None Remove="Data\navigation.json" />
@@ -24,6 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Data\deliverytracking.json" />
     <EmbeddedResource Include="Data\detail.json" />
     <EmbeddedResource Include="Data\ecommerce.json" />
     <EmbeddedResource Include="Data\navigation.json" />
@@ -52,6 +54,8 @@
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="19.4.0.42" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
@@ -128,7 +132,13 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddJobPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\AdminHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EmailEntry.xaml">
@@ -153,6 +163,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ManageInfluencerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProductDeliveryTrackingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignUpPage.xaml">

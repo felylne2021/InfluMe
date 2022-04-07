@@ -116,48 +116,7 @@ namespace InfluMe.Models
                 this.actualPrice = value;
                 this.NotifyPropertyChanged(nameof(this.ActualPrice));
             }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the discounted price of the product.
-        /// </summary>
-        public double DiscountPrice
-        {
-            get
-            {
-                return this.ActualPrice - (this.ActualPrice * (this.DiscountPercent / 100));
-            }
-
-            set
-            {
-                this.discountPrice = value;
-                this.NotifyPropertyChanged(nameof(this.DiscountPrice));
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the discounted percent of the product.
-        /// </summary>
-        [DataMember(Name = "discountpercent")]
-        public double DiscountPercent
-        {
-            get
-            {
-                return this.discountPercent;
-            }
-
-            set
-            {
-                this.discountPercent = value;
-                this.NotifyPropertyChanged(nameof(this.DiscountPercent));
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with label, which displays the overall rating of the product.
-        /// </summary>
-        [DataMember(Name = "overallrating")]
-        public double OverallRating { get; set; }
+        }       
 
         /// <summary>
         /// Gets or sets the property that has been bound with view, which displays the customer review.
