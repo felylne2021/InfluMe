@@ -34,17 +34,17 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the first name from user in the Add Contact page.
         /// </summary>
-        public ValidatableObject<string> FirstName { get; set; }
+        public ValidatableObject<string> JobName { get; set; }
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the last name from user in the Add Contact page.
         /// </summary>
-        public ValidatableObject<string> LastName { get; set; }
+        public ValidatableObject<string> Brand { get; set; }
 
         /// <summary>
         /// Gets or sets the property that bounds with a date picker that gets the date from user in the Add Contact page.
         /// </summary>
-        public DateTime Date {
+        public DateTime RegistrationDeadline {
             get {
                 return this.date;
             }
@@ -64,14 +64,14 @@ namespace InfluMe.ViewModels {
         public string Gender { get; set; }
 
         /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the phone number from user in the Add Contact page.
+        /// Gets or sets the Domicile comma separated values.
         /// </summary>
-        public string PhoneNumber { get; set; }
+        public string Domicile { get; set; }
 
         /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the Address from user in the Add Contact page.
+        /// Gets or sets the AgeRange for the job.
         /// </summary>
-        public string Address { get; set; }
+        public string AgeRange { get; set; }
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the city from user in the Add Contact page.
@@ -96,9 +96,8 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <returns>returns bool value</returns>
         public bool AreFieldsValid() {
-            //bool isEmailValid = this.Email.Validate();
-            bool isFirstNameValid = this.FirstName.Validate();
-            bool isLastNameValid = this.LastName.Validate();
+            bool isFirstNameValid = this.JobName.Validate();
+            bool isLastNameValid = this.Brand.Validate();
             return isFirstNameValid && isLastNameValid;
         }
 
@@ -106,16 +105,16 @@ namespace InfluMe.ViewModels {
         /// Intialize the methods for validation
         /// </summary>
         private void InitializeProperties() {
-            this.FirstName = new ValidatableObject<string>();
-            this.LastName = new ValidatableObject<string>();
+            this.JobName = new ValidatableObject<string>();
+            this.Brand = new ValidatableObject<string>();
         }
 
         /// <summary>
         /// Validation Rules for firstname and lastname
         /// </summary>
         private void AddValidationRules() {
-            this.FirstName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
-            this.LastName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
+            this.JobName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
+            this.Brand.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
         }
 
         /// <summary>

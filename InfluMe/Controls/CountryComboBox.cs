@@ -11,9 +11,8 @@ namespace InfluMe.Controls {
     public class CountryComboBox : SfComboBox, INotifyPropertyChanged {
         #region Fields
 
-        private object country;
 
-        private string phoneNumberPlaceHolder = "Phone Number";
+        private string domicilePlaceHolder = "Domicile";
 
         private string phoneNumber;
 
@@ -79,30 +78,17 @@ namespace InfluMe.Controls {
 
         #region Properties
 
-        /// <summary>
-        /// Gets or sets the property that bounds with a ComboBox that gets the Country from user.
-        /// </summary>
-        public object Country {
-            get {
-                return this.country;
-            }
-
-            set {
-                this.country = value;
-                this.UpdateStateAndPhoneNumberFormat();
-            }
-        }
-
+      
         /// <summary>
         /// Gets or sets the string property, that represents the phone number format based on country. 
         /// </summary>
-        public string PhoneNumberPlaceHolder {
+        public string DomicilePlaceHolder {
             get {
-                return this.phoneNumberPlaceHolder;
+                return this.domicilePlaceHolder;
             }
 
             set {
-                this.phoneNumberPlaceHolder = value;
+                this.domicilePlaceHolder = value;
                 this.NotifyPropertyChanged();
             }
         }
@@ -208,43 +194,7 @@ namespace InfluMe.Controls {
         /// <summary>
         /// Method used to rest State and City and update PhoneNumber format. 
         /// </summary>
-        private void UpdateStateAndPhoneNumberFormat() {
-            this.State = null;
-            this.PhoneNumber = string.Empty;
-            this.City = string.Empty;
-            CountryModel countryModel = this.Country as CountryModel;
-            this.States = countryModel.States;
-
-            switch (countryModel.Country) {
-                case "Australia":
-                    this.PhoneNumberPlaceHolder = "e.g. X XXXX XXXX";
-                    this.Mask = "(+61)X XXXX XXXX";
-                    this.CountryCode = "(+61)";
-                    break;
-                case "Brazil":
-                    this.PhoneNumberPlaceHolder = "e.g. XX XXXX XXXX";
-                    this.Mask = "(+55)XX XXXX XXXX";
-                    this.CountryCode = "(+55)";
-                    break;
-                case "Canada":
-                    this.PhoneNumberPlaceHolder = "e.g. XXXXXXXXX";
-                    this.Mask = "(+1)XXXXXXXXX";
-                    this.CountryCode = "(+1)";
-                    break;
-                case "India":
-                    this.PhoneNumberPlaceHolder = "e.g. XXXXX-XXXXX";
-                    this.Mask = "(+91)XXXXX-XXXXX";
-                    this.CountryCode = "(+91)";
-                    break;
-                case "USA":
-                    this.PhoneNumberPlaceHolder = "e.g. XXX-XXX-XXX";
-                    this.Mask = "(+1)XXX-XXX-XXX";
-                    this.CountryCode = "(+1)";
-                    break;
-                default:
-                    break;
-            }
-        }
+        
 
         #endregion
     }
