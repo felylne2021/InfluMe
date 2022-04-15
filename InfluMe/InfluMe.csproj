@@ -8,9 +8,9 @@
   <ItemGroup>
     <None Remove="Data\deliverytracking.json" />
     <None Remove="Data\detail.json" />
-    <None Remove="Data\ecommerce.json" />
     <None Remove="Data\navigation.json" />
     <None Remove="Data\profile.json" />
+    <None Remove="Data\tempmodel.json" />
     <None Remove="Images\CaloriesEaten.svg" />
     <None Remove="Images\HeartRate.svg" />
     <None Remove="Images\instagram.svg" />
@@ -27,7 +27,7 @@
   <ItemGroup>
     <EmbeddedResource Include="Data\deliverytracking.json" />
     <EmbeddedResource Include="Data\detail.json" />
-    <EmbeddedResource Include="Data\ecommerce.json" />
+    <EmbeddedResource Include="Data\tempmodel.json" />
     <EmbeddedResource Include="Data\navigation.json" />
     <EmbeddedResource Include="Data\profile.json" />
     <EmbeddedResource Include="Images\CaloriesEaten.svg" />

@@ -36,7 +36,7 @@ namespace InfluMe.DataService
         /// Gets or sets the value of home page view model.
         /// </summary>
         public HomePageViewModel HomePageViewModel =>
-            this.productHomePageViewModel = PopulateData<HomePageViewModel>("ecommerce.json");
+            this.productHomePageViewModel = PopulateData<HomePageViewModel>("tempmodel.json");
 
         #endregion
 

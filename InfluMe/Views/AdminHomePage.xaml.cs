@@ -27,16 +27,16 @@ namespace InfluMe.Views
 
             if (width < height)
             {
-                if (this.CategoryTile.LayoutManager is GridLayout)
+                if (this.MenuTile.LayoutManager is GridLayout)
                 {
-                    (this.CategoryTile.LayoutManager as GridLayout).SpanCount = 2;
+                    (this.MenuTile.LayoutManager as GridLayout).SpanCount = 2;
                 }
             }
             else
             {
-                if (this.CategoryTile.LayoutManager is GridLayout)
+                if (this.MenuTile.LayoutManager is GridLayout)
                 {
-                    (this.CategoryTile.LayoutManager as GridLayout).SpanCount = 3;
+                    (this.MenuTile.LayoutManager as GridLayout).SpanCount = 3;
                 }
             }
         }

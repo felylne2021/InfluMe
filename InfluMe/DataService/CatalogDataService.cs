@@ -42,7 +42,7 @@ namespace InfluMe.DataService
         /// </summary>
         public AdminHomeViewModel CatalogPageViewModel =>
             this.catalogPageViewModel ??
-            (this.catalogPageViewModel = PopulateData<AdminHomeViewModel>("ecommerce.json"));
+            (this.catalogPageViewModel = PopulateData<AdminHomeViewModel>("tempmodel.json"));
 
         #endregion
 
