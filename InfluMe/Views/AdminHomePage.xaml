@@ -22,7 +22,7 @@
                 <controls:TitleView.LeadingView>
                     <buttons:SfButton
                         x:Name="backButton"
-                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference CategoryTile}}"
+                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference  MenuTile}}"
                         CommandParameter="{x:Reference backButton}"
                         Style="{StaticResource IconButtonStyle}"
                         Text="{StaticResource Back}" />
@@ -30,7 +30,7 @@
                 <controls:TitleView.TrailingView>
                     <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                         <buttons:SfButton
-                            Command="{Binding BindingContext.NotificationCommand, Source={x:Reference CategoryTile}}"
+                            Command="{Binding BindingContext.NotificationCommand, Source={x:Reference MenuTile}}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Notification}" />
                     </StackLayout>
@@ -39,7 +39,7 @@
 
             <!--  ListView for Category  -->
             <listView:SfListView
-                x:Name="CategoryTile"
+                x:Name="MenuTile"
                 Grid.Row="1"
                 Padding="8"
                 AutoFitMode="Height"
@@ -57,25 +57,6 @@
                             TouchUpCommandParameter="{Binding}">
                             <Grid RowDefinitions="Auto, Auto" RowSpacing="8">
 
-                                <!--  Category Image  -->
-                                <!--<Image
-                                    Grid.Row="0"
-                                    Aspect="AspectFill"
-                                    BackgroundColor="{DynamicResource Gray-200}"
-                                    HeightRequest="{OnIdiom Phone=150,
-                                                            Tablet=240,
-                                                            Desktop=120}"
-                                    WidthRequest="{OnIdiom Phone=160,
-                                                           Tablet=224,
-                                                           Desktop=200}">
-                                    <Image.Source>
-                                        <UriImageSource
-                                            CacheValidity="14"
-                                            CachingEnabled="true"
-                                            Uri="{Binding Icon}" />
-                                    </Image.Source>
-                                </Image>-->
-
                                 <!--  Menu Button  -->
                                 <buttons:SfButton
                                     Grid.Row="1"
@@ -88,6 +69,8 @@
                                                            Tablet=224,
                                                            Desktop=200}"
                                     Margin="0,0,0,8"
+                                    FontSize="15"
+                                    FontAttributes="Bold"
                                     CornerRadius="20"
                                     Text="{Binding Name}" />
 

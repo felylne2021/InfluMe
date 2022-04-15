@@ -13,6 +13,7 @@ namespace InfluMe.ViewModels {
         #region Fields
 
         private DateTime date = DateTime.Now;
+        private string fee = "0.00";
 
         #endregion
 
@@ -44,7 +45,7 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Gets or sets the property that bounds with a date picker that gets the date from user in the Add Contact page.
         /// </summary>
-        public DateTime RegistrationDeadline {
+        public DateTime RegistrationDeadline { 
             get {
                 return this.date;
             }
@@ -64,6 +65,11 @@ namespace InfluMe.ViewModels {
         public string Gender { get; set; }
 
         /// <summary>
+        /// Gets or sets the platform.
+        /// </summary>
+        public string Platform { get; set; }
+
+        /// <summary>
         /// Gets or sets the Domicile comma separated values.
         /// </summary>
         public string Domicile { get; set; }
@@ -73,10 +79,37 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public string AgeRange { get; set; }
 
+        public string Fee
+        {
+            get
+            {
+                return this.fee;
+            }
+
+            set
+            {
+                if (this.fee == value)
+                {
+                    return;
+                }
+
+                this.SetProperty(ref this.fee, value);
+            }
+        }
         /// <summary>
-        /// Gets or sets the property that bounds with an entry that gets the city from user in the Add Contact page.
+        /// Gets or sets the AgeRange for the job.
         /// </summary>
-        public string City { get; set; }
+        public string SOW { get; set; }
+
+        /// <summary>
+        /// Gets or sets the AgeRange for the job.
+        /// </summary>
+        public string Product { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Additional Requirements (like ER, min. followers, niche) for the job.
+        /// </summary>
+        public string AdditionalRequirements { get; set; }
 
         #endregion
 

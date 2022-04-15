@@ -6,18 +6,14 @@ namespace InfluMe.Models {
     /// Model for SocialProfile
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class CountryModel {
+    public class PlatformModel {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the country name.
+        /// Gets or sets the platform name.
         /// </summary>
-        public string Country { get; set; }
-
-        /// <summary>
-        /// Gets or sets the states collection.
-        /// </summary>
-        public IReadOnlyCollection<string> States { get; set; }
+        public string Platform { get; set; }
+        
 
         #endregion
     }

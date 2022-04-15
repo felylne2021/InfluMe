@@ -182,9 +182,28 @@
                                               Clicked="DatePicker_Clicked" />
 
                         </border:SfBorder>
-                        <inputLayout:SfTextInputLayout
+                        <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,8"
                         Grid.Row="1"
                         Grid.Column="2"
+                        BorderColor="{Binding Source={x:Reference AgeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                            <control:BorderlessEntry
+                            x:Name="AgeEntry"
+                            Placeholder="Age Range"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding AgeRange}" />
+                        </border:SfBorder>
+                        
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*, 4, *" >
+
+                        <inputLayout:SfTextInputLayout
+                        Grid.Row="0"
+                        Grid.Column="0"
                         Style="{DynamicResource TextInputLayoutStyle}">
                             <combobox:SfComboBox
                             x:Name="GenderPicker"
@@ -193,50 +212,93 @@
                             Watermark="Gender">
                                 <combobox:SfComboBox.ComboBoxSource>
                                     <ListCollection:List x:TypeArguments="x:String">
+                                        <x:String>Any</x:String>
                                         <x:String>Male</x:String>
                                         <x:String>Female</x:String>
                                     </ListCollection:List>
                                 </combobox:SfComboBox.ComboBoxSource>
                             </combobox:SfComboBox>
                         </inputLayout:SfTextInputLayout>
-                    </Grid>
 
-                    <Grid ColumnDefinitions="*, 4, *">
-                        <border:SfBorder
-                        Margin="0,8"
-                        Padding="12,8"
-                        BorderColor="{Binding Source={x:Reference AgeEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
-                        VerticalOptions="Start">
-                        <control:BorderlessEntry
-                            x:Name="AgeEntry"
-                            Placeholder="Age Range"
-                            Style="{StaticResource BorderlessEntryStyle}"
-                            Text="{Binding AgeRange}" />
-                        </border:SfBorder>
-                        
                         <inputLayout:SfTextInputLayout Style="{DynamicResource TextInputLayoutStyle}" Grid.Column="2">
-                            <control:CountryComboBox x:Name="CountryPicker" Style="{StaticResource TextInputLayoutComboBoxStyle}" />
+                            <control:PlatformComboBox x:Name="CountryPicker" Style="{StaticResource TextInputLayoutComboBoxStyle}" />
                         </inputLayout:SfTextInputLayout>
                     </Grid>
 
 
+
+                    <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,8"
+                        BorderColor="{Binding Source={x:Reference Domicile}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                        <control:BorderlessEntry
+                            x:Name="Domicile"
+                            Placeholder="Domicile"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Domicile}" />
+                    </border:SfBorder>
                     
                     <border:SfBorder
-                    Margin="0,8"
-                    Padding="12,8"
-                    BorderColor="{Binding Source={x:Reference Domicile}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
-                    Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
-                    VerticalOptions="Start">
+                        Margin="0,8,0,0"
+                        Padding="12,8"
+                        BorderColor="{Binding Source={x:Reference Fee}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
                         <control:BorderlessEntry
-                        x:Name="Domicile"
-                        Placeholder="{Binding DomicilePlaceholder}"
-                        Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding Domicile}">
-                           
-                        </control:BorderlessEntry>
+                            x:Name="Fee"
+                            Placeholder="Fee"
+                            Keyboard="Numeric"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Fee}" />
                     </border:SfBorder>
+
+                    
+
+                    <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,8"
+                        BorderColor="{Binding Source={x:Reference Product}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                        <control:BorderlessEntry
+                            x:Name="Product"
+                            Placeholder="Product"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding Product}" />
+                    </border:SfBorder>
+
+                    <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,0"
+                        HeightRequest="85"                        
+                        BorderColor="{Binding Source={x:Reference SOW}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                        <control:BorderlessEditor
+                            x:Name="SOW"
+                            Placeholder="SOW"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding SOW}" />
+                    </border:SfBorder>
+
+                    <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,0"
+                        HeightRequest="85"                        
+                        BorderColor="{Binding Source={x:Reference AdditionalRequirementsEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                        <control:BorderlessEditor
+                            x:Name="AdditionalRequirementsEntry"
+                            Placeholder="Additional Requirements"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="{Binding AdditionalRequirements}" />
+                    </border:SfBorder>
+
                     <buttons:SfButton
+                    Margin="0,8,0,0"
                     Command="{Binding SubmitCommand}"
                     Style="{StaticResource GradientButtonStyle}"
                     Text="ADD JOB"
