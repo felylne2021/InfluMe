@@ -139,7 +139,7 @@
                 IsStickyHeader="False"
                 ItemSize="170"
                 ItemSpacing="0,0,0,16"
-                ItemsSource="{Binding Products}"
+                ItemsSource="{Binding Jobs}"
                 Style="{StaticResource TransparentSelectionListView}">
 
                 <listView:SfListView.ItemTemplate>

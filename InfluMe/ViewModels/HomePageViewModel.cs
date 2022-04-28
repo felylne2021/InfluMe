@@ -15,11 +15,7 @@ namespace InfluMe.ViewModels
     {
         #region Fields
 
-        private ObservableCollection<Product> newArrivalProduts;
-
-        private ObservableCollection<Product> offerProduts;
-
-        private ObservableCollection<Product> recommendedProduts;
+        private ObservableCollection<Jobs> recommendedProduts;
 
         private Command itemSelectedCommand;
 
@@ -41,57 +37,14 @@ namespace InfluMe.ViewModels
         {
             get { return App.ImageServerPath + this.bannerImage; }
             set { this.bannerImage = value; }
-        }
+        }        
+        
 
         /// <summary>
         /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
         /// </summary>
-        [DataMember(Name = "newarrivalproducts")]
-        public ObservableCollection<Product> NewArrivalProducts
-        {
-            get
-            {
-                return this.newArrivalProduts;
-            }
-
-            set
-            {
-                if (this.newArrivalProduts == value)
-                {
-                    return;
-                }
-
-                this.SetProperty(ref this.newArrivalProduts, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
-        /// </summary>
-        [DataMember(Name = "offerproducts")]
-        public ObservableCollection<Product> OfferProducts
-        {
-            get
-            {
-                return this.offerProduts;
-            }
-
-            set
-            {
-                if (this.offerProduts == value)
-                {
-                    return;
-                }
-
-                this.SetProperty(ref this.offerProduts, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
-        /// </summary>
-        [DataMember(Name = "recommendedproducts")]
-        public ObservableCollection<Product> RecommendedProducts
+        [DataMember(Name = "instagramjobs")]
+        public ObservableCollection<Jobs> RecommendedProducts
         {
             get
             {

@@ -1,14 +1,14 @@
 {
   "bannerimage": "Banner.png",
 
-  "products": [
+  "jobs": [
     {
       "id": "1",
       "previewimage": "Image1.png",
       "name": "Zalora Sale",
       "summary": "This plaid, cotton skirt will keep you warm in the air-conditioned office or outside on cooler days.",
       "description": "This plaid, cotton skirt will keep you warm in the air-conditioned office or outside on cooler days.",
-      "actualprice": "220",
+      "jobfee": "220",
       "previewimages": [ "Image1.png", "Image1.png", "Image1.png", "Image1.png", "Image1.png" ],
       "reviews": [
         {
@@ -38,7 +38,7 @@
       "name": "Shopee Live",
       "summary": "Look your best this fall in this V-neck, pleated peasant blouse with full sleeves. Comes in white, chocolate, forest green, and more.",
       "description": "Look your best this fall in this V-neck, pleated peasant blouse with full sleeves. Comes in white, chocolate, forest green, and more.",
-      "actualprice": "285",
+      "jobfee": "285",
       "previewimages": [ "Image2.png", "Image2.png", "Image2.png", "Image2.png", "Image2.png" ],
       "reviews": [],
       "quantities": [ "1", "2", "3" ],
@@ -51,7 +51,7 @@
       "name": "Ciao Bella",
       "summary": "Available in khaki, taupe, and dove gray, this high-waisted, cotton skirt hits just below the knees.",
       "description": "Available in khaki, taupe, and dove gray, this high-waisted, cotton skirt hits just below the knees.",
-      "actualprice": "220",
+      "jobfee": "220",
       "previewimages": [ "Image3.png", "Image3.png", "Image3.png", "Image3.png", "Image3.png" ],
       "reviews": [],
       "quantities": [ "1", "2", "3" ],
@@ -64,7 +64,7 @@
       "name": "Hijab Cantik",
       "summary": "This cute miniature pack has adjustable straps, allowing it to be carried on your back, or as a purse. The genuine leather comes in cream, black, mahogany, and wine.",
       "description": "This cute miniature pack has adjustable straps, allowing it to be carried on your back, or as a purse. The genuine leather comes in cream, black, mahogany, and wine.",
-      "actualprice": "285",
+      "jobfee": "285",
       "previewimages": [ "Image4.png", "Image4.png", "Image4.png", "Image4.png", "Image4.png" ],
       "reviews": [],
       "quantities": [ "1", "2", "3" ],
@@ -148,128 +148,14 @@
       "description": "Delivered on 04 Aug 2019.",
       "status": "Completed"
     }
-  ],
+  ],  
 
-  "newarrivalproducts": [
-    {
-      "previewimage": "TransparentSunglasses.png",
-      "name": "Sunglass",
-      "description": "This plaid, cotton skirt will keep you warm in the air-conditioned office or outside on cooler days.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentShoes.png",
-      "name": "Shoes",
-      "description": "Look your best this fall in this V-neck, pleated peasant blouse with full sleeves. Comes in white, chocolate, forest green, and more.",
-      "actualprice": "285",
-      "discountpercent": "30",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentWatch.png",
-      "name": "Watch",
-      "description": "Available in khaki, taupe, and dove gray, this high-waisted, cotton skirt hits just below the knees.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentTravelbag.png",
-      "name": "Travel Bag",
-      "description": "This cute miniature pack has adjustable straps, allowing it to be carried on your back, or as a purse. The genuine leather comes in cream, black, mahogany, and wine.",
-      "actualprice": "285",
-      "discountpercent": "30",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentWallet.png",
-      "name": "Wallet",
-      "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentHandbag.png",
-      "name": "Hand Bag",
-      "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    }
-  ],
-
-  "offerproducts": [
-    {
-      "previewimage": "TransparentShoes.png",
-      "name": "Men Shoes",
-      "description": "This plaid, cotton skirt will keep you warm in the air-conditioned office or outside on cooler days.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentWatch.png",
-      "name": "Watch",
-      "description": "Look your best this fall in this V-neck, pleated peasant blouse with full sleeves. Comes in white, chocolate, forest green, and more.",
-      "actualprice": "285",
-      "discountpercent": "30",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentWallet.png",
-      "name": "Wallet",
-      "description": "Available in khaki, taupe, and dove gray, this high-waisted, cotton skirt hits just below the knees.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentHandbag.png",
-      "name": "Hand Bag",
-      "description": "This cute miniature pack has adjustable straps, allowing it to be carried on your back, or as a purse. The genuine leather comes in cream, black, mahogany, and wine.",
-      "actualprice": "285",
-      "discountpercent": "30",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentSunglasses.png",
-      "name": "Sunglass",
-      "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    },
-    {
-      "previewimage": "TransparentTravelbag.png",
-      "name": "Travel Bag",
-      "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
-      "discountpercent": "15",
-      "quantities": [ "1", "2", "3" ],
-      "totalquantity": 0
-    }
-  ],
-
-  "recommendedproducts": [
+  "instagramjobs": [
     {
       "previewimage": "TransparentWatch.png",
       "name": "Watch",
       "description": "This plaid, cotton skirt will keep you warm in the air-conditioned office or outside on cooler days.",
-      "actualprice": "220",
+      "jobfee": "220500",
       "discountpercent": "15",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0
@@ -278,7 +164,7 @@
       "previewimage": "TransparentHandbag.png",
       "name": "Hand Bag",
       "description": "Look your best this fall in this V-neck, pleated peasant blouse with full sleeves. Comes in white, chocolate, forest green, and more.",
-      "actualprice": "285",
+      "jobfee": "285000",
       "discountpercent": "30",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0
@@ -287,7 +173,7 @@
       "previewimage": "TransparentSunglasses.png",
       "name": "Sunglass",
       "description": "Available in khaki, taupe, and dove gray, this high-waisted, cotton skirt hits just below the knees.",
-      "actualprice": "220",
+      "jobfee": "220000",
       "discountpercent": "15",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0
@@ -296,7 +182,7 @@
       "previewimage": "TransparentWallet.png",
       "name": "Wallet",
       "description": "This cute miniature pack has adjustable straps, allowing it to be carried on your back, or as a purse. The genuine leather comes in cream, black, mahogany, and wine.",
-      "actualprice": "285",
+      "jobfee": "28500",
       "discountpercent": "30",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0
@@ -305,7 +191,7 @@
       "previewimage": "TransparentTravelbag.png",
       "name": "Travel Bag",
       "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
+      "jobfee": "22000",
       "discountpercent": "15",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0
@@ -314,7 +200,7 @@
       "previewimage": "TransparentShoes.png",
       "name": "Shoes",
       "description": "Be bold in red with this fashionable, yet comfortable dress. Three-quarter-length sleeves are perfect for the in-between weather of autumn.",
-      "actualprice": "220",
+      "jobfee": "30000",
       "discountpercent": "15",
       "quantities": [ "1", "2", "3" ],
       "totalquantity": 0

@@ -23,7 +23,7 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout x:Name="titleLayout" Spacing="0">
-                <control:TitleView Title="Order Status">
+                <control:TitleView Title="Delivery Status">
                     <control:TitleView.LeadingView>
                         <!--  Back button command  -->
                         <buttons:SfButton

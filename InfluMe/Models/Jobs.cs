@@ -11,7 +11,7 @@ namespace InfluMe.Models
     /// </summary>
     [Preserve(AllMembers = true)]
     [DataContract]
-    public class Product : INotifyPropertyChanged
+    public class Jobs : INotifyPropertyChanged
     {
         #region Fields
 
@@ -23,11 +23,7 @@ namespace InfluMe.Models
 
         private int totalQuantity;
 
-        private double actualPrice;
-
-        private double discountPrice;
-
-        private double discountPercent;
+        private double jobFee;
 
         private ObservableCollection<Review> reviews = new ObservableCollection<Review>();
 
@@ -101,20 +97,20 @@ namespace InfluMe.Models
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the actual price of the product.
+        /// Gets or sets the property that has been bound with a label, which displays the job fee.
         /// </summary>
-        [DataMember(Name = "actualprice")]
-        public double ActualPrice
+        [DataMember(Name = "jobfee")]
+        public double JobFee
         {
             get
             {
-                return this.actualPrice;
+                return this.jobFee;
             }
 
             set
             {
-                this.actualPrice = value;
-                this.NotifyPropertyChanged(nameof(this.ActualPrice));
+                this.jobFee = value;
+                this.NotifyPropertyChanged(nameof(this.JobFee));
             }
         }       
 
@@ -135,12 +131,6 @@ namespace InfluMe.Models
                 this.NotifyPropertyChanged(nameof(this.Reviews));
             }
         }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with label, which displays the seller.
-        /// </summary>
-        [DataMember(Name = "sellerName")]
-        public string SellerName { get; set; }
 
         /// <summary>
         /// Gets or sets the property has been bound with SfCombobox which displays selected quantity of product.

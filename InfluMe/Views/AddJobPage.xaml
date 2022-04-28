@@ -86,14 +86,14 @@
                             <border:SfBorder
                             Margin="0,8,0,0"
                             Padding="12,8"
-                            BorderColor="{Binding Source={x:Reference FirstNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                            BorderColor="{Binding Source={x:Reference JobNameEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
                             Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
                             VerticalOptions="Start">
                                 <Grid ColumnDefinitions="*, Auto">
 
 
                                     <control:BorderlessEntry
-                                    x:Name="FirstNameEntry"
+                                    x:Name="JobNameEntry"
                                     Placeholder="Job Name"
                                     Style="{StaticResource BorderlessEntryStyle}"
                                     Text="{Binding JobName.Value}">
@@ -182,6 +182,7 @@
                                               Clicked="DatePicker_Clicked" />
 
                         </border:SfBorder>
+
                         <border:SfBorder
                         Margin="0,8,0,0"
                         Padding="12,8"

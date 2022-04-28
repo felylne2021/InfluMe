@@ -230,24 +230,35 @@
                                             Desktop={DynamicResource Gray-Bg},
                                             Converter={StaticResource DynamicResourceToColorConverter}}" />
 
-                        
+
+                        <!--  Product Description  -->
+                        <Label
+                            Grid.Row="6"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Margin="0,16,0,8"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource TitleLabelStyle}"
+                            Text="Product Description"
+                            VerticalOptions="Start" />
+
+                        <Label
+                            Grid.Row="7"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="3"
+                            Margin="{OnIdiom Default='0,0,0,16',
+                                             Desktop='0,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Description}" />
 
                        
 
-                        <BoxView
-                            Grid.Row="8"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="5"
-                            HeightRequest="{OnIdiom Tablet=24,
-                                                    Default=0}"
-                            Style="{StaticResource HorizontalSeparatorStyle}"
-                            Color="{OnIdiom Default={DynamicResource Gray-100},
-                                            Desktop={DynamicResource Gray-Bg},
-                                            Converter={StaticResource DynamicResourceToColorConverter}}" />
-
                         <StackLayout
                             Grid.Row="{OnIdiom Default=4,
-                                               Phone=7}"
+                                               Phone=9}"
                             Grid.Column="{OnIdiom Default=1,
                                                   Phone=0}"
                             Grid.ColumnSpan="{OnIdiom Default=4,
@@ -271,41 +282,6 @@
                                 WidthRequest="200" />
 
                         </StackLayout>
-
-                        <!--  Product Description  -->
-                        <Label
-                            Grid.Row="9"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="3"
-                            Margin="0,16,0,8"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Style="{StaticResource TitleLabelStyle}"
-                            Text="Product Description"
-                            VerticalOptions="Start" />
-
-                        <Label
-                            Grid.Row="10"
-                            Grid.Column="1"
-                            Grid.ColumnSpan="3"
-                            Margin="{OnIdiom Default='0,0,0,16',
-                                             Desktop='0,8'}"
-                            HorizontalOptions="Start"
-                            HorizontalTextAlignment="Start"
-                            Style="{StaticResource DescriptionLabelStyle}"
-                            Text="{Binding Description}" />
-
-                        <BoxView
-                            Grid.Row="11"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="5"
-                            HeightRequest="{OnIdiom Tablet=24,
-                                                    Default=16}"
-                            Style="{StaticResource HorizontalSeparatorStyle}"
-                            Color="{OnIdiom Default={DynamicResource Gray-100},
-                                            Desktop={DynamicResource Gray-Bg},
-                                            Converter={StaticResource DynamicResourceToColorConverter}}" />
-
 
                     </Grid>
                 </ContentView>
