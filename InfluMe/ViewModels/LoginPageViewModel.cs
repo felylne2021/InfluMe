@@ -67,12 +67,12 @@ namespace InfluMe.ViewModels
 
             set
             {
-                if (this.password == value)
+                if (this.email == value)
                 {
                     return;
                 }
 
-                this.SetProperty(ref this.password, value);
+                this.SetProperty(ref this.email, value);
             }
         }
         #endregion
@@ -119,6 +119,7 @@ namespace InfluMe.ViewModels
         /// </summary>
         private void InitializeProperties()
         {
+            this.Email = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
         }
 
@@ -127,6 +128,7 @@ namespace InfluMe.ViewModels
         /// </summary>
         private void AddValidationRules()
         {
+            this.Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
             this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
         }
 
@@ -146,7 +148,7 @@ namespace InfluMe.ViewModels
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SignUpClicked(object obj)
+        private async void SignUpClicked(object obj)
         {
             // Do Something
         }

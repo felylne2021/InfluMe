@@ -13,6 +13,7 @@
     <None Remove="Data\tempmodel.json" />
     <None Remove="Images\CaloriesEaten.svg" />
     <None Remove="Images\HeartRate.svg" />
+    <None Remove="Images\InfluMeLogo.png" />
     <None Remove="Images\instagram.svg" />
     <None Remove="Images\SleepDuration.svg" />
     <None Remove="Images\tiktok.svg" />
@@ -30,7 +31,8 @@
     <EmbeddedResource Include="Data\tempmodel.json" />
     <EmbeddedResource Include="Data\navigation.json" />
     <EmbeddedResource Include="Data\profile.json" />
-    <EmbeddedResource Include="Images\CaloriesEaten.svg" />
+    <Content Include="Images\CaloriesEaten.svg" />
+    <Content Include="Images\InfluMeLogo.png" />
     <EmbeddedResource Include="Images\HeartRate.svg" />
     <EmbeddedResource Include="Images\instagram.svg" />
     <EmbeddedResource Include="Images\SleepDuration.svg" />

@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Internals;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace InfluMe.Views
@@ -13,8 +14,7 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="MainLoginPage" /> class.
         /// </summary>
-        public MainLoginPage()
-        {
+        public MainLoginPage() {
             this.InitializeComponent();
         }
     }

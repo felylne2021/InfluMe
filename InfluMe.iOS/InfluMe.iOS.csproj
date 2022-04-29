@@ -234,5 +234,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\LoginBackground~ipad.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BundleResource Include="Resources\InfluMeLogo.png" />
+  </ItemGroup>
 </Project>

@@ -33,7 +33,8 @@
                         Keyboard="Email"
                         Placeholder="Email"
                         Style="{StaticResource BorderlessEntryStyle}"
-                        Text="{Binding Email.Value}">
+                        Text="{Binding Email.Value}"
+                        PlaceholderColor="{StaticResource Gray-900}">
 
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}" />

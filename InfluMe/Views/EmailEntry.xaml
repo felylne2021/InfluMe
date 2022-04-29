@@ -28,10 +28,10 @@
                         HeightRequest="40"
                         Keyboard="Email"
                         Placeholder="Email"
-                        PlaceholderColor="{StaticResource Gray-Black}"
+                        PlaceholderColor="{StaticResource Gray-900}"
                         Style="{StaticResource BorderlessEntryStyle}"
                         Text="{Binding Email.Value}"
-                        TextColor="{StaticResource Gray-White}">
+                        TextColor="{StaticResource Gray-Black}">
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}" />
                         </Entry.Behaviors>
