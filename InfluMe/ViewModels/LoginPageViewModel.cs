@@ -129,6 +129,7 @@ namespace InfluMe.ViewModels
         private void AddValidationRules()
         {
             this.Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
+            this.Email.Validations.Add(new IsEmailValidRule<string> { ValidationMessage = "Email Format Invalid" });
             this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
         }
 

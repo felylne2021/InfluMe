@@ -54,7 +54,7 @@
                     WidthRequest="{OnPlatform Default='-1',
                                               UWP='350'}">
 
-                    <Grid RowDefinitions="Auto,Auto,50,Auto,Auto,Auto"                     
+                    <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"                     
                         RowSpacing="0">
 
                         <Image
@@ -67,8 +67,8 @@
 
                         <!--  Entry to get email ID from user  -->
                         <local:EmailEntry Grid.Row="2" />
-
-                        <StackLayout Grid.Row="3">
+                        <Label Grid.Row="3"/>
+                        <StackLayout Grid.Row="4">
                             <!--  Entry to get password from user  -->
                             <border:SfBorder BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
                                 <Grid ColumnDefinitions="*, Auto">
@@ -100,7 +100,7 @@
                             <!--  Label to display error message  -->
                             <Label
                                 x:Name="PasswordValidationLabel"
-                                Margin="15,0"
+                                Margin="15,-5,0,0"
                                 IsVisible="{Binding Password.IsValid, Converter={StaticResource InverseBoolConverter}}"
                                 Style="{StaticResource SimpleLabelStyle}"
                                 Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
@@ -111,7 +111,7 @@
                         <!--  Forgot password link  -->
                         <buttons:SfButton
                             x:Name="ForgotPasswordLabel"
-                            Grid.Row="4"
+                            Grid.Row="5"
                             Margin="0,6"
                             Command="{Binding ForgotPasswordCommand}"
                             FontSize="12"
@@ -120,10 +120,10 @@
                             Text="FORGOT PASSWORD"
                             TextColor="{DynamicResource Gray-White}" />
 
-                        <Label Grid.Row="5" Margin="0, 16"/>
+                        <Label Grid.Row="6" Margin="0, 16"/>
                         <!--  Login button  -->
                         <buttons:SfButton
-                            Grid.Row="6"
+                            Grid.Row="7"
                             Margin="0,16"
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
@@ -163,16 +163,6 @@
                 </StackLayout>
             </ScrollView>
 
-            <!--  Close button  -->
-            <buttons:SfButton
-                Margin="8"
-                Command="{Binding BackButtonCommand}"
-                FontSize="20"
-                HorizontalOptions="End"
-                Style="{StaticResource IconButtonStyle}"
-                Text="{StaticResource Close}"
-                TextColor="{DynamicResource Gray-White}"
-                VerticalOptions="Start" />
 
         </Grid>
     </ContentPage.Content>
