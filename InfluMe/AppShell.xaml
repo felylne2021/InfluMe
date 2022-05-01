@@ -28,10 +28,7 @@
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
         </ResourceDictionary>
     </Shell.Resources>
-    
-    
-    <ShellContent Title="Login" Route="MainLoginPage" ContentTemplate="{DataTemplate local:MainLoginPage}" />
-    
+
 
     <TabBar>
         <ShellContent Title="About" Icon="icon_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />

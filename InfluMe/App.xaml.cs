@@ -25,7 +25,8 @@ namespace InfluMe
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new MainLoginPage());
+
         }
 
         protected override void OnStart()

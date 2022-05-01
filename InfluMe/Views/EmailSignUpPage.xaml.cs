@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Internals;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace InfluMe.Views
@@ -8,7 +9,7 @@ namespace InfluMe.Views
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class EmailSignUpPage
+    public partial class EmailSignUpPage : ContentPage
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="MainLoginPage" /> class.

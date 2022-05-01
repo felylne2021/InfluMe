@@ -61,7 +61,7 @@
                         <Label
                             FontSize="25"
                             Style="{StaticResource TitleLabelStyle}"
-                            Text="Daftar"
+                            Text="Sign Up"
                             TextColor="{DynamicResource Gray-White}" 
                             Grid.Row="1"/>
 
@@ -75,7 +75,7 @@
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
                             Style="{StaticResource LoginButtonStyle}"
-                            Text="Lanjut" />
+                            Text="Verify Email" />
 
 
                     </Grid>

@@ -1,5 +1,6 @@
 ﻿using InfluMe.Validators;
 using InfluMe.Validators.Rules;
+using InfluMe.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -31,6 +32,7 @@ namespace InfluMe.ViewModels
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
+            this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
         }
 
         #endregion
@@ -99,12 +101,14 @@ namespace InfluMe.ViewModels
         /// </summary>
         public Command SocialMediaLoginCommand { get; set; }
 
+        public Command BackButtonCommand { get; set; }
+
         #endregion
 
         #region methods
 
         /// <summary>
-        /// Check the password is null or empty
+        /// Check the login credentials
         /// </summary>
         /// <returns>Returns the fields are valid or not</returns>
         public bool AreFieldsValid()
@@ -137,11 +141,11 @@ namespace InfluMe.ViewModels
         /// Invoked when the Log In button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void LoginClicked(object obj)
+        private async void LoginClicked(object obj)
         {
             if (this.AreFieldsValid())
             {
-                // Do Something
+                await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
             }
         }
 
@@ -151,7 +155,7 @@ namespace InfluMe.ViewModels
         /// <param name="obj">The Object</param>
         private async void SignUpClicked(object obj)
         {
-            // Do Something
+            await Application.Current.MainPage.Navigation.PushAsync(new EmailSignUpPage());
         }
 
         /// <summary>
