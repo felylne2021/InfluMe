@@ -68,13 +68,13 @@
                         <!--  Entry to get email ID from user  -->
                         <local:EmailEntry Grid.Row="3" />
                         
-                        <!--  Sign Up button  -->
+                        <!--  Verify Email button  -->
                         <buttons:SfButton
                             Grid.Row="4"
                             Margin="0,16"
-                            Command="{Binding LoginCommand}"
+                            Command="{Binding VerifyEmailCommand}"
                             HorizontalOptions="Fill"
-                            Style="{StaticResource LoginButtonStyle}"
+                            Style="{StaticResource OrangeButtonStyle}"
                             Text="Verify Email" />
 
 

@@ -132,7 +132,7 @@
                             Margin="16,16"
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
-                            Style="{StaticResource LoginButtonStyle}"
+                            Style="{StaticResource OrangeButtonStyle}"
                             Text="Daftar" />
 
 

@@ -3,6 +3,9 @@ using InfluMe.Validators.Rules;
 using InfluMe.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
+using FreshMvvm;
+using FreshMvvm.Popups;
+using Rg.Plugins.Popup.Extensions;
 
 namespace InfluMe.ViewModels
 {
@@ -33,6 +36,10 @@ namespace InfluMe.ViewModels
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
+            this.VerifyEmailCommand = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage());
+            });
         }
 
         #endregion
@@ -102,6 +109,8 @@ namespace InfluMe.ViewModels
         public Command SocialMediaLoginCommand { get; set; }
 
         public Command BackButtonCommand { get; set; }
+
+        public Command VerifyEmailCommand { get; set; }
 
         #endregion
 
@@ -175,6 +184,7 @@ namespace InfluMe.ViewModels
         {
             // Do something
         }
+        
 
         #endregion
     }

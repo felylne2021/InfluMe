@@ -31,7 +31,7 @@
     </Style>
 
     <!--  Common style for Login buttons  -->
-    <Style x:Key="LoginButtonStyle" TargetType="buttons:SfButton">
+    <Style x:Key="OrangeButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="#FF8000"/>
         <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
         <Setter Property="FontFamily" Value="Montserrat-SemiBold" />

@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="FreshMvvm">
+      <Version>4.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Rg.Plugins.Popup">
+      <Version>2.1.0</Version>
+    </PackageReference>
     <PackageReference Include="SkiaSharp.Extended">
       <Version>1.60.0</Version>
     </PackageReference>
@@ -134,6 +140,10 @@
     <AndroidResource Include="Resources\drawable\icon_feed.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\FreshMvvm.Popup-master\FreshMvvm.Popup\FreshMvvm.Popup.csproj">
+      <Project>{5e2da14c-67db-4d4d-9ca2-8ceaeabc9104}</Project>
+      <Name>FreshMvvm.Popup</Name>
+    </ProjectReference>
     <ProjectReference Include="..\InfluMe\InfluMe.csproj">
       <Project>{F04CAC59-3E1A-46F8-B3D9-E3768786E333}</Project>
       <Name>InfluMe</Name>

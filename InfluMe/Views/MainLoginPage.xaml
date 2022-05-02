@@ -127,7 +127,7 @@
                             Margin="0,16"
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
-                            Style="{StaticResource LoginButtonStyle}"
+                            Style="{StaticResource OrangeButtonStyle}"
                             Text="LOG IN" />
 
                     </Grid>
