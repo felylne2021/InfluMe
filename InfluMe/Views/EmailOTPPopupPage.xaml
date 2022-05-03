@@ -1,10 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+    
 <pages:PopupPage  
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
     x:Class="InfluMe.Views.EmailOTPPopupPage">
+
+    <!--  Binding context for login page  -->
+    <ContentPage.BindingContext>
+        <viewModel:LoginPageViewModel />
+    </ContentPage.BindingContext>
+    
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
             PositionIn="Bottom"
@@ -21,24 +29,33 @@
         VerticalOptions="CenterAndExpand" 
         HorizontalOptions="CenterAndExpand" 
        >
-        <Frame CornerRadius="15"  HorizontalOptions="FillAndExpand" HeightRequest="300" >
+        <Frame CornerRadius="15"  HorizontalOptions="FillAndExpand" HeightRequest="220" >
             <StackLayout>
                 <Label 
                     Text="Enter OTP" 
                     FontFamily="Montserrat-Medium" 
                     HorizontalTextAlignment="Center" 
+                    Margin="0,16"
                     FontSize="Medium" 
                     FontAttributes="Bold"></Label>
                 <Entry
                     Grid.Column="0"
                     Grid.Row="0"
                     FontFamily="Montserrat-Medium"
-                    HorizontalOptions="Start"
-                    WidthRequest="250"
-                    MaxLength="4"
+                    FontSize="Title"
+                    HorizontalTextAlignment="Center"
+                    WidthRequest="120"
+                    MaxLength="6"
                     Keyboard="Numeric"
+                    Margin="30,0"
                     VerticalOptions="Center" />
-                <buttons:SfButton Text=" Verify OTP " Style="{StaticResource OrangeButtonStyle}"/>
+                <buttons:SfButton
+                    Command="{Binding SendOTPCommand}"
+                    Style="{StaticResource TransparentButtonStyle}"
+                    HorizontalOptions="Center"
+                    Text="Resend OTP"
+                    TextColor="#FF8000" />
+                <buttons:SfButton Text="Verify OTP" Command="{Binding SubmitOTPCommand}" WidthRequest="120" Style="{StaticResource OrangeButtonStyle}"/>
             </StackLayout>
         </Frame>
 

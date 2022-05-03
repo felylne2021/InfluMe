@@ -6,19 +6,21 @@ using Xamarin.Forms.Internals;
 using FreshMvvm;
 using FreshMvvm.Popups;
 using Rg.Plugins.Popup.Extensions;
+using InfluMe.Services;
+using InfluMe.Models.ServiceResponse;
 
-namespace InfluMe.ViewModels
-{
+namespace InfluMe.ViewModels {
     /// <summary>
     /// ViewModel for login page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class LoginPageViewModel : LoginViewModel
-    {
+    public class LoginPageViewModel : LoginViewModel {
         #region Fields
 
         private ValidatableObject<string> password;
         private ValidatableObject<string> email;
+        private InfluMeService service => new InfluMeService();
+        private string OTP;
 
         #endregion
 
@@ -27,39 +29,32 @@ namespace InfluMe.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="LoginPageViewModel" /> class.
         /// </summary>
-        public LoginPageViewModel()
-        {
+        public LoginPageViewModel() {
             this.InitializeProperties();
             this.AddValidationRules();
-            this.LoginCommand = new Command(this.LoginClicked);
+            this.MainLoginCommand = new Command(this.LoginClicked);
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
-            this.SocialMediaLoginCommand = new Command(this.SocialLoggedIn);
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
-            this.VerifyEmailCommand = new Command(async () =>
-            {
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage());
-            });
+            this.VerifyEmailCommand = new Command(this.VerifyEmailClicked);
+            this.SubmitOTPCommand = new Command(this.SubmitOTPClicked);
         }
 
         #endregion
 
         #region property
 
+
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
         /// </summary>
-        public ValidatableObject<string> Password
-        {
-            get
-            {
+        public ValidatableObject<string> Password {
+            get {
                 return this.password;
             }
 
-            set
-            {
-                if (this.password == value)
-                {
+            set {
+                if (this.password == value) {
                     return;
                 }
 
@@ -67,17 +62,13 @@ namespace InfluMe.ViewModels
             }
         }
 
-        public ValidatableObject<string> Email
-        {
-            get
-            {
+        public ValidatableObject<string> Email {
+            get {
                 return this.email;
             }
 
-            set
-            {
-                if (this.email == value)
-                {
+            set {
+                if (this.email == value) {
                     return;
                 }
 
@@ -91,7 +82,7 @@ namespace InfluMe.ViewModels
         ///// <summary>
         ///// Gets or sets the command that is executed when the Log In button is clicked.
         ///// </summary>
-        //public Command LoginCommand { get; set; }
+        public Command MainLoginCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the command that is executed when the Sign Up button is clicked.
@@ -103,14 +94,13 @@ namespace InfluMe.ViewModels
         /// </summary>
         public Command ForgotPasswordCommand { get; set; }
 
-        /// <summary>
-        /// Gets or sets the command that is executed when the social media login button is clicked.
-        /// </summary>
-        public Command SocialMediaLoginCommand { get; set; }
-
         public Command BackButtonCommand { get; set; }
 
         public Command VerifyEmailCommand { get; set; }
+
+        public Command ResendOTPCommand { get; set; }
+
+        public Command SubmitOTPCommand { get; set; }
 
         #endregion
 
@@ -120,18 +110,20 @@ namespace InfluMe.ViewModels
         /// Check the login credentials
         /// </summary>
         /// <returns>Returns the fields are valid or not</returns>
-        public bool AreFieldsValid()
-        {
+        public bool AreFieldsValid() {
             bool isEmailValid = this.Email.Validate();
             bool isPasswordValid = this.Password.Validate();
             return isEmailValid && isPasswordValid;
         }
 
+        public bool IsEmailValid() {
+            return this.Email.Validate();
+        }
+
         /// <summary>
         /// Initializing the properties.
         /// </summary>
-        private void InitializeProperties()
-        {
+        private void InitializeProperties() {
             this.Email = new ValidatableObject<string>();
             this.Password = new ValidatableObject<string>();
         }
@@ -139,8 +131,7 @@ namespace InfluMe.ViewModels
         /// <summary>
         /// Validation rule for password
         /// </summary>
-        private void AddValidationRules()
-        {
+        private void AddValidationRules() {
             this.Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
             this.Email.Validations.Add(new IsEmailValidRule<string> { ValidationMessage = "Email Format Invalid" });
             this.Password.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Password Required" });
@@ -150,10 +141,8 @@ namespace InfluMe.ViewModels
         /// Invoked when the Log In button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private async void LoginClicked(object obj)
-        {
-            if (this.AreFieldsValid())
-            {
+        private async void LoginClicked(object obj) {
+            if (this.AreFieldsValid()) {
                 await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
             }
         }
@@ -162,8 +151,7 @@ namespace InfluMe.ViewModels
         /// Invoked when the Sign Up button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private async void SignUpClicked(object obj)
-        {
+        private async void SignUpClicked(object obj) {
             await Application.Current.MainPage.Navigation.PushAsync(new EmailSignUpPage());
         }
 
@@ -171,20 +159,23 @@ namespace InfluMe.ViewModels
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ForgotPasswordClicked(object obj)
-        {
+        private void ForgotPasswordClicked(object obj) {
             // Do something
         }
 
-        /// <summary>
-        /// Invoked when social media login button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void SocialLoggedIn(object obj)
-        {
-            // Do something
+        private async void VerifyEmailClicked(object obj) {
+            if (IsEmailValid()) {
+                OTPResponse resp = await service.GetOTP(this.Email.Value);
+                this.OTP = resp.otpNumber;
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage());
+            }
+
         }
-        
+
+        private void SubmitOTPClicked(object obj) {
+            Application.Current.MainPage.Navigation.PopPopupAsync();
+            Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+        }
 
         #endregion
     }

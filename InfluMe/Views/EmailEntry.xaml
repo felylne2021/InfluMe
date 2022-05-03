@@ -27,6 +27,7 @@
                         Margin="15,0"
                         HeightRequest="40"
                         Keyboard="Email"
+                        TextTransform="Lowercase"
                         Placeholder="Email"
                         PlaceholderColor="{StaticResource Gray-900}"
                         Style="{StaticResource BorderlessEntryStyle}"

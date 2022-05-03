@@ -5,12 +5,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:InfluMe.Controls"
-    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
     x:Name="signUpPage"
-    Title="Sign Up Page"
+    Title="Join InfluMe"
     BackgroundColor="{DynamicResource Gray-Bg}"
-    Shell.NavBarIsVisible="False"
-    NavigationPage.HasNavigationBar="False">
+    Shell.NavBarIsVisible="True"
+    NavigationPage.HasNavigationBar="True">
 
     <!--  Binding context for Profile Page  -->
     <ContentPage.BindingContext>
@@ -20,17 +22,6 @@
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
-                <!--  Title View  -->
-                <controls:TitleView Title="Buat Akun" BackgroundColor="{DynamicResource Blue}">
-                    <controls:TitleView.LeadingView>
-                        <buttons:SfButton
-                            x:Name="backButton"
-                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference signUpPage}}"
-                            CommandParameter="{x:Reference backButton}"
-                            Style="{StaticResource IconButtonStyle}"                            
-                            Text="{StaticResource Back}" />
-                    </controls:TitleView.LeadingView>
-                </controls:TitleView>
                 <ContentPresenter />
             </StackLayout>
         </ControlTemplate>
@@ -40,7 +31,7 @@
         <ScrollView>
 
             <StackLayout Spacing="0">
-                
+
 
                 <!--  Grid for email READONLY -->
                 <Grid
@@ -70,15 +61,14 @@
                     ColumnSpacing="16">
 
                     <Label
-                        Grid.Column="0"
-                        Text="Nama" />
+                        Text="Name"
+                        Margin="0,-15"/>
 
                     <Entry
                         Grid.Column="0"
                         Grid.Row="0"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
-                        Text="Julia Grant"
                         WidthRequest="250"
                         VerticalOptions="Center" />
 
@@ -92,7 +82,8 @@
 
                     <Label
                         Grid.Column="0"
-                        Text="Password" />
+                        Text="Password" 
+                        Margin="0,-15"/>
 
                     <Entry
                         Grid.Column="0"
@@ -113,7 +104,8 @@
 
                     <Label
                         Grid.Column="0"
-                        Text="Konfirmasi Password" />
+                        Text="Password Confirmation" 
+                        Margin="0,-15"/>
 
                     <Entry
                         Grid.Column="0"
@@ -122,6 +114,78 @@
                         HorizontalOptions="Start"
                         IsPassword="True"
                         WidthRequest="250"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!-- Grid for gender -->
+                <Grid 
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Gender" 
+                        Margin="0,-15"/>
+                    
+                    <combobox:SfComboBox
+                        x:Name="GenderPicker"
+                        SelectedValue="{Binding Gender, Mode=TwoWay}"
+                        Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                        Watermark="Choose Gender"
+                        FontFamily="Montserrat-Medium">
+                        <combobox:SfComboBox.ComboBoxSource>
+                            <ListCollection:List x:TypeArguments="x:String">
+                                <x:String>Male</x:String>
+                                <x:String>Female</x:String>
+                            </ListCollection:List>
+                        </combobox:SfComboBox.ComboBoxSource>
+                    </combobox:SfComboBox>
+                </Grid>
+
+                <!--  Grid for Instagram  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Text="Instagram Username"
+                        Margin="0,-15"/>
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        WidthRequest="250"
+                        Text="@"
+                        Keyboard="Text"
+                        TextTransform="Lowercase"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <!--  Grid for TikTok  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Text="TikTok Username"
+                        Margin="0,-15"/>
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        WidthRequest="250"
+                        Text="@"
+                        Keyboard="Text"
+                        TextTransform="Lowercase"
                         VerticalOptions="Center" />
 
                 </Grid>
@@ -130,10 +194,10 @@
                 <!--  Sign Up button  -->
                 <buttons:SfButton 
                             Margin="16,16"
-                            Command="{Binding LoginCommand}"
+                            Command="{Binding SignUpCommand}"
                             HorizontalOptions="Fill"
                             Style="{StaticResource OrangeButtonStyle}"
-                            Text="Daftar" />
+                            Text="Sign Up" />
 
 
             </StackLayout>

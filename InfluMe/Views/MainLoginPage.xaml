@@ -125,7 +125,7 @@
                         <buttons:SfButton
                             Grid.Row="7"
                             Margin="0,16"
-                            Command="{Binding LoginCommand}"
+                            Command="{Binding MainLoginCommand}"
                             HorizontalOptions="Fill"
                             Style="{StaticResource OrangeButtonStyle}"
                             Text="LOG IN" />
@@ -147,7 +147,7 @@
 
                         <Label
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="Belum punya akun?"
+                            Text="New to InfluMe?"
                             TextColor="{DynamicResource Gray-White}"
                             VerticalTextAlignment="Center" />
 
@@ -155,8 +155,8 @@
                         <buttons:SfButton
                             Command="{Binding SignUpCommand}"
                             Style="{StaticResource TransparentButtonStyle}"
-                            Text="Buat akun"
-                            TextColor="#FF8000" />
+                            Text="Sign up"
+                            TextColor="Cyan" />
 
                     </StackLayout>
 
