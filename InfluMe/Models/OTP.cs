@@ -4,7 +4,7 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace InfluMe.Models.ServiceResponse {
+namespace InfluMe.Models {
 
     public class OTPRequest {
         public string influencerEmail { get; set; }

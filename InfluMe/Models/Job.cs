@@ -11,7 +11,7 @@ namespace InfluMe.Models
     /// </summary>
     [Preserve(AllMembers = true)]
     [DataContract]
-    public class Jobs : INotifyPropertyChanged
+    public class Job : INotifyPropertyChanged
     {
         #region Fields
 

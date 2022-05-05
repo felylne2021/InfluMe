@@ -7,7 +7,7 @@ using FreshMvvm;
 using FreshMvvm.Popups;
 using Rg.Plugins.Popup.Extensions;
 using InfluMe.Services;
-using InfluMe.Models.ServiceResponse;
+using InfluMe.Models;
 using InfluMe.Helpers;
 
 namespace InfluMe.ViewModels {
@@ -41,6 +41,7 @@ namespace InfluMe.ViewModels {
             this.VerifyEmailCommand = new Command(this.VerifyEmailClicked);
             this.ResendOTPCommand = new Command(this.ResendOTPClicked);
             this.SubmitOTPCommand = new Command<string>(this.SubmitOTPClicked);
+            this.SetOTPErrorInvisible = new Command(_ => IsOTPErrorMessageVisible = false);
         }
 
         #endregion
@@ -116,6 +117,8 @@ namespace InfluMe.ViewModels {
 
         public Command SubmitOTPCommand { get; set; }
 
+        public Command SetOTPErrorInvisible { get; set; }
+
         #endregion
 
         #region methods
@@ -160,7 +163,7 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private async void LoginClicked(object obj) {
-            if (this.AreFieldsValid()){
+            if (this.AreFieldsValid()) {
                 LoginResponse resp = await service.Login(this.Email.Value, this.Password.Value);
                 bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
 
@@ -207,14 +210,19 @@ namespace InfluMe.ViewModels {
         }
 
         private async void SubmitOTPClicked(string email) {
-            OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
-            if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
-                await Application.Current.MainPage.Navigation.PopPopupAsync();
-                await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+            if (this.OTP.Length == 6) {
+                OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
+                if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
+                    await Application.Current.MainPage.Navigation.PopPopupAsync();
+                    await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage(email));
+                }
+                else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
+                    IsOTPErrorMessageVisible = true;
+                }
             }
-            else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
+            else 
                 IsOTPErrorMessageVisible = true;
-            }
+
         }
 
         #endregion

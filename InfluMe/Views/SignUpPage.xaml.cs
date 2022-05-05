@@ -8,14 +8,21 @@ namespace InfluMe.Views
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SignUpPage
-    {
+    public partial class SignUpPage {
         /// <summary>
         /// Initializes a new instance of the <see cref="SignUpPage" /> class.
         /// </summary>
-        public SignUpPage()
-        {
+        public SignUpPage(string email) {
             this.InitializeComponent();
+            InfluencerEmail.Text = email;
+        }
+
+        private void DatePicker_Clicked(object sender, System.EventArgs e) {
+            birthdatePicker.IsOpen = true;
+        }
+
+        private void DatePicker_OkButtonClicked(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e) {
+            birthdatePickerButton.Text = string.Format("{0:dd/MM/yyyy}", e.NewValue);
         }
     }
 }

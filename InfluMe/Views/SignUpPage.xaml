@@ -7,7 +7,7 @@
     xmlns:controls="clr-namespace:InfluMe.Controls"
     xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
     xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
-    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" xmlns:datePicker="http://schemas.syncfusion.com/xamarin"
     x:Name="signUpPage"
     Title="Join InfluMe"
     BackgroundColor="{DynamicResource Gray-Bg}"
@@ -32,6 +32,27 @@
 
             <StackLayout Spacing="0">
 
+                <datePicker:SfDatePicker x:Name="birthdatePicker"
+                                         PickerMode="Dialog"
+                                         PickerWidth="310"
+                                         PickerHeight="360"
+                                         ShowFooter="True"
+                                         OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         OkButtonClicked="DatePicker_OkButtonClicked"
+                                         CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                         HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                         OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                         CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                         BackgroundColor="{DynamicResource Gray-Bg}"
+                                         SelectedItemFontFamily="Montserrat-Regular"
+                                         SelectedItemFontSize="16"
+                                         SelectedItemTextColor="{DynamicResource PrimaryColor}"
+                                         UnselectedItemFontFamily="Montserrat-Regular"
+                                         UnselectedItemFontSize="16"
+                                         UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                         Format="dd_MM_yyyy" />
 
                 <!--  Grid for email READONLY -->
                 <Grid
@@ -44,12 +65,13 @@
                         Text="Email" />
 
                     <Label
+                        x:Name="InfluencerEmail"
                         Grid.Column="0"
                         Grid.Row="1"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="juliagrant@email.com"
+                        Text="{Binding influencer.influencerEmail}"
                         VerticalOptions="Center" />
 
                 </Grid>
@@ -70,7 +92,8 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         WidthRequest="250"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        Text="{Binding influencer.influencerName}"/>
 
                 </Grid>
 
@@ -92,7 +115,8 @@
                         HorizontalOptions="Start"
                         IsPassword="True"
                         WidthRequest="250"
-                        VerticalOptions="Center" />
+                        VerticalOptions="Center"
+                        Text="{Binding influencer.influencerPassword}"/>
 
                 </Grid>
 
@@ -131,7 +155,7 @@
                     
                     <combobox:SfComboBox
                         x:Name="GenderPicker"
-                        SelectedValue="{Binding Gender, Mode=TwoWay}"
+                        SelectedValue="{Binding influencer.influencerGender, Mode=TwoWay}"
                         Style="{StaticResource TextInputLayoutComboBoxStyle}"
                         Watermark="Choose Gender"
                         FontFamily="Montserrat-Medium">
@@ -142,6 +166,29 @@
                             </ListCollection:List>
                         </combobox:SfComboBox.ComboBoxSource>
                     </combobox:SfComboBox>
+                </Grid>
+                
+                <!-- Grid for Birthday -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Birthdate" 
+                        Margin="0,-15"/>
+                    <buttons:SfButton x:Name="birthdatePickerButton" 
+                                              Text="{Binding influencer.influencerDOB, StringFormat='{0:dd/MM/yyyy}'}"
+                                              FontSize="16"
+                                              Padding="0,10"                                            
+                                              FontFamily="Montserrat-Regular"
+                                              HorizontalOptions="FillAndExpand"
+                                              HorizontalTextAlignment="Start"
+                                              TextColor="{DynamicResource Gray-900}"
+                                              BackgroundColor="Transparent" 
+                                              Clicked="DatePicker_Clicked" />
+                    
                 </Grid>
 
                 <!--  Grid for Instagram  -->
@@ -160,7 +207,8 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         WidthRequest="250"
-                        Text="@"
+                        Text="{Binding influencer.influencerInstagramId}"
+                        CursorPosition="1"
                         Keyboard="Text"
                         TextTransform="Lowercase"
                         VerticalOptions="Center" />
@@ -183,7 +231,8 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         WidthRequest="250"
-                        Text="@"
+                        Text="{Binding influencer.influencerTiktokId}"
+                        CursorPosition="1"
                         Keyboard="Text"
                         TextTransform="Lowercase"
                         VerticalOptions="Center" />

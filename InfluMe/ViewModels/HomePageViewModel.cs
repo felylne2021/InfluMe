@@ -15,7 +15,7 @@ namespace InfluMe.ViewModels
     {
         #region Fields
 
-        private ObservableCollection<Jobs> recommendedProduts;
+        private ObservableCollection<Job> recommendedProduts;
 
         private Command itemSelectedCommand;
 
@@ -44,7 +44,7 @@ namespace InfluMe.ViewModels
         /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
         /// </summary>
         [DataMember(Name = "instagramjobs")]
-        public ObservableCollection<Jobs> RecommendedProducts
+        public ObservableCollection<Job> RecommendedProducts
         {
             get
             {

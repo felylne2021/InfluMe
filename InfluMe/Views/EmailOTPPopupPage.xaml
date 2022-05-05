@@ -5,7 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
     x:Class="InfluMe.Views.EmailOTPPopupPage">
 
     <!--  Binding context for login page  -->
@@ -49,8 +49,13 @@
                     MaxLength="6"
                     Keyboard="Numeric"
                     Margin="30,0"
-                    VerticalOptions="Center" 
-                    Text="{Binding OTP}"/>
+                    VerticalOptions="Center"
+                    Text="{Binding OTP}">
+                    <Entry.Behaviors>
+                        <behaviors:EventToCommandBehavior EventName="Focused"
+                                          Command="{Binding SetOTPErrorInvisible}" />
+                    </Entry.Behaviors>
+                </Entry>
                 <Label
                     x:Name="OTPErrorMessage"
                     IsVisible="{Binding IsOTPErrorMessageVisible}"
@@ -60,7 +65,7 @@
                     HorizontalTextAlignment="Center"
                     FontSize="Small"/>
                 <buttons:SfButton
-                    Command="{Binding SendOTPCommand}"
+                    Command="{Binding ResendOTPCommand}"
                     Style="{StaticResource TransparentButtonStyle}"
                     HorizontalOptions="Center"
                     Text="Resend OTP"

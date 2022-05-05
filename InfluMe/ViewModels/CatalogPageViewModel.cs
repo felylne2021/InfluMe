@@ -143,7 +143,7 @@ namespace InfluMe.ViewModels
         /// Gets or sets the property that has been bound with a list view, which displays the item details in tile.
         /// </summary>
         [DataMember(Name = "jobs")]
-        public ObservableCollection<Jobs> Jobs
+        public ObservableCollection<Job> Jobs
         {
             get; set;
         }
@@ -298,7 +298,7 @@ namespace InfluMe.ViewModels
         /// <param name="obj">The Object</param>
         private void AddFavouriteClicked(object obj)
         {
-            if (obj is Jobs product)
+            if (obj is Job product)
             {
                 product.IsFavourite = !product.IsFavourite;
             }

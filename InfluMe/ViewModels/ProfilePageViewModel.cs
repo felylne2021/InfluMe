@@ -1,4 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using InfluMe.Models;
+using InfluMe.Validators;
+using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -10,6 +13,9 @@ namespace InfluMe.ViewModels
     [Preserve(AllMembers = true)]
     public class ProfilePageViewModel : BaseViewModel
     {
+        #region Fields
+        private ValidatableObject<string> passwordConfirmation;
+        #endregion
         #region Constructor
 
         /// <summary>
@@ -21,6 +27,12 @@ namespace InfluMe.ViewModels
             this.AvailableCommand = new Command(this.AvailableStatusClicked);
             this.NotificationCommand = new Command(this.NotificationOptionClicked);
         }
+
+        #endregion
+
+        #region Property        
+
+        public Influencer influencer => new Influencer();
 
         #endregion
 
