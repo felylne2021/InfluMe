@@ -103,7 +103,7 @@
                                 Margin="15,-5,0,0"
                                 IsVisible="{Binding Password.IsValid, Converter={StaticResource InverseBoolConverter}}"
                                 Style="{StaticResource SimpleLabelStyle}"
-                                Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}, Mode=TwoWay}"
                                 TextColor="{DynamicResource Red}"
                                 VerticalOptions="FillAndExpand" />
                         </StackLayout>
@@ -125,7 +125,7 @@
                         <buttons:SfButton
                             Grid.Row="7"
                             Margin="0,16"
-                            Command="{Binding MainLoginCommand}"
+                            Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
                             Style="{StaticResource OrangeButtonStyle}"
                             Text="LOG IN" />

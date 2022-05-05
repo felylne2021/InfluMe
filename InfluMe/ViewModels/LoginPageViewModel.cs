@@ -8,19 +8,20 @@ using FreshMvvm.Popups;
 using Rg.Plugins.Popup.Extensions;
 using InfluMe.Services;
 using InfluMe.Models.ServiceResponse;
+using InfluMe.Helpers;
 
 namespace InfluMe.ViewModels {
     /// <summary>
     /// ViewModel for login page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class LoginPageViewModel : LoginViewModel {
+    public class LoginPageViewModel : BaseViewModel {
         #region Fields
 
         private ValidatableObject<string> password;
         private ValidatableObject<string> email;
+        private bool _isOTPErrorMessageVisible;
         private InfluMeService service => new InfluMeService();
-        private string OTP;
 
         #endregion
 
@@ -32,18 +33,28 @@ namespace InfluMe.ViewModels {
         public LoginPageViewModel() {
             this.InitializeProperties();
             this.AddValidationRules();
-            this.MainLoginCommand = new Command(this.LoginClicked);
+            this.LoginCommand = new Command(this.LoginClicked);
             this.SignUpCommand = new Command(this.SignUpClicked);
             this.ForgotPasswordCommand = new Command(this.ForgotPasswordClicked);
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
+            this.BackPopupButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopPopupAsync());
             this.VerifyEmailCommand = new Command(this.VerifyEmailClicked);
-            this.SubmitOTPCommand = new Command(this.SubmitOTPClicked);
+            this.ResendOTPCommand = new Command(this.ResendOTPClicked);
+            this.SubmitOTPCommand = new Command<string>(this.SubmitOTPClicked);
         }
 
         #endregion
 
         #region property
+        public string OTP { get; set; }
 
+        public bool IsOTPErrorMessageVisible {
+            get => _isOTPErrorMessageVisible;
+            set {
+                _isOTPErrorMessageVisible = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
@@ -75,6 +86,8 @@ namespace InfluMe.ViewModels {
                 this.SetProperty(ref this.email, value);
             }
         }
+
+
         #endregion
 
         #region Command
@@ -82,7 +95,7 @@ namespace InfluMe.ViewModels {
         ///// <summary>
         ///// Gets or sets the command that is executed when the Log In button is clicked.
         ///// </summary>
-        public Command MainLoginCommand { get; set; }
+        public Command LoginCommand { get; set; }
 
         /// <summary>
         /// Gets or sets the command that is executed when the Sign Up button is clicked.
@@ -95,6 +108,7 @@ namespace InfluMe.ViewModels {
         public Command ForgotPasswordCommand { get; set; }
 
         public Command BackButtonCommand { get; set; }
+        public Command BackPopupButtonCommand { get; set; }
 
         public Command VerifyEmailCommand { get; set; }
 
@@ -120,6 +134,10 @@ namespace InfluMe.ViewModels {
             return this.Email.Validate();
         }
 
+        public bool IsPasswordValid() {
+            return this.Password.Validate();
+        }
+
         /// <summary>
         /// Initializing the properties.
         /// </summary>
@@ -129,7 +147,7 @@ namespace InfluMe.ViewModels {
         }
 
         /// <summary>
-        /// Validation rule for password
+        /// Validation rule for login
         /// </summary>
         private void AddValidationRules() {
             this.Email.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Email Required" });
@@ -142,9 +160,19 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private async void LoginClicked(object obj) {
-            if (this.AreFieldsValid()) {
-                await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+            if (this.AreFieldsValid()){
+                LoginResponse resp = await service.Login(this.Email.Value, this.Password.Value);
+                bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
+
+                if (isLoginValid) {
+                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+                }
+                else {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());
+                }
             }
+
+
         }
 
         /// <summary>
@@ -163,18 +191,30 @@ namespace InfluMe.ViewModels {
             // Do something
         }
 
-        private async void VerifyEmailClicked(object obj) {
+        private async void ResendOTPClicked(object obj) {
             if (IsEmailValid()) {
                 OTPResponse resp = await service.GetOTP(this.Email.Value);
-                this.OTP = resp.otpNumber;
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage());
             }
 
         }
 
-        private void SubmitOTPClicked(object obj) {
-            Application.Current.MainPage.Navigation.PopPopupAsync();
-            Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+        private async void VerifyEmailClicked(object obj) {
+            if (IsEmailValid()) {
+                OTPResponse resp = await service.GetOTP(this.Email.Value);
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage(this.Email.Value));
+            }
+
+        }
+
+        private async void SubmitOTPClicked(string email) {
+            OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
+            if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
+                await Application.Current.MainPage.Navigation.PopPopupAsync();
+                await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage());
+            }
+            else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
+                IsOTPErrorMessageVisible = true;
+            }
         }
 
         #endregion

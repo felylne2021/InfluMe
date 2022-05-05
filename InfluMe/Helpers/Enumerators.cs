@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace InfluMe.Helpers {
-    public enum OTPStatusEnum {
+    public enum ResponseStatusEnum {
         UNKNOWN,
-        ACTIVE
+        VALID,
+        INVALID
     }
 }

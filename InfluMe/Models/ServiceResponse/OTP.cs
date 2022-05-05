@@ -13,8 +13,13 @@ namespace InfluMe.Models.ServiceResponse {
     public class OTPResponseBody {
         public OTPResponse body { get; set; }
     }
+
     public class OTPResponse {
         public string otpNumber { get; set; }
         public string otpStatus { get; set; }
+    }
+
+    public class OTPVerificationResponse {
+        public string body { get; set; }
     }
 }

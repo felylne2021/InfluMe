@@ -15,8 +15,8 @@
     
     <pages:PopupPage.Animation>
         <animations:ScaleAnimation 
-            PositionIn="Bottom"
-            PositionOut="Bottom"
+            PositionIn="Center"
+            PositionOut="Center"
            
             DurationIn="400"
             DurationOut="300"
@@ -29,7 +29,7 @@
         VerticalOptions="CenterAndExpand" 
         HorizontalOptions="CenterAndExpand" 
        >
-        <Frame CornerRadius="15"  HorizontalOptions="FillAndExpand" HeightRequest="220" >
+        <Frame CornerRadius="15"  HorizontalOptions="FillAndExpand" HeightRequest="230" VerticalOptions="CenterAndExpand">
             <StackLayout>
                 <Label 
                     Text="Enter OTP" 
@@ -39,6 +39,7 @@
                     FontSize="Medium" 
                     FontAttributes="Bold"></Label>
                 <Entry
+                    x:Name="OTPEntry"
                     Grid.Column="0"
                     Grid.Row="0"
                     FontFamily="Montserrat-Medium"
@@ -48,14 +49,31 @@
                     MaxLength="6"
                     Keyboard="Numeric"
                     Margin="30,0"
-                    VerticalOptions="Center" />
+                    VerticalOptions="Center" 
+                    Text="{Binding OTP}"/>
+                <Label
+                    x:Name="OTPErrorMessage"
+                    IsVisible="{Binding IsOTPErrorMessageVisible}"
+                    Text="Invalid OTP"
+                    TextColor="Red"
+                    FontFamily="Montserrat-Medium" 
+                    HorizontalTextAlignment="Center"
+                    FontSize="Small"/>
                 <buttons:SfButton
                     Command="{Binding SendOTPCommand}"
                     Style="{StaticResource TransparentButtonStyle}"
                     HorizontalOptions="Center"
                     Text="Resend OTP"
                     TextColor="#FF8000" />
-                <buttons:SfButton Text="Verify OTP" Command="{Binding SubmitOTPCommand}" WidthRequest="120" Style="{StaticResource OrangeButtonStyle}"/>
+                <buttons:SfButton 
+                    Text="Verify OTP" 
+                    Command="{Binding SubmitOTPCommand}" 
+                    CommandParameter="{Binding Source={x:Reference OTPEmail}, Path=Text}"
+                    WidthRequest="120" 
+                    Style="{StaticResource OrangeButtonStyle}"/>
+                <Label
+                    x:Name="OTPEmail"
+                    IsVisible="false"/>
             </StackLayout>
         </Frame>
 

@@ -11,8 +11,10 @@ using Xamarin.Forms.Xaml;
 namespace InfluMe.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EmailOTPPopupPage : PopupPage {
-        public EmailOTPPopupPage() {
+
+        public EmailOTPPopupPage(string email) {
             InitializeComponent();
+            OTPEmail.Text = email;
         }
     }
 }

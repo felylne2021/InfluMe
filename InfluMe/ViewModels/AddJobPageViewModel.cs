@@ -9,7 +9,7 @@ namespace InfluMe.ViewModels {
     /// ViewModel for add contact page.
     /// </summary>
     [Preserve(AllMembers = true)]
-    public class AddJobPageViewModel : LoginViewModel {
+    public class AddJobPageViewModel : BaseViewModel {
         #region Fields
 
         private DateTime date = DateTime.Now;
