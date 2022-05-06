@@ -13,10 +13,11 @@ namespace InfluMe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public HomePage()
+        public HomePage(int influencerId)
         {
             this.InitializeComponent();
-            this.BindingContext = ProductHomeDataService.Instance.HomePageViewModel;
+            this.BindingContext = HomeDataService.Instance.HomePageViewModel;
+            InfluencerId.Text = influencerId.ToString();
         }
 
         //protected override void OnSizeAllocated(double width, double height)

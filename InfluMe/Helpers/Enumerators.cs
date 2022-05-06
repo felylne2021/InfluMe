@@ -4,8 +4,8 @@ using System.Text;
 
 namespace InfluMe.Helpers {
     public enum ResponseStatusEnum {
-        UNKNOWN,
         VALID,
-        INVALID
+        INVALID,
+        REGISTERED
     }
 }

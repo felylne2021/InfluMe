@@ -9,6 +9,7 @@ using Rg.Plugins.Popup.Extensions;
 using InfluMe.Services;
 using InfluMe.Models;
 using InfluMe.Helpers;
+using System;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -42,6 +43,7 @@ namespace InfluMe.ViewModels {
             this.ResendOTPCommand = new Command(this.ResendOTPClicked);
             this.SubmitOTPCommand = new Command<string>(this.SubmitOTPClicked);
             this.SetOTPErrorInvisible = new Command(_ => IsOTPErrorMessageVisible = false);
+            this.OTP = "";
         }
 
         #endregion
@@ -57,9 +59,6 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        /// <summary>
-        /// Gets or sets the property that is bound with an entry that gets the password from user in the login page.
-        /// </summary>
         public ValidatableObject<string> Password {
             get {
                 return this.password;
@@ -98,9 +97,6 @@ namespace InfluMe.ViewModels {
         ///// </summary>
         public Command LoginCommand { get; set; }
 
-        /// <summary>
-        /// Gets or sets the command that is executed when the Sign Up button is clicked.
-        /// </summary>
         public Command SignUpCommand { get; set; }
 
         /// <summary>
@@ -109,6 +105,7 @@ namespace InfluMe.ViewModels {
         public Command ForgotPasswordCommand { get; set; }
 
         public Command BackButtonCommand { get; set; }
+
         public Command BackPopupButtonCommand { get; set; }
 
         public Command VerifyEmailCommand { get; set; }
@@ -164,14 +161,19 @@ namespace InfluMe.ViewModels {
         /// <param name="obj">The Object</param>
         private async void LoginClicked(object obj) {
             if (this.AreFieldsValid()) {
-                LoginResponse resp = await service.Login(this.Email.Value, this.Password.Value);
-                bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
+                try {
+                    LoginResponse resp = await service.Login(this.Email.Value, this.Password.Value);
+                    bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
 
-                if (isLoginValid) {
-                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage());
+                    if (isLoginValid) {
+                        await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId));
+                    }
+                    else {
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());
+                    }
                 }
-                else {
-                    await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
                 }
             }
 
@@ -196,31 +198,53 @@ namespace InfluMe.ViewModels {
 
         private async void ResendOTPClicked(object obj) {
             if (IsEmailValid()) {
-                OTPResponse resp = await service.GetOTP(this.Email.Value);
+                try {
+                    OTPResponse resp = await service.GetOTP(this.Email.Value);
+                    if (resp.otpStatus.Equals(ResponseStatusEnum.REGISTERED.ToString())) {
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailRegisteredPopupPage());
+                    }
+                }
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                }
             }
 
         }
 
         private async void VerifyEmailClicked(object obj) {
             if (IsEmailValid()) {
-                OTPResponse resp = await service.GetOTP(this.Email.Value);
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage(this.Email.Value));
+                try {
+                    OTPResponse resp = await service.GetOTP(this.Email.Value);
+                    if (resp.otpStatus.Equals(ResponseStatusEnum.REGISTERED.ToString())) {
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailRegisteredPopupPage());
+                    }
+                    else
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailOTPPopupPage(this.Email.Value));
+                }
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                }
             }
 
         }
 
         private async void SubmitOTPClicked(string email) {
-            if (this.OTP.Length == 6) {
-                OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
-                if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
-                    await Application.Current.MainPage.Navigation.PopPopupAsync();
-                    await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage(email));
+            if (!string.IsNullOrEmpty(this.OTP) && this.OTP.Length == 6) {
+                try {
+                    OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
+                    if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
+                        await Application.Current.MainPage.Navigation.PopPopupAsync();
+                        await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage(email));
+                    }
+                    else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
+                        IsOTPErrorMessageVisible = true;
+                    }
                 }
-                else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
-                    IsOTPErrorMessageVisible = true;
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
                 }
             }
-            else 
+            else
                 IsOTPErrorMessageVisible = true;
 
         }

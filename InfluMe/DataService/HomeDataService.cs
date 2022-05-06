@@ -4,11 +4,11 @@ using System.Runtime.Serialization.Json;
 
 namespace InfluMe.DataService
 {
-    public class ProductHomeDataService
+    public class HomeDataService
     {
         #region fields
 
-        private static ProductHomeDataService productHomeDataService;
+        private static HomeDataService productHomeDataService;
 
         private HomePageViewModel productHomePageViewModel;
 
@@ -17,9 +17,9 @@ namespace InfluMe.DataService
         #region Constructor
 
         /// <summary>
-        /// Creates an instance for the <see cref="ProductHomeDataService"/> class.
+        /// Creates an instance for the <see cref="HomeDataService"/> class.
         /// </summary>
-        private ProductHomeDataService()
+        private HomeDataService()
         {
         }
 
@@ -28,9 +28,9 @@ namespace InfluMe.DataService
         #region Properties
 
         /// <summary>
-        /// Gets an instance of the <see cref="ProductHomeDataService"/>.
+        /// Gets an instance of the <see cref="HomeDataService"/>.
         /// </summary>
-        public static ProductHomeDataService Instance => productHomeDataService ?? (productHomeDataService = new ProductHomeDataService());
+        public static HomeDataService Instance => productHomeDataService ?? (productHomeDataService = new HomeDataService());
 
         /// <summary>
         /// Gets or sets the value of home page view model.

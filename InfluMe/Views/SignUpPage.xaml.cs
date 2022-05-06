@@ -18,6 +18,7 @@ namespace InfluMe.Views
         }
 
         private void DatePicker_Clicked(object sender, System.EventArgs e) {
+            birthdateErrorMessage.IsVisible = false;
             birthdatePicker.IsOpen = true;
         }
 

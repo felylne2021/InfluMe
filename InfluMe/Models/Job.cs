@@ -23,7 +23,6 @@ namespace InfluMe.Models
 
         private int totalQuantity;
 
-        private double jobFee;
 
         private ObservableCollection<Review> reviews = new ObservableCollection<Review>();
 
@@ -39,49 +38,31 @@ namespace InfluMe.Models
         #endregion
 
         #region Properties
-
+        public int jobId { get; set; }
+        public string jobName { get; set; }
+        public string jobBrand { get; set; }
+        public string jobRegistrationDeadline { get; set; }
+        public string jobDeadline { get; set; }
+        public string jobAgeRange { get; set; }
+        public string jobGender { get; set; }
+        public string jobPlatform { get; set; }
+        public string jobDomicile { get; set; }
+        public string jobFee { get; set; }
+        public string jobProduct { get; set; }
+        public string jobSOW { get; set; }
+        public string jobAdditionalRequirement { get; set; }
+        public string jobStatus { get; set; }
         /// <summary>
         /// Gets or sets the property that holds the product id.
         /// </summary>
-        [DataMember(Name = "id")]
+        [DataMember(Name = "jobId")]
         public int Id { get; set; }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with Xamarin.Forms Image, which displays the product image.
-        /// </summary>
-        [DataMember(Name = "previewimage")]
-        public string PreviewImage
-        {
-            get { return App.ImageServerPath + this.previewImage; }
-            set { this.previewImage = value; }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with SfRotator, which displays the item images.
-        /// </summary>
-        [DataMember(Name = "previewimages")]
-        public List<string> PreviewImages
-        {
-            get
-            {
-                for (var i = 0; i < this.previewImages.Count; i++)
-                {
-                    this.previewImages[i] = this.previewImages[i].Contains(App.ImageServerPath) ? this.previewImages[i] : App.ImageServerPath + this.previewImages[i];
-                }
-
-                return this.previewImages;
-            }
-
-            set
-            {
-                this.previewImages = value;
-            }
-        }
+        
 
         /// <summary>
         /// Gets or sets the property that has been bound with a label, which displays the product name.
         /// </summary>
-        [DataMember(Name = "name")]
+        [DataMember(Name = "jobName")]
         public string Name { get; set; }
 
         /// <summary>
@@ -99,20 +80,7 @@ namespace InfluMe.Models
         /// <summary>
         /// Gets or sets the property that has been bound with a label, which displays the job fee.
         /// </summary>
-        [DataMember(Name = "jobfee")]
-        public double JobFee
-        {
-            get
-            {
-                return this.jobFee;
-            }
-
-            set
-            {
-                this.jobFee = value;
-                this.NotifyPropertyChanged(nameof(this.JobFee));
-            }
-        }       
+        
 
         /// <summary>
         /// Gets or sets the property that has been bound with view, which displays the customer review.

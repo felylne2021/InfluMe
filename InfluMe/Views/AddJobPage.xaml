@@ -222,7 +222,7 @@
                         </inputLayout:SfTextInputLayout>
 
                         <inputLayout:SfTextInputLayout Style="{DynamicResource TextInputLayoutStyle}" Grid.Column="2">
-                            <control:PlatformComboBox x:Name="CountryPicker" Style="{StaticResource TextInputLayoutComboBoxStyle}" />
+                            <control:PlatformComboBox x:Name="PlatformPicker" Style="{StaticResource TextInputLayoutComboBoxStyle}" />
                         </inputLayout:SfTextInputLayout>
                     </Grid>
 

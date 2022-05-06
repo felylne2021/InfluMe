@@ -1,4 +1,5 @@
 ﻿using Xamarin.Forms.Internals;
+using System.ComponentModel.DataAnnotations;
 
 namespace InfluMe.Validators.Rules
 {
@@ -7,7 +8,7 @@ namespace InfluMe.Validators.Rules
     /// </summary>
     /// <typeparam name="T">Not null or empty rule parameter</typeparam>
     [Preserve(AllMembers = true)]
-    public class IsNotNullOrEmptyRule<T> : IValidationRule<T>
+    public class IsLengthValidRule<T> : IValidationRule<T>
     {
         #region Properties
 
@@ -21,19 +22,15 @@ namespace InfluMe.Validators.Rules
         #region Methods
 
         /// <summary>
-        /// Check the Email has null or empty
+        /// Check the Email format
         /// </summary>
         /// <param name="value">The value</param>
         /// <returns>returns bool value</returns>
         public bool Check(T value)
-        {
-            if (value == null)
-            {
+        {   
+            if(value == null)
                 return false;
-            }
-
-            var str = $"{value}";
-            return !string.IsNullOrWhiteSpace(str);
+            return value.ToString().Length >= 8 ? true : false;
         }
 
         #endregion
