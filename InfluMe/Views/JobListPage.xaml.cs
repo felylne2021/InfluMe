@@ -14,10 +14,10 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="JobListPage" /> class.
         /// </summary>
-        public JobListPage()
+        public JobListPage(string jobPlatform)
         {
             this.InitializeComponent();
-            this.BindingContext = CatalogDataService.Instance.CatalogPageViewModel;
+            JobPlatform.Text = jobPlatform;
         }
     }
 }

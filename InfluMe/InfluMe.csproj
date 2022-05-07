@@ -63,6 +63,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="19.4.0.42" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
     <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
     <PackageReference Include="System.Text.Json" Version="6.0.3" />
@@ -84,6 +85,9 @@
     </Compile>
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\JobListTemplate.xaml.cs">
+      <DependentUpon>JobListTemplate.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -199,7 +203,7 @@
     <EmbeddedResource Update="Views\ProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\Templates\ProductListTemplate.xaml">
+    <EmbeddedResource Update="Views\Templates\JobListTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">

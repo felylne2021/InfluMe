@@ -13,8 +13,7 @@
     BackgroundColor="{DynamicResource Gray-Bg}"
     Shell.NavBarIsVisible="False"
     NavigationPage.HasNavigationBar="False">
-
-    <!--  Binding context for Profile Page  -->
+    
     <ContentPage.BindingContext>
         <viewModel:ProfilePageViewModel />
     </ContentPage.BindingContext>

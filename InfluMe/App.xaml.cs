@@ -25,7 +25,7 @@ namespace InfluMe
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new MainLoginPage());
+            MainPage = new NavigationPage(new HomePage(35));
 
         }
 

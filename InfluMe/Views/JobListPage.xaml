@@ -14,7 +14,7 @@
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
     xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
-    xmlns:template="clr-namespace:InfluMe.Views.Templates"
+    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
     x:Name="jobListPage"
     Title="Job List page"
     BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
@@ -25,6 +25,10 @@
     <ContentPage.Behaviors>
         <behavior:CartBehavior />
     </ContentPage.Behaviors>
+
+    <ContentPage.BindingContext>
+        <viewModel:JobViewModel />
+    </ContentPage.BindingContext>
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -127,6 +131,12 @@
                 
             </controls:TitleView>
 
+            <!--  Initial Filter based on Job Platform -->
+            <Label
+                x:Name="JobPlatform"
+                Text="{Binding JobPlatform}"
+                IsVisible="false"/>
+            
             <!--  ListView for catalog list  -->
             <listView:SfListView
                 x:Name="ListViewList"
@@ -147,9 +157,9 @@
                         <syncEffectsView:SfEffectsView
                             RippleColor="{DynamicResource Gray-300}"
                             TouchDownEffects="Ripple"
-                            TouchUpCommand="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference jobListPage}}"
+                            TouchUpCommand="{Binding Path=ItemSelectedCommand}"
                             TouchUpCommandParameter="{Binding}">
-                            <template:ProductListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
+                            <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
                         </syncEffectsView:SfEffectsView>
                     </DataTemplate>
                 </listView:SfListView.ItemTemplate>

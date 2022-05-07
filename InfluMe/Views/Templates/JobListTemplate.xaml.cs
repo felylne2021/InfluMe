@@ -9,18 +9,18 @@ namespace InfluMe.Views.Templates
     /// </summary>
     [Preserve(AllMembers = true)]
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ProductListTemplate : Grid
+    public partial class JobListTemplate : Grid
     {
         /// <summary>
         /// Bindable property to set the parent bindingcontext.
         /// </summary>
         public static readonly BindableProperty ParentBindingContextProperty =
-         BindableProperty.Create(nameof(ParentBindingContext), typeof(object), typeof(ProductListTemplate), null);
+         BindableProperty.Create(nameof(ParentBindingContext), typeof(object), typeof(JobListTemplate), null);
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProductListTemplate"/> class.
+        /// Initializes a new instance of the <see cref="JobListTemplate"/> class.
         /// </summary>
-        public ProductListTemplate()
+        public JobListTemplate()
         {
             this.InitializeComponent();
         }

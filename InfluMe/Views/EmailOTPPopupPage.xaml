@@ -71,10 +71,10 @@
                     Text="Resend OTP"
                     TextColor="#FF8000" />
                 <buttons:SfButton 
-                    Text="Verify OTP" 
-                    Command="{Binding SubmitOTPCommand}" 
+                    Text="Verify OTP"
+                    Command="{Binding SubmitOTPCommand}"
                     CommandParameter="{Binding Source={x:Reference OTPEmail}, Path=Text}"
-                    WidthRequest="120" 
+                    WidthRequest="120"
                     Style="{StaticResource OrangeButtonStyle}"/>
                 <Label
                     x:Name="OTPEmail"

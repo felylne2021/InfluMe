@@ -13,9 +13,8 @@ namespace InfluMe.Services {
 
     public class InfluMeService {
 
-        private readonly string _hostname;
+        private readonly string _hostname = "https://influmebe.herokuapp.com";
         public InfluMeService() {
-            _hostname = "https://influmebe.herokuapp.com";
         }
 
         public async Task<LoginResponse> Login(string username, string password) {
@@ -26,8 +25,6 @@ namespace InfluMe.Services {
                 email = username,
                 password = password
             };
-
-            LoginResponseBody resp = new LoginResponseBody();
 
             var response = await client.PostAsJsonAsync("/login", req);
 
@@ -47,7 +44,6 @@ namespace InfluMe.Services {
                 influencerEmail = email
             };
 
-            OTPResponse resp = new OTPResponse();
 
             var response = await client.PostAsJsonAsync("/mail/send", req);
 
@@ -79,7 +75,6 @@ namespace InfluMe.Services {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
 
-            OTPResponse resp = new OTPResponse();
             var response = await client.PostAsJsonAsync("/influencer/save", req);
 
             if (response.IsSuccessStatusCode) {

@@ -166,7 +166,10 @@ namespace InfluMe.ViewModels {
                     bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
 
                     if (isLoginValid) {
-                        await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId));
+                        if(resp.userType.Equals(UserTypeEnum.Influencer.ToString()))
+                            await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId));
+                        else if (resp.userType.Equals(UserTypeEnum.Admin.ToString())) 
+                            await Application.Current.MainPage.Navigation.PushAsync(new AdminHomePage());
                     }
                     else {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());

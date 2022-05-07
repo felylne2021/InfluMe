@@ -8,4 +8,14 @@ namespace InfluMe.Helpers {
         INVALID,
         REGISTERED
     }
+
+    public enum UserTypeEnum {
+        Influencer,
+        Admin
+    }
+
+    public enum JobPlatform {
+        Instagram,
+        TikTok
+    }
 }

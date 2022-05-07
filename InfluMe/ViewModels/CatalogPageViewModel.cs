@@ -143,7 +143,7 @@ namespace InfluMe.ViewModels
         /// Gets or sets the property that has been bound with a list view, which displays the item details in tile.
         /// </summary>
         [DataMember(Name = "jobs")]
-        public ObservableCollection<Job> Jobs
+        public ObservableCollection<JobResponse> Jobs
         {
             get; set;
         }
@@ -235,17 +235,6 @@ namespace InfluMe.ViewModels
         }
 
         /// <summary>
-        /// Gets or sets the command that will be executed when the Favourite button is clicked.
-        /// </summary>
-        public Command AddFavouriteCommand
-        {
-            get
-            {
-                return this.addFavouriteCommand ?? (this.addFavouriteCommand = new Command(this.AddFavouriteClicked));
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the command that will be executed when the AddToCart button is clicked.
         /// </summary>
         public Command AddToCartCommand
@@ -290,18 +279,6 @@ namespace InfluMe.ViewModels
         private void FilterClicked(object obj)
         {
             // Do something
-        }
-
-        /// <summary>
-        /// Invoked when the favourite button is clicked.
-        /// </summary>
-        /// <param name="obj">The Object</param>
-        private void AddFavouriteClicked(object obj)
-        {
-            if (obj is Job product)
-            {
-                product.IsFavourite = !product.IsFavourite;
-            }
         }
 
         /// <summary>

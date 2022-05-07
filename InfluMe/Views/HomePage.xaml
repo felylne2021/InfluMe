@@ -11,12 +11,16 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
     x:Name="InfluencerHome"
     BackgroundColor="{DynamicResource Gray-Bg}"
     NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False"
     mc:Ignorable="d">
+
+    <ContentPage.BindingContext>
+        <viewModel:JobViewModel />
+    </ContentPage.BindingContext>
 
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -42,7 +46,10 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Spacing="0">
-                <Image BackgroundColor="{DynamicResource Gray-200}" Source="{Binding BannerImage}" />
+                <Image 
+                    BackgroundColor="{DynamicResource Gray-200}" 
+                    Source = "Banner"
+                    HeightRequest="130"/>
                 <Label
                     x:Name="InfluencerId"
                     IsVisible="false"/>
@@ -64,6 +71,7 @@
                     <buttons:SfButton
                         BackgroundColor="{DynamicResource Gray-Bg}"
                         Command="{Binding ViewAllCommand}"
+                        CommandParameter="Instagram"
                         FontSize="12"
                         HorizontalOptions="End"
                         Style="{StaticResource TransparentButtonStyle}"
@@ -81,7 +89,7 @@
                     HorizontalOptions="FillAndExpand"
                     IsScrollBarVisible="False"
                     IsStickyHeader="True"
-                    ItemsSource="{Binding RecommendedProducts}"
+                    ItemsSource="{Binding InstagramJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"
                     SelectionBackgroundColor="Transparent">
@@ -98,7 +106,7 @@
                                 BorderColor="{DynamicResource GrayShadowColor}"
                                 CornerRadius="4"
                                 HasShadow="true"
-                                HeightRequest="266"
+                                HeightRequest="300"
                                 Radius="4"
                                 WidthRequest="230">
 
@@ -114,25 +122,28 @@
                                         <StackLayout
                                             HorizontalOptions="FillAndExpand"
                                             Spacing="0"
-                                            VerticalOptions="FillAndExpand">
-                                            
-                                            <!--  Job name  -->
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <!--  Job Name  -->
                                             <Label
-                                                Margin="16,0"
+                                                Margin="16,10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource TitleLabelStyle}"
-                                                Text="{Binding Name}"
+                                                Text="{Binding jobName}"
+                                                MaxLines="1"
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
                                                 TextColor="{DynamicResource Gray-800}" />
 
-                                            <!--  Job Description  -->
+                                            <!--  Job Gender  -->
                                             <Label
-                                                Margin="16,4"
+                                                Margin="16,0"
                                                 FontSize="12"
-                                                HorizontalTextAlignment="Start"
+                                                HorizontalOptions="StartAndExpand"
                                                 MaxLines="1"
                                                 Style="{StaticResource DescriptionLabelStyle}"
-                                                Text="{Binding Description}" />
-                                            
+                                                Text="{Binding jobGender,StringFormat='Gender:  {0}'}" />
+
                                             <StackLayout
                                                 Margin="16,4,16,16"
                                                 Orientation="Horizontal"
@@ -142,15 +153,10 @@
                                                 <Label
                                                     FontSize="12"
                                                     Style="{StaticResource DescriptionLabelStyle}"
-                                                    Text="{Binding JobFee, StringFormat='IDR {0:N2} '}"
+                                                    Text="{Binding jobFee, StringFormat='Job Fee: IDR {0:N2} '}"
                                                     VerticalTextAlignment="Center" />
 
-                                                <Label
-                                                    FontSize="12"
-                                                    Style="{StaticResource DescriptionLabelStyle}"
-                                                    Text="{Binding DiscountPercent, StringFormat=' ({0}% OFF)'}"
-                                                    TextColor="{DynamicResource PrimaryColor}"
-                                                    VerticalTextAlignment="Center" />
+
 
                                             </StackLayout>
 
@@ -182,6 +188,7 @@
                     <buttons:SfButton
                         BackgroundColor="{DynamicResource Gray-Bg}"
                         Command="{Binding ViewAllCommand}"
+                        CommandParameter="TikTok"
                         FontSize="12"
                         HorizontalOptions="End"
                         Style="{StaticResource TransparentButtonStyle}"
@@ -198,7 +205,7 @@
                     HorizontalOptions="FillAndExpand"
                     IsScrollBarVisible="False"
                     IsStickyHeader="True"
-                    ItemsSource="{Binding RecommendedProducts}"
+                    ItemsSource="{Binding TikTokJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"
                     SelectionBackgroundColor="Transparent">
@@ -215,7 +222,7 @@
                                 BorderColor="{DynamicResource GrayShadowColor}"
                                 CornerRadius="4"
                                 HasShadow="true"
-                                HeightRequest="266"
+                                HeightRequest="400"
                                 Radius="4"
                                 WidthRequest="230">
 
@@ -231,43 +238,41 @@
                                         <StackLayout
                                             HorizontalOptions="FillAndExpand"
                                             Spacing="0"
-                                            VerticalOptions="FillAndExpand">
+                                            VerticalOptions="CenterAndExpand">
 
-                                            <!--  Job name  -->
+                                            <!--  Job Name  -->
                                             <Label
-                                                Margin="16,0"
+                                                Margin="16,10,0,0"
                                                 HorizontalOptions="StartAndExpand"
                                                 Style="{StaticResource TitleLabelStyle}"
-                                                Text="{Binding Name}"
+                                                Text="{Binding jobName}"
+                                                MaxLines="1"
+                                                VerticalOptions="Center"
+                                                LineBreakMode="TailTruncation"
                                                 TextColor="{DynamicResource Gray-800}" />
 
-                                            <!--  Job Description  -->
+                                            <!--  Job Gender  -->
                                             <Label
-                                                Margin="16,4"
+                                                Margin="16,0"
                                                 FontSize="12"
-                                                HorizontalTextAlignment="Start"
+                                                HorizontalOptions="StartAndExpand"
                                                 MaxLines="1"
                                                 Style="{StaticResource DescriptionLabelStyle}"
-                                                Text="{Binding Description}" />
-                                           
+                                                Text="{Binding jobGender,StringFormat='Gender:  {0}'}" />
+
                                             <StackLayout
                                                 Margin="16,4,16,16"
                                                 Orientation="Horizontal"
                                                 Spacing="2">
 
-                                                <!--  Job Fee  -->                                                
+                                                <!--  Job Fee  -->
                                                 <Label
                                                     FontSize="12"
                                                     Style="{StaticResource DescriptionLabelStyle}"
-                                                    Text="{Binding JobFee, StringFormat='IDR {0:N2} '}"
+                                                    Text="{Binding jobFee, StringFormat='Job Fee: IDR {0:N2} '}"
                                                     VerticalTextAlignment="Center" />
 
-                                                <Label
-                                                    FontSize="12"
-                                                    Style="{StaticResource DescriptionLabelStyle}"
-                                                    Text="{Binding DiscountPercent, StringFormat=' ({0}% OFF)'}"
-                                                    TextColor="{DynamicResource PrimaryColor}"
-                                                    VerticalTextAlignment="Center" />
+
 
                                             </StackLayout>
 
