@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using System.Linq;
 using InfluMe.Views;
+using InfluMe.Helpers;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -18,11 +19,9 @@ namespace InfluMe.ViewModels {
     [DataContract]
     public class JobViewModel : BaseViewModel {
         #region Fields
-        private ObservableCollection<JobResponse> jobs;
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
 
-        private string bannerImage;
 
         private JobDataService service => new JobDataService();
 
@@ -38,22 +37,8 @@ namespace InfluMe.ViewModels {
         }
         #endregion
 
-        #region Public properties
 
-        public ObservableCollection<JobResponse> Jobs {
-            get {
-                return this.jobs;
-            }
-
-            set {
-                if (this.jobs == value) {
-                    return;
-                }
-
-                this.SetProperty(ref this.jobs, value);
-            }
-        }
-
+        public static string UserId;
         /// <summary>
         /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
         /// </summary>
@@ -85,11 +70,10 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        #endregion
 
         #region Command
 
-        public Command BackButtonCommand {get; set; }
+        public Command BackButtonCommand { get; set; }
 
         /// <summary>
         /// Gets the command that will be executed when an item is selected.
@@ -104,11 +88,13 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Gets the command that will be executed when notification button is selected.
         /// </summary>
-        public Command NotificationButtonCommand {get; set; }
+        public Command NotificationButtonCommand { get; set; }
+
 
         #endregion
 
         #region Methods
+
 
         private async void InitializeProperties() {
             List<JobResponse> jobs = new List<JobResponse>();
@@ -119,7 +105,7 @@ namespace InfluMe.ViewModels {
             catch (Exception) {
                 throw new Exception();
             }
-            this.Jobs = new ObservableCollection<JobResponse>(jobs);
+            
             this.InstagramJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals("Instagram") || x.jobPlatform.Equals("Both")).Take(3));
             this.TikTokJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals("TikTok") || x.jobPlatform.Equals("Both")).Take(3));
 
@@ -149,8 +135,10 @@ namespace InfluMe.ViewModels {
         private void NotificationButtonClicked(object obj) {
             // Do something
         }
+
+       
     }
-    
+
 
     #endregion
 }

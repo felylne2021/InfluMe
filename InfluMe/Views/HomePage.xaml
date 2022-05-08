@@ -52,6 +52,7 @@
                     HeightRequest="130"/>
                 <Label
                     x:Name="InfluencerId"
+                    Text="{Binding UserId, Mode=TwoWay}"
                     IsVisible="false"/>
                 
                 <StackLayout

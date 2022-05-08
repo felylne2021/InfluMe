@@ -18,6 +18,7 @@ namespace InfluMe.Views
         {
             this.InitializeComponent();
             JobPlatform.Text = jobPlatform;
+            UserId.Text = "";
         }
     }
 }

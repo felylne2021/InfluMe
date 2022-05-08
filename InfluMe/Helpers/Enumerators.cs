@@ -16,6 +16,7 @@ namespace InfluMe.Helpers {
 
     public enum JobPlatform {
         Instagram,
-        TikTok
+        TikTok,
+        Both
     }
 }

@@ -27,7 +27,7 @@
     </ContentPage.Behaviors>
 
     <ContentPage.BindingContext>
-        <viewModel:JobViewModel />
+        <viewModel:JobListViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Resources>
@@ -42,63 +42,27 @@
                     Spacing="8"
                     VerticalOptions="Center">
 
-                    <!--  Filter Button  -->
-                    <buttons:SfButton
-                        BackgroundColor="Transparent"
-                        Command="{Binding FilterCommand}"
-                        CornerRadius="4"
-                        HeightRequest="32"
-                        TextColor="{DynamicResource Gray-700}">
-                        <buttons:SfButton.Content>
-                            <StackLayout
+                    <!--  Filter  -->
+
+                    <StackLayout
                                 Padding="8,5,8,6"
                                 Orientation="Horizontal"
                                 Spacing="8"
                                 VerticalOptions="Center">
-                                <Label
+                        <Label
                                     FontFamily="FontIcons"
                                     FontSize="18"
                                     Style="{StaticResource DescriptionLabelStyle}"
                                     Text="{StaticResource Filter}"
                                     VerticalOptions="Center"
                                     VerticalTextAlignment="End" />
-                                <Label
-                                    FontFamily="Montserrat-SemiBold"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="Filter"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
+                        <Picker ItemsSource="{Binding FilterOptions}" 
+                                    SelectedItem="{Binding SelectedFilter}" 
+                                    VerticalOptions="Center" 
+                                    HorizontalOptions="FillAndExpand" />
+                    </StackLayout>
 
-                    <!--  Sort Button  -->
-                    <buttons:SfButton
-                        BackgroundColor="Transparent"
-                        Command="{Binding SortCommand}"
-                        CornerRadius="4"
-                        TextColor="{DynamicResource Gray-700}">
-                        <buttons:SfButton.Content>
-                            <StackLayout
-                                Padding="8,5,16,6"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <Label
-                                    FontFamily="FontIcons"
-                                    FontSize="18"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="{StaticResource Sort}"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="End" />
-                                <Label
-                                    FontFamily="Montserrat-SemiBold"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="Sorting"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
+                    
 
                 </StackLayout>
             </DataTemplate>
@@ -123,20 +87,23 @@
                 <controls:TitleView.LeadingView>
                     <buttons:SfButton
                         x:Name="backButton"
-                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference ListViewList}}"
-                        CommandParameter="{x:Reference backButton}"
+                        Command="{Binding BindingContext.BackButtonCommand}"
                         Style="{StaticResource IconButtonStyle}"
                         Text="{StaticResource Back}" />
                 </controls:TitleView.LeadingView>
-                
+
             </controls:TitleView>
 
             <!--  Initial Filter based on Job Platform -->
             <Label
                 x:Name="JobPlatform"
-                Text="{Binding JobPlatform}"
+                Text="{Binding SelectedFilter, Mode=TwoWay}"
                 IsVisible="false"/>
-            
+            <Label
+                x:Name="UserId"
+                Text="{Binding UserId, Mode=TwoWay}"
+                IsVisible="true"/>
+
             <!--  ListView for catalog list  -->
             <listView:SfListView
                 x:Name="ListViewList"
@@ -149,7 +116,7 @@
                 IsStickyHeader="False"
                 ItemSize="170"
                 ItemSpacing="0,0,0,16"
-                ItemsSource="{Binding Jobs}"
+                ItemsSource="{Binding Jobs, Mode=TwoWay}"
                 Style="{StaticResource TransparentSelectionListView}">
 
                 <listView:SfListView.ItemTemplate>
