@@ -10,6 +10,7 @@ using InfluMe.Services;
 using InfluMe.Models;
 using InfluMe.Helpers;
 using System;
+using System.Linq;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -166,10 +167,18 @@ namespace InfluMe.ViewModels {
                     bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
 
                     if (isLoginValid) {
-                        if(resp.userType.Equals(UserTypeEnum.Influencer.ToString()))
-                            await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId));
+                        var previousPage = Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault();
+                        Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+                        Application.Current.Properties["UserId"] = resp.influencerId.ToString();
+                        Application.Current.Properties["UserType"] = resp.userType;
+
+                        if (resp.userType.Equals(UserTypeEnum.Influencer.ToString()))
+                            await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId.ToString()));
                         else if (resp.userType.Equals(UserTypeEnum.Admin.ToString())) 
                             await Application.Current.MainPage.Navigation.PushAsync(new AdminHomePage());
+
+                        Application.Current.MainPage.Navigation.RemovePage(previousPage);
+                        
                     }
                     else {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());

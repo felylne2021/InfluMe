@@ -10,7 +10,7 @@
     x:Name="jobListTemplate"
     RowDefinitions="Auto, Auto">
 
-    
+
     <Grid.Resources>
         <ResourceDictionary>
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
@@ -33,7 +33,11 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-
+        <!--  ID  -->
+        <Label
+            x:Name="JobId"
+            IsVisible="False"
+            Text="{Binding jobId}" />
 
         <!--  Name  -->
         <Label
@@ -55,7 +59,7 @@
             LineBreakMode="TailTruncation"
             LineHeight="{OnPlatform Android=1.25,
                                     Default=-1}"
-            MaxLines="2"
+            MaxLines="1"
             Style="{StaticResource SimpleLabelStyle}"            
             Text="{Binding jobBrand}" />
 
@@ -66,6 +70,38 @@
             Margin="0,2"
             Style="{StaticResource SimpleLabelStyle}"
             Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
+
+        <!-- Platform -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalOptions="End"
+            Margin="0,0,6,0"
+            FontSize="Medium"
+            TextColor="MediumVioletRed"
+            FontFamily="{StaticResource FontAwesomeBrands}"
+            Text="">
+            <Label.Triggers>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="Both">
+                    <Setter Property="Text" Value="&#xf16d; &#xe07b;" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="Instagram">
+                    <Setter Property="Text" Value="&#xf16d;" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="TikTok">
+                    <Setter Property="Text" Value="&#xe07b;" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
 
         <!--  Domicile  -->
         <Label
@@ -95,13 +131,14 @@
             Grid.Column="2"
             FontFamily="Montserrat-SemiBold"
             FontSize="Small"
+            Margin="0,0,4,0"
             LineHeight="{OnPlatform Android=1.25,
                                     Default=-1}"
             Style="{StaticResource SimpleLabelStyle}"
             Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
             TextColor="{DynamicResource PrimaryColor}" />
 
-        
+
 
     </Grid>
     <BoxView Grid.Row="2" Style="{StaticResource HorizontalSeparatorStyle}" />

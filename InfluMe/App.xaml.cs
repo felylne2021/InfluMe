@@ -1,3 +1,4 @@
+using InfluMe.Helpers;
 using InfluMe.Services;
 using InfluMe.Views;
 using System;
@@ -25,7 +26,22 @@ namespace InfluMe
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new NavigationPage(new HomePage(35));
+
+            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
+            Application.Current.Properties["UserId"] = "";
+            Application.Current.Properties["UserType"] = "";
+
+
+            if (!isLoggedIn) {
+                //Load if Not Logged In
+                MainPage = new NavigationPage(new MainLoginPage());
+            }
+            else {
+                //Load if Logged In
+                if (Application.Current.Properties["UserType"].Equals(UserTypeEnum.Influencer.ToString()))
+                    MainPage = new NavigationPage(new HomePage(Application.Current.Properties["UserId"].ToString()));
+                else MainPage = new NavigationPage(new AdminHomePage());
+            }
 
         }
 

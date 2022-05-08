@@ -32,7 +32,7 @@ namespace InfluMe.ViewModels {
         public JobViewModel() {
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
-            this.ItemSelectedCommand = new Command(this.ItemSelected);
+            this.ItemSelectedCommand = new Command<string>(this.ItemSelected);
             this.ViewAllCommand = new Command<string>(this.ViewAllClicked);
             this.NotificationButtonCommand = new Command(this.NotificationButtonClicked);
         }
@@ -130,8 +130,8 @@ namespace InfluMe.ViewModels {
         /// Invoked when an item is selected.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ItemSelected(object obj) {
-            // Do something
+        private void ItemSelected(string JobId) {
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(JobId));
         }
 
         /// <summary>

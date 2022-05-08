@@ -257,9 +257,11 @@ namespace InfluMe.ViewModels {
                     influencerTiktokId = this.InfluencerTiktokId.Value
                 };
 
-                try {
+                try {                    
                     InfluencerResponse resp = await service.SignUp(signUpRequest);
-                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId));
+                    await Application.Current.MainPage.Navigation.PopAsync();
+                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId.ToString()));
+                    Application.Current.MainPage.Navigation.RemovePage(new MainLoginPage());
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

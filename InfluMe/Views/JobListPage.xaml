@@ -158,7 +158,7 @@
                             RippleColor="{DynamicResource Gray-300}"
                             TouchDownEffects="Ripple"
                             TouchUpCommand="{Binding Path=ItemSelectedCommand}"
-                            TouchUpCommandParameter="{Binding}">
+                            TouchUpCommandParameter="{Binding jobId}">
                             <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
                         </syncEffectsView:SfEffectsView>
                     </DataTemplate>

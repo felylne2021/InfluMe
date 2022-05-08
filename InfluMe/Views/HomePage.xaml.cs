@@ -13,10 +13,10 @@ namespace InfluMe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public HomePage(int influencerId)
+        public HomePage(string influencerId)
         {
             this.InitializeComponent();
-            InfluencerId.Text = influencerId.ToString();
+            InfluencerId.Text = influencerId;
         }      
     }
 }
