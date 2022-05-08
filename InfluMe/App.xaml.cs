@@ -24,16 +24,17 @@ namespace InfluMe
         public App()
         {
             InitializeComponent();
-
+            //Current.Properties.Clear();
             DependencyService.Register<MockDataStore>();
 
-            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"]) : false;
-            Application.Current.Properties["UserId"] = "";
-            Application.Current.Properties["UserType"] = "";
+            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"].ToString()) : false;
+            string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
+            string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
 
 
             if (!isLoggedIn) {
                 //Load if Not Logged In
+                Current.Properties["IsLoggedIn"] = Boolean.FalseString;
                 MainPage = new NavigationPage(new MainLoginPage());
             }
             else {

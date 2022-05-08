@@ -71,12 +71,20 @@
             Style="{StaticResource SimpleLabelStyle}"
             Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
 
+        <!-- Registration Deadline -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="0,0,50,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            TextColor="Black"
+            Text="{Binding jobRegistrationDeadline, StringFormat='Open until {0:dd/MM/yyyy}'}"/>
         <!-- Platform -->
         <Label
             Grid.Row="2"
             Grid.Column="2"
             HorizontalOptions="End"
-            Margin="0,0,6,0"
+            Margin="0,0,2,0"
             FontSize="Medium"
             TextColor="MediumVioletRed"
             FontFamily="{StaticResource FontAwesomeBrands}"
@@ -120,23 +128,26 @@
             Text="{Binding jobDomicile}"/>
 
         <!--  Fee  -->
-        <Label
+        <StackLayout 
             Grid.Row="3"
             Grid.Column="2"
-            Margin="-18,4"
-            FontFamily="{StaticResource FontAwesomeSolid}"
-            Text="&#xf0d6;"/>
-        <Label
-            Grid.Row="3"
-            Grid.Column="2"
-            FontFamily="Montserrat-SemiBold"
-            FontSize="Small"
-            Margin="0,0,4,0"
-            LineHeight="{OnPlatform Android=1.25,
-                                    Default=-1}"
-            Style="{StaticResource SimpleLabelStyle}"
-            Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
-            TextColor="{DynamicResource PrimaryColor}" />
+            HorizontalOptions="End">
+            
+            <Label
+                Margin="-20,4,0,0"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="&#xf0d6;"/>
+            <Label
+                FontFamily="Montserrat-SemiBold"
+                FontSize="Small"
+                Margin="0,-24,0,0"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource SimpleLabelStyle}"
+                Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
+                TextColor="{DynamicResource PrimaryColor}" />
+        </StackLayout>
+        
 
 
 

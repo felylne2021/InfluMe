@@ -47,8 +47,20 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
-        
-        
+        public async Task<JobResponse> GetJobById(string jobId) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.GetAsync($"/job/get/{jobId}");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                JobResponseBody respBody = JsonSerializer.Deserialize<JobResponseBody>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
 
         #endregion
     }

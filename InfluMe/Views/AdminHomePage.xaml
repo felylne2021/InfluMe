@@ -19,14 +19,6 @@
 
             <!--  Title View  -->
             <controls:TitleView Title="Home" Grid.Row="0">
-                <controls:TitleView.LeadingView>
-                    <buttons:SfButton
-                        x:Name="backButton"
-                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference  MenuTile}}"
-                        CommandParameter="{x:Reference backButton}"
-                        Style="{StaticResource IconButtonStyle}"
-                        Text="{StaticResource Back}" />
-                </controls:TitleView.LeadingView>
                 <controls:TitleView.TrailingView>
                     <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                         <buttons:SfButton

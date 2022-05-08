@@ -16,7 +16,7 @@ namespace InfluMe.Models{
     }
 
     public class LoginResponse {
-        public int influencerId { get; set; }
+        public int userId { get; set; }
         public string email { get; set; }
         public string password { get; set; }
         public string userType { get; set; }

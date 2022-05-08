@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using System.Linq;
 using InfluMe.Views;
+using Rg.Plugins.Popup.Extensions;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -21,8 +22,6 @@ namespace InfluMe.ViewModels {
         private ObservableCollection<JobResponse> jobs;
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
-
-        private string bannerImage;
 
         private JobDataService service => new JobDataService();
 
@@ -117,7 +116,7 @@ namespace InfluMe.ViewModels {
                 jobs = await service.GetAllJob();
             }
             catch (Exception) {
-                throw new Exception();
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
             this.Jobs = new ObservableCollection<JobResponse>(jobs);
             this.InstagramJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals("Instagram") || x.jobPlatform.Equals("Both")).Take(3));
