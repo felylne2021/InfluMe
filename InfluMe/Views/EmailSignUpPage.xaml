@@ -61,21 +61,21 @@
                         <Label
                             FontSize="25"
                             Style="{StaticResource TitleLabelStyle}"
-                            Text="Daftar"
+                            Text="Sign Up"
                             TextColor="{DynamicResource Gray-White}" 
                             Grid.Row="1"/>
 
                         <!--  Entry to get email ID from user  -->
                         <local:EmailEntry Grid.Row="3" />
                         
-                        <!--  Sign Up button  -->
+                        <!--  Verify Email button  -->
                         <buttons:SfButton
                             Grid.Row="4"
                             Margin="0,16"
-                            Command="{Binding LoginCommand}"
+                            Command="{Binding VerifyEmailCommand}"
                             HorizontalOptions="Fill"
-                            Style="{StaticResource LoginButtonStyle}"
-                            Text="Lanjut" />
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Text="Verify Email" />
 
 
                     </Grid>

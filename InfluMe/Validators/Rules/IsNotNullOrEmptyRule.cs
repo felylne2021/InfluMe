@@ -32,7 +32,7 @@ namespace InfluMe.Validators.Rules
                 return false;
             }
 
-            var str = $"{value }";
+            var str = $"{value}";
             return !string.IsNullOrWhiteSpace(str);
         }
 

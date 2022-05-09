@@ -55,20 +55,20 @@
                                               UWP='350'}">
 
                     <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto"                     
-                        RowSpacing="0"
-                        VerticalOptions="CenterAndExpand">
-                       
-                        <!--  Label to display the title of this page  -->
-                        <Label
-                            FontSize="20"
-                            Style="{StaticResource TitleLabelStyle}"
-                            Text="InfluMe"
-                            TextColor="{DynamicResource Gray-White}" />
-                       
+                        RowSpacing="0">
+
+                        <Image
+                            Grid.Row="1"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="CenterAndExpand"
+                            Source = "InfluMeLogo"
+                            WidthRequest="300"/>
+
+
                         <!--  Entry to get email ID from user  -->
                         <local:EmailEntry Grid.Row="2" />
-
-                        <StackLayout Grid.Row="3">
+                        <Label Grid.Row="3"/>
+                        <StackLayout Grid.Row="4">
                             <!--  Entry to get password from user  -->
                             <border:SfBorder BorderColor="{Binding Source={x:Reference PasswordEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=0}" Style="{StaticResource LoginFormBorderlessEntryBorderStyle}">
                                 <Grid ColumnDefinitions="*, Auto">
@@ -79,10 +79,10 @@
                                         HeightRequest="40"
                                         IsPassword="True"
                                         Placeholder="Password"
-                                        PlaceholderColor="{StaticResource Gray-Black}"
+                                        PlaceholderColor="{StaticResource Gray-900}"
                                         Style="{StaticResource BorderlessEntryStyle}"
                                         Text="{Binding Password.Value}"
-                                        TextColor="{StaticResource Gray-White}">
+                                        TextColor="{StaticResource Gray-Black}">
                                         <Entry.Behaviors>
                                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.IsValid}" />
                                         </Entry.Behaviors>
@@ -100,10 +100,10 @@
                             <!--  Label to display error message  -->
                             <Label
                                 x:Name="PasswordValidationLabel"
-                                Margin="15,-3,0,0"
+                                Margin="15,-5,0,0"
                                 IsVisible="{Binding Password.IsValid, Converter={StaticResource InverseBoolConverter}}"
                                 Style="{StaticResource SimpleLabelStyle}"
-                                Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                                Text="{Binding Password.Errors, Converter={StaticResource FirstValidationErrorConverter}, Mode=TwoWay}"
                                 TextColor="{DynamicResource Red}"
                                 VerticalOptions="FillAndExpand" />
                         </StackLayout>
@@ -111,59 +111,24 @@
                         <!--  Forgot password link  -->
                         <buttons:SfButton
                             x:Name="ForgotPasswordLabel"
-                            Grid.Row="4"
-                            Margin="0,16"
+                            Grid.Row="5"
+                            Margin="0,6"
                             Command="{Binding ForgotPasswordCommand}"
                             FontSize="12"
                             HorizontalOptions="End"
                             Style="{StaticResource TransparentButtonStyle}"
-                            Text="LUPA PASSWORD?"
+                            Text="FORGOT PASSWORD"
                             TextColor="{DynamicResource Gray-White}" />
 
-
+                        <Label Grid.Row="6" Margin="0, 16"/>
                         <!--  Login button  -->
                         <buttons:SfButton
-                            Grid.Row="5"
+                            Grid.Row="7"
                             Margin="0,16"
                             Command="{Binding LoginCommand}"
                             HorizontalOptions="Fill"
-                            Style="{StaticResource LoginButtonStyle}"
+                            Style="{StaticResource OrangeButtonStyle}"
                             Text="LOG IN" />
-
-
-                        <Label
-                            Grid.Row="6"
-                            Style="{StaticResource DescriptionLabelStyle}"
-                            Text="atau masuk dengan akun Google"
-                            TextColor="{DynamicResource Gray-White}" />
-
-                        <!--  Login through facebook account  -->
-                        <buttons:SfButton
-                            Grid.Row="7"
-                            Margin="70,16,70,16"
-                            BackgroundColor="{DynamicResource Gray-White}"
-                            Command="{Binding SocialMediaLoginCommand}"
-                            CornerRadius="10"
-                            HeightRequest="40">
-                            <buttons:SfButton.Content>
-                                <StackLayout
-                                    HorizontalOptions="CenterAndExpand"
-                                    Orientation="Horizontal"
-                                    VerticalOptions="Center">
-                                    <Label
-                                        FontFamily="{StaticResource FontAwesomeBrands}"
-                                        FontSize="18"
-                                        Text="&#xf1a0;"
-                                        TextColor="{DynamicResource FacebookBlue}"
-                                        VerticalTextAlignment="Center" />
-                                    <Label
-                                        FontFamily="Montserrat-Medium"
-                                        FontSize="16"
-                                        Text="Google"
-                                        TextColor="{DynamicResource Gray-Black}" />
-                                </StackLayout>
-                            </buttons:SfButton.Content>
-                        </buttons:SfButton>
 
                     </Grid>
 
@@ -182,7 +147,7 @@
 
                         <Label
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="Belum punya akun?"
+                            Text="New to InfluMe?"
                             TextColor="{DynamicResource Gray-White}"
                             VerticalTextAlignment="Center" />
 
@@ -190,24 +155,14 @@
                         <buttons:SfButton
                             Command="{Binding SignUpCommand}"
                             Style="{StaticResource TransparentButtonStyle}"
-                            Text="Buat akun yuk!"
-                            TextColor="#FF8000" />
+                            Text="Sign up"
+                            TextColor="Cyan" />
 
                     </StackLayout>
 
                 </StackLayout>
             </ScrollView>
 
-            <!--  Close button  -->
-            <buttons:SfButton
-                Margin="8"
-                Command="{Binding BackButtonCommand}"
-                FontSize="20"
-                HorizontalOptions="End"
-                Style="{StaticResource IconButtonStyle}"
-                Text="{StaticResource Close}"
-                TextColor="{DynamicResource Gray-White}"
-                VerticalOptions="Start" />
 
         </Grid>
     </ContentPage.Content>

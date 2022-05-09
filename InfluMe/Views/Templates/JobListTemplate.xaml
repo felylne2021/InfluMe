@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="InfluMe.Views.Templates.JobListTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:helper="clr-namespace:InfluMe.Helpers"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    x:Name="jobListTemplate"
+    RowDefinitions="Auto, Auto">
+
+
+    <Grid.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <Grid
+        Grid.Row="1"
+        Margin="16,0"
+        ColumnSpacing="0"
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto, Auto, Auto, Auto"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Default=Auto, Desktop=0.2*}" />
+            <ColumnDefinition Width="{OnIdiom Default=*, Desktop=*}" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--  ID  -->
+        <Label
+            x:Name="JobId"
+            IsVisible="False"
+            Text="{Binding jobId}" />
+
+        <!--  Name  -->
+        <Label
+            Grid.Column="1"
+            Margin="0,0,0,4"
+            FontSize="Medium"
+            HorizontalOptions="Start"
+            LineBreakMode="TailTruncation"
+            MaxLines="1"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding jobName}"
+            VerticalOptions="Center" />
+
+        <!--  Brand  -->
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,2"
+            LineBreakMode="TailTruncation"
+            LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+            MaxLines="1"
+            Style="{StaticResource SimpleLabelStyle}"            
+            Text="{Binding jobBrand}" />
+
+        <!--  Gender  -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,2"
+            Style="{StaticResource SimpleLabelStyle}"
+            Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
+
+        <!-- Registration Deadline -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="0,0,50,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            TextColor="Black"
+            Text="{Binding jobRegistrationDeadline, StringFormat='Open until {0:dd/MM/yyyy}'}"/>
+        <!-- Platform -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            HorizontalOptions="End"
+            Margin="0,0,2,0"
+            FontSize="Medium"
+            TextColor="MediumVioletRed"
+            FontFamily="{StaticResource FontAwesomeBrands}"
+            Text="">
+            <Label.Triggers>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="Both">
+                    <Setter Property="Text" Value="&#xf16d; &#xe07b;" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="Instagram">
+                    <Setter Property="Text" Value="&#xf16d;" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="Label"
+                    Binding="{Binding jobPlatform}"
+                    Value="TikTok">
+                    <Setter Property="Text" Value="&#xe07b;" />
+                </DataTrigger>
+            </Label.Triggers>
+        </Label>
+
+        <!--  Domicile  -->
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,4"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            Text="&#xf3c5;"/>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="15,4,0,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="Montserrat-SemiBold"
+            Text="{Binding jobDomicile}"/>
+
+        <!--  Fee  -->
+        <StackLayout 
+            Grid.Row="3"
+            Grid.Column="2"
+            HorizontalOptions="End">
+            
+            <Label
+                Margin="-20,4,0,0"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="&#xf0d6;"/>
+            <Label
+                FontFamily="Montserrat-SemiBold"
+                FontSize="Small"
+                Margin="0,-24,0,0"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource SimpleLabelStyle}"
+                Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
+                TextColor="{DynamicResource PrimaryColor}" />
+        </StackLayout>
+        
+
+
+
+    </Grid>
+    <BoxView Grid.Row="2" Style="{StaticResource HorizontalSeparatorStyle}" />
+</Grid>

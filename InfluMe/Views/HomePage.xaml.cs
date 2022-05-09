@@ -13,30 +13,10 @@ namespace InfluMe.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public HomePage()
+        public HomePage(string influencerId)
         {
             this.InitializeComponent();
-            this.BindingContext = ProductHomeDataService.Instance.HomePageViewModel;
-        }
-
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
-
-            if (width < height)
-            {
-                if (this.listView.LayoutManager is GridLayout)
-                {
-                    (this.listView.LayoutManager as GridLayout).SpanCount = 2;
-                }
-            }
-            else
-            {
-                if (this.listView.LayoutManager is GridLayout)
-                {
-                    (this.listView.LayoutManager as GridLayout).SpanCount = 4;
-                }
-            }
-        }
+            InfluencerId.Text = influencerId;
+        }      
     }
 }

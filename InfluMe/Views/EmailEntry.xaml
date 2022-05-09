@@ -27,11 +27,12 @@
                         Margin="15,0"
                         HeightRequest="40"
                         Keyboard="Email"
+                        TextTransform="Lowercase"
                         Placeholder="Email"
-                        PlaceholderColor="{StaticResource Gray-Black}"
+                        PlaceholderColor="{StaticResource Gray-900}"
                         Style="{StaticResource BorderlessEntryStyle}"
                         Text="{Binding Email.Value}"
-                        TextColor="{StaticResource Gray-White}">
+                        TextColor="{StaticResource Gray-Black}">
                         <Entry.Behaviors>
                             <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.IsValid}" />
                         </Entry.Behaviors>
@@ -40,7 +41,7 @@
 
                     <Label
                         Grid.Column="1"
-                        IsVisible="{Binding Path=IsVisible, Source={x:Reference ValidationLabel}}"
+                        IsVisible="{Binding Path=IsVisible, Source={x:Reference EmailValidationLabel}}"
                         Style="{StaticResource ErrorIconLabelStyle}"
                         Text="{StaticResource Error}" />
 
@@ -48,7 +49,7 @@
             </border:SfBorder>
 
             <Label
-                x:Name="ValidationLabel"
+                x:Name="EmailValidationLabel"
                 Margin="15,-5,0,0"
                 FontSize="12"
                 IsVisible="{Binding Email.IsValid, Converter={StaticResource InverseBoolConverter}}"

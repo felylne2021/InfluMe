@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.JobListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:InfluMe.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:InfluMe.Behaviors"
+    xmlns:controls="clr-namespace:InfluMe.Controls"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:helper="clr-namespace:InfluMe.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    x:Name="jobListPage"
+    Title="Job List page"
+    BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
+                              Desktop={DynamicResource Gray-100},
+                              Converter={StaticResource DynamicResourceToColorConverter}}"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Behaviors>
+        <behavior:CartBehavior />
+    </ContentPage.Behaviors>
+
+    <ContentPage.BindingContext>
+        <viewModel:JobViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--  Header Template for Catalog SfListView  -->
+            <DataTemplate x:Key="CatalogDefaultHeaderTemplate">
+                <StackLayout
+                    BackgroundColor="{DynamicResource Gray-Bg}"
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalOptions="Center">
+
+                    <!--  Filter Button  -->
+                    <buttons:SfButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding FilterCommand}"
+                        CornerRadius="4"
+                        HeightRequest="32"
+                        TextColor="{DynamicResource Gray-700}">
+                        <buttons:SfButton.Content>
+                            <StackLayout
+                                Padding="8,5,8,6"
+                                Orientation="Horizontal"
+                                Spacing="8"
+                                VerticalOptions="Center">
+                                <Label
+                                    FontFamily="FontIcons"
+                                    FontSize="18"
+                                    Style="{StaticResource DescriptionLabelStyle}"
+                                    Text="{StaticResource Filter}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="End" />
+                                <Label
+                                    FontFamily="Montserrat-SemiBold"
+                                    Style="{StaticResource DescriptionLabelStyle}"
+                                    Text="Filter"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>
+                    </buttons:SfButton>
+
+                    <!--  Sort Button  -->
+                    <buttons:SfButton
+                        BackgroundColor="Transparent"
+                        Command="{Binding SortCommand}"
+                        CornerRadius="4"
+                        TextColor="{DynamicResource Gray-700}">
+                        <buttons:SfButton.Content>
+                            <StackLayout
+                                Padding="8,5,16,6"
+                                Orientation="Horizontal"
+                                Spacing="8">
+                                <Label
+                                    FontFamily="FontIcons"
+                                    FontSize="18"
+                                    Style="{StaticResource DescriptionLabelStyle}"
+                                    Text="{StaticResource Sort}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="End" />
+                                <Label
+                                    FontFamily="Montserrat-SemiBold"
+                                    Style="{StaticResource DescriptionLabelStyle}"
+                                    Text="Sorting"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>
+                    </buttons:SfButton>
+
+                </StackLayout>
+            </DataTemplate>
+
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid
+            ColumnSpacing="0"
+            RowDefinitions="Auto, *"
+            RowSpacing="0">
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Available Jobs" Grid.Row="0">
+                <controls:TitleView.LeadingView>
+                    <buttons:SfButton
+                        x:Name="backButton"
+                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference ListViewList}}"
+                        CommandParameter="{x:Reference backButton}"
+                        Style="{StaticResource IconButtonStyle}"
+                        Text="{StaticResource Back}" />
+                </controls:TitleView.LeadingView>
+                
+            </controls:TitleView>
+
+            <!--  Initial Filter based on Job Platform -->
+            <Label
+                x:Name="JobPlatform"
+                Text="{Binding JobPlatform}"
+                IsVisible="false"/>
+            
+            <!--  ListView for catalog list  -->
+            <listView:SfListView
+                x:Name="ListViewList"
+                Grid.Row="1"
+                Padding="{OnIdiom Default='0,8,0,0',
+                                  Desktop='15,15,15,0'}"
+                AutoFitMode="Height"
+                HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
+                HorizontalOptions="FillAndExpand"
+                IsStickyHeader="False"
+                ItemSize="170"
+                ItemSpacing="0,0,0,16"
+                ItemsSource="{Binding Jobs}"
+                SelectedItem="{Binding SelectedJob}"
+                Style="{StaticResource TransparentSelectionListView}">
+
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+
+            </listView:SfListView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

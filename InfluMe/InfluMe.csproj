@@ -6,7 +6,18 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Data\ecommerce.json" />
+    <None Remove="Data\deliverytracking.json" />
+    <None Remove="Data\detail.json" />
+    <None Remove="Data\navigation.json" />
+    <None Remove="Data\profile.json" />
+    <None Remove="Data\tempmodel.json" />
+    <None Remove="Images\CaloriesEaten.svg" />
+    <None Remove="Images\HeartRate.svg" />
+    <None Remove="Images\InfluMeLogo.png" />
+    <None Remove="Images\instagram.svg" />
+    <None Remove="Images\SleepDuration.svg" />
+    <None Remove="Images\tiktok.svg" />
+    <None Remove="Images\WaterConsumed.svg" />
     <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
     <None Remove="Resources\Fonts\Montserrat-Medium.ttf" />
     <None Remove="Resources\Fonts\Montserrat-Regular.ttf" />
@@ -15,7 +26,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Data\ecommerce.json" />
+    <EmbeddedResource Include="Data\deliverytracking.json" />
+    <EmbeddedResource Include="Data\detail.json" />
+    <EmbeddedResource Include="Data\tempmodel.json" />
+    <EmbeddedResource Include="Data\navigation.json" />
+    <EmbeddedResource Include="Data\profile.json" />
+    <Content Include="Images\CaloriesEaten.svg" />
+    <Content Include="Images\InfluMeLogo.png" />
+    <EmbeddedResource Include="Images\HeartRate.svg" />
+    <EmbeddedResource Include="Images\instagram.svg" />
+    <EmbeddedResource Include="Images\SleepDuration.svg" />
+    <EmbeddedResource Include="Images\tiktok.svg" />
+    <EmbeddedResource Include="Images\WaterConsumed.svg" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Bold.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Medium.ttf" />
     <EmbeddedResource Include="Resources\Fonts\Montserrat-Regular.ttf" />
@@ -24,21 +46,51 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="FreshMvvm" Version="4.0.1" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="SkiaSharp.Extended" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.Core" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.DataSource" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfProgressBar" Version="19.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="19.4.0.42" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="19.4.0.42" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Linq" Version="4.3.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Net.Http.Json" Version="6.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.3" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />  
+    <PackageReference Include="Xamarin.Forms.BehaviorsPack" Version="3.0.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\FreshMvvm.Popup-master\FreshMvvm.Popup\FreshMvvm.Popup.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\InvalidCredentialPopupPage.xaml.cs">
+      <DependentUpon>InvalidCredentialPopupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\EmailSignUpPage.xaml.cs">
       <DependentUpon>EmailSignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\InfoPopupPage.xaml.cs">
+      <DependentUpon>InfoPopupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Templates\JobListTemplate.xaml.cs">
+      <DependentUpon>JobListTemplate.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -103,22 +155,67 @@
     <EmbeddedResource Update="Themes\LightTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\AddJobPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\AdminHomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ContactEmailEntry.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\EmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\EmailOTPPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EmailRegisteredPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\EmailSignUpPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ErrorPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\FeedbackView.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\JobDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\JobListPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\MainLoginPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ManageInfluencerPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InfoPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ProductDeliveryTrackingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignUpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\JobListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\ReviewTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

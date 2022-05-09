@@ -1,25 +1,30 @@
 ﻿using InfluMe.ViewModels;
 using System.Reflection;
 using System.Runtime.Serialization.Json;
+using Xamarin.Forms.Internals;
 
 namespace InfluMe.DataService
 {
-    public class ProductHomeDataService
+    /// <summary>
+    /// Data service to load the data from json file.
+    /// </summary>
+    [Preserve(AllMembers = true)]
+    public class CatalogDataService
     {
         #region fields
 
-        private static ProductHomeDataService productHomeDataService;
+        private static CatalogDataService catalogDataService;
 
-        private HomePageViewModel productHomePageViewModel;
+        private AdminHomeViewModel catalogPageViewModel;
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Creates an instance for the <see cref="ProductHomeDataService"/> class.
+        /// Creates an instance for the <see cref="CatalogDataService"/> class.
         /// </summary>
-        private ProductHomeDataService()
+        private CatalogDataService()
         {
         }
 
@@ -28,15 +33,16 @@ namespace InfluMe.DataService
         #region Properties
 
         /// <summary>
-        /// Gets an instance of the <see cref="ProductHomeDataService"/>.
+        /// Gets an instance of the <see cref="CatalogDataService"/>.
         /// </summary>
-        public static ProductHomeDataService Instance => productHomeDataService ?? (productHomeDataService = new ProductHomeDataService());
+        public static CatalogDataService Instance => catalogDataService ?? (catalogDataService = new CatalogDataService());
 
         /// <summary>
-        /// Gets or sets the value of home page view model.
+        /// Gets or sets the value of catalog page view model.
         /// </summary>
-        public HomePageViewModel HomePageViewModel =>
-            this.productHomePageViewModel = PopulateData<HomePageViewModel>("ecommerce.json");
+        public AdminHomeViewModel CatalogPageViewModel =>
+            this.catalogPageViewModel ??
+            (this.catalogPageViewModel = PopulateData<AdminHomeViewModel>("tempmodel.json"));
 
         #endregion
 

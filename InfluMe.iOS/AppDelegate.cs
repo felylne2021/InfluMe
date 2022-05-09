@@ -1,3 +1,8 @@
+using Syncfusion.XForms.Pickers.iOS;
+using Syncfusion.XForms.iOS.ProgressBar;
+using Syncfusion.SfRotator.XForms.iOS;
+using Syncfusion.XForms.iOS.BadgeView;
+using Syncfusion.XForms.iOS.Cards;
 using Syncfusion.XForms.iOS.EffectsView;
 using Syncfusion.XForms.iOS.Graphics;
 using Syncfusion.SfRating.XForms.iOS;
@@ -33,6 +38,11 @@ namespace InfluMe.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SfDatePickerRenderer.Init();
+            SfLinearProgressBarRenderer.Init();
+            SfRotatorRenderer.Init();
+            SfCardViewRenderer.Init();
+            SfBadgeViewRenderer.Init();
             SfEffectsViewRenderer.Init();
             Core.Init();
             SfRatingRenderer.Init();
@@ -45,6 +55,7 @@ namespace InfluMe.iOS
             SfGradientViewRenderer.Init();
             SfBorderRenderer.Init();
             SfButtonRenderer.Init();
+            Rg.Plugins.Popup.Popup.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

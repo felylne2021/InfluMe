@@ -1,0 +1,49 @@
+{
+  "cardItems": [
+    {
+      "category": "Followers",
+      "categoryValue": "13,1K",
+      "categoryImage": "tiktok.svg"
+    },
+    {
+      "category": "Followers",
+      "categoryValue": "42K",
+      "categoryImage": "instagram.svg"
+    }
+  ],
+
+  "profileImage": "ProfileImage16.png",
+  "profileName": "Julia Grant",
+  "bio": "Food, Fashion, Sport, Beauty",
+  "completedJobs": "35",
+  "ongoingJobs": "1",
+  "earnings": "1.2M",
+  "itemImage": "ProfileImage1.png",
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+
+  "contactProfileImage": "ContactProfileImage.png",
+
+  "profileInfo": [
+    {
+      "imagePath": "ProfileImage10.png"
+    },
+    {
+      "imagePath": "ProfileImage11.png"
+    },
+    {
+      "imagePath": "ProfileImage12.png"
+    },
+    {
+      "imagePath": "ProfileImage13.png"
+    },
+    {
+      "imagePath": "ProfileImage14.png"
+    },
+    {
+      "imagePath": "ProfileImage15.png"
+    }
+  ]
+
+
+}
