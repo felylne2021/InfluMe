@@ -61,6 +61,17 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
+        public async Task ApplyJob(JobApplied jobApplied) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync("/appliedJob/apply", jobApplied);
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+            }
+            else throw new Exception();
+        }
 
         #endregion
     }

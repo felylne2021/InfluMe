@@ -52,4 +52,14 @@ namespace InfluMe.Models
         public string jobStatus { get; set; }      
 
     }
+
+    [Preserve(AllMembers = true)]
+    public class JobApplied {
+        public int influencerId { get; set; }
+        public int jobId { get; set; }
+        public string approvalStatus { get; set; }
+        public string progressStatus { get; set; }
+        public string proofOfWork { get; set; }
+
+    }
 }

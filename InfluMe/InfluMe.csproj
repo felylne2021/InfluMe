@@ -83,6 +83,9 @@
     <Compile Update="Views\EmailSignUpPage.xaml.cs">
       <DependentUpon>EmailSignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\InfoPopupPage.xaml.cs">
+      <DependentUpon>InfoPopupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
@@ -193,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ManageInfluencerPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InfoPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductDeliveryTrackingPage.xaml">
       <Generator>MSBuild:Compile</Generator>

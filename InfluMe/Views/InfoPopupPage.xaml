@@ -6,7 +6,7 @@
     xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
     xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
-    x:Class="InfluMe.Views.ErrorMessagePopupPage">
+    x:Class="InfluMe.Views.InfoPopupPage">
 
     <!--  Binding context for login page  -->
     <ContentPage.BindingContext>
@@ -42,13 +42,13 @@
                     TextColor="{DynamicResource Gray-Black}"
                     VerticalOptions="Start" />
                 <Label 
-                    x:Name="ErrorLabel"
+                    x:Name="InfoLabel"
                     FontFamily="Montserrat-Medium" 
                     HorizontalTextAlignment="Center" 
                     VerticalTextAlignment="Center"
                     Margin="0,0"
                     FontSize="Medium" 
-                    TextColor="Red"
+                    TextColor="DimGray"
                     FontAttributes="Bold"></Label>
             </StackLayout>
         </Frame>

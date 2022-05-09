@@ -37,6 +37,7 @@ namespace InfluMe.ViewModels
             this.CurrentJobId = jobId;
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
+            this.ApplyJobCommand = new Command<string>(this.ApplyJob);
         }
 
         #endregion
@@ -85,10 +86,25 @@ namespace InfluMe.ViewModels
             
         }
 
+        private async void ApplyJob(string jobId) { 
+            JobApplied jobApplied = new JobApplied() {
+                influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
+                jobId = Convert.ToInt32(jobId)
+            };
+            try {
+                await service.ApplyJob(jobApplied);
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Job Applied"));
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
+
         #endregion
 
         #region Commands
         public Command BackButtonCommand { get; set; }
+        public Command ApplyJobCommand { get; set; }
         #endregion
 
     }

@@ -95,7 +95,7 @@
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Back}" />
                     </controls:TitleView.LeadingView>
-                    
+
                 </controls:TitleView>
 
                 <ContentPresenter />
@@ -118,10 +118,10 @@
                                         Desktop=16}"
                 RowSpacing="0">
 
-                
 
-                
-                
+
+
+
                 <ContentView
                     Grid.Row="{OnIdiom Default=0,
                                        Desktop=0}"
@@ -131,7 +131,7 @@
                     <Grid
                         BackgroundColor="{DynamicResource Gray-Bg}"
                         ColumnSpacing="0"
-                        RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, 4* "
+                        RowDefinitions="Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto, Auto "
                         RowSpacing="0">
 
                         <Grid.ColumnDefinitions>
@@ -160,9 +160,51 @@
                             Style="{StaticResource TitleLabelStyle}"
                             Text="{Binding Job.jobName}" />
 
-                        <!--  Job SOW  -->
-                        <Label
+                        <StackLayout
                             Grid.Row="1"
+                            Grid.Column="1"
+                            Orientation="Horizontal">
+                            <!-- Job Brand -->
+                            <Label
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Job.jobBrand, StringFormat='from {0}'}" />
+
+                            <!-- Job Gender -->
+                            <Label
+                            FontSize="Medium"
+                            TextColor="MediumVioletRed"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            Text="">
+                                <Label.Triggers>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobGender}"
+                                    Value="Any">
+                                        <Setter Property="Text" Value="&#xf222; &#xf221;" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobGender}"
+                                    Value="Male">
+                                        <Setter Property="Text" Value="&#xf222;" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobGender}"
+                                    Value="Female">
+                                        <Setter Property="Text" Value="&#xf221;" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </StackLayout>
+                        
+                        <!--  Job Age Range  -->
+                        <Label
+                            Grid.Row="2"
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
                             helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
@@ -170,11 +212,11 @@
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="{Binding Job.jobSOW, StringFormat='SOW: {0}'}" />
+                            Text="{Binding Job.jobAgeRange, StringFormat='Age range: {0}'}" />
 
                         <!--  Job Additional  -->
                         <Label
-                            Grid.Row="2"
+                            Grid.Row="3"
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
                             helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
@@ -187,10 +229,10 @@
 
 
                         <StackLayout
-                            Grid.Row="3"
+                            Grid.Row="4"
                             Grid.Column="1"
                             Grid.ColumnSpan="2"
-                            Margin="{OnIdiom Phone='0,0,0,10',
+                            Margin="{OnIdiom Phone='0,4,0,10',
                                              Tablet='0,13,0,10',
                                              Desktop=0}"
                             Orientation="Horizontal"
@@ -198,60 +240,124 @@
 
                             <!--  Job Fee  -->
 
-
+                            <Label
+                                FontFamily="{StaticResource FontAwesomeSolid}"
+                                Text="&#xf0d6;"/>
                             <Label
                                 Style="{StaticResource SimpleLabelStyle}"
-                                Text="{Binding Job.jobFee, StringFormat='${0:0.00} '}" />
-
+                                Text="{Binding Job.jobFee, StringFormat='IDR {0:N2}'}" />
+                            <!-- Job Registration Deadline -->
+                            <Label
+                                Margin="10,0,50,0"
+                                Style="{StaticResource SimpleLabelStyle}"
+                                TextColor="Black"
+                                Text="{Binding Job.jobRegistrationDeadline, StringFormat='Open until {0:dd/MM/yyyy}'}"/>
 
                         </StackLayout>
 
-                        <BoxView
-                            Grid.Row="{OnIdiom Default=5,
-                                               Phone=4}"
-                            Grid.Column="0"
-                            Grid.ColumnSpan="5"
-                            HeightRequest="{OnIdiom Tablet=24,
-                                                    Desktop=8,
-                                                    Phone=16}"
-                            Style="{StaticResource HorizontalSeparatorStyle}"
-                            Color="{OnIdiom Default={DynamicResource Gray-100},
-                                            Desktop={DynamicResource Gray-Bg},
-                                            Converter={StaticResource DynamicResourceToColorConverter}}" />
 
 
-                        <!--  Product Description  -->
-                        <Label
+                        <StackLayout
                             Grid.Row="6"
                             Grid.Column="1"
-                            Grid.ColumnSpan="3"
                             Margin="0,16,0,8"
+                            VerticalOptions="Center"
+                            Orientation="Horizontal">
+                            <!--  Job Description  -->
+                            <Label
+                            Grid.ColumnSpan="3"
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource TitleLabelStyle}"
-                            Text="Product Description"
-                            VerticalOptions="Start" />
+                            Text="Job Description"
+                             />
 
+                            <!-- Job Platform -->
+                            <Label
+                            FontSize="Medium"
+                            TextColor="MediumVioletRed"
+                            FontFamily="{StaticResource FontAwesomeBrands}"
+                            Text="">
+                                <Label.Triggers>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobPlatform}"
+                                    Value="Both">
+                                        <Setter Property="Text" Value="&#xf16d; &#xe07b;" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobPlatform}"
+                                    Value="Instagram">
+                                        <Setter Property="Text" Value="&#xf16d;" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                    TargetType="Label"
+                                    Binding="{Binding Job.jobPlatform}"
+                                    Value="TikTok">
+                                        <Setter Property="Text" Value="&#xe07b;" />
+                                    </DataTrigger>
+                                </Label.Triggers>
+                            </Label>
+                        </StackLayout>
+
+                        <!--  Job Deadline  -->
                         <Label
                             Grid.Row="7"
                             Grid.Column="1"
-                            Grid.ColumnSpan="3"
-                            Margin="{OnIdiom Default='0,0,0,16',
-                                             Desktop='0,8'}"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="{Binding Description}" />
+                            Text="{Binding Job.jobDeadline, StringFormat='Job should be done by {0}'}" />
 
-                       
+                        <!--  Job Products  -->
+                        <Label
+                            Grid.Row="8"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Job.jobProduct, StringFormat='You will get {0}'}" />
+
+                        <!--  Job SOW  -->
+                        <Label
+                            Grid.Row="9"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Job.jobSOW, StringFormat='SOW: {0}'}" />
+
+                        <!--  Job Additional  -->
+                        <Label
+                            Grid.Row="10"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Job.jobAdditionalRequirement, StringFormat='Additional Requirement(s): {0}'}" />
+
+
 
                         <StackLayout
-                            Grid.Row="{OnIdiom Default=4,
-                                               Phone=9}"
+                            Grid.Row="12"
                             Grid.Column="{OnIdiom Default=1,
                                                   Phone=0}"
                             Grid.ColumnSpan="{OnIdiom Default=4,
                                                       Phone=5}"
+                            Margin="0,6"
                             Padding="0,16"
                             BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
                                                       Phone={DynamicResource Gray-100},
@@ -259,11 +365,12 @@
                             Orientation="Horizontal"
                             Spacing="10">
 
-                            <!--  Add To Cart Button  -->
+                            <!--  Apply Job Button  -->
                             <buttons:SfButton
                                 Margin="0"
-                                Command="{Binding AddToCartCommand}"
-                                CommandParameter="{Binding .}"
+                                Command="{Binding ApplyJobCommand}"
+                                CommandParameter="{Binding Source={x:Reference JobId}, Path=Text}"
+                                VerticalOptions="Center"
                                 HorizontalOptions="{OnIdiom Default=Center,
                                                             Phone=CenterAndExpand}"
                                 Style="{StaticResource GradientButtonStyle}"

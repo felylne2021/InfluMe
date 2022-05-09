@@ -10,11 +10,10 @@ using Xamarin.Forms.Xaml;
 
 namespace InfluMe.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ErrorMessagePopupPage : PopupPage {
-
-        public ErrorMessagePopupPage(string error) {
+    public partial class InfoPopupPage : PopupPage {
+        public InfoPopupPage(string info) {
             InitializeComponent();
-            ErrorLabel.Text = error;
+            InfoLabel.Text = info;
         }
     }
 }

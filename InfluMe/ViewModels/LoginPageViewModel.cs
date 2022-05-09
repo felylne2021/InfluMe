@@ -181,7 +181,7 @@ namespace InfluMe.ViewModels {
                         
                     }
                     else {
-                        await Application.Current.MainPage.Navigation.PushPopupAsync(new InvalidCredentialPopupPage());
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorMessagePopupPage("Invalid Email or Password"));
                     }
                 }
                 catch (Exception) {

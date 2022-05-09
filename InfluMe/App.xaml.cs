@@ -39,7 +39,7 @@ namespace InfluMe
             else {
                 //Load if Logged In
                 if (Application.Current.Properties["UserType"].Equals(UserTypeEnum.Influencer.ToString()))
-                    MainPage = new NavigationPage(new HomePage(Application.Current.Properties["UserId"].ToString()));
+                    MainPage = new NavigationPage(new JobDetailPage("37"));
                 else MainPage = new NavigationPage(new AdminHomePage());
             }
 
