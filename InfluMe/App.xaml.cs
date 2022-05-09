@@ -24,7 +24,6 @@ namespace InfluMe
         public App()
         {
             InitializeComponent();
-            //Current.Properties.Clear();
             DependencyService.Register<MockDataStore>();
 
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"].ToString()) : false;

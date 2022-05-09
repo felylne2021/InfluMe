@@ -22,6 +22,7 @@ namespace InfluMe.ViewModels {
         private ObservableCollection<JobResponse> jobs;
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
+        private JobResponse selectedJob;
 
         private JobDataService service => new JobDataService();
 
@@ -31,13 +32,21 @@ namespace InfluMe.ViewModels {
         public JobViewModel() {
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
-            this.ItemSelectedCommand = new Command<string>(this.ItemSelected);
             this.ViewAllCommand = new Command<string>(this.ViewAllClicked);
             this.NotificationButtonCommand = new Command(this.NotificationButtonClicked);
         }
         #endregion
 
         #region Public properties
+        public JobResponse SelectedJob {
+            get { return selectedJob; }
+            set {
+                if (selectedJob != value) {
+                    selectedJob = value;
+                    ItemSelected();
+                }
+            }
+        }
 
         public ObservableCollection<JobResponse> Jobs {
             get {
@@ -88,12 +97,7 @@ namespace InfluMe.ViewModels {
 
         #region Command
 
-        public Command BackButtonCommand {get; set; }
-
-        /// <summary>
-        /// Gets the command that will be executed when an item is selected.
-        /// </summary>
-        public Command ItemSelectedCommand { get; set; }
+        public Command BackButtonCommand {get; set; }        
 
         /// <summary>
         /// Gets the command that is executed when the view all button is clicked.
@@ -129,8 +133,8 @@ namespace InfluMe.ViewModels {
         /// Invoked when an item is selected.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ItemSelected(string JobId) {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(JobId));
+        private void ItemSelected() {
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.jobId.ToString()));
         }
 
         /// <summary>

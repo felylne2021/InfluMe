@@ -22,6 +22,7 @@ namespace InfluMe.ViewModels
     {
         #region Fields
         private JobResponse job;
+        private string currentJobId;
 
         private JobDataService service => new JobDataService();
         #endregion
@@ -31,15 +32,29 @@ namespace InfluMe.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="JobDetailPageViewModel" /> class.
         /// </summary>
-        public JobDetailPageViewModel()
+        public JobDetailPageViewModel(string jobId)
         {
+            this.CurrentJobId = jobId;
             this.InitializeProperties();
+            this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
         }
 
         #endregion
 
         #region Public properties
-        public string JobId { get; set; }
+        public string CurrentJobId {
+            get {
+                return this.currentJobId;
+            }
+
+            set {
+                if (this.currentJobId == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.currentJobId, value);
+            }
+        }
 
         public JobResponse Job {
             get {
@@ -62,7 +77,7 @@ namespace InfluMe.ViewModels
         private async void InitializeProperties() {            
 
             try {
-                this.Job = await service.GetJobById(JobId);
+                this.Job = await service.GetJobById(this.CurrentJobId);
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
@@ -70,6 +85,10 @@ namespace InfluMe.ViewModels
             
         }
 
+        #endregion
+
+        #region Commands
+        public Command BackButtonCommand { get; set; }
         #endregion
 
     }

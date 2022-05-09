@@ -150,17 +150,13 @@
                 ItemSize="170"
                 ItemSpacing="0,0,0,16"
                 ItemsSource="{Binding Jobs}"
+                SelectedItem="{Binding SelectedJob}"
                 Style="{StaticResource TransparentSelectionListView}">
 
                 <listView:SfListView.ItemTemplate>
                     <DataTemplate>
-                        <syncEffectsView:SfEffectsView
-                            RippleColor="{DynamicResource Gray-300}"
-                            TouchDownEffects="Ripple"
-                            TouchUpCommand="{Binding ItemSelectedCommand}"
-                            TouchUpCommandParameter="{Binding jobId}">
-                            <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
-                        </syncEffectsView:SfEffectsView>
+
+                        <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
                     </DataTemplate>
                 </listView:SfListView.ItemTemplate>
 

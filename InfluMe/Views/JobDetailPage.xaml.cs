@@ -19,6 +19,9 @@ namespace InfluMe.Views
         {
             this.InitializeComponent();
             JobId.Text = jobId;
+            BindingContext = new JobDetailPageViewModel(jobId);
         }       
+
+
     }
 }
