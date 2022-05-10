@@ -21,7 +21,7 @@ namespace InfluMe.ViewModels {
 
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
-        private string influencerAge;
+        private string influencerAgeSex;
         private string profileColor;
         /// <summary>
         /// To store the health profile data collection.
@@ -47,12 +47,16 @@ namespace InfluMe.ViewModels {
 
         #region Public properties
 
-        public string InfluencerAge {
+        public string InfluencerAgeSex {
             get {
-                return this.influencerAge;
+                return this.influencerAgeSex;
             }
             set {
-                this.influencerAge = value;
+                if (this.influencerAgeSex == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.influencerAgeSex, value);
             }
         }
 
@@ -160,12 +164,12 @@ namespace InfluMe.ViewModels {
             this.ProfileColor = Helpers.ColorHelper.RandomColor();
             try {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
-                this.InfluencerAge = CalculateAge(this.Influencer.influencerDOB);
+                
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
-
+            this.InfluencerAgeSex = CalculateAge(this.Influencer.influencerDOB) + " y.o | " + Influencer.influencerGender;
         }
 
         private string CalculateAge(string birthdate) {

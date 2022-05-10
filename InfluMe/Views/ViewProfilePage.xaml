@@ -8,11 +8,13 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
     BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+  
+    
     <ContentPage.Content>
         <ScrollView>
             <Grid RowDefinitions="Auto, *">
@@ -55,9 +57,9 @@
                         <sfavatar:SfAvatarView
                             AvatarShape="Circle"
                             AvatarSize="ExtraLarge"
-                            BackgroundColor="Gray"
+                            BackgroundColor="{Binding ProfileColor}"
                             FontFamily="Montserrat-Medium"
-                            InitialsColor="White"
+                            InitialsColor="DimGray"
                             ContentType="Initials"
                             AvatarName="{Binding Influencer.influencerName}"
                             BorderWidth="0"/>
@@ -72,17 +74,13 @@
                         Text="{Binding Influencer.influencerName}"
                         TextColor="{DynamicResource Gray-White}" />
 
-                    <!--  State and Country  -->
+                    <!--  Age & Sex  -->
                     <Label
                         Grid.Row="2"
                         FontSize="12"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        TextColor="{DynamicResource Gray-White}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Influencer.influencerGender}" />
-                            </FormattedString>
-                        </Label.FormattedText>
+                        TextColor="{DynamicResource Gray-White}"
+                        Text="{Binding InfluencerAgeSex}">
                     </Label>
                 </Grid>
 
@@ -128,7 +126,7 @@
                                 HeightRequest="18"
                                 HorizontalOptions="Start"
                                 Style="{StaticResource DescriptionLabelStyle}"
-                                Text="{Binding Category}" />
+                                Text="{Binding Value}" />
 
                                 <!--  Category Image  -->
                                 <svg:SVGImage

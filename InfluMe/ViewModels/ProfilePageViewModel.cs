@@ -260,7 +260,7 @@ namespace InfluMe.ViewModels {
                 try {                    
                     InfluencerResponse resp = await service.SignUp(signUpRequest);
                     await Application.Current.MainPage.Navigation.PopAsync();
-                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId.ToString()));
+                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
                     Application.Current.MainPage.Navigation.RemovePage(new MainLoginPage());
                 }
                 catch (Exception) {

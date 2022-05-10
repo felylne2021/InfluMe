@@ -38,8 +38,8 @@ namespace InfluMe
             }
             else {
                 //Load if Logged In
-                if (Application.Current.Properties["UserType"].Equals(UserTypeEnum.Influencer.ToString()))
-                    MainPage = new NavigationPage(new ViewProfilePage());
+                if (Application.Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
+                    MainPage = new NavigationPage(new MainPage());
                 else MainPage = new NavigationPage(new AdminHomePage());
             }
 

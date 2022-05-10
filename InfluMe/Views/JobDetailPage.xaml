@@ -268,6 +268,7 @@
                             Grid.ColumnSpan="3"
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
+                            FontSize="Medium"
                             Style="{StaticResource TitleLabelStyle}"
                             Text="Job Description"
                              />
@@ -334,10 +335,10 @@
                                                               Tablet='0,8,3,8'}"
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
+                            FontSize="16"
+                            TextColor="Black"
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="{Binding Job.jobSOW, StringFormat='SOW: {0}'}" />
-
-                        <!--  Job Additional  -->
+                            Text="&#x0a;Statement of Work (SOW)" />
                         <Label
                             Grid.Row="10"
                             Grid.Column="1"
@@ -347,12 +348,36 @@
                             HorizontalOptions="Start"
                             HorizontalTextAlignment="Start"
                             Style="{StaticResource DescriptionLabelStyle}"
-                            Text="{Binding Job.jobAdditionalRequirement, StringFormat='Additional Requirement(s): {0}'}" />
+                            Text="{Binding Job.jobSOW}" />
+
+                        <!--  Job Additional Requirement  -->
+                        <Label
+                            Grid.Row="11"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            FontSize="16"
+                            TextColor="Black"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="&#x0a;Additional Requirement" />
+                        <Label
+                            Grid.Row="12"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            helper:RTLHelper.Margin="{OnIdiom Default='0,0,3,2',
+                                                              Tablet='0,8,3,8'}"
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Start"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Job.jobAdditionalRequirement}" />
 
 
 
                         <StackLayout
-                            Grid.Row="12"
+                            Grid.Row="13"
                             Grid.Column="{OnIdiom Default=1,
                                                   Phone=0}"
                             Grid.ColumnSpan="{OnIdiom Default=4,

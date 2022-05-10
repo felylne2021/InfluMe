@@ -34,7 +34,7 @@
                 <!--  Close button  -->
                 <buttons:SfButton
                     Margin="0,0"
-                    Command="{Binding BackPopupButtonCommand}"
+                    Command="{Binding ClosePopupCommand}"
                     FontSize="20"
                     HorizontalOptions="End"
                     Style="{StaticResource IconButtonStyle}"

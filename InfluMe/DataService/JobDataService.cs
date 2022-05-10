@@ -61,7 +61,7 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
-        public async Task ApplyJob(JobApplied jobApplied) {
+        public async Task<JobAppliedResponse> ApplyJob(JobApplied jobApplied) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
 
@@ -69,6 +69,8 @@ namespace InfluMe.DataService
 
             if (response.IsSuccessStatusCode) {
                 var jsonString = await response.Content.ReadAsStringAsync();
+                JobAppliedResponseBody respBody = JsonSerializer.Deserialize<JobAppliedResponseBody>(jsonString);
+                return respBody.body;
             }
             else throw new Exception();
         }

@@ -62,4 +62,24 @@ namespace InfluMe.Models
         public string proofOfWork { get; set; }
 
     }
+
+    [Preserve(AllMembers = true)]
+    public class JobAppliedResponseBody {
+        public JobAppliedResponse body { get; set; }
+
+    }
+
+    [Preserve(AllMembers = true)]
+    public class JobAppliedResponse {
+        public int influencerId { get; set; }
+        public int adminId { get; set; }
+        public int deliveryId { get; set; }
+        public int paymentId { get; set; }
+        public int appliedJobId { get; set; }
+        public string approvalStatus { get; set; }
+        public string progressStatus { get; set; }
+        public string proofOfWork { get; set; }
+        public string isApply { get; set; }
+
+    }
 }
