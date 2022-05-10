@@ -21,6 +21,8 @@ namespace InfluMe.ViewModels {
 
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
+        private string influencerAge;
+        private string profileColor;
         /// <summary>
         /// To store the health profile data collection.
         /// </summary>
@@ -44,7 +46,25 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Public properties
-        
+
+        public string InfluencerAge {
+            get {
+                return this.influencerAge;
+            }
+            set {
+                this.influencerAge = value;
+            }
+        }
+
+        public string ProfileColor {
+            get {
+                return this.profileColor;
+            }
+            set {
+                this.profileColor = value;
+            }
+
+        }
 
         public InfluencerResponse Influencer {
             get {
@@ -102,7 +122,7 @@ namespace InfluMe.ViewModels {
         /// Gets or sets the profile name.
         /// </summary>
         [DataMember(Name = "profileName")]
-        public string ProfileName { get; set; }            
+        public string ProfileName { get; set; }
 
         /// <summary>
         /// Gets or sets the completed jobs.
@@ -132,18 +152,32 @@ namespace InfluMe.ViewModels {
         }
 
         #endregion
-        
+
         #region Methods
 
         private async void InitializeProperties() {
 
+            this.ProfileColor = Helpers.ColorHelper.RandomColor();
             try {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
+                this.InfluencerAge = CalculateAge(this.Influencer.influencerDOB);
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
 
+        }
+
+        private string CalculateAge(string birthdate) {
+            // Save today's date.
+            var today = DateTime.Today;
+            var Birthdate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            // Calculate the age.
+            var age = today.Year - Birthdate.Year;
+
+            // Go back to the year in which the person was born in case of a leap year
+            if (Birthdate.Date > today.AddYears(-age)) age--;
+            return age.ToString();
         }
 
         /// <summary>
