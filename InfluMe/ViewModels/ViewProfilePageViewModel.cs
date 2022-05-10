@@ -1,4 +1,8 @@
 ﻿using InfluMe.Models;
+using InfluMe.Services;
+using InfluMe.Views;
+using Rg.Plugins.Popup.Extensions;
+using System;
 using System.Collections.ObjectModel;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -15,8 +19,8 @@ namespace InfluMe.ViewModels {
     public class ViewProfilePageViewModel : BaseViewModel {
         #region Fields
 
-        private static ViewProfilePageViewModel healthProfileViewModel;
-
+        private InfluMeService service = new InfluMeService();
+        private InfluencerResponse influencer;
         /// <summary>
         /// To store the health profile data collection.
         /// </summary>
@@ -34,6 +38,26 @@ namespace InfluMe.ViewModels {
         /// Initializes a new instance for the <see cref="ViewProfilePageViewModel" /> class.
         /// </summary>
         public ViewProfilePageViewModel() {
+            this.InitializeProperties();
+        }
+
+        #endregion
+
+        #region Public properties
+        
+
+        public InfluencerResponse Influencer {
+            get {
+                return this.influencer;
+            }
+
+            set {
+                if (this.influencer == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.influencer, value);
+            }
         }
 
         #endregion
@@ -43,8 +67,8 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Gets or sets the value of health profile view model.
         /// </summary>
-        public static ViewProfilePageViewModel BindingContext =>
-            healthProfileViewModel = PopulateData<ViewProfilePageViewModel>("profile.json");
+        //public static ViewProfilePageViewModel BindingContext =>
+        //    healthProfileViewModel = PopulateData<ViewProfilePageViewModel>("profile.json");
 
         /// <summary>
         /// Gets or sets the health profile items collection.
@@ -78,13 +102,7 @@ namespace InfluMe.ViewModels {
         /// Gets or sets the profile name.
         /// </summary>
         [DataMember(Name = "profileName")]
-        public string ProfileName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the bio.
-        /// </summary>
-        [DataMember(Name = "bio")]
-        public string Bio { get; set; }      
+        public string ProfileName { get; set; }            
 
         /// <summary>
         /// Gets or sets the completed jobs.
@@ -114,8 +132,19 @@ namespace InfluMe.ViewModels {
         }
 
         #endregion
-
+        
         #region Methods
+
+        private async void InitializeProperties() {
+
+            try {
+                this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+
+        }
 
         /// <summary>
         /// Populates the data for view model from json file.

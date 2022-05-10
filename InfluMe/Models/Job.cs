@@ -49,7 +49,7 @@ namespace InfluMe.Models
         public string jobProduct { get; set; }
         public string jobSOW { get; set; }
         public string jobAdditionalRequirement { get; set; }
-        public string jobStatus { get; set; }      
+        public string jobStatus { get; set; }
 
     }
 

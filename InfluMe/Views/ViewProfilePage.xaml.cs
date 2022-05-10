@@ -15,7 +15,7 @@ namespace InfluMe.Views {
         /// </summary>
         public ViewProfilePage() {
             this.InitializeComponent();
-            this.BindingContext = ViewProfilePageViewModel.BindingContext;
+            BindingContext = new ViewProfilePageViewModel();
         }
     }
 }
