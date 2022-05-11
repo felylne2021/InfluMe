@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Internals;
+﻿using InfluMe.ViewModels;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace InfluMe.Views
@@ -16,7 +17,8 @@ namespace InfluMe.Views
         public EditProfilePage()
         {
             this.InitializeComponent();
-            this.ProfileImage.Source = App.ImageServerPath + "ProfileImage11.png";
+            BindingContext = new ViewProfilePageViewModel();
+            //this.ProfileImage.Source = App.ImageServerPath + "ProfileImage11.png";
         }
     }
 }

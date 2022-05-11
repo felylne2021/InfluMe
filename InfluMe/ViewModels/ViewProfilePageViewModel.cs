@@ -185,40 +185,18 @@ namespace InfluMe.ViewModels {
             return age.ToString();
         }
 
-        /// <summary>
-        /// Populates the data for view model from json file.
-        /// </summary>
-        /// <typeparam name="T">Type of view model.</typeparam>
-        /// <param name="fileName">Json file to fetch data.</param>
-        /// <returns>Returns the view model object.</returns>
-        private static T PopulateData<T>(string fileName) {
-            var file = "InfluMe.Data." + fileName;
-
-            var assembly = typeof(App).GetTypeInfo().Assembly;
-
-            T data;
-
-            using (var stream = assembly.GetManifestResourceStream(file)) {
-                var serializer = new DataContractJsonSerializer(typeof(T));
-                data = (T)serializer.ReadObject(stream);
-            }
-
-            return data;
-        }
-
         
         private void LogOutClicked(object obj) {
             Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
             Application.Current.Properties["UserId"] = "";
             Application.Current.Properties["UserType"] = "";
             Application.Current.MainPage = new MainLoginPage();
-            //Application.Current.MainPage.Navigation.PopToRootAsync();
 
         }
 
         private void EditProfileClicked(object obj)
         {
-
+            Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage());
         }
 
         #endregion

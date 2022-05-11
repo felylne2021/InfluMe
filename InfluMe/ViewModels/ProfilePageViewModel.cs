@@ -258,12 +258,8 @@ namespace InfluMe.ViewModels {
                 };
 
                 try {                    
-                    InfluencerResponse resp = await service.SignUp(signUpRequest);
-                    //await Application.Current.MainPage.Navigation.PopAsync();
-                    await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
+                    InfluencerResponse resp = await service.SignUp(signUpRequest);                    
                     Application.Current.MainPage = new MainPage();
-                    //Application.Current.MainPage.Navigation.RemovePage(new MainLoginPage());
-                    await Application.Current.MainPage.Navigation.PopToRootAsync();
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

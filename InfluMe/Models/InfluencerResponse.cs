@@ -26,7 +26,9 @@ namespace InfluMe.Models {
         public string influencerDOB { get; set; }
         public string influencerAddress { get; set; }
         public string influencerInstagramId { get; set; }
+        public string instagramFollowersCount { get; set; }
         public string influencerTiktokId { get; set; }
+        public string tiktokFollowersCount { get; set; }
         public List<JobResponse> appliedJobList { get; set; }
         public List<Notification> notificationList { get; set; }
     }

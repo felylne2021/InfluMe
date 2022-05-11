@@ -117,7 +117,7 @@
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding Influencer.influencerTiktokId, StringFormat='@{0}'}" />
+                                Text="{Binding Influencer.influencerInstagramId, StringFormat='@{0}'}" />
 
                                 <!--  Category Value  -->
                                 <Label
@@ -126,7 +126,7 @@
                                 HeightRequest="18"
                                 HorizontalOptions="Start"
                                 Style="{StaticResource DescriptionLabelStyle}"
-                                Text="{Binding Value}" />
+                                Text="{Binding Influencer.instagramFollowersCount, StringFormat='have {0} followers'}"/>
 
                                 <!--  Category Image  -->
                                 <svg:SVGImage
@@ -134,10 +134,9 @@
                                 BackgroundColor="Transparent"
                                 HeightRequest="31"
                                 HorizontalOptions="End"
-                                Source="tiktok.svg"
+                                Source="instagram.svg"
                                 VerticalOptions="Center"
                                 WidthRequest="32" />
-
 
                             </Grid>
 
@@ -176,7 +175,7 @@
                                 HeightRequest="24"
                                 HorizontalOptions="Start"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding Influencer.influencerInstagramId, StringFormat='@{0}'}" />
+                                Text="{Binding Influencer.influencerTiktokId, StringFormat='@{0}'}" />
 
                                 <!--  Category Value  -->
                                 <Label
@@ -185,7 +184,7 @@
                                 HeightRequest="18"
                                 HorizontalOptions="Start"
                                 Style="{StaticResource DescriptionLabelStyle}"
-                                Text="{Binding Category}" />
+                                Text="{Binding Influencer.tiktokFollowersCount, StringFormat='have {0} followers'}" />
 
                                 <!--  Category Image  -->
                                 <svg:SVGImage
@@ -193,11 +192,10 @@
                                 BackgroundColor="Transparent"
                                 HeightRequest="31"
                                 HorizontalOptions="End"
-                                Source="instagram.svg"
+                                Source="tiktok.svg"
                                 VerticalOptions="Center"
                                 WidthRequest="32" />
-
-
+                                
                             </Grid>
 
 
@@ -233,28 +231,7 @@
                             WidthRequest="{OnIdiom Phone=343,
                                                    Default=480}">
 
-                            <!--  Completed Jobs  -->
-                            <Label
-                                HeightRequest="24"
-                                Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding CompletedJobs}"
-                                VerticalOptions="End" />
-
-                            <Label
-                                Grid.Row="1"
-                                FontSize="12"
-                                Style="{StaticResource DescriptionLabelStyle}"
-                                Text="Completed Jobs" />
-
-                            <!--  Seperator  -->
-                            <BoxView
-                                Grid.RowSpan="2"
-                                Grid.Column="1"
-                                BackgroundColor="{DynamicResource Gray-400}"
-                                HeightRequest="24"
-                                Style="{StaticResource VerticalSeparatorStyle}" />
-
-
+                            
                             <!--  Ongoing Jobs  -->
                             <Label
                                 Grid.Row="0"
@@ -270,8 +247,29 @@
                                 FontSize="12"
                                 Style="{StaticResource DescriptionLabelStyle}"
                                 Text="Ongoing Jobs" />
+                            
+                            <!--  Separator  -->
+                            <BoxView
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                BackgroundColor="{DynamicResource Gray-400}"
+                                HeightRequest="24"
+                                Style="{StaticResource VerticalSeparatorStyle}" />
 
-                            <!--  Seperator  -->
+                            <!--  Completed Jobs  -->
+                            <Label
+                                HeightRequest="24"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="{Binding CompletedJobs}"
+                                VerticalOptions="End" />
+
+                            <Label
+                                Grid.Row="1"
+                                FontSize="12"
+                                Style="{StaticResource DescriptionLabelStyle}"
+                                Text="Completed Jobs" />
+
+                            <!--  Separator  -->
                             <BoxView
                                 Grid.RowSpan="2"
                                 Grid.Column="3"

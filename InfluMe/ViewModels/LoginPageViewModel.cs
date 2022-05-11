@@ -175,13 +175,11 @@ namespace InfluMe.ViewModels {
                         if (resp.userType.Equals(UserType.Influencer.ToString()))
                         {
                             Application.Current.MainPage = new MainPage();
-                            await Application.Current.MainPage.Navigation.PushAsync(new MainPage());
                         }
 
                         else if (resp.userType.Equals(UserType.Admin.ToString()))
                         {
                             Application.Current.MainPage = new AdminHomePage();
-                            await Application.Current.MainPage.Navigation.PushAsync(new AdminHomePage());
                         }
                         
 

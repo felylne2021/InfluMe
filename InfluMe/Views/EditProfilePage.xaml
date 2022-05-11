@@ -5,23 +5,18 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:InfluMe.Controls"
-    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
     x:Name="profilePage"
     Title="Profile Page"
     BackgroundColor="{DynamicResource Gray-Bg}"
     Shell.NavBarIsVisible="False"
     NavigationPage.HasNavigationBar="False">
 
-    <!--  Binding context for Profile Page  -->
-    <ContentPage.BindingContext>
-        <viewModel:ProfilePageViewModel />
-    </ContentPage.BindingContext>
-
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout Spacing="0">
                 <!--  Title View  -->
-                <controls:TitleView BackgroundColor="{DynamicResource Blue}">
+                <controls:TitleView Title="Edit Profile" BackgroundColor="{DynamicResource Blue}">
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
@@ -53,8 +48,28 @@
                     WidthRequest="120">
                     <buttons:SfButton.Content>
                         <Grid HeightRequest="120" WidthRequest="120">
-
-                            <Image
+                            <!--  Profile Image  -->
+                            <border:SfBorder
+                            Margin="0,56,0,8"
+                            BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                            BorderColor="{DynamicResource Gray-White}"
+                            BorderWidth="2"
+                            CornerRadius="60"
+                            HeightRequest="120"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="StartAndExpand"
+                            WidthRequest="120">
+                                <sfavatar:SfAvatarView
+                                    AvatarShape="Circle"
+                                    AvatarSize="ExtraLarge"
+                                    BackgroundColor="{Binding ProfileColor}"
+                                    FontFamily="Montserrat-Medium"
+                                    InitialsColor="DimGray"
+                                    ContentType="Initials"
+                                    AvatarName="{Binding Influencer.influencerName}"
+                                    BorderWidth="0"/>
+                            </border:SfBorder>
+                            <!--<Image
                                 x:Name="ProfileImage"
                                 Aspect="AspectFill"
                                 BackgroundColor="{DynamicResource Gray-200}" />
@@ -68,10 +83,10 @@
                                 FontSize="12"
                                 HeightRequest="32"
                                 HorizontalTextAlignment="Center"
-                                Text="UBAH"
+                                Text="CHANGE"
                                 TextColor="{DynamicResource Gray-100}"
                                 VerticalOptions="End"
-                                VerticalTextAlignment="Center" />
+                                VerticalTextAlignment="Center" />-->
                         </Grid>
                     </buttons:SfButton.Content>
                 </buttons:SfButton>
@@ -84,7 +99,7 @@
 
                     <Label
                         Grid.Column="0"                        
-                        Text="Nama" />
+                        Text="Name" />
                     
                     <Label
                         Grid.Column="0"
@@ -92,30 +107,32 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Julia Grant"
+                        Text="{Binding Influencer.influencerName}"
                         VerticalOptions="Center" />
 
                 </Grid>
                 
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
-                <!--  Grid for bio  -->
+                <!--  Grid for address  -->
                 <Grid
                     Padding="16"
                     ColumnDefinitions="Auto, *"
-                    ColumnSpacing="16">
+                    ColumnSpacing="0">
 
                     <Label
                         Grid.Column="0"
-                        Text="Niche" />
+                        Text="Address" />
 
-                    <Label
+                    <Editor
+                        Margin="0,16,0,0"
                         Grid.Column="0"
-                        Grid.Row="1"
+                        HeightRequest="90"
+                        WidthRequest="350"
+                        MaxLength="130"
                         FontFamily="Montserrat-Medium"
-                        HorizontalOptions="Start"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="Food, Fashion, Sport, Beauty"
+                        HorizontalOptions="Fill"
+                        Text="{Binding Influencer.influencerAddress}"
                         VerticalOptions="Center" />
 
                 </Grid>
@@ -130,15 +147,15 @@
 
                     <Label
                         Grid.Column="0"
-                        Text="Password" />
+                        Text="New Password" />
 
-                    <Label
+                    <Entry
                         Grid.Column="0"
-                        Grid.Row="1"
+                        Margin="0,16,0,0"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Start"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="password***"
+                        WidthRequest="350"
+                        IsPassword="True"
                         VerticalOptions="Center" />
 
                 </Grid>
@@ -151,29 +168,25 @@
                     Padding="16"
                     ColumnDefinitions="Auto, *, Auto"
                     ColumnSpacing="16">
-
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding EmailCommand}" CommandParameter="{x:Reference EmailGrid}" />
-                    </Grid.GestureRecognizers>
-
                     <Label
                         Grid.Column="0"
                         Style="{StaticResource TitleLabelStyle}"
                         Text="Email" />
 
-                    <Label
+                    <Entry
                         Grid.Column="1"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="End"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="juliagrant@email.com"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Text="{Binding Influencer.influencerEmail}"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="2"
                         HorizontalOptions="End"
-                        Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
 
                 </Grid>
 
@@ -183,29 +196,25 @@
                     Padding="16"
                     ColumnDefinitions="Auto, *, Auto"
                     ColumnSpacing="16">
-
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding InstagramCommand}" CommandParameter="{x:Reference InstagramGrid}" />
-                    </Grid.GestureRecognizers>
-
                     <Label
                         Grid.Column="0"
                         Style="{StaticResource TitleLabelStyle}"
                         Text="Instagram" />
 
-                    <Label
+                    <Entry
                         Grid.Column="1"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="End"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="juliagrant"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Text="{Binding Influencer.influencerInstagramId}"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="2"
                         HorizontalOptions="End"
-                        Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
 
                 </Grid>
 
@@ -215,63 +224,35 @@
                     Padding="16"
                     ColumnDefinitions="Auto, *, Auto"
                     ColumnSpacing="16">
-
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding TikTokCommand}" CommandParameter="{x:Reference TikTokGrid}" />
-                    </Grid.GestureRecognizers>
-
                     <Label
                         Grid.Column="0"
                         Style="{StaticResource TitleLabelStyle}"
                         Text="TikTok" />
 
-                    <Label
+                    <Entry
                         Grid.Column="1"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="End"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="juju_grande"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Text="{Binding Influencer.influencerTiktokId}"
                         VerticalOptions="Center" />
 
                     <Label
                         Grid.Column="2"
                         HorizontalOptions="End"
-                        Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
 
                 </Grid>
 
-                <!--  Grid for WA  -->
-                <Grid
-                    x:Name="WhatsappGrid"
-                    Padding="16"
-                    ColumnDefinitions="Auto, *, Auto"
-                    ColumnSpacing="16">
-
-                    <Grid.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding WhatsappCommand}" CommandParameter="{x:Reference WhatsappGrid}" />
-                    </Grid.GestureRecognizers>
-
-                    <Label
-                        Grid.Column="0"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="Whatsapp" />
-
-                    <Label
-                        Grid.Column="1"
-                        FontFamily="Montserrat-Medium"
-                        HorizontalOptions="End"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="+62878-7722-9900"
-                        VerticalOptions="Center" />
-
-                    <Label
-                        Grid.Column="2"
-                        HorizontalOptions="End"
-                        Style="{StaticResource IconLabelStyle}"
-                        Text="{StaticResource Next}" />
-
-                </Grid>
+                <!--  Save Changes button  -->
+                <buttons:SfButton 
+                            Margin="16,16"
+                            Command="{Binding SaveChangesCommand}"
+                            HorizontalOptions="Fill"
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Text="Save Changes" />
 
 
             </StackLayout>
