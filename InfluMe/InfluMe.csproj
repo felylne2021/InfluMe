@@ -86,6 +86,9 @@
     <Compile Update="Views\InfoPopupPage.xaml.cs">
       <DependentUpon>InfoPopupPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\EditProfilePage.xaml.cs">
+      <DependentUpon>EditProfilePage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
@@ -209,7 +212,7 @@
     <EmbeddedResource Update="Views\SignUpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ProfilePage.xaml">
+    <EmbeddedResource Update="Views\EditProfilePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\JobListTemplate.xaml">

@@ -8,7 +8,7 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -299,6 +299,31 @@
                     </svg:CustomShadowFrame.Content>
 
                 </svg:CustomShadowFrame>
+
+                <StackLayout
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    Grid.Row="1"
+                    Spacing="10"
+                    Margin="0,0,50,10"
+                    VerticalOptions="End">
+
+                    
+                    <!--  Edit Profile button  -->
+                    <buttons:SfButton
+                            Command="{Binding EditProfileCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Edit Profile"
+                            TextColor="DimGray" />
+
+                    <!--  Log Out button  -->
+                    <buttons:SfButton
+                            Command="{Binding LogOutCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Log Out"
+                            TextColor="DarkRed" />
+
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

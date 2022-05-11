@@ -30,7 +30,6 @@ namespace InfluMe.ViewModels {
 
         private ObservableCollection<HealthProfile> cardItems;
 
-        private Command<object> itemTappedCommand;
 
         #endregion
 
@@ -41,6 +40,8 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public ViewProfilePageViewModel() {
             this.InitializeProperties();
+            this.LogOutCommand = new Command(LogOutClicked);
+            this.EditProfileCommand = new Command(EditProfileClicked);
         }
 
         #endregion
@@ -146,14 +147,14 @@ namespace InfluMe.ViewModels {
         [DataMember(Name = "earnings")]
         public string Earnings { get; set; }
 
-        /// <summary>
-        /// Gets the command that will be executed when an item is selected.
-        /// </summary>
-        public Command<object> ItemTappedCommand {
-            get {
-                return this.itemTappedCommand ?? (this.itemTappedCommand = new Command<object>(this.NavigateToNextPage));
-            }
-        }
+       
+
+        #endregion
+
+        #region Commands
+
+        public Command LogOutCommand { get; set; }
+        public Command EditProfileCommand { get; set; }
 
         #endregion
 
@@ -205,12 +206,19 @@ namespace InfluMe.ViewModels {
             return data;
         }
 
-        /// <summary>
-        /// Invoked when an item is selected from the health profile page.
-        /// </summary>
-        /// <param name="selectedItem">Selected item from the list view.</param>
-        private void NavigateToNextPage(object selectedItem) {
-            // Do something
+        
+        private void LogOutClicked(object obj) {
+            Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            Application.Current.Properties["UserId"] = "";
+            Application.Current.Properties["UserType"] = "";
+            Application.Current.MainPage = new MainLoginPage();
+            //Application.Current.MainPage.Navigation.PopToRootAsync();
+
+        }
+
+        private void EditProfileClicked(object obj)
+        {
+
         }
 
         #endregion

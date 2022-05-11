@@ -30,6 +30,10 @@ namespace InfluMe
             string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
             string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
 
+            Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+            Application.Current.Properties["UserId"] = "35";
+            Application.Current.Properties["UserType"] = "Influencer";
+
 
             if (!isLoggedIn) {
                 //Load if Not Logged In

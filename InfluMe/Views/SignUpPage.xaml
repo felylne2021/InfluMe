@@ -110,6 +110,7 @@
                         HorizontalOptions="Start"
                         WidthRequest="250"
                         VerticalOptions="Center"
+                        TextTransform="Uppercase"
                         Text="{Binding InfluencerName.Value}"/>
                 </Grid>
                 <Label
