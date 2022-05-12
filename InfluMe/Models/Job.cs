@@ -82,4 +82,14 @@ namespace InfluMe.Models
         public string isApply { get; set; }
 
     }
+
+    public class JobStatsResponseBody {
+        public JobStatsResponse body { get; set; }
+    }
+
+    public class JobStatsResponse {
+        public int influencerId { get; set; }
+        public List<JobAppliedResponse> appliedJobList { get; set; }
+        public string earnings { get; set; }
+    }
 }

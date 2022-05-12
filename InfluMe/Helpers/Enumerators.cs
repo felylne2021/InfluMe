@@ -25,16 +25,16 @@ namespace InfluMe.Helpers {
     }
 
     public static class JobProgressStatus {
-        static string NotAccepted = "Not Accepted";
-        static string Ongoing = "Ongoing";
-        static string ProofSubmitted = "Proof Submitted";
-        static string Completed = "Complete";
+        public static string NotAccepted = "Not Accepted";
+        public static string Ongoing = "Ongoing";
+        public static string ProofSubmitted = "Proof Submitted";
+        public static string Completed = "Completed";
     }
 
     public static class DeliveryStatus {
-        static string PickUp = "Pick Up";
-        static string OnShipping = "On Shipping";
-        static string OnDelivery = "On Delivery";
-        static string Received = "Received";
+        public static string PickUp = "Pick Up";
+        public static string OnShipping = "On Shipping";
+        public static string OnDelivery = "On Delivery";
+        public static string Received = "Received";
     }
 }

@@ -29,6 +29,7 @@ namespace InfluMe.Models {
         public string instagramFollowersCount { get; set; }
         public string influencerTiktokId { get; set; }
         public string tiktokFollowersCount { get; set; }
+        public string influencerColorHex { get; set; }
         public List<JobResponse> appliedJobList { get; set; }
         public List<Notification> notificationList { get; set; }
     }

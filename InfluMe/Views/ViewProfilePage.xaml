@@ -57,7 +57,7 @@
                         <sfavatar:SfAvatarView
                             AvatarShape="Circle"
                             AvatarSize="ExtraLarge"
-                            BackgroundColor="{Binding ProfileColor}"
+                            BackgroundColor="{Binding Influencer.influencerColorHex}"
                             FontFamily="Montserrat-Medium"
                             InitialsColor="DimGray"
                             ContentType="Initials"
@@ -235,7 +235,7 @@
                             <!--  Ongoing Jobs  -->
                             <Label
                                 Grid.Row="0"
-                                Grid.Column="2"
+                                Grid.Column="0"
                                 HeightRequest="24"
                                 Style="{StaticResource TitleLabelStyle}"
                                 Text="{Binding OngoingJobs}"
@@ -243,7 +243,7 @@
 
                             <Label
                                 Grid.Row="1"
-                                Grid.Column="2"
+                                Grid.Column="0"
                                 FontSize="12"
                                 Style="{StaticResource DescriptionLabelStyle}"
                                 Text="Ongoing Jobs" />
@@ -258,6 +258,8 @@
 
                             <!--  Completed Jobs  -->
                             <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
                                 HeightRequest="24"
                                 Style="{StaticResource TitleLabelStyle}"
                                 Text="{Binding CompletedJobs}"
@@ -265,6 +267,7 @@
 
                             <Label
                                 Grid.Row="1"
+                                Grid.Column="2"
                                 FontSize="12"
                                 Style="{StaticResource DescriptionLabelStyle}"
                                 Text="Completed Jobs" />
@@ -283,7 +286,7 @@
                                 Grid.Column="4"
                                 HeightRequest="24"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding Earnings}"
+                                Text="{Binding JobStats.earnings}"
                                 VerticalOptions="End" />
 
                             <Label

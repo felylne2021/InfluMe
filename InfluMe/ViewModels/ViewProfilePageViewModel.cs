@@ -1,9 +1,11 @@
-﻿using InfluMe.Models;
+﻿using InfluMe.Helpers;
+using InfluMe.Models;
 using InfluMe.Services;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
@@ -21,14 +23,10 @@ namespace InfluMe.ViewModels {
 
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
+        private JobStatsResponse jobStats;
+        private int completedJobs;
+        private int ongoingJobs;
         private string influencerAgeSex;
-        private string profileColor;
-        /// <summary>
-        /// To store the health profile data collection.
-        /// </summary>
-        private string profileImage;
-
-        private ObservableCollection<HealthProfile> cardItems;
 
 
         #endregion
@@ -48,6 +46,31 @@ namespace InfluMe.ViewModels {
 
         #region Public properties
 
+        public int CompletedJobs {
+            get {
+                return this.completedJobs;
+            }
+            set {
+                if (this.completedJobs == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.completedJobs, value);
+            }
+        }
+        public int OngoingJobs {
+            get {
+                return this.ongoingJobs;
+            }
+            set {
+                if (this.ongoingJobs == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.ongoingJobs, value);
+            }
+        }
+
         public string InfluencerAgeSex {
             get {
                 return this.influencerAgeSex;
@@ -59,16 +82,6 @@ namespace InfluMe.ViewModels {
 
                 this.SetProperty(ref this.influencerAgeSex, value);
             }
-        }
-
-        public string ProfileColor {
-            get {
-                return this.profileColor;
-            }
-            set {
-                this.profileColor = value;
-            }
-
         }
 
         public InfluencerResponse Influencer {
@@ -85,71 +98,22 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the value of health profile view model.
-        /// </summary>
-        //public static ViewProfilePageViewModel BindingContext =>
-        //    healthProfileViewModel = PopulateData<ViewProfilePageViewModel>("profile.json");
-
-        /// <summary>
-        /// Gets or sets the health profile items collection.
-        /// </summary>
-        [DataMember(Name = "cardItems")]
-        public ObservableCollection<HealthProfile> CardItems {
+        public JobStatsResponse JobStats {
             get {
-                return this.cardItems;
+                return this.jobStats;
             }
 
             set {
-                this.SetProperty(ref this.cardItems, value);
+                if (this.jobStats == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.jobStats, value);
             }
         }
-
-        /// <summary>
-        /// Gets or sets the profile image.
-        /// </summary>
-        [DataMember(Name = "profileImage")]
-        public string ProfileImage {
-            get {
-                return App.ImageServerPath + this.profileImage;
-            }
-
-            set {
-                this.profileImage = value;
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the profile name.
-        /// </summary>
-        [DataMember(Name = "profileName")]
-        public string ProfileName { get; set; }
-
-        /// <summary>
-        /// Gets or sets the completed jobs.
-        /// </summary>
-        [DataMember(Name = "completedJobs")]
-        public string CompletedJobs { get; set; }
-
-        /// <summary>
-        /// Gets or sets the ongoing jobs.
-        /// </summary>
-        [DataMember(Name = "ongoingJobs")]
-        public string OngoingJobs { get; set; }
-
-        /// <summary>
-        /// Gets or sets the earnings.
-        /// </summary>
-        [DataMember(Name = "earnings")]
-        public string Earnings { get; set; }
-
-       
 
         #endregion
+        
 
         #region Commands
 
@@ -162,10 +126,13 @@ namespace InfluMe.ViewModels {
 
         private async void InitializeProperties() {
 
-            this.ProfileColor = Helpers.ColorHelper.RandomColor();
             try {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
-                
+                this.JobStats = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
+
+                this.OngoingJobs = JobStats.appliedJobList.Count(x => x.progressStatus.Equals(JobProgressStatus.Ongoing));
+                this.CompletedJobs = JobStats.appliedJobList.Count(x => x.progressStatus.Equals(JobProgressStatus.Completed));
+
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

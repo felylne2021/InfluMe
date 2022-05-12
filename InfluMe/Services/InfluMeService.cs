@@ -8,6 +8,7 @@ using System.Net.Http.Json;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using InfluMe.Helpers;
+using Xamarin.Forms;
 
 namespace InfluMe.Services {
 
@@ -100,5 +101,20 @@ namespace InfluMe.Services {
 
         }
 
+        public async Task<JobStatsResponse> GetInfluencerStats(string id) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            JobStatsResponseBody resp = new JobStatsResponseBody();
+
+            var response = await client.GetAsync($"/appliedJob/get/statistic/{id}");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                resp = JsonSerializer.Deserialize<JobStatsResponseBody>(jsonString);
+                return resp.body;
+            }
+            else throw new Exception();
+        }
     }
 }

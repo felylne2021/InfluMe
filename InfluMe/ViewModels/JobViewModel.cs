@@ -23,6 +23,7 @@ namespace InfluMe.ViewModels {
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
         private JobResponse selectedJob;
+        private string jobPlatform;
 
         private JobDataService service => new JobDataService();
 
@@ -59,6 +60,20 @@ namespace InfluMe.ViewModels {
                 }
 
                 this.SetProperty(ref this.jobs, value);
+            }
+        }
+
+        public string JobPlatform {
+            get {
+                return this.jobPlatform;
+            }
+
+            set {
+                if (this.jobPlatform == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.jobPlatform, value);
             }
         }
 

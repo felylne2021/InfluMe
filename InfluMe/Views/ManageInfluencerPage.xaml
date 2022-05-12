@@ -172,6 +172,7 @@
                                         <sfavatar:SfAvatarView
                                             Margin="16,8"
                                             AvatarName="{Binding Name}"
+                                            VerticalOptions="Center"
                                             BackgroundColor="{Binding BackgroundColor}"
                                             Style="{StaticResource AvatarViewStyle}" />
 
@@ -190,8 +191,9 @@
                                             Grid.Column="4"
                                             Margin="0,16"
                                             HorizontalOptions="Center"
-                                            Style="{StaticResource GradientButtonStyle}"
-                                            Text="X" />    
+                                            VerticalOptions="Center"
+                                            Style="{StaticResource IconButtonStyle}"
+                                            Text="{StaticResource Close}" />    
 
                                         <!--  Seperator  -->
                                         <BoxView

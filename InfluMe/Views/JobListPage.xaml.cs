@@ -1,4 +1,5 @@
 using InfluMe.DataService;
+using InfluMe.ViewModels;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -17,7 +18,7 @@ namespace InfluMe.Views
         public JobListPage(string jobPlatform)
         {
             this.InitializeComponent();
-            JobPlatform.Text = jobPlatform;
+            BindingContext = new JobViewModel() { JobPlatform = jobPlatform};
         }
     }
 }

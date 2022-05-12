@@ -62,7 +62,7 @@
                                 <sfavatar:SfAvatarView
                                     AvatarShape="Circle"
                                     AvatarSize="ExtraLarge"
-                                    BackgroundColor="{Binding ProfileColor}"
+                                    BackgroundColor="{Binding Influencer.influencerColorHex}"
                                     FontFamily="Montserrat-Medium"
                                     InitialsColor="DimGray"
                                     ContentType="Initials"
