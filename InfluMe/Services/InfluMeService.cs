@@ -70,6 +70,25 @@ namespace InfluMe.Services {
             else throw new Exception();
         }
 
+        public async Task<OTPResponse> GetOTPEditProfile(string email) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            OTPRequest req = new OTPRequest() {
+                influencerEmail = email
+            };
+
+
+            var response = await client.PostAsJsonAsync("/mail/editProfile", req);
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                OTPResponseBody respBody = JsonSerializer.Deserialize<OTPResponseBody>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
         public async Task<OTPVerificationResponse> GetOTPVerification(string email, string otp) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
@@ -115,6 +134,19 @@ namespace InfluMe.Services {
                 return resp.body;
             }
             else throw new Exception();
+        }
+
+        public async Task UpdateProfile(InfluencerUpdateRequest req) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync("/influencer/updateProfile", req);
+
+            if (!response.IsSuccessStatusCode) {
+
+                throw new Exception();
+            }
+
         }
     }
 }

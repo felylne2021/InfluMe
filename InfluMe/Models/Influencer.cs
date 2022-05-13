@@ -39,4 +39,17 @@ namespace InfluMe.Models {
         public List<JobResponse> appliedJobList { get; set; }
         public List<Notification> notificationList { get; set; }
     }
+
+    public class InfluencerUpdateRequest {
+        public string influencerId { get; set; }
+        public string influencerEmail { get; set; }
+        public string influencerPassword { get; set; }
+        public string influencerAddress { get; set; }
+        public string influencerInstagramId { get; set; }
+        public string influencerTiktokId { get; set; }
+        public string whatsappNumber { get; set; }
+        public string bankName { get; set; }
+        public string bankAccountNumber { get; set; }
+    }
+
 }

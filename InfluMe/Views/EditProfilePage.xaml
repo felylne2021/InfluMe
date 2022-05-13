@@ -115,6 +115,29 @@
                 
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
+                <!--  Grid for birthdate  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"                        
+                        Text="Date of Birth" />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="{Binding Influencer.influencerDOB}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
                 <!--  Grid for address  -->
                 <Grid
                     Padding="16"
@@ -179,6 +202,7 @@
                         HorizontalOptions="Start"
                         WidthRequest="350"
                         IsPassword="True"
+                        Text="{Binding Influencer.influencerPassword, Mode=TwoWay}"
                         Placeholder="Change password here"
                         VerticalOptions="Center" />
 
@@ -254,7 +278,7 @@
                         Margin="0,-12,0,0"
                         WidthRequest="190"
                         Keyboard="Numeric"
-                        Text="{Binding Influencer.bankAccountNumber}"
+                        Text="{Binding Influencer.bankAccountNumber, Mode=TwoWay}"
                         VerticalOptions="Center" />
 
                     <Label
@@ -283,7 +307,7 @@
                         Margin="0,-12,0,0"
                         WidthRequest="220"
                         Keyboard="Telephone"
-                        Text="{Binding Influencer.whatsappNumber}"
+                        Text="{Binding Influencer.whatsappNumber, Mode=TwoWay}"
                         VerticalOptions="Center" />
 
                     <Label
@@ -311,7 +335,7 @@
                         HorizontalOptions="End"
                         Margin="0,-12,0,0"
                         WidthRequest="220"
-                        Text="{Binding Influencer.influencerInstagramId}"
+                        Text="{Binding Influencer.influencerInstagramId, Mode=TwoWay}"
                         VerticalOptions="Center" />
 
                     <Label
@@ -339,7 +363,7 @@
                         HorizontalOptions="End"
                         Margin="0,-12,0,0"
                         WidthRequest="220"
-                        Text="{Binding Influencer.influencerTiktokId}"
+                        Text="{Binding Influencer.influencerTiktokId, Mode=TwoWay}"
                         VerticalOptions="Center" />
 
                     <Label

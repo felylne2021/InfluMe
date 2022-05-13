@@ -24,6 +24,7 @@ namespace InfluMe.ViewModels {
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
         private JobStatsResponse jobStats;
+        private bool _isOTPErrorMessageVisible;
         private int completedJobs;
         private int ongoingJobs;
         private string influencerAgeSex;
@@ -42,12 +43,25 @@ namespace InfluMe.ViewModels {
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.LogOutCommand = new Command(LogOutClicked);
             this.EditProfileCommand = new Command(EditProfileClicked);
-            
+            this.SaveChangesCommand = new Command(SaveChanges);
+            this.ResendOTPCommand = new Command(this.ResendOTPClicked);
+            this.SubmitOTPCommand = new Command(this.SubmitOTPClicked);
+            this.SetOTPErrorInvisible = new Command(_ => IsOTPErrorMessageVisible = false);
+            this.OTP = "";
         }
 
         #endregion
 
         #region Public properties
+        public string OTP { get; set; }
+
+        public bool IsOTPErrorMessageVisible {
+            get => _isOTPErrorMessageVisible;
+            set {
+                _isOTPErrorMessageVisible = value;
+                OnPropertyChanged();
+            }
+        }
 
         public int CompletedJobs {
             get {
@@ -135,6 +149,10 @@ namespace InfluMe.ViewModels {
         public Command BackButtonCommand { get; set; }
         public Command LogOutCommand { get; set; }
         public Command EditProfileCommand { get; set; }
+        public Command SaveChangesCommand { get; set; }
+        public Command ResendOTPCommand { get; set; }
+        public Command SubmitOTPCommand { get; set; }
+        public Command SetOTPErrorInvisible { get; set; }
 
         #endregion
 
@@ -154,7 +172,7 @@ namespace InfluMe.ViewModels {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
             this.InfluencerAgeSex = CalculateAge(this.Influencer.influencerDOB) + " y.o | " + Influencer.influencerGender;
-
+            this.Influencer.influencerPassword = "";
             var email = this.Influencer.influencerEmail;
             this.MaskedEmail = string.Format("{0}*****{1}", email[0], email.Substring(email.IndexOf('@') - 1));
         }
@@ -183,6 +201,59 @@ namespace InfluMe.ViewModels {
         private void EditProfileClicked(object obj)
         {
             Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage(this));
+        }
+
+        private async void SaveChanges() {
+            try {
+                OTPResponse resp = await service.GetOTPEditProfile(this.Influencer.influencerEmail);
+                
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new EditProfileOTPPopupPage(this));
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
+
+        private async void ResendOTPClicked(object obj) {
+            try {
+                OTPResponse resp = await service.GetOTPEditProfile(this.Influencer.influencerEmail);
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
+
+        private async void SubmitOTPClicked() {
+            if (!string.IsNullOrEmpty(this.OTP) && this.OTP.Length == 6) {
+                try {
+                    OTPVerificationResponse resp = await service.GetOTPVerification(this.Influencer.influencerEmail, OTP);
+                    if (resp.body.Equals(ResponseStatus.VALID.ToString())) {
+                        InfluencerUpdateRequest req = new InfluencerUpdateRequest() {
+                            influencerId = this.Influencer.influencerId.ToString(),
+                            influencerEmail = this.Influencer.influencerEmail,
+                            influencerAddress = this.Influencer.influencerAddress,
+                            influencerPassword = this.Influencer.influencerPassword,
+                            influencerInstagramId = this.Influencer.influencerInstagramId,
+                            influencerTiktokId = this.Influencer.influencerTiktokId,
+                            whatsappNumber = this.Influencer.whatsappNumber,
+                            bankName = this.Influencer.bankName,
+                            bankAccountNumber = this.Influencer.bankAccountNumber
+                        };
+                        await service.UpdateProfile(req);
+                        await Application.Current.MainPage.Navigation.PopPopupAsync();
+                        await Application.Current.MainPage.Navigation.PopAsync();
+                    }
+                    else if (resp.body.Equals(ResponseStatus.INVALID.ToString())) {
+                        IsOTPErrorMessageVisible = true;
+                    }
+                }
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                }
+            }
+            else
+                IsOTPErrorMessageVisible = true;
+
         }
 
         #endregion
