@@ -14,9 +14,10 @@ namespace InfluMe.Helpers {
         Admin
     }
 
-    public enum JobPlatform {
+    public enum JobPlatformList {
         Instagram,
-        TikTok
+        TikTok,
+        Both
     }
 
     public enum JobApplicationStatus {

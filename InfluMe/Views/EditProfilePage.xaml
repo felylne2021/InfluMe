@@ -20,7 +20,7 @@
                     <controls:TitleView.LeadingView>
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference profilePage}}"
+                            Command="{Binding Path=BindingContext.BackButtonCommand, Source={x:Reference profilePage}}"
                             CommandParameter="{x:Reference backButton}"
                             Style="{StaticResource IconButtonStyle}"                            
                             Text="{StaticResource Back}" />
@@ -50,7 +50,6 @@
                         <Grid HeightRequest="120" WidthRequest="120">
                             <!--  Profile Image  -->
                             <border:SfBorder
-                            Margin="0,56,0,8"
                             BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
                             BorderColor="{DynamicResource Gray-White}"
                             BorderWidth="2"

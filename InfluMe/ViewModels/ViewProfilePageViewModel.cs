@@ -38,6 +38,7 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public ViewProfilePageViewModel() {
             this.InitializeProperties();
+            this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.LogOutCommand = new Command(LogOutClicked);
             this.EditProfileCommand = new Command(EditProfileClicked);
         }
@@ -116,7 +117,7 @@ namespace InfluMe.ViewModels {
         
 
         #region Commands
-
+        public Command BackButtonCommand { get; set; }
         public Command LogOutCommand { get; set; }
         public Command EditProfileCommand { get; set; }
 
@@ -163,7 +164,7 @@ namespace InfluMe.ViewModels {
 
         private void EditProfileClicked(object obj)
         {
-            Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage());
+            Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage(this));
         }
 
         #endregion

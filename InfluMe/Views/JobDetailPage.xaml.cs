@@ -1,3 +1,4 @@
+using InfluMe.Models;
 using InfluMe.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -15,11 +16,11 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="JobDetailPage" /> class.
         /// </summary>
-        public JobDetailPage(string jobId)
+        public JobDetailPage(JobResponse selectedJob)
         {
             this.InitializeComponent();
-            JobId.Text = jobId;
-            BindingContext = new JobDetailPageViewModel(jobId);
+            JobId.Text = selectedJob.jobId.ToString();
+            BindingContext = new JobDetailPageViewModel() { Job = selectedJob};
         }       
 
 

@@ -10,6 +10,7 @@ using Xamarin.Forms.Internals;
 using System.Linq;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
+using InfluMe.Helpers;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -20,10 +21,11 @@ namespace InfluMe.ViewModels {
     public class JobViewModel : BaseViewModel {
         #region Fields
         private ObservableCollection<JobResponse> jobs;
+        private ObservableCollection<JobResponse> allJobs;
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
         private JobResponse selectedJob;
-        private string jobPlatform;
+        private string jobPlatformFilter;
 
         private JobDataService service => new JobDataService();
 
@@ -35,6 +37,7 @@ namespace InfluMe.ViewModels {
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.ViewAllCommand = new Command<string>(this.ViewAllClicked);
             this.NotificationButtonCommand = new Command(this.NotificationButtonClicked);
+            this.FilterJobByPlatformCommand = new Command(this.FilterJobByPlatform);
         }
         #endregion
 
@@ -63,17 +66,31 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        public string JobPlatform {
+        public ObservableCollection<JobResponse> AllJobs {
             get {
-                return this.jobPlatform;
+                return this.allJobs;
             }
 
             set {
-                if (this.jobPlatform == value) {
+                if (this.allJobs == value) {
                     return;
                 }
 
-                this.SetProperty(ref this.jobPlatform, value);
+                this.SetProperty(ref this.allJobs, value);
+            }
+        }
+
+        public string JobPlatformFilter {
+            get {
+                return this.jobPlatformFilter;
+            }
+
+            set {
+                if (this.jobPlatformFilter == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.jobPlatformFilter, value);
             }
         }
 
@@ -124,6 +141,8 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public Command NotificationButtonCommand {get; set; }
 
+        public Command FilterJobByPlatformCommand {get; set; }
+
         #endregion
 
         #region Methods
@@ -137,9 +156,10 @@ namespace InfluMe.ViewModels {
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
-            this.Jobs = new ObservableCollection<JobResponse>(jobs);
-            this.InstagramJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals("Instagram") || x.jobPlatform.Equals("Both")).Take(3));
-            this.TikTokJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals("TikTok") || x.jobPlatform.Equals("Both")).Take(3));
+            this.AllJobs = new ObservableCollection<JobResponse>(jobs);
+            this.Jobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformFilter) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())));
+            this.InstagramJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformList.Instagram.ToString()) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())).Take(3));
+            this.TikTokJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformList.TikTok.ToString()) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())).Take(3));
 
 
         }
@@ -149,17 +169,22 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.jobId.ToString()));
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob));
         }
 
         /// <summary>
         /// Invoked when an view all is selected.
         /// </summary>
         private void ViewAllClicked(string jobPlatform) {
-            // TODO:pass jobPlatform param to determine view model, save in label
-            Application.Current.MainPage.Navigation.PushAsync(new JobListPage(jobPlatform));
+            SelectedJob = null; // reset selected job
+            Application.Current.MainPage.Navigation.PushAsync(new JobListPage(jobPlatform, this));
         }
 
+        private void FilterJobByPlatform(object obj) {
+            if (!string.IsNullOrEmpty(JobPlatformFilter))
+                this.Jobs = new ObservableCollection<JobResponse>(this.AllJobs.Where(x => x.jobPlatform.Equals(JobPlatformFilter) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())));
+            else this.Jobs = this.AllJobs;
+        }
         /// <summary>
         /// Invoked when an notification icon is selected.
         /// </summary>

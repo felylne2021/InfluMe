@@ -14,10 +14,10 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="EditProfilePage" /> class.
         /// </summary>
-        public EditProfilePage()
+        public EditProfilePage(ViewProfilePageViewModel viewProfilePageViewModel)
         {
             this.InitializeComponent();
-            BindingContext = new ViewProfilePageViewModel();
+            BindingContext = viewProfilePageViewModel;
             //this.ProfileImage.Source = App.ImageServerPath + "ProfileImage11.png";
         }
     }

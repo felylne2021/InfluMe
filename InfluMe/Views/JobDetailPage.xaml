@@ -143,7 +143,7 @@
                         </Grid.ColumnDefinitions>
                         <Label
                             x:Name="JobId"
-                            Text="{Binding CurrentJobId}"
+                            Text="{Binding Job.jobId}"
                             IsVisible="false"/>
                         <!--  Job Name  -->
                         <Label

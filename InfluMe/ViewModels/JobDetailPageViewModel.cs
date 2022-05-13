@@ -23,7 +23,6 @@ namespace InfluMe.ViewModels
     {
         #region Fields
         private JobResponse job;
-        private string currentJobId;
         private bool isApplied;
 
         private JobDataService service => new JobDataService();
@@ -34,10 +33,8 @@ namespace InfluMe.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="JobDetailPageViewModel" /> class.
         /// </summary>
-        public JobDetailPageViewModel(string jobId)
+        public JobDetailPageViewModel()
         {
-            this.CurrentJobId = jobId;
-            this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.ApplyJobCommand = new Command<string>(this.ApplyJob);
             this.IsApplied = false;
@@ -61,20 +58,6 @@ namespace InfluMe.ViewModels
             }
         }
 
-        public string CurrentJobId {
-            get {
-                return this.currentJobId;
-            }
-
-            set {
-                if (this.currentJobId == value) {
-                    return;
-                }
-
-                this.SetProperty(ref this.currentJobId, value);
-            }
-        }
-
         public JobResponse Job {
             get {
                 return this.job;
@@ -93,16 +76,6 @@ namespace InfluMe.ViewModels
 
         #region Methods
 
-        private async void InitializeProperties() {            
-
-            try {
-                this.Job = await service.GetJobById(this.CurrentJobId);
-            }
-            catch (Exception) {
-                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
-            }
-            
-        }
 
         private async void ApplyJob(string jobId) { 
             JobApplied jobApplied = new JobApplied() {

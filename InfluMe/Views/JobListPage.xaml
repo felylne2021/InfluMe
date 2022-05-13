@@ -15,17 +15,14 @@
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
     xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
-    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
     x:Name="jobListPage"
     Title="Job List page"
     BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
                               Desktop={DynamicResource Gray-100},
                               Converter={StaticResource DynamicResourceToColorConverter}}"
     NavigationPage.HasNavigationBar="False">
-
-    <ContentPage.Behaviors>
-        <behavior:CartBehavior />
-    </ContentPage.Behaviors>
+  
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -56,9 +53,13 @@
                         <combobox:SfComboBox
                             x:Name="JobPlatformPicker"
                             Style="{StaticResource TextInputLayoutComboBoxStyle}"
-                            Watermark="Platform"
-                            SelectedValue="{Binding JobPlatform, Mode=TwoWay}"
+                            Watermark="Filter Platform"
+                            SelectedValue="{Binding JobPlatformFilter, Mode=TwoWay}"
                             FontFamily="Montserrat-Medium">
+                            <combobox:SfComboBox.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectionChanged"
+                                          Command="{Binding FilterJobByPlatformCommand}" />
+                            </combobox:SfComboBox.Behaviors>
                             <combobox:SfComboBox.ComboBoxSource>
                                 <ListCollection:List x:TypeArguments="x:String">
                                     <x:String>Instagram</x:String>
@@ -109,7 +110,7 @@
                 IsStickyHeader="False"
                 ItemSize="170"
                 ItemSpacing="0,0,0,16"
-                ItemsSource="{Binding Jobs}"
+                ItemsSource="{Binding Jobs, Mode=TwoWay}"
                 SelectedItem="{Binding SelectedJob}"
                 Style="{StaticResource TransparentSelectionListView}">
 
