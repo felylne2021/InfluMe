@@ -306,7 +306,7 @@
                     Orientation="Horizontal"
                     Grid.Row="1"
                     Spacing="10"
-                    Margin="0,0,50,10"
+                    Margin="0,0,20,20"
                     VerticalOptions="End">
 
                     
@@ -316,7 +316,9 @@
                             Style="{StaticResource TransparentButtonStyle}"
                             Text="Edit Profile"
                             TextColor="DimGray" />
-
+                    <Label 
+                        VerticalOptions="Center"
+                        Text="|"/>
                     <!--  Log Out button  -->
                     <buttons:SfButton
                             Command="{Binding LogOutCommand}"

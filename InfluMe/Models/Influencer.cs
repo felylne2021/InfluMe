@@ -12,6 +12,9 @@ namespace InfluMe.Models {
         public string influencerAddress { get; set; }
         public string influencerInstagramId { get; set; }
         public string influencerTiktokId { get; set; }
+        public string whatsappNumber { get; set; }
+        public string bankName { get; set; }
+        public string bankAccountNumber { get; set; }
     }
 
     public class InfluencerResponseBody {
@@ -29,6 +32,9 @@ namespace InfluMe.Models {
         public string instagramFollowersCount { get; set; }
         public string influencerTiktokId { get; set; }
         public string tiktokFollowersCount { get; set; }
+        public string whatsappNumber { get; set; }
+        public string bankName { get; set; }
+        public string bankAccountNumber { get; set; }
         public string influencerColorHex { get; set; }
         public List<JobResponse> appliedJobList { get; set; }
         public List<Notification> notificationList { get; set; }

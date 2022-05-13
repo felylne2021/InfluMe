@@ -5,7 +5,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:controls="clr-namespace:InfluMe.Controls"
-    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
     x:Name="profilePage"
     Title="Profile Page"
     BackgroundColor="{DynamicResource Gray-Bg}"
@@ -138,6 +140,28 @@
 
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
+                <!--  Grid for email  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Email" />
+
+                    <Label
+                        Grid.Column="0"
+                        Margin="0,16,0,0"
+                        FontFamily="Montserrat-Medium"
+                        Text="{Binding MaskedEmail}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
                 <!--  Grid for password  -->
                 <Grid
                     Padding="16"
@@ -155,30 +179,82 @@
                         HorizontalOptions="Start"
                         WidthRequest="350"
                         IsPassword="True"
+                        Placeholder="Change password here"
                         VerticalOptions="Center" />
 
                 </Grid>
 
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
-                <!--  Grid for email  -->
+                
+
+                <!--  Grid for Bank Name  -->
                 <Grid
-                    x:Name="EmailGrid"
+                    x:Name="BankGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Bank Name" />
+
+                    <combobox:SfComboBox
+                        x:Name="BankPicker"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                        Watermark="Choose Bank"
+                        SelectedValue="{Binding Influencer.bankName, Mode=TwoWay}"
+                        FontFamily="Montserrat-Medium">
+                        <combobox:SfComboBox.ComboBoxSource>
+                            <ListCollection:List x:TypeArguments="x:String">
+                                <x:String>BCA</x:String>
+                                <x:String>BNI</x:String>
+                                <x:String>BRI</x:String>
+                                <x:String>Bank Permata</x:String>
+                                <x:String>Mandiri</x:String>
+                                <x:String>BCA Syariah</x:String>
+                                <x:String>BNI Syariah</x:String>
+                                <x:String>BCA Digital</x:String>
+                                <x:String>BSI</x:String>
+                                <x:String>DBS</x:String>
+                                <x:String>UOB</x:String>
+                                <x:String>BTPN</x:String>
+                                <x:String>OCBC NISP</x:String>
+                                <x:String>Citibank</x:String>
+                                <x:String>Bank Jago</x:String>
+                                <x:String>LINE Bank</x:String>
+                                <x:String>HSBC</x:String>
+                                <x:String>Panin Bank</x:String>
+                                <x:String>Bank DKI</x:String>
+                                <x:String>Other</x:String>
+                            </ListCollection:List>
+                        </combobox:SfComboBox.ComboBoxSource>
+                    </combobox:SfComboBox>
+
+                </Grid>
+
+                <!--  Grid for Bank Account Number  -->
+                <Grid
+                    x:Name="BankAccountGrid"
                     Padding="16"
                     ColumnDefinitions="Auto, *, Auto"
                     ColumnSpacing="16">
                     <Label
                         Grid.Column="0"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Email" />
+                        Text="Bank Account" />
 
                     <Entry
                         Grid.Column="1"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="End"
                         Margin="0,-12,0,0"
-                        WidthRequest="220"
-                        Text="{Binding Influencer.influencerEmail}"
+                        WidthRequest="190"
+                        Keyboard="Numeric"
+                        Text="{Binding Influencer.bankAccountNumber}"
                         VerticalOptions="Center" />
 
                     <Label
@@ -189,6 +265,35 @@
 
                 </Grid>
 
+                <!--  Grid for WA  -->
+                <Grid
+                    x:Name="WAGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Whatsapp" />
+
+                    <Entry
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Keyboard="Telephone"
+                        Text="{Binding Influencer.whatsappNumber}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
+
+                </Grid>
+                
                 <!--  Grid for IG  -->
                 <Grid
                     x:Name="InstagramGrid"
@@ -247,11 +352,11 @@
 
                 <!--  Save Changes button  -->
                 <buttons:SfButton 
-                            Margin="16,16"
-                            Command="{Binding SaveChangesCommand}"
-                            HorizontalOptions="Fill"
-                            Style="{StaticResource OrangeButtonStyle}"
-                            Text="Save Changes" />
+                    Margin="16,16"
+                    Command="{Binding SaveChangesCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource OrangeButtonStyle}"
+                    Text="Save Changes" />
 
 
             </StackLayout>

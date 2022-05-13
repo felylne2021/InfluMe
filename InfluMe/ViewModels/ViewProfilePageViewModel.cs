@@ -27,6 +27,7 @@ namespace InfluMe.ViewModels {
         private int completedJobs;
         private int ongoingJobs;
         private string influencerAgeSex;
+        private string maskedEmail;
 
 
         #endregion
@@ -41,6 +42,7 @@ namespace InfluMe.ViewModels {
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.LogOutCommand = new Command(LogOutClicked);
             this.EditProfileCommand = new Command(EditProfileClicked);
+            
         }
 
         #endregion
@@ -82,6 +84,19 @@ namespace InfluMe.ViewModels {
                 }
 
                 this.SetProperty(ref this.influencerAgeSex, value);
+            }
+        }
+
+        public string MaskedEmail {
+            get {
+                return this.maskedEmail;
+            }
+            set {
+                if (this.maskedEmail == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.maskedEmail, value);
             }
         }
 
@@ -139,6 +154,9 @@ namespace InfluMe.ViewModels {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
             this.InfluencerAgeSex = CalculateAge(this.Influencer.influencerDOB) + " y.o | " + Influencer.influencerGender;
+
+            var email = this.Influencer.influencerEmail;
+            this.MaskedEmail = string.Format("{0}*****{1}", email[0], email.Substring(email.IndexOf('@') - 1));
         }
 
         private string CalculateAge(string birthdate) {
