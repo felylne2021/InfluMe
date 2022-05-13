@@ -10,6 +10,6 @@
             android:TabbedPage.ToolbarPlacement="Bottom">
 
     <local:HomePage Title="Home" IconImageSource="icon_home" />
-    <local:ManageInfluencerPage Title="My Jobs" IconImageSource="icon_job" />
+    <local:MyJobsPage Title="My Jobs" IconImageSource="icon_job" />
     <local:ViewProfilePage Title="Profile" IconImageSource="icon_account"/>
 </TabbedPage>

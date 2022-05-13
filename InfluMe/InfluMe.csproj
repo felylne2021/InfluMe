@@ -92,6 +92,9 @@
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\MyJobsListTemplate.xaml.cs">
+      <DependentUpon>MyJobsListTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Templates\JobListTemplate.xaml.cs">
       <DependentUpon>JobListTemplate.xaml</DependentUpon>
     </Compile>
@@ -216,6 +219,9 @@
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditProfilePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\MyJobsListTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\JobListTemplate.xaml">

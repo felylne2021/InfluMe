@@ -19,7 +19,7 @@ namespace InfluMe.Views
         {
             this.InitializeComponent();
             jobViewModel.JobPlatformFilter = jobPlatform;
-            BindingContext =jobViewModel;
+            BindingContext = jobViewModel;
         }
     }
 }

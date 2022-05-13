@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfluMe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ namespace InfluMe.Views {
     public partial class MyJobsPage : ContentPage {
         public MyJobsPage() {
             InitializeComponent();
+            BindingContext = new MyJobsViewModel();
         }
     }
 }
