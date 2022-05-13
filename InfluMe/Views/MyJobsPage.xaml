@@ -62,9 +62,11 @@
                             <combobox:SfComboBox.ComboBoxSource>
                                 <ListCollection:List x:TypeArguments="x:String">
                                     <x:String>Applied</x:String>
+                                    <x:String>Not Approved</x:String>
                                     <x:String>Ongoing</x:String>
-                                    <x:String>Content Approved</x:String>
-                                    <x:String>Admin Approved</x:String>
+                                    <x:String>Content Submitted</x:String>
+                                    <x:String>Proof Submitted</x:String>
+                                    <x:String>Pending Payment</x:String>
                                     <x:String>Completed</x:String>
                                 </ListCollection:List>
                             </combobox:SfComboBox.ComboBoxSource>
@@ -89,15 +91,6 @@
 
             <!--  Title View  -->
             <controls:TitleView Title="My Jobs" Grid.Row="0">
-                <controls:TitleView.LeadingView>
-                    <buttons:SfButton
-                        x:Name="backButton"
-                        Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference ListViewList}}"
-                        CommandParameter="{x:Reference backButton}"
-                        Style="{StaticResource IconButtonStyle}"
-                        Text="{StaticResource Back}" />
-                </controls:TitleView.LeadingView>
-
             </controls:TitleView>
 
             <!--  ListView for catalog list  -->

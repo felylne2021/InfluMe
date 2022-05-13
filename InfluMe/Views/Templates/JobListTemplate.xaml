@@ -42,13 +42,26 @@
         <!--  Name  -->
         <Label
             Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="StartAndExpand"
             Margin="0,0,0,4"
             FontSize="Medium"
-            HorizontalOptions="Start"
             LineBreakMode="TailTruncation"
             MaxLines="1"
             Style="{StaticResource TitleLabelStyle}"
             Text="{Binding jobName}"
+            VerticalOptions="Center" />
+
+        <!--  Name  -->
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,4"
+            FontSize="Medium"
+            HorizontalOptions="End"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding progressStatus}"
             VerticalOptions="Center" />
 
         <!--  Brand  -->
@@ -67,6 +80,7 @@
         <Label
             Grid.Row="2"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             Margin="0,2"
             Style="{StaticResource SimpleLabelStyle}"
             Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
@@ -132,7 +146,7 @@
             Grid.Row="3"
             Grid.Column="2"
             HorizontalOptions="End">
-            
+
             <Label
                 Margin="-20,4,0,0"
                 FontFamily="{StaticResource FontAwesomeSolid}"
@@ -147,10 +161,8 @@
                 Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
                 TextColor="{DynamicResource PrimaryColor}" />
         </StackLayout>
-        
 
-
+        <BoxView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
 
     </Grid>
-    <BoxView Grid.Row="2" Style="{StaticResource HorizontalSeparatorStyle}" />
 </Grid>

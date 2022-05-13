@@ -80,7 +80,8 @@ namespace InfluMe.ViewModels
         private async void ApplyJob(string jobId) { 
             JobApplied jobApplied = new JobApplied() {
                 influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
-                jobId = Convert.ToInt32(jobId)
+                jobId = Convert.ToInt32(jobId),
+                progressStatus = JobProgressStatus.Applied
             };
             if (IsApplied.Equals(false)) {
                 try {

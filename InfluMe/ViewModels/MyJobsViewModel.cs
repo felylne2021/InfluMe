@@ -115,34 +115,8 @@ namespace InfluMe.ViewModels {
         }
 
         private void FilterJobByStatus(object obj) {
-            if (!string.IsNullOrEmpty(JobStatusFilter)) {
-                switch (JobStatusFilter) {
-                    case "Applied":
-                        break;
-
-                    case "Ongoing":
-                        break;
-
-                    case "Content Approved":
-                        break;
-
-                    case "Admin Approved":
-                        break;
-
-                    case "Pending Payment":
-                        break;
-
-                    case "Completed":
-                        break;
-
-                    case "Not Approved":
-                        break;
-
-                    default:
-                        this.MyJobs = this.AllMyJobs;
-                        break;
-                };
-            }
+            if (!string.IsNullOrEmpty(JobStatusFilter)) 
+                this.MyJobs = this.AllMyJobs.Where(x => x.progressStatus.Equals(JobStatusFilter)).ToList();
             else this.MyJobs = this.AllMyJobs;
         }
 

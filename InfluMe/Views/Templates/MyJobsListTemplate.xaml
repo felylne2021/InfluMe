@@ -39,8 +39,9 @@
             IsVisible="False"
             Text="{Binding jobId}" />
 
-        <!--  Name  -->
-        <Label
+        
+            <!--  Name  -->
+            <Label
             Grid.Column="1"
             Margin="0,0,0,4"
             FontSize="Medium"
@@ -48,8 +49,20 @@
             LineBreakMode="TailTruncation"
             MaxLines="1"
             Style="{StaticResource TitleLabelStyle}"
-            Text="{Binding appliedJobId}"
+            Text="{Binding job.jobName}"
             VerticalOptions="Center" />
+            
+            <!-- Job Progress Status-->
+        <Label
+            Grid.Column="2"
+            Margin="0,0,0,4"
+            HorizontalTextAlignment="End"
+            HorizontalOptions="End"
+            FontSize="Default"
+            Style="{StaticResource SimpleLabelStyle}" 
+            Text="{Binding progressStatus}"
+            VerticalOptions="Center" />
+
 
         <!--  Brand  -->
         <Label
@@ -61,78 +74,61 @@
                                     Default=-1}"
             MaxLines="1"
             Style="{StaticResource SimpleLabelStyle}"            
-            Text="{Binding influencerId}" />
+            Text="{Binding job.jobBrand}" />
 
-        <!--  Gender  -->
+        <!--  Delivery Status  -->
         <Label
             Grid.Row="2"
             Grid.Column="1"
-            Margin="0,2"
+            Margin="0,4"
+            FontSize="Default"
             Style="{StaticResource SimpleLabelStyle}"
-            Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
+            TextColor="Orange"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            Text="&#xf0d1;">
+        </Label>
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="15,4,0,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="Montserrat-SemiBold"
+            Text="{Binding deliveryStatus, StringFormat='  {0}'}"/>
 
-        <!-- Registration Deadline -->
+        <!-- Job Deadline -->
         <Label
             Grid.Row="2"
             Grid.Column="2"
-            Margin="0,0,50,0"
+            Margin="0,0,0,0"
             Style="{StaticResource SimpleLabelStyle}"
             TextColor="Black"
-            Text="{Binding jobRegistrationDeadline, StringFormat='Open until {0:dd/MM/yyyy}'}"/>
-        <!-- Platform -->
-        <Label
-            Grid.Row="2"
-            Grid.Column="2"
-            HorizontalOptions="End"
-            Margin="0,0,2,0"
-            FontSize="Medium"
-            TextColor="MediumVioletRed"
-            FontFamily="{StaticResource FontAwesomeBrands}"
-            Text="">
-            <Label.Triggers>
-                <DataTrigger 
-                    TargetType="Label"
-                    Binding="{Binding jobPlatform}"
-                    Value="Both">
-                    <Setter Property="Text" Value="&#xf16d; &#xe07b;" />
-                </DataTrigger>
-                <DataTrigger 
-                    TargetType="Label"
-                    Binding="{Binding jobPlatform}"
-                    Value="Instagram">
-                    <Setter Property="Text" Value="&#xf16d;" />
-                </DataTrigger>
-                <DataTrigger 
-                    TargetType="Label"
-                    Binding="{Binding jobPlatform}"
-                    Value="TikTok">
-                    <Setter Property="Text" Value="&#xe07b;" />
-                </DataTrigger>
-            </Label.Triggers>
-        </Label>
+            Text="{Binding job.jobDeadline, StringFormat='Job deadline: {0:dd/MM/yyyy}'}"/>
+                
 
-        <!--  Domicile  -->
+        <!--  Payment Status  -->
         <Label
             Grid.Row="3"
             Grid.Column="1"
             Margin="0,4"
             Style="{StaticResource SimpleLabelStyle}"
             FontFamily="{StaticResource FontAwesomeSolid}"
-            Text="&#xf3c5;"/>
+            FontSize="Medium"
+            TextColor="Green"
+            Text="&#xf555;"/>
         <Label
             Grid.Row="3"
             Grid.Column="1"
             Margin="15,4,0,0"
             Style="{StaticResource SimpleLabelStyle}"
             FontFamily="Montserrat-SemiBold"
-            Text="{Binding jobDomicile}"/>
+            Text="{Binding paymentStatus, StringFormat='  {0}'}"/>
 
         <!--  Fee  -->
         <StackLayout 
             Grid.Row="3"
             Grid.Column="2"
             HorizontalOptions="End">
-            
+
             <Label
                 Margin="-20,4,0,0"
                 FontFamily="{StaticResource FontAwesomeSolid}"
@@ -144,13 +140,12 @@
                 LineHeight="{OnPlatform Android=1.25,
                                         Default=-1}"
                 Style="{StaticResource SimpleLabelStyle}"
-                Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
+                Text="{Binding job.jobFee, StringFormat='IDR {0:N2}'}"
                 TextColor="{DynamicResource PrimaryColor}" />
         </StackLayout>
         
-
-
+        <BoxView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
 
     </Grid>
-    <BoxView Grid.Row="2" Style="{StaticResource HorizontalSeparatorStyle}" />
+    
 </Grid>

@@ -76,10 +76,13 @@ namespace InfluMe.Models
         public int deliveryId { get; set; }
         public int paymentId { get; set; }
         public int appliedJobId { get; set; }
+        public string deliveryStatus { get; set; }
+        public string paymentStatus { get; set; }
         public string approvalStatus { get; set; }
         public string progressStatus { get; set; }
         public string proofOfWork { get; set; }
         public string isApply { get; set; }
+        public JobResponse job { get; set; }
 
     }
 
