@@ -12,18 +12,17 @@ using System.Runtime.Serialization.Json;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
-namespace InfluMe.ViewModels
-{
+namespace InfluMe.ViewModels {
     /// <summary>
     /// ViewModel for detail page.
     /// </summary>
     [Preserve(AllMembers = true)]
     [DataContract]
-    public class JobDetailPageViewModel : BaseViewModel
-    {
+    public class JobDetailPageViewModel : BaseViewModel {
         #region Fields
         private JobResponse job;
         private bool isApplied;
+        private bool isSubmissionVisible;
 
         private JobDataService service => new JobDataService();
         #endregion
@@ -33,10 +32,10 @@ namespace InfluMe.ViewModels
         /// <summary>
         /// Initializes a new instance for the <see cref="JobDetailPageViewModel" /> class.
         /// </summary>
-        public JobDetailPageViewModel()
-        {
+        public JobDetailPageViewModel() {
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.ApplyJobCommand = new Command<string>(this.ApplyJob);
+            this.SubmitCommand = new Command<string>(SubmitClicked);
         }
 
         #endregion
@@ -54,6 +53,20 @@ namespace InfluMe.ViewModels
                 }
 
                 this.SetProperty(ref this.isApplied, value);
+            }
+        }
+
+        public bool IsSubmissionVisible {
+            get {
+                return this.isSubmissionVisible;
+            }
+
+            set {
+                if (this.isSubmissionVisible == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isSubmissionVisible, value);
             }
         }
 
@@ -76,7 +89,7 @@ namespace InfluMe.ViewModels
         #region Methods
 
 
-        private async void ApplyJob(string jobId) { 
+        private async void ApplyJob(string jobId) {
             JobApplied jobApplied = new JobApplied() {
                 influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
                 jobId = Convert.ToInt32(jobId),
@@ -96,12 +109,17 @@ namespace InfluMe.ViewModels
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorMessagePopupPage("You Have Already Applied"));
             }
         }
+        private void SubmitClicked(string jobProgressStatus) {
+            Application.Current.MainPage.Navigation.PushAsync(new SubmissionJobContentPage());
+        }
+
 
         #endregion
 
         #region Commands
         public Command BackButtonCommand { get; set; }
         public Command ApplyJobCommand { get; set; }
+        public Command SubmitCommand { get; set; }
         #endregion
 
     }

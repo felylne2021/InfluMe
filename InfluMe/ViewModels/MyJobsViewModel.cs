@@ -39,9 +39,9 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public MyJobsViewModel() {
             this.InitializeProperties();
-            this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
+            this.BackButtonCommand = new Command(_ => 
+            Application.Current.MainPage.Navigation.PopAsync());
             this.FilterJobByStatusCommand = new Command(FilterJobByStatus);
-            this.SubmitCommand = new Command(SubmitClicked);
         }
         #endregion
 
@@ -49,10 +49,11 @@ namespace InfluMe.ViewModels {
         public JobAppliedResponse SelectedJob {
             get { return selectedJob; }
             set {
-                if (selectedJob != value) {
+                if(value != null) {
                     selectedJob = value;
                     ItemSelected();
                 }
+                
             }
         }
 
@@ -105,7 +106,6 @@ namespace InfluMe.ViewModels {
         #region Commands
         public Command BackButtonCommand { get; set; }
         public Command FilterJobByStatusCommand { get; set; }
-        public Command SubmitCommand { get; set; }
 
 
         #endregion
@@ -134,11 +134,7 @@ namespace InfluMe.ViewModels {
         }
 
         private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true));
-        }
-
-        private void SubmitClicked() {
-
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true, (SelectedJob.progressStatus == "Ongoing")));
         }
 
         #endregion

@@ -23,11 +23,12 @@
     <ContentPage.Behaviors>
         <detailBehavior:CartBehavior />
     </ContentPage.Behaviors>
-    
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
-            
+            <converter:StatusOngoingBoolConverter x:Key="StatusOngoingBoolConverter" />
+
             <DataTemplate x:Key="PortraitTemplate">
                 <Image
                     Margin="3"
@@ -202,7 +203,7 @@
                                 </Label.Triggers>
                             </Label>
                         </StackLayout>
-                        
+
                         <!--  Job Age Range  -->
                         <Label
                             Grid.Row="2"
@@ -403,6 +404,35 @@
                                 Style="{StaticResource GradientButtonStyle}"
                                 Text="APPLY JOB"
                                 WidthRequest="200" />
+
+                            <Label 
+                                Text="{Binding 'Ongoing',Converter={StaticResource StatusOngoingBoolConverter}}"/>
+
+                            <!-- Submission Button -->
+                            <buttons:SfButton 
+                                VerticalOptions="Center"
+                                HorizontalOptions="{OnIdiom Default=Center,
+                                                            Phone=CenterAndExpand}"
+                                WidthRequest="200" 
+                                Command="{Binding SubmitCommand}" CommandParameter="{Binding ProgressStatus}"
+                                IsVisible="{Binding IsSubmissionVisible}"
+                                Style="{StaticResource OrangeButtonStyle}">
+
+                                <buttons:SfButton.Triggers>
+                                    <DataTrigger 
+                                        TargetType="buttons:SfButton"
+                                        Binding="{Binding Job.hasContentApproval}"
+                                        Value="true">
+                                        <Setter Property="Text" Value="Submit Content Draft" />
+                                    </DataTrigger>
+                                    <DataTrigger 
+                                        TargetType="buttons:SfButton"
+                                        Binding="{Binding Job.hasContentApproval}"
+                                        Value="false">
+                                        <Setter Property="Text" Value="Submit Proof of Work" />
+                                    </DataTrigger>
+                                </buttons:SfButton.Triggers>
+                            </buttons:SfButton>
 
                         </StackLayout>
 

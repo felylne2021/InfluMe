@@ -82,6 +82,7 @@ namespace InfluMe.Models
         public string approvalStatus { get; set; }
         public string progressStatus { get; set; }
         public string proofOfWork { get; set; }
+        public string contentDraft { get; set; }
         public string isApply { get; set; }
         public JobResponse job { get; set; }
 
@@ -95,5 +96,15 @@ namespace InfluMe.Models
         public int influencerId { get; set; }
         public List<JobAppliedResponse> appliedJobList { get; set; }
         public string earnings { get; set; }
+    }
+
+    public class PoWSubmission {
+        public int appliedJobId { get; set; }
+        public string proofOfWork { get; set; }
+    }
+
+    public class DraftSubmission {
+        public int appliedJobId { get; set; }
+        public string contentDraft { get; set; }
     }
 }

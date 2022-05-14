@@ -6,7 +6,7 @@
     xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     xmlns:converter="clr-namespace:InfluMe.Converters"
     xmlns:helper="clr-namespace:InfluMe.Helpers"
-    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
     x:Name="myJobsListTemplate"
     RowDefinitions="Auto, Auto">
 
@@ -143,30 +143,7 @@
                 TextColor="{DynamicResource PrimaryColor}" />
         </StackLayout>
 
-        <buttons:SfButton 
-            Grid.Row="4"
-            Grid.Column="1"
-            Grid.ColumnSpan="2"
-            Margin="0,4"
-            Text="Submit"
-            Command="{Binding SubmitCommand}"
-            HorizontalOptions="Center"
-            Style="{StaticResource OrangeButtonStyle}">
-            <buttons:SfButton.Triggers>
-                <DataTrigger 
-                    TargetType="buttons:SfButton"
-                    Binding="{Binding job.hasContentApproval}"
-                    Value="true">
-                    <Setter Property="Text" Value="Submit Content Draft" />
-                </DataTrigger>
-                <DataTrigger 
-                    TargetType="buttons:SfButton"
-                    Binding="{Binding job.hasContentApproval}"
-                    Value="false">
-                    <Setter Property="Text" Value="Submit Proof of Work" />
-                </DataTrigger>
-            </buttons:SfButton.Triggers>
-        </buttons:SfButton>
+        
 
         <BoxView Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
 

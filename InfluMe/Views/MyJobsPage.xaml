@@ -79,6 +79,7 @@
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
             <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
             <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+            
 
         </ResourceDictionary>
     </ContentPage.Resources>

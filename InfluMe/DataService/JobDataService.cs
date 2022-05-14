@@ -75,6 +75,28 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
+        public async Task SubmitPoW(PoWSubmission submission) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync("/appliedJob/submitPOW", submission);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
+        public async Task SubmitDraft(DraftSubmission submission) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync("/appliedJob/submitPOW", submission);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
         #endregion
     }
 }

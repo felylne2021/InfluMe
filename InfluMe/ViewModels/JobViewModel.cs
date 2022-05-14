@@ -45,7 +45,7 @@ namespace InfluMe.ViewModels {
         public JobResponse SelectedJob {
             get { return selectedJob; }
             set {
-                if (selectedJob != value && value != null) {
+                if (value != null) {
                     selectedJob = value;
                     ItemSelected();
                 }
@@ -169,7 +169,7 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob, false));
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob, false, false));
         }
 
         /// <summary>

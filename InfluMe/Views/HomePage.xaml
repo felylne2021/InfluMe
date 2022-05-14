@@ -92,7 +92,7 @@
                     ItemsSource="{Binding InstagramJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"
-                    SelectedItem="{Binding SelectedJob}"
+                    SelectedItem="{Binding SelectedJob, Mode=TwoWay}"
                     SelectionBackgroundColor="Transparent">
 
                     <listView:SfListView.ItemTemplate>
@@ -204,7 +204,7 @@
                     ItemsSource="{Binding TikTokJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"
-                    SelectedItem="{Binding SelectedJob}"
+                    SelectedItem="{Binding SelectedJob, Mode=TwoWay}"
                     SelectionBackgroundColor="Transparent">
 
                     <listView:SfListView.ItemTemplate>
