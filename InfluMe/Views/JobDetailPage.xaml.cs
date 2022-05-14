@@ -21,6 +21,7 @@ namespace InfluMe.Views
             this.InitializeComponent();
             JobId.Text = selectedJob.jobId.ToString();
             BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied, IsSubmissionVisible = isSubmissionVisible};
+            //((ListView)sender).SelectedItem = null;
 
         }       
 
