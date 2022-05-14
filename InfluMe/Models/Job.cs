@@ -50,6 +50,7 @@ namespace InfluMe.Models
         public string jobSOW { get; set; }
         public string jobAdditionalRequirement { get; set; }
         public string jobStatus { get; set; }
+        public string hasContentApproval { get; set; }
 
     }
 

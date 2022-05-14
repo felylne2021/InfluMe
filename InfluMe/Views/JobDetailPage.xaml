@@ -23,10 +23,11 @@
     <ContentPage.Behaviors>
         <detailBehavior:CartBehavior />
     </ContentPage.Behaviors>
-
+    
     <ContentPage.Resources>
         <ResourceDictionary>
-
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            
             <DataTemplate x:Key="PortraitTemplate">
                 <Image
                     Margin="3"
@@ -392,6 +393,7 @@
 
                             <!--  Apply Job Button  -->
                             <buttons:SfButton
+                                IsVisible="{Binding IsApplied, Converter={StaticResource InverseBoolConverter}}"
                                 Margin="0"
                                 Command="{Binding ApplyJobCommand}"
                                 CommandParameter="{Binding Source={x:Reference JobId}, Path=Text}"

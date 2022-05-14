@@ -37,7 +37,6 @@ namespace InfluMe.ViewModels
         {
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.ApplyJobCommand = new Command<string>(this.ApplyJob);
-            this.IsApplied = false;
         }
 
         #endregion

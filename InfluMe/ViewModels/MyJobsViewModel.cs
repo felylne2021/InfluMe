@@ -25,6 +25,7 @@ namespace InfluMe.ViewModels {
         private InfluMeService service = new InfluMeService();
         private List<JobAppliedResponse> myJobs;
         private List<JobAppliedResponse> allMyJobs;
+        private JobAppliedResponse selectedJob;
 
         private string jobStatusFilter;
 
@@ -40,6 +41,19 @@ namespace InfluMe.ViewModels {
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.FilterJobByStatusCommand = new Command(FilterJobByStatus);
+            this.SubmitCommand = new Command(SubmitClicked);
+        }
+        #endregion
+
+        #region Public Properties
+        public JobAppliedResponse SelectedJob {
+            get { return selectedJob; }
+            set {
+                if (selectedJob != value) {
+                    selectedJob = value;
+                    ItemSelected();
+                }
+            }
         }
 
         public string JobStatusFilter {
@@ -56,9 +70,6 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        #endregion
-
-        #region Public properties
 
         public List<JobAppliedResponse> MyJobs {
             get {
@@ -92,8 +103,10 @@ namespace InfluMe.ViewModels {
 
 
         #region Commands
-        public Command BackButtonCommand { get; set; }  
+        public Command BackButtonCommand { get; set; }
         public Command FilterJobByStatusCommand { get; set; }
+        public Command SubmitCommand { get; set; }
+
 
         #endregion
 
@@ -102,7 +115,7 @@ namespace InfluMe.ViewModels {
         private async void InitializeProperties() {
 
             try {
-               
+
                 JobStatsResponse resp = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
 
                 this.AllMyJobs = resp.appliedJobList;
@@ -115,9 +128,17 @@ namespace InfluMe.ViewModels {
         }
 
         private void FilterJobByStatus(object obj) {
-            if (!string.IsNullOrEmpty(JobStatusFilter)) 
+            if (!string.IsNullOrEmpty(JobStatusFilter))
                 this.MyJobs = this.AllMyJobs.Where(x => x.progressStatus.Equals(JobStatusFilter)).ToList();
             else this.MyJobs = this.AllMyJobs;
+        }
+
+        private void ItemSelected() {
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true));
+        }
+
+        private void SubmitClicked() {
+
         }
 
         #endregion

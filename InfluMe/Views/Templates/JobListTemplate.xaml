@@ -101,8 +101,7 @@
             Margin="0,0,2,0"
             FontSize="Medium"
             TextColor="MediumVioletRed"
-            FontFamily="{StaticResource FontAwesomeBrands}"
-            Text="">
+            FontFamily="{StaticResource FontAwesomeBrands}">
             <Label.Triggers>
                 <DataTrigger 
                     TargetType="Label"
@@ -145,7 +144,8 @@
         <StackLayout 
             Grid.Row="3"
             Grid.Column="2"
-            HorizontalOptions="End">
+            HorizontalOptions="End"
+            Margin="0,0,0,4">
 
             <Label
                 Margin="-20,4,0,0"

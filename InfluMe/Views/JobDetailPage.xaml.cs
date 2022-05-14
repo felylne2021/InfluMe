@@ -16,11 +16,11 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="JobDetailPage" /> class.
         /// </summary>
-        public JobDetailPage(JobResponse selectedJob)
+        public JobDetailPage(JobResponse selectedJob, bool isApplied)
         {
             this.InitializeComponent();
             JobId.Text = selectedJob.jobId.ToString();
-            BindingContext = new JobDetailPageViewModel() { Job = selectedJob};
+            BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied};
         }       
 
 

@@ -23,8 +23,7 @@
         Margin="16,0"
         ColumnSpacing="0"
         HorizontalOptions="FillAndExpand"
-        RowDefinitions="Auto, Auto, Auto, Auto"
-        RowSpacing="0"
+        RowDefinitions="Auto, Auto, Auto, Auto, Auto"
         VerticalOptions="FillAndExpand">
 
         <Grid.ColumnDefinitions>
@@ -143,8 +142,33 @@
                 Text="{Binding job.jobFee, StringFormat='IDR {0:N2}'}"
                 TextColor="{DynamicResource PrimaryColor}" />
         </StackLayout>
-        
-        <BoxView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
+
+        <buttons:SfButton 
+            Grid.Row="4"
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Margin="0,4"
+            Text="Submit"
+            Command="{Binding SubmitCommand}"
+            HorizontalOptions="Center"
+            Style="{StaticResource OrangeButtonStyle}">
+            <buttons:SfButton.Triggers>
+                <DataTrigger 
+                    TargetType="buttons:SfButton"
+                    Binding="{Binding job.hasContentApproval}"
+                    Value="true">
+                    <Setter Property="Text" Value="Submit Content Draft" />
+                </DataTrigger>
+                <DataTrigger 
+                    TargetType="buttons:SfButton"
+                    Binding="{Binding job.hasContentApproval}"
+                    Value="false">
+                    <Setter Property="Text" Value="Submit Proof of Work" />
+                </DataTrigger>
+            </buttons:SfButton.Triggers>
+        </buttons:SfButton>
+
+        <BoxView Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
 
     </Grid>
     

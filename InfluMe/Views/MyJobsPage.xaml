@@ -104,6 +104,7 @@
                 HorizontalOptions="FillAndExpand"
                 IsStickyHeader="False"
                 ItemSize="170"
+                SelectionGesture="Tap"
                 ItemSpacing="0,0,0,16"
                 ItemsSource="{Binding MyJobs, Mode=TwoWay}"
                 SelectedItem="{Binding SelectedJob}"
