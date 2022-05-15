@@ -51,6 +51,20 @@ namespace InfluMe.Services {
             else throw new Exception();
         }
 
+        public async Task<List<InfluencerResponse>> GetInfluencer() {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.GetAsync($"/influencer/get");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                InfluencerResponseAll respBody = JsonSerializer.Deserialize<InfluencerResponseAll>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
         public async Task<OTPResponse> GetOTP(string email) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);

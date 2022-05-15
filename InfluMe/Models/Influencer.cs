@@ -17,6 +17,10 @@ namespace InfluMe.Models {
         public string bankAccountNumber { get; set; }
     }
 
+    public class InfluencerResponseAll {
+        public List<InfluencerResponse> body { get; set; }
+    }
+
     public class InfluencerResponseBody {
         public InfluencerResponse body { get; set; }
     }
