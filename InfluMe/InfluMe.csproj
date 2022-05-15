@@ -92,6 +92,9 @@
     <Compile Update="Views\SignUpPage.xaml.cs">
       <DependentUpon>SignUpPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\Templates\NotificationListTemplate.xaml.cs">
+      <DependentUpon>NotificationListTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Templates\MyJobsListTemplate.xaml.cs">
       <DependentUpon>MyJobsListTemplate.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SubmissionJobContentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Templates\NotificationListTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Templates\MyJobsListTemplate.xaml">
       <Generator>MSBuild:Compile</Generator>

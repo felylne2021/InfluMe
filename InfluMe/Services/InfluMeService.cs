@@ -134,7 +134,7 @@ namespace InfluMe.Services {
                 return resp.body;
             }
             else throw new Exception();
-        }
+        }        
 
         public async Task UpdateProfile(InfluencerUpdateRequest req) {
             HttpClient client = new HttpClient();

@@ -33,6 +33,22 @@ namespace InfluMe.DataService
 
         #region Methods
 
+        public async Task<List<Notification>> GetNotifications(string id) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            NotificationResponse resp = new NotificationResponse();
+
+            var response = await client.GetAsync($"/notification/influencer/{id}");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                resp = JsonSerializer.Deserialize<NotificationResponse>(jsonString);
+                return resp.body;
+            }
+            else throw new Exception();
+        }
+
         public async Task<List<JobResponse>> GetAllJob() {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);

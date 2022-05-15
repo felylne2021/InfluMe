@@ -64,14 +64,14 @@ namespace InfluMe.ViewModels {
                 };
 
                 try {
-                    service.SubmitDraft(submission);
+                    await service.SubmitDraft(submission);
                     try {
                         ChangeJobProgressRequest request = new ChangeJobProgressRequest() {
                             influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
                             jobId = JobId,
                             progressStatus = JobProgressStatus.ContentSubmitted
                         };
-                        service.ChangeJobProgress(request);
+                        await service.ChangeJobProgress(request);
                     }
                     catch (Exception) {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
@@ -90,14 +90,14 @@ namespace InfluMe.ViewModels {
                     proofOfWork = links
                 };
                 try {
-                    service.SubmitPoW(submission);
+                    await service.SubmitPoW(submission);
                     try {
                         ChangeJobProgressRequest request = new ChangeJobProgressRequest() {
                             influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
                             jobId = JobId,
                             progressStatus = JobProgressStatus.ProofSubmitted
                         };
-                        service.ChangeJobProgress(request);
+                        await service.ChangeJobProgress(request);
                     }
                     catch (Exception) {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

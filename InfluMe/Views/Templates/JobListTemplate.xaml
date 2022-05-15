@@ -52,8 +52,8 @@
             Text="{Binding jobName}"
             VerticalOptions="Center" />
 
-        <!--  Name  -->
-        <Label
+        <!--  progress status  -->
+        <!--<Label
             Grid.Row="0"
             Grid.Column="0"
             Grid.ColumnSpan="2"
@@ -62,7 +62,7 @@
             HorizontalOptions="End"
             Style="{StaticResource TitleLabelStyle}"
             Text="{Binding progressStatus}"
-            VerticalOptions="Center" />
+            VerticalOptions="Center" />-->
 
         <!--  Brand  -->
         <Label

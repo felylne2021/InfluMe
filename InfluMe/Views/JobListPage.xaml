@@ -117,7 +117,6 @@
 
                 <listView:SfListView.ItemTemplate>
                     <DataTemplate>
-
                         <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
                     </DataTemplate>
                 </listView:SfListView.ItemTemplate>

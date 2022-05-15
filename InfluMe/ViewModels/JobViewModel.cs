@@ -24,6 +24,7 @@ namespace InfluMe.ViewModels {
         private ObservableCollection<JobResponse> allJobs;
         private ObservableCollection<JobResponse> instagramJobs;
         private ObservableCollection<JobResponse> tiktokJobs;
+        private List<Notification> notifications;
         private JobResponse selectedJob;
         private string jobPlatformFilter;
 
@@ -94,6 +95,20 @@ namespace InfluMe.ViewModels {
             }
         }
 
+        public List<Notification> Notifications {
+            get {
+                return this.notifications;
+            }
+
+            set {
+                if (this.notifications == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.notifications, value);
+            }
+        }
+
         /// <summary>
         /// Gets or sets the property that has been bound with list view, which displays the collection of products from json.
         /// </summary>
@@ -152,6 +167,7 @@ namespace InfluMe.ViewModels {
 
             try {
                 jobs = await service.GetAllJob();
+                this.Notifications = await service.GetNotifications(Application.Current.Properties["UserId"].ToString());
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
@@ -189,7 +205,7 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private void NotificationButtonClicked(object obj) {
-            // Do something
+            Application.Current.MainPage.Navigation.PushAsync(new NotificationListPage(this));
         }
     }
     

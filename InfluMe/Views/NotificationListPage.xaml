@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="InfluMe.Views.NotificationListPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:InfluMe.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:template="clr-namespace:InfluMe.Views.Templates"
+             x:Class="InfluMe.Views.NotificationListPage"
+             Shell.NavBarIsVisible="False"
+            NavigationPage.HasNavigationBar="False"
+             x:Name="notificationListPage">
+    
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="Notifications" BackgroundColor="{DynamicResource Blue}">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding Path=BindingContext.BackButtonCommand, Source={x:Reference notificationListPage}}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"                            
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <!--  ListView for catalog list  -->
+        <listView:SfListView
+                x:Name="ListViewList"
+                Grid.Row="1"
+                Padding="{OnIdiom Default='0,8,0,0',
+                                  Desktop='15,15,15,0'}"
+                AutoFitMode="Height"
+                HorizontalOptions="FillAndExpand"
+                IsStickyHeader="False"
+                ItemSize="170"
+                SelectionGesture="Tap"
+                ItemSpacing="0,0,0,16"
+                ItemsSource="{Binding Notifications, Mode=TwoWay }"
+                Style="{StaticResource TransparentSelectionListView}">
+
+            <listView:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <template:NotificationListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference notificationListPage}}" />
+                </DataTemplate>
+            </listView:SfListView.ItemTemplate>
+
+        </listView:SfListView>
     </ContentPage.Content>
 </ContentPage>
