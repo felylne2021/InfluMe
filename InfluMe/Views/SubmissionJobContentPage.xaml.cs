@@ -12,8 +12,9 @@ using Xamarin.Forms.Xaml;
 namespace InfluMe.Views {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SubmissionJobContentPage : ContentPage {
-        public SubmissionJobContentPage() {
+        public SubmissionJobContentPage(string title, int jobId) {
             InitializeComponent();
+            BindingContext = new SubmissionViewModel() { TitleText = title, JobId = jobId };
         }
     }
 }

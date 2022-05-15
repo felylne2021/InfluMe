@@ -99,12 +99,14 @@ namespace InfluMe.Models
     }
 
     public class PoWSubmission {
-        public int appliedJobId { get; set; }
+        public int influencerId { get; set; }
+        public int jobId { get; set; }
         public string proofOfWork { get; set; }
     }
 
     public class DraftSubmission {
-        public int appliedJobId { get; set; }
+        public int influencerId { get; set; }
+        public int jobId { get; set; }
         public string contentDraft { get; set; }
     }
 }

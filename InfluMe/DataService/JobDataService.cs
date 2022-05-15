@@ -84,6 +84,7 @@ namespace InfluMe.DataService
             if (!response.IsSuccessStatusCode) {
                 throw new Exception();
             }
+
         }
 
         public async Task SubmitDraft(DraftSubmission submission) {

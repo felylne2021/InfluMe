@@ -215,6 +215,9 @@
     <EmbeddedResource Update="Views\MyJobsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\NotificationListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductDeliveryTrackingPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

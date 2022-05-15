@@ -109,8 +109,9 @@ namespace InfluMe.ViewModels {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorMessagePopupPage("You Have Already Applied"));
             }
         }
-        private void SubmitClicked(string jobProgressStatus) {
-            Application.Current.MainPage.Navigation.PushAsync(new SubmissionJobContentPage());
+        private void SubmitClicked(string hasContentApproval) {
+            string title = hasContentApproval == "true" ? "Content Draft" : "Proof of Work";
+            Application.Current.MainPage.Navigation.PushAsync(new SubmissionJobContentPage(title, Job.jobId));
         }
 
 

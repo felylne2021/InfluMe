@@ -414,7 +414,7 @@
                                 HorizontalOptions="{OnIdiom Default=Center,
                                                             Phone=CenterAndExpand}"
                                 WidthRequest="200" 
-                                Command="{Binding SubmitCommand}" CommandParameter="{Binding ProgressStatus}"
+                                Command="{Binding SubmitCommand}" CommandParameter="{Binding Job.hasContentApproval}"
                                 IsVisible="{Binding IsSubmissionVisible}"
                                 Style="{StaticResource OrangeButtonStyle}">
 
