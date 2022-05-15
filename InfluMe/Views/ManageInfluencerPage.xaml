@@ -46,7 +46,7 @@
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="FillAndExpand"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Influencers List"
+                        Text="Influencer List"
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
 
@@ -73,7 +73,7 @@
                     <border:SfBorder Style="{DynamicResource ThemeBorderStyle}">
                         <controls:BorderlessEntry
                             x:Name="SearchEntry"
-                            BindingContext="{x:Reference ContactList}"
+                            BindingContext="{x:Reference InfluencerList}"
                             HorizontalOptions="FillAndExpand"
                             Placeholder="Search here"
                             Style="{StaticResource BorderlessEntryStyle}"
@@ -99,12 +99,12 @@
             <StackLayout Grid.Row="2">
 
                 <controls:SearchableContactsList
-                    x:Name="ContactList"
+                    x:Name="InfluencerList"
                     AllowSwiping="True"
                     AutoFitMode="Height"
                     IsScrollBarVisible="False"
                     ItemSpacing="0"
-                    ItemsSource="{Binding ContactList}"
+                    ItemsSource="{Binding InfluencerList}"
                     SearchText="{Binding SearchText}"
                     SelectionBackgroundColor="{DynamicResource Gray-200}"
                     SelectionGesture="Tap"
@@ -115,7 +115,7 @@
                     <controls:SearchableContactsList.DataSource>
                         <data:DataSource>
                             <data:DataSource.SortDescriptors>
-                                <data:SortDescriptor Direction="Ascending" PropertyName="name" />
+                                <data:SortDescriptor Direction="Ascending" PropertyName="influencerName" />
                             </data:DataSource.SortDescriptors>
                         </data:DataSource>
                     </controls:SearchableContactsList.DataSource>
@@ -155,17 +155,16 @@
                                 <ViewCell.View>
                                     <Grid
                                         ColumnDefinitions="Auto, 200, *"
-                                        ColumnSpacing="0"
+                                        ColumnSpacing="1"
                                         HeightRequest="56"
                                         RowDefinitions="Auto, Auto"
                                         RowSpacing="0">
 
                                         <!--  Contact name avatar  -->
                                         <sfavatar:SfAvatarView
-                                            Margin="16,8"
-                                            AvatarName="{Binding Name}"
-                                            VerticalOptions="Center"
-                                            BackgroundColor="{Binding BackgroundColor}"
+                                            Margin="16,0,8,16"
+                                            AvatarName="{Binding influencerName}"
+                                            BackgroundColor="{Binding influencerColorHex}"
                                             Style="{StaticResource AvatarViewStyle}" />
 
                                         <!--  Contact name  -->
@@ -175,7 +174,8 @@
                                             FontFamily="Montserrat-Medium"
                                             HorizontalOptions="Start"
                                             Style="{StaticResource TitleLabelStyle}"
-                                            Text="{Binding Name}"
+                                            Text="{Binding influencerName}"
+                                            LineBreakMode="TailTruncation"
                                             VerticalOptions="Center" />
 
                                         <!--  X button  -->

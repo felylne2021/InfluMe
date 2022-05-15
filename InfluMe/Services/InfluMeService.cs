@@ -51,7 +51,7 @@ namespace InfluMe.Services {
             else throw new Exception();
         }
 
-        public async Task<List<InfluencerResponse>> GetInfluencer() {
+        public async Task<List<InfluencerResponse>> GetInfluencers() {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
 

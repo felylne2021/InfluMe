@@ -25,10 +25,10 @@ namespace InfluMe.Behaviors {
             if (bindable != null) {
                 this.listView = bindable;
                 this.listView.DataSource.GroupDescriptors.Add(new GroupDescriptor() {
-                    PropertyName = "Name",
+                    PropertyName = "influencerName",
                     KeySelector = (object obj1) => {
-                        var item = obj1 as Models.Contact;
-                        return item.Name[0].ToString(CultureInfo.CurrentCulture);
+                        var item = obj1 as Models.InfluencerResponse;
+                        return item.influencerName[0].ToString(CultureInfo.CurrentCulture);
                     },
                 });
                 base.OnAttachedTo(bindable);
