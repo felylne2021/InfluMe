@@ -1,4 +1,5 @@
 ﻿using InfluMe.DataService;
+using InfluMe.Helpers;
 using InfluMe.Models;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
@@ -63,11 +64,24 @@ namespace InfluMe.ViewModels {
                 };
 
                 try {
-                    await service.SubmitDraft(submission);
+                    service.SubmitDraft(submission);
+                    try {
+                        ChangeJobProgressRequest request = new ChangeJobProgressRequest() {
+                            influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
+                            jobId = JobId,
+                            progressStatus = JobProgressStatus.ContentSubmitted
+                        };
+                        service.ChangeJobProgress(request);
+                    }
+                    catch (Exception) {
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                    }
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
                 }
+
+                
             }
             else if (this.TitleText == "Proof of Work") {
                 PoWSubmission submission = new PoWSubmission() {
@@ -76,12 +90,30 @@ namespace InfluMe.ViewModels {
                     proofOfWork = links
                 };
                 try {
-                    await service.SubmitPoW(submission);
+                    service.SubmitPoW(submission);
+                    try {
+                        ChangeJobProgressRequest request = new ChangeJobProgressRequest() {
+                            influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
+                            jobId = JobId,
+                            progressStatus = JobProgressStatus.ProofSubmitted
+                        };
+                        service.ChangeJobProgress(request);
+                    }
+                    catch (Exception) {
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                    }
+
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
                 }
+
+                
             }
+
+            await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Submission Success"));
+            await Application.Current.MainPage.Navigation.PopAsync();
+            await Application.Current.MainPage.Navigation.PopAsync();
 
         }
 

@@ -91,7 +91,18 @@ namespace InfluMe.DataService
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
 
-            var response = await client.PostAsJsonAsync("/appliedJob/submitPOW", submission);
+            var response = await client.PostAsJsonAsync("/appliedJob/submitContentDraft", submission);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
+        public async Task ChangeJobProgress(ChangeJobProgressRequest request) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync($"/appliedJob/changeProgressStatus", request);
 
             if (!response.IsSuccessStatusCode) {
                 throw new Exception();

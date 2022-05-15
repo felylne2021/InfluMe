@@ -109,4 +109,11 @@ namespace InfluMe.Models
         public int jobId { get; set; }
         public string contentDraft { get; set; }
     }
+
+    public class ChangeJobProgressRequest {
+        public int influencerId { get; set; }
+        public int jobId { get; set; }
+        public string progressStatus { get; set; }
+
+    }
 }
