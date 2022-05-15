@@ -40,14 +40,6 @@
                     Spacing="0"
                     VerticalOptions="FillAndExpand">
 
-                    <!--  Back button command  -->
-                    <buttons:SfButton
-                        x:Name="backButton"
-                        Command="{Binding BackButtonCommand}"
-                        CommandParameter="{x:Reference backButton}"
-                        Style="{StaticResource IconButtonStyle}"
-                        Text="{StaticResource Back}" />
-
                     <!--  Contacts List page Title  -->
                     <Label
                         Margin="16,0"

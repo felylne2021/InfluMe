@@ -1,4 +1,9 @@
 ﻿using InfluMe.Models;
+using InfluMe.Services;
+using InfluMe.Views;
+using Rg.Plugins.Popup.Extensions;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
 using Xamarin.Forms;
@@ -10,50 +15,56 @@ namespace InfluMe.ViewModels {
     /// </summary>
     [Preserve(AllMembers = true)]
     [DataContract]
-    public class ManageInfluencerPageViewModel : BaseViewModel {
+    public class InfluencerPageViewModel : BaseViewModel {
         #region Fields
 
-        private Command<object> itemTappedCommand;
+        private List<InfluencerResponse> influencerList;
+        private InfluMeService service => new InfluMeService();
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance for the <see cref="ManageInfluencerPageViewModel"/> class.
+        /// Initializes a new instance for the <see cref="InfluencerPageViewModel"/> class.
         /// </summary>
-        public ManageInfluencerPageViewModel() {
+        public InfluencerPageViewModel() {
+            this.InitializeProperties();
         }
 
         #endregion
 
         #region Properties
 
-        /// <summary>
-        /// Gets the command that will be executed when an item is selected.
-        /// </summary>
-        public Command<object> ItemTappedCommand {
+        public List<InfluencerResponse> InfluencerList {
             get {
-                return this.itemTappedCommand ?? (this.itemTappedCommand = new Command<object>(this.NavigateToNextPage));
+                return this.influencerList;
+            }
+
+            set {
+                if (this.influencerList == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.influencerList, value);
             }
         }
-
-        /// <summary>
-        /// Gets or sets a collction of value to be displayed in contacts list page.
-        /// </summary>
-        [DataMember(Name = "contactsPageList")]
-        public ObservableCollection<Contact> ContactList { get; set; }
 
         #endregion
 
         #region Methods
 
-        /// <summary>
-        /// Invoked when an item is selected from the contacts list.
-        /// </summary>
-        /// <param name="selectedItem">Selected item from the list view.</param>
-        private void NavigateToNextPage(object selectedItem) {
-            // Do something
+        private async void InitializeProperties() {
+            
+            try {
+                //this.InfluencerList = await service.GetAllJob();
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+           
+
+
         }
 
         #endregion

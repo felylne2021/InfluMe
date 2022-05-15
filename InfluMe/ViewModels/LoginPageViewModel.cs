@@ -171,6 +171,7 @@ namespace InfluMe.ViewModels {
                         Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
                         Application.Current.Properties["UserId"] = resp.userId.ToString();
                         Application.Current.Properties["UserType"] = resp.userType;
+                        await App.Current.SavePropertiesAsync();
 
                         if (resp.userType.Equals(UserType.Influencer.ToString()))
                         {
@@ -179,12 +180,9 @@ namespace InfluMe.ViewModels {
 
                         else if (resp.userType.Equals(UserType.Admin.ToString()))
                         {
-                            Application.Current.MainPage = new AdminHomePage();
+                            Application.Current.MainPage = new AdminMainPage();
                         }
                         
-
-
-                        Application.Current.MainPage = new MainPage();
                         //Application.Current.MainPage.Navigation.RemovePage(previousPage);
                         
                     }

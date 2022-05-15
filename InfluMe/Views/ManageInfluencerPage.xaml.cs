@@ -1,4 +1,5 @@
 ﻿using InfluMe.DataService;
+using InfluMe.ViewModels;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -14,7 +15,7 @@ namespace InfluMe.Views {
         /// </summary>
         public ManageInfluencerPage() {
             this.InitializeComponent();
-            this.BindingContext = ContactsDataService.Instance.ManageInfluencerPageViewModel;
+            this.BindingContext = new InfluencerPageViewModel();
         }
     }
 }

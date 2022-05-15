@@ -44,7 +44,7 @@ namespace InfluMe
                 //Load if Logged In
                 if (Application.Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
                     MainPage = new NavigationPage(new MainPage());
-                else MainPage = new NavigationPage(new AdminHomePage());
+                else MainPage = new NavigationPage(new AdminMainPage());
             }
 
         }

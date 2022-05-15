@@ -15,7 +15,7 @@
 
     <ContentPage.Content>
 
-        <Grid RowDefinitions="Auto, *">
+        <Grid RowDefinitions="Auto, Auto">
 
             <!--  Title View  -->
             <controls:TitleView Title="Home" Grid.Row="0">
@@ -29,10 +29,11 @@
                 </controls:TitleView.TrailingView>
             </controls:TitleView>
 
-            <!--  ListView for Category  -->
-            <listView:SfListView
+            <StackLayout
+                Grid.Row="1">
+                <!--  ListView for Category  -->
+                <listView:SfListView
                 x:Name="MenuTile"
-                Grid.Row="1"
                 Padding="8"
                 AutoFitMode="Height"
                 HorizontalOptions="FillAndExpand"
@@ -40,17 +41,17 @@
                 ItemsSource="{Binding Categories}"
                 Style="{StaticResource TransparentSelectionListView}">
 
-                <listView:SfListView.ItemTemplate>
-                    <DataTemplate>
-                        <syncEffectsView:SfEffectsView
+                    <listView:SfListView.ItemTemplate>
+                        <DataTemplate>
+                            <syncEffectsView:SfEffectsView
                             RippleColor="{DynamicResource Gray-300}"
                             TouchDownEffects="Ripple"
                             TouchUpCommand="{Binding Path=BindingContext.CategorySelectedCommand, Source={x:Reference adminHomePage}}"
                             TouchUpCommandParameter="{Binding}">
-                            <Grid RowDefinitions="Auto, Auto" RowSpacing="8">
+                                <Grid RowDefinitions="Auto, Auto" RowSpacing="8" >
 
-                                <!--  Menu Button  -->
-                                <buttons:SfButton
+                                    <!--  Menu Button  -->
+                                    <buttons:SfButton
                                     Grid.Row="1"
                                     BackgroundColor="DarkCyan"                                    
                                     VerticalTextAlignment="Center"
@@ -66,18 +67,20 @@
                                     CornerRadius="20"
                                     Text="{Binding Name}" />
 
-                            </Grid>
-                        </syncEffectsView:SfEffectsView>
-                    </DataTemplate>
-                </listView:SfListView.ItemTemplate>
+                                </Grid>
+                            </syncEffectsView:SfEffectsView>
+                        </DataTemplate>
+                    </listView:SfListView.ItemTemplate>
 
-                <!--  Layout to customize no. of columns in SfListView  -->
-                <listView:SfListView.LayoutManager>
-                    <listView:GridLayout SpanCount="{core:OnPlatformOrientationIntValue Desktop=4, PhonePortrait=2, PhoneLandscape=3, TabletPortrait=3, TabletLandscape=4}" />
-                </listView:SfListView.LayoutManager>
+                    <!--  Layout to customize no. of columns in SfListView  -->
+                    <listView:SfListView.LayoutManager>
+                        <listView:GridLayout SpanCount="{core:OnPlatformOrientationIntValue Desktop=4, PhonePortrait=2, PhoneLandscape=3, TabletPortrait=3, TabletLandscape=4}" />
+                    </listView:SfListView.LayoutManager>
 
-            </listView:SfListView>
-
+                </listView:SfListView>
+            </StackLayout>
+            
+            
         </Grid>
     </ContentPage.Content>
 
