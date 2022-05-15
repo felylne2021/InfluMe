@@ -76,31 +76,31 @@
       <Version>19.4.0.42</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.Core">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.DataSource">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfBadgeView">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfComboBox">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfListView">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfPicker">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfProgressBar">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRating">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Syncfusion.Xamarin.SfRotator">
-      <Version>19.4.0.42</Version>
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="System.Linq">
       <Version>4.3.0</Version>
