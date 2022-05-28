@@ -23,9 +23,6 @@ namespace InfluMe
 
         public App()
         {
-            // SF licensing
-            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjM4MzIzQDMyMzAyZTMxMmUzME0xZzhuWW5yQ3FGMEVBRXkxanpvWm1ZdEI0eE15TVUyV0lXZjFyS3k5azA9");
-
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
 
