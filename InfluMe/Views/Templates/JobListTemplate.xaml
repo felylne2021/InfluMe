@@ -40,9 +40,11 @@
             Text="{Binding jobId}" />
 
         <!--  Name  -->
-        <Label
+        <StackLayout
             Grid.Column="1"
             Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <Label
             HorizontalOptions="StartAndExpand"
             Margin="0,0,0,4"
             FontSize="Medium"
@@ -51,6 +53,14 @@
             Style="{StaticResource TitleLabelStyle}"
             Text="{Binding jobName}"
             VerticalOptions="Center" />
+
+            <Label
+                Text="{Binding jobStatus}"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                FontSize="Small"/>
+        </StackLayout>
+        
 
         <!--  progress status  -->
         <!--<Label

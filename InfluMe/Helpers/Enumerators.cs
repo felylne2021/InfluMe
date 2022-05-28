@@ -9,6 +9,12 @@ namespace InfluMe.Helpers {
         REGISTERED
     }
 
+    public enum InfluencerStatus {
+        INACTIVE,
+        ACTIVE,
+        ENROLLED
+    }
+
     public enum UserType {
         Influencer,
         Admin
@@ -36,9 +42,11 @@ namespace InfluMe.Helpers {
     public static class JobProgressStatus {
         public static string Applied = "Applied"; // influencer applied
         public static string NotApproved = "Not Accepted"; // influencer not chosen
-        public static string Ongoing = "Ongoing"; // influencer selected
-        public static string ContentSubmitted = "Content Submitted"; // if content needs approval (hasContentApproval)
-        public static string ProofSubmitted = "Proof Submitted"; // influencer posted proof of work
+        public static string OnDelivery = "On Delivery"; // influencer chosen and product not null
+        public static string PendingProof = "Pending Proof"; // influencer accepted, no draft/ draft accepted
+        public static string PendingDraft = "Pending Draft"; // if job needs drafting, accepted
+        public static string DraftSubmitted = "Draft Submitted"; // if content needs approval (hasContentApproval) and submitted
+        public static string ProofSubmitted = "Proof Submitted"; // influencer posted proof of work approved
         public static string PendingPayment = "Pending Payment"; // paid jobs only
         public static string Completed = "Completed"; // payment done (for paid jobs)/PoW approved
     }
@@ -48,5 +56,10 @@ namespace InfluMe.Helpers {
         public static string OnShipping = "On Shipping";
         public static string OnDelivery = "On Delivery";
         public static string Received = "Received";
+        public static List<string> DeliveryStatusList = new List<string> {
+            DeliveryStatus.PickUp, DeliveryStatus.OnShipping, DeliveryStatus.OnDelivery, DeliveryStatus.Received
+        };
     }
+
+
 }

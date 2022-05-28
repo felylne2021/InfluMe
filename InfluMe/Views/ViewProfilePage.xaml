@@ -57,10 +57,10 @@
                         <sfavatar:SfAvatarView
                             AvatarShape="Circle"
                             AvatarSize="ExtraLarge"
-                            BackgroundColor="{Binding Influencer.influencerColorHex}"
+                            ImageSource="{Binding Influencer.influencerColorHex}"
                             FontFamily="Montserrat-Medium"
                             InitialsColor="DimGray"
-                            ContentType="Initials"
+                            ContentType="Custom"
                             AvatarName="{Binding Influencer.influencerName}"
                             BorderWidth="0"/>
                     </border:SfBorder>

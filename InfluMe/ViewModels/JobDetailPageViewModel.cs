@@ -1,6 +1,7 @@
 ﻿using InfluMe.DataService;
 using InfluMe.Helpers;
 using InfluMe.Models;
+using InfluMe.Services;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using System;
@@ -22,9 +23,11 @@ namespace InfluMe.ViewModels {
         #region Fields
         private JobResponse job;
         private bool isApplied;
-        private bool isSubmissionVisible;
+        private bool isInfluActive;
+        private string thisJobProgressStatus;
 
         private JobDataService service => new JobDataService();
+        private InfluMeService influService => new InfluMeService();
         #endregion
 
         #region Constructor
@@ -33,6 +36,7 @@ namespace InfluMe.ViewModels {
         /// Initializes a new instance for the <see cref="JobDetailPageViewModel" /> class.
         /// </summary>
         public JobDetailPageViewModel() {
+            this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
             this.ApplyJobCommand = new Command<string>(this.ApplyJob);
             this.SubmitCommand = new Command<string>(SubmitClicked);
@@ -41,6 +45,9 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Public properties
+
+        public Uri ImageURL { get; set; }
+        public bool IsSubmissionVisible { get; set; }
 
         public bool IsApplied {
             get {
@@ -56,17 +63,31 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        public bool IsSubmissionVisible {
+        public bool IsInfluActive {
             get {
-                return this.isSubmissionVisible;
+                return this.isInfluActive;
             }
 
             set {
-                if (this.isSubmissionVisible == value) {
+                if (this.isInfluActive == value) {
                     return;
                 }
 
-                this.SetProperty(ref this.isSubmissionVisible, value);
+                this.SetProperty(ref this.isInfluActive, value);
+            }
+        }
+
+        public string ThisJobProgressStatus {
+            get {
+                return this.thisJobProgressStatus;
+            }
+
+            set {
+                if (this.thisJobProgressStatus == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.thisJobProgressStatus, value);
             }
         }
 
@@ -88,6 +109,16 @@ namespace InfluMe.ViewModels {
 
         #region Methods
 
+        private async void InitializeProperties() {
+
+            try {
+                this.IsInfluActive = await influService.GetInfluencerActiveStatus(Convert.ToInt32(Application.Current.Properties["UserId"]));
+                if (this.IsInfluActive) { }
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
 
         private async void ApplyJob(string jobId) {
             JobApplied jobApplied = new JobApplied() {
@@ -109,8 +140,8 @@ namespace InfluMe.ViewModels {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorMessagePopupPage("You Have Already Applied"));
             }
         }
-        private void SubmitClicked(string hasContentApproval) {
-            string title = hasContentApproval == "true" ? "Content Draft" : "Proof of Work";
+        private void SubmitClicked(string jobProgressStatus) {
+            string title = ThisJobProgressStatus == JobProgressStatus.PendingDraft ? "Content Draft" : "Proof of Work";
             Application.Current.MainPage.Navigation.PushAsync(new SubmissionJobContentPage(title, Job.jobId));
         }
 

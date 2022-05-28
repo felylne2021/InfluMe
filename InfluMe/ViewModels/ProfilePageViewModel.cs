@@ -22,6 +22,7 @@ namespace InfluMe.ViewModels {
         private ValidatableObject<string> influencerAddress;
         private ValidatableObject<string> influencerInstagramId;
         private ValidatableObject<string> influencerTiktokId;
+        private ValidatableObject<string> whatsappNumber;
 
         private InfluMeService service = new InfluMeService();
         private bool _isPasswordConfirmationErrorMessageVisible;
@@ -164,6 +165,22 @@ namespace InfluMe.ViewModels {
         }
 
 
+            public ValidatableObject<string> WhatsappNumber {
+            get {
+                return this.whatsappNumber;
+            }
+
+            set {
+                if (this.whatsappNumber == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.whatsappNumber, value);
+            }
+        }
+
+
+
         #endregion
 
         #region Command
@@ -198,6 +215,7 @@ namespace InfluMe.ViewModels {
             bool isAddressValid = this.InfluencerAddress.Validate();
             bool isInstagramIdValid = this.InfluencerInstagramId.Validate();
             bool isTiktokIdValid = this.InfluencerTiktokId.Validate();
+            bool isWhatsappNumberValid = this.WhatsappNumber.Validate();
 
             var today = DateTime.Today;
             var age = today.Year - this.InfluencerDOB.Year;
@@ -221,6 +239,7 @@ namespace InfluMe.ViewModels {
             this.InfluencerAddress = new ValidatableObject<string>();
             this.InfluencerInstagramId = new ValidatableObject<string>();
             this.InfluencerTiktokId = new ValidatableObject<string>();
+            this.WhatsappNumber = new ValidatableObject<string>();
         }
 
         private void AddValidationRules() {
@@ -234,6 +253,8 @@ namespace InfluMe.ViewModels {
             this.InfluencerInstagramId.Validations.Add(new IsUsernameValidRule<string> { ValidationMessage = "Username Without '@'" });
             this.InfluencerTiktokId.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Tiktok Username Required" });
             this.InfluencerTiktokId.Validations.Add(new IsUsernameValidRule<string> { ValidationMessage = "Username Without '@'" });
+            this.WhatsappNumber.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Whatsapp Number Required" });
+
         }
 
         /// <summary>
@@ -254,7 +275,8 @@ namespace InfluMe.ViewModels {
                     influencerAddress = this.InfluencerAddress.Value,
                     influencerDOB = this.influencerDOB.ToString("yyyy-MM-dd"),
                     influencerInstagramId = this.InfluencerInstagramId.Value,
-                    influencerTiktokId = this.InfluencerTiktokId.Value
+                    influencerTiktokId = this.InfluencerTiktokId.Value,
+                    whatsappNumber = this.WhatsappNumber.Value
                 };
 
                 try {                    

@@ -69,7 +69,7 @@ namespace InfluMe.ViewModels {
                         ChangeJobProgressRequest request = new ChangeJobProgressRequest() {
                             influencerId = Convert.ToInt32(Application.Current.Properties["UserId"].ToString()),
                             jobId = JobId,
-                            progressStatus = JobProgressStatus.ContentSubmitted
+                            progressStatus = JobProgressStatus.DraftSubmitted
                         };
                         await service.ChangeJobProgress(request);
                     }
@@ -111,7 +111,7 @@ namespace InfluMe.ViewModels {
                 
             }
 
-            await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Submission Success"));
+            await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Submission Success."));
             await Application.Current.MainPage.Navigation.PopAsync();
             await Application.Current.MainPage.Navigation.PopAsync();
 

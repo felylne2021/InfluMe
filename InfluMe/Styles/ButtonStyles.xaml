@@ -30,6 +30,30 @@
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
+    <!--  Common style for Danger Gradient buttons  -->
+    <Style x:Key="DangerButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="IndianRed" />
+                        <graphics:SfGradientStop Offset="1" Color="DarkRed" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="Montserrat-SemiBold" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
     <!--  Common style for Login buttons  -->
     <Style x:Key="OrangeButtonStyle" TargetType="buttons:SfButton">
         <Setter Property="BackgroundColor" Value="#FF8000"/>

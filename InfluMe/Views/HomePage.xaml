@@ -11,7 +11,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:converter="clr-namespace:InfluMe.Converters"
     x:Name="InfluencerHome"
     BackgroundColor="{DynamicResource Gray-Bg}"
     NavigationPage.HasNavigationBar="False"
@@ -21,6 +21,12 @@
     <ContentPage.BindingContext>
         <viewModel:JobViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -79,7 +85,14 @@
 
                 </StackLayout>
 
-
+                <Label
+                    Padding="0,26"
+                    BackgroundColor="AliceBlue"
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    HorizontalOptions="Fill"
+                    IsVisible="{Binding IsIGEmpty}"
+                    Text="No Available Instagram Jobs"/>
+                
                 <listView:SfListView
                     Margin="8,0,8,32"
                     AutoFitMode="Height"
@@ -89,6 +102,7 @@
                     HorizontalOptions="FillAndExpand"
                     IsScrollBarVisible="False"
                     IsStickyHeader="True"
+                    IsVisible="{Binding IsIGEmpty, Converter={StaticResource InverseBoolConverter}}"
                     ItemsSource="{Binding InstagramJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"
@@ -191,7 +205,15 @@
                         Text="VIEW ALL" />
 
                 </StackLayout>
-
+                
+                <Label
+                    Padding="0,26"
+                    BackgroundColor="AliceBlue"
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    HorizontalOptions="Fill"
+                    IsVisible="{Binding IsTTEmpty}"
+                    Text="No Available TikTok Jobs"/>
+                
                 <listView:SfListView
                     Margin="8,0,8,32"
                     AutoFitMode="Height"
@@ -201,6 +223,7 @@
                     HorizontalOptions="FillAndExpand"
                     IsScrollBarVisible="False"
                     IsStickyHeader="True"
+                    IsVisible="{Binding IsTTEmpty, Converter={StaticResource InverseBoolConverter}}"
                     ItemsSource="{Binding TikTokJobs}"
                     Orientation="Horizontal"
                     RowSpacing="0"

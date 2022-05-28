@@ -1,10 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:InfluMe.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:template="clr-namespace:InfluMe.Views.Templates"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:InfluMe.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:converter="clr-namespace:InfluMe.Converters"
              x:Class="InfluMe.Views.NotificationListPage"
              Shell.NavBarIsVisible="False"
             NavigationPage.HasNavigationBar="False"
              x:Name="notificationListPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -26,8 +32,21 @@
     </ContentPage.ControlTemplate>
 
     <ContentPage.Content>
-        <!--  ListView for catalog list  -->
-        <listView:SfListView
+        <StackLayout
+            VerticalOptions="CenterAndExpand">
+            <StackLayout 
+            IsVisible="{Binding IsEmpty}"
+                Margin="0,250">
+                    <Image  
+                        Source = "empty"
+                        HeightRequest="130"/>
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        Text="No Notifications"/>
+            </StackLayout>
+
+            <!--  ListView for catalog list  -->
+            <listView:SfListView
                 x:Name="ListViewList"
                 Grid.Row="1"
                 Padding="{OnIdiom Default='0,8,0,0',
@@ -35,18 +54,24 @@
                 AutoFitMode="Height"
                 HorizontalOptions="FillAndExpand"
                 IsStickyHeader="False"
+                IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
                 ItemSize="170"
                 SelectionGesture="Tap"
                 ItemSpacing="0,0,0,16"
                 ItemsSource="{Binding Notifications, Mode=TwoWay }"
                 Style="{StaticResource TransparentSelectionListView}">
 
-            <listView:SfListView.ItemTemplate>
-                <DataTemplate>
-                    <template:NotificationListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference notificationListPage}}" />
-                </DataTemplate>
-            </listView:SfListView.ItemTemplate>
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <template:NotificationListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference notificationListPage}}" />
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
 
-        </listView:SfListView>
+            </listView:SfListView>
+
+        </StackLayout>
+        
     </ContentPage.Content>
+    
+   
 </ContentPage>

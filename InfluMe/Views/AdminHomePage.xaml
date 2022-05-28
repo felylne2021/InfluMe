@@ -15,14 +15,14 @@
 
     <ContentPage.Content>
 
-        <Grid RowDefinitions="Auto, Auto">
+        <Grid RowDefinitions="Auto, Auto, Auto">
 
             <!--  Title View  -->
             <controls:TitleView Title="Home" Grid.Row="0">
                 <controls:TitleView.TrailingView>
                     <StackLayout HorizontalOptions="End" Orientation="Horizontal">
                         <buttons:SfButton
-                            Command="{Binding BindingContext.NotificationCommand, Source={x:Reference MenuTile}}"
+                            Command="{Binding NotificationCommand}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Notification}" />
                     </StackLayout>
@@ -32,55 +32,42 @@
             <StackLayout
                 Grid.Row="1">
                 <!--  ListView for Category  -->
-                <listView:SfListView
-                x:Name="MenuTile"
-                Padding="8"
-                AutoFitMode="Height"
-                HorizontalOptions="FillAndExpand"
-                ItemSpacing="8"
-                ItemsSource="{Binding Categories}"
-                Style="{StaticResource TransparentSelectionListView}">
 
-                    <listView:SfListView.ItemTemplate>
-                        <DataTemplate>
-                            <syncEffectsView:SfEffectsView
-                            RippleColor="{DynamicResource Gray-300}"
-                            TouchDownEffects="Ripple"
-                            TouchUpCommand="{Binding Path=BindingContext.CategorySelectedCommand, Source={x:Reference adminHomePage}}"
-                            TouchUpCommandParameter="{Binding}">
-                                <Grid RowDefinitions="Auto, Auto" RowSpacing="8" >
 
-                                    <!--  Menu Button  -->
-                                    <buttons:SfButton
-                                    Grid.Row="1"
-                                    BackgroundColor="DarkCyan"                                    
-                                    VerticalTextAlignment="Center"
-                                    HeightRequest="{OnIdiom Phone=150,
-                                                            Tablet=240,
-                                                            Desktop=120}"
-                                    WidthRequest="{OnIdiom Phone=160,
-                                                           Tablet=224,
-                                                           Desktop=200}"
-                                    Margin="0,0,0,8"
-                                    FontSize="15"
-                                    FontAttributes="Bold"
-                                    CornerRadius="20"
-                                    Text="{Binding Name}" />
 
-                                </Grid>
-                            </syncEffectsView:SfEffectsView>
-                        </DataTemplate>
-                    </listView:SfListView.ItemTemplate>
+                <Grid RowDefinitions="Auto, Auto" RowSpacing="8" >
 
-                    <!--  Layout to customize no. of columns in SfListView  -->
-                    <listView:SfListView.LayoutManager>
-                        <listView:GridLayout SpanCount="{core:OnPlatformOrientationIntValue Desktop=4, PhonePortrait=2, PhoneLandscape=3, TabletPortrait=3, TabletLandscape=4}" />
-                    </listView:SfListView.LayoutManager>
+                    <!--  Menu Button  -->
+                    <buttons:SfButton
+                            Grid.Row="1"
+                            BackgroundColor="DarkCyan"                                    
+                            VerticalTextAlignment="Center"
+                            HeightRequest="{OnIdiom Phone=150,
+                                                    Tablet=240,
+                                                    Desktop=120}"
+                            WidthRequest="{OnIdiom Phone=160,
+                                                    Tablet=224,
+                                                    Desktop=200}"
+                            Margin="0,0,0,8"
+                            FontSize="15"
+                            FontFamily="{StaticResource FontAwesomeSolid}"
+                            FontAttributes="Bold"
+                            CornerRadius="20"
+                            Text="&#xf0d1;" />
 
-                </listView:SfListView>
+                </Grid>
+
+
+
             </StackLayout>
-            
-            
+
+            <buttons:SfButton
+                Margin="6,8,0,0"
+                Command="{Binding LogOutCommand}"
+                Style="{StaticResource TransparentButtonStyle}"
+                Text="Log Out"
+                TextColor="DarkRed" />
+
         </Grid>
     </ContentPage.Content>
 

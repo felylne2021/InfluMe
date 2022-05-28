@@ -26,6 +26,7 @@ namespace InfluMe.ViewModels {
         private List<JobAppliedResponse> myJobs;
         private List<JobAppliedResponse> allMyJobs;
         private JobAppliedResponse selectedJob;
+        private bool isEmpty;
 
         private string jobStatusFilter;
 
@@ -71,6 +72,19 @@ namespace InfluMe.ViewModels {
             }
         }
 
+        public bool IsEmpty {
+            get {
+                return this.isEmpty;
+            }
+
+            set {
+                if (this.isEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isEmpty, value);
+            }
+        }
 
         public List<JobAppliedResponse> MyJobs {
             get {
@@ -111,8 +125,8 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Methods
-
-        private async void InitializeProperties() {
+       
+        public async void InitializeProperties() {
 
             try {
 
@@ -120,6 +134,8 @@ namespace InfluMe.ViewModels {
 
                 this.AllMyJobs = resp.appliedJobList;
                 this.MyJobs = AllMyJobs;
+
+                this.IsEmpty = this.AllMyJobs.Count == 0;
 
             }
             catch (Exception) {
@@ -134,7 +150,7 @@ namespace InfluMe.ViewModels {
         }
 
         private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true, (SelectedJob.progressStatus == "Ongoing")));
+            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true, SelectedJob.progressStatus));
         }
 
         #endregion

@@ -11,10 +11,12 @@
     <None Remove="Data\navigation.json" />
     <None Remove="Data\profile.json" />
     <None Remove="Data\tempmodel.json" />
+    <None Remove="Data\transaction.json" />
     <None Remove="Images\CaloriesEaten.svg" />
     <None Remove="Images\HeartRate.svg" />
     <None Remove="Images\InfluMeLogo.png" />
     <None Remove="Images\instagram.svg" />
+    <None Remove="Images\PaymentSuccess.svg" />
     <None Remove="Images\SleepDuration.svg" />
     <None Remove="Images\tiktok.svg" />
     <None Remove="Images\WaterConsumed.svg" />
@@ -33,8 +35,10 @@
     <EmbeddedResource Include="Data\profile.json" />
     <Content Include="Images\CaloriesEaten.svg" />
     <Content Include="Images\InfluMeLogo.png" />
+    <EmbeddedResource Include="Data\transaction.json" />
     <EmbeddedResource Include="Images\HeartRate.svg" />
     <EmbeddedResource Include="Images\instagram.svg" />
+    <EmbeddedResource Include="Images\PaymentSuccess.svg" />
     <EmbeddedResource Include="Images\SleepDuration.svg" />
     <EmbeddedResource Include="Images\tiktok.svg" />
     <EmbeddedResource Include="Images\WaterConsumed.svg" />
@@ -173,8 +177,14 @@
     <EmbeddedResource Update="Views\AdminMainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ConfirmationPopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ContactEmailEntry.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EditJobPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\EditProfileOTPPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -191,10 +201,16 @@
     <EmbeddedResource Update="Views\EmailSignUpPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\EnrollmentsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\ErrorPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\FeedbackView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ForgotPasswordPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\HomePage.xaml">
@@ -205,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Update="Views\JobListPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\JobSelectionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MainLoginPage.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -218,11 +237,20 @@
     <EmbeddedResource Update="Views\InfoPopupPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ManageJobPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\MyJobsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\NotificationListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OngoingJobListPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PaymentStatusPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ProductDeliveryTrackingPage.xaml">
       <Generator>MSBuild:Compile</Generator>

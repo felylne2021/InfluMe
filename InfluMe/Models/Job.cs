@@ -22,6 +22,7 @@ namespace InfluMe.Models
         public string jobSOW { get; set; }
         public string jobAdditionalRequirement { get; set; }
         public string jobStatus { get; set; }
+        public string hasContentApproval { get; set; }
 
     }
 
@@ -51,6 +52,8 @@ namespace InfluMe.Models
         public string jobAdditionalRequirement { get; set; }
         public string jobStatus { get; set; }
         public string hasContentApproval { get; set; }
+        public string jobImage { get; set; }
+
 
     }
 
@@ -84,7 +87,10 @@ namespace InfluMe.Models
         public string proofOfWork { get; set; }
         public string contentDraft { get; set; }
         public string isApply { get; set; }
+        public InfluencerResponse influencer { get; set; }
         public JobResponse job { get; set; }
+        public Payment payment { get; set; }
+        public Delivery delivery { get; set; } 
 
     }
 
@@ -115,5 +121,19 @@ namespace InfluMe.Models
         public int jobId { get; set; }
         public string progressStatus { get; set; }
 
+    }
+
+    public class Payment {
+        public int paymentId { get; set; }
+        public string paymentStatus { get; set; }
+        public string paymentAmount { get; set; }
+        public string paymentDate { get; set; }
+    }
+
+    public class Delivery {
+        public int deliveryId { get; set; }
+        public string deliveryStatus { get; set; }
+        public string deliveryCompany { get; set; }
+        public string deliveryItemName { get; set; }
     }
 }

@@ -4,11 +4,13 @@ using InfluMe.Services;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Json;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -164,7 +166,8 @@ namespace InfluMe.ViewModels {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
                 this.JobStats = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
 
-                this.OngoingJobs = JobStats.appliedJobList.Count(x => x.progressStatus.Equals(JobProgressStatus.Ongoing));
+               
+                this.OngoingJobs = JobStats.appliedJobList.Count(x => !x.progressStatus.Equals(JobProgressStatus.Applied) && !x.progressStatus.Equals(JobProgressStatus.NotApproved) && !x.progressStatus.Equals(JobProgressStatus.Completed)) ;
                 this.CompletedJobs = JobStats.appliedJobList.Count(x => x.progressStatus.Equals(JobProgressStatus.Completed));
 
             }
@@ -190,10 +193,11 @@ namespace InfluMe.ViewModels {
         }
 
         
-        private void LogOutClicked(object obj) {
+        private async void LogOutClicked(object obj) {
             Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
             Application.Current.Properties["UserId"] = "";
             Application.Current.Properties["UserType"] = "";
+            await App.Current.SavePropertiesAsync();
             Application.Current.MainPage = new MainLoginPage();
 
         }
@@ -242,6 +246,7 @@ namespace InfluMe.ViewModels {
                         await service.UpdateProfile(req);
                         await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PopAsync();
+                        this.InitializeProperties();
                     }
                     else if (resp.body.Equals(ResponseStatus.INVALID.ToString())) {
                         IsOTPErrorMessageVisible = true;

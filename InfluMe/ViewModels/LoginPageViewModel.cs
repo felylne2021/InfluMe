@@ -210,8 +210,9 @@ namespace InfluMe.ViewModels {
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ForgotPasswordClicked(object obj) {
+        private async void ForgotPasswordClicked(object obj) {
             // Do something
+            await Application.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
         }
 
         private async void ResendOTPClicked(object obj) {

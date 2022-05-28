@@ -23,6 +23,9 @@ namespace InfluMe
 
         public App()
         {
+            // Syncfusion License Key
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjQ0NDM1QDMxMzkyZTM0MmUzMGlEeDFYMXVtR0FUcGxaaENvYU82ZjNoa3gzRzRIZGtuaitjVVBNSDJEdUk9");
+
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
 
@@ -42,7 +45,7 @@ namespace InfluMe
             }
             else {
                 //Load if Logged In
-                if (Application.Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
+                if (Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
                     MainPage = new NavigationPage(new MainPage());
                 else MainPage = new NavigationPage(new AdminMainPage());
             }

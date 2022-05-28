@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.ManageJobPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:badge="clr-namespace:Syncfusion.XForms.BadgeView;assembly=Syncfusion.SfBadgeView.XForms"
+    xmlns:behavior="clr-namespace:InfluMe.Behaviors"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:commonBehavior="clr-namespace:InfluMe.Behaviors"
+    xmlns:controls="clr-namespace:InfluMe.Controls"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:helper="clr-namespace:InfluMe.Helpers"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
+    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    x:Name="manageJobPage"
+    Title="Manage Job"
+    BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
+                              Desktop={DynamicResource Gray-100},
+                              Converter={StaticResource DynamicResourceToColorConverter}}"
+    NavigationPage.HasNavigationBar="False">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <!--  Header Template for Catalog SfListView  -->
+            <DataTemplate x:Key="CatalogDefaultHeaderTemplate">
+                <StackLayout
+                    BackgroundColor="{DynamicResource Gray-Bg}"
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    Spacing="8"
+                    VerticalOptions="Center">
+
+                    <!--  Filter Platform -->
+
+                    <StackLayout
+                        Padding="8,5,8,6"
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        VerticalOptions="Center">
+                        <Label
+                            FontFamily="FontIcons"
+                            FontSize="18"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{StaticResource Filter}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="End" />
+                        <combobox:SfComboBox
+                            x:Name="JobPlatformPicker"
+                            Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                            Watermark="Filter Platform"
+                            SelectedValue="{Binding JobPlatformFilter, Mode=TwoWay}"
+                            FontFamily="Montserrat-Medium">
+                            <combobox:SfComboBox.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectionChanged"
+                                          Command="{Binding FilterJobByPlatformCommand}" />
+                            </combobox:SfComboBox.Behaviors>
+                            <combobox:SfComboBox.ComboBoxSource>
+                                <ListCollection:List x:TypeArguments="x:String">
+                                    <x:String>Instagram</x:String>
+                                    <x:String>TikTok</x:String>
+                                </ListCollection:List>
+                            </combobox:SfComboBox.ComboBoxSource>
+                        </combobox:SfComboBox>
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
+            <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid
+            ColumnSpacing="0"
+            RowDefinitions="Auto, *"
+            RowSpacing="0">
+
+            <!--  Title View  -->
+            <controls:TitleView Title="Available Jobs" Grid.Row="0">
+                <controls:TitleView.TrailingView>
+                    <StackLayout HorizontalOptions="End" Orientation="Horizontal">
+                        <buttons:SfButton
+                            Command="{Binding NotificationButtonCommand}"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Notification}" />
+                    </StackLayout>
+                </controls:TitleView.TrailingView>
+
+            </controls:TitleView>
+            
+            <buttons:SfButton
+                Margin="6,8,0,0"
+                Command="{Binding LogOutCommand}"
+                Style="{StaticResource TransparentButtonStyle}"
+                Text="Log Out"
+                TextColor="DarkRed" />
+            
+            <!--  ListView for catalog list  -->
+            <listView:SfListView
+                x:Name="ListViewList"
+                Grid.Row="1"
+                Padding="{OnIdiom Default='0,8,0,0',
+                                  Desktop='15,15,15,0'}"
+                AutoFitMode="Height"
+                HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
+                HorizontalOptions="FillAndExpand"
+                IsStickyHeader="False"
+                IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
+                ItemSize="170"
+                SelectionGesture="Tap"
+                ItemSpacing="0,0,0,16"
+                ItemsSource="{Binding Jobs, Mode=TwoWay}"
+                SelectedItem="{Binding SelectedJob}"
+                Style="{StaticResource TransparentSelectionListView}">
+
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference manageJobPage}}" />
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+
+            </listView:SfListView>
+
+            <StackLayout 
+                Grid.Row="1"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsEmpty}">
+                <Image  
+                    Source = "empty"
+                    HeightRequest="130"/>
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="No Jobs Yet"/>
+            </StackLayout>
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

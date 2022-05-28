@@ -1,6 +1,14 @@
-﻿using InfluMe.Models;
+﻿using InfluMe.Helpers;
+using InfluMe.Models;
+using InfluMe.Services;
+using InfluMe.Views;
+using Rg.Plugins.Popup.Extensions;
+using Syncfusion.XForms.ProgressBar;
+using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.Serialization;
+using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
 namespace InfluMe.ViewModels {
@@ -11,107 +19,110 @@ namespace InfluMe.ViewModels {
     [DataContract]
     public class ProductDeliveryTrackingPageViewModel : BaseViewModel {
         #region Fields
+        private JobAppliedResponse job;
 
-        private string productName;
+        private Uri imagerURL;
 
-        private string description;
+        private InfluMeService service => new InfluMeService();
 
-        private string status;
-
-        private string orderId;
-
-        private string productImage;
-
-        private ObservableCollection<ProductDeliveryTrackingModel> productDeliveryTrackings;
 
         #endregion
+
+        public ProductDeliveryTrackingPageViewModel() {
+            this.InitializeProperties();
+            this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
+
+        }
+
+        public double ProgressValue { get; set; }
+
+        /// <summary>
+        /// Gets or sets the step status.
+        /// </summary>
+        public StepStatus StepStatus { get; set; }
+
+        private List<DelivProg> progresses;
+        public List<DelivProg> Progresses {
+            get {
+                return this.progresses;
+            }
+            set {
+                this.SetProperty(ref this.progresses, value);
+            }
+        }
+
+        public ObservableCollection<DelivProg> ProgressesCollection { get; set;}
+
+        public class DelivProg{
+            public string status { get; set; }
+            public StepStatus stepStatus { get; set; }
+            public int progressVal { get; set; }
+
+        }
+
+
+        public Uri ImageURL {
+            get {
+                return this.imagerURL;
+            }
+            set {
+                this.SetProperty(ref this.imagerURL, value);
+            }
+        }
+
+        public async void InitializeProperties() {
+            try {
+                this.Job = await service.GetDummyAppliedJob();
+
+                this.ImageURL = new Uri(Job.job.jobImage);
+
+                var status = this.Job.delivery.deliveryStatus;
+                
+                this.Progresses = new List<DelivProg>();
+
+                foreach (string delivStat in DeliveryStatus.DeliveryStatusList) {
+                    
+                    if (status.Equals(delivStat, StringComparison.OrdinalIgnoreCase)) {
+                        this.Progresses.Add(new DelivProg() {
+                            status = delivStat,
+                            stepStatus = delivStat == DeliveryStatus.OnShipping || status == DeliveryStatus.OnDelivery ? StepStatus.InProgress : status == DeliveryStatus.Received ? StepStatus.Completed : StepStatus.NotStarted,
+                            progressVal = 100
+                        });
+                        break;
+                    }
+                    else {
+                        this.Progresses.Add(new DelivProg() {
+                            status = delivStat,
+                            stepStatus = delivStat == DeliveryStatus.OnShipping || status == DeliveryStatus.OnDelivery ? StepStatus.InProgress : status == DeliveryStatus.Received ? StepStatus.Completed : StepStatus.NotStarted,
+                            progressVal = 100
+                        });
+                    }
+                        
+                }
+
+                this.ProgressesCollection = new ObservableCollection<DelivProg>(Progresses);
+
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
 
         #region Properties
 
-        /// <summary>
-        /// Gets or sets the property that has been bound with bindable layout, which displays the collection of delivery tracking.
-        /// </summary>
-        [DataMember(Name = "productdeliverytrackings")]
-        public ObservableCollection<ProductDeliveryTrackingModel> ProductDeliveryTrackings {
+        public JobAppliedResponse Job {
             get {
-                return this.productDeliveryTrackings;
+                return this.job;
             }
 
             set {
-                this.SetProperty(ref this.productDeliveryTrackings, value);
+                this.SetProperty(ref this.job, value);
             }
         }
 
-        /// <summary>
-        /// Gets or sets the property that has been bound with Xamarin.Forms Image, which displays the product image.
-        /// </summary>
-        [DataMember(Name = "productimage")]
-        public string ProductImage {
-            get {
-                return App.ImageServerPath + this.productImage;
-            }
-
-            set {
-                this.SetProperty(ref this.productImage, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the product name.
-        /// </summary>
-        [DataMember(Name = "productname")]
-        public string ProductName {
-            get {
-                return this.productName;
-            }
-
-            set {
-                this.SetProperty(ref this.productName, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the order description.
-        /// </summary>
-        [DataMember(Name = "description")]
-        public string Description {
-            get {
-                return this.description;
-            }
-
-            set {
-                this.SetProperty(ref this.description, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the status of the order.
-        /// </summary>
-        [DataMember(Name = "status")]
-        public string Status {
-            get {
-                return this.status;
-            }
-
-            set {
-                this.SetProperty(ref this.status, value);
-            }
-        }
-
-        /// <summary>
-        /// Gets or sets the property that has been bound with a label, which displays the order id.
-        /// </summary>
-        [DataMember(Name = "orderid")]
-        public string OrderID {
-            get {
-                return this.orderId;
-            }
-
-            set {
-                this.SetProperty(ref this.orderId, value);
-            }
-        }
-
+       
         #endregion
+
+        public Command BackButtonCommand { get; set; }
     }
 }

@@ -21,5 +21,6 @@ namespace InfluMe.Views
             jobViewModel.JobPlatformFilter = jobPlatform;
             BindingContext = jobViewModel;
         }
+
     }
 }

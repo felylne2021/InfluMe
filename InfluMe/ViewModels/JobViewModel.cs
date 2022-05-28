@@ -11,6 +11,7 @@ using System.Linq;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using InfluMe.Helpers;
+using System.Globalization;
 
 namespace InfluMe.ViewModels {
     /// <summary>
@@ -27,6 +28,9 @@ namespace InfluMe.ViewModels {
         private List<Notification> notifications;
         private JobResponse selectedJob;
         private string jobPlatformFilter;
+        private bool isEmpty;
+        private bool isIGEmpty;
+        private bool isTTEmpty;
 
         private JobDataService service => new JobDataService();
 
@@ -39,6 +43,8 @@ namespace InfluMe.ViewModels {
             this.ViewAllCommand = new Command<string>(this.ViewAllClicked);
             this.NotificationButtonCommand = new Command(this.NotificationButtonClicked);
             this.FilterJobByPlatformCommand = new Command(this.FilterJobByPlatform);
+            this.LogOutCommand = new Command(LogOutClicked);
+
         }
         #endregion
 
@@ -50,6 +56,48 @@ namespace InfluMe.ViewModels {
                     selectedJob = value;
                     ItemSelected();
                 }
+            }
+        }
+
+        public bool IsEmpty {
+            get {
+                return this.isEmpty;
+            }
+
+            set {
+                if (this.isEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isEmpty, value);
+            }
+        }
+
+        public bool IsIGEmpty {
+            get {
+                return this.isIGEmpty;
+            }
+
+            set {
+                if (this.isIGEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isIGEmpty, value);
+            }
+        }
+
+        public bool IsTTEmpty {
+            get {
+                return this.isTTEmpty;
+            }
+
+            set {
+                if (this.isTTEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isTTEmpty, value);
             }
         }
 
@@ -158,6 +206,9 @@ namespace InfluMe.ViewModels {
 
         public Command FilterJobByPlatformCommand {get; set; }
 
+        public Command LogOutCommand { get; set; }
+
+
         #endregion
 
         #region Methods
@@ -167,25 +218,61 @@ namespace InfluMe.ViewModels {
 
             try {
                 jobs = await service.GetAllJob();
-                this.Notifications = await service.GetNotifications(Application.Current.Properties["UserId"].ToString());
+                jobs = jobs.Select(x => { x.jobDeadline = DateTime.ParseExact(x.jobDeadline, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"); return x; }).ToList();
+                jobs = jobs.Select(x => { x.jobRegistrationDeadline = DateTime.ParseExact(x.jobRegistrationDeadline, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"); return x; }).ToList();
+
+                this.Notifications = await service.GetNotifications(Application.Current.Properties["UserId"].ToString(), Application.Current.Properties["UserType"].ToString());
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
+            if(Application.Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
+                jobs = jobs.Where(x => x.jobStatus.Equals(JobStatus.OPEN.ToString())).ToList();
+
+            
             this.AllJobs = new ObservableCollection<JobResponse>(jobs);
-            this.Jobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformFilter) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())));
+            if (JobPlatformFilter != null)
+                this.Jobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformFilter) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())));
+            else if (JobPlatformFilter == null)
+                this.Jobs = this.AllJobs;
+
             this.InstagramJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformList.Instagram.ToString()) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())).Take(3));
             this.TikTokJobs = new ObservableCollection<JobResponse>(jobs.Where(x => x.jobPlatform.Equals(JobPlatformList.TikTok.ToString()) || x.jobPlatform.Equals(JobPlatformList.Both.ToString())).Take(3));
 
-
+            this.IsEmpty = this.AllJobs.Count == 0;
+            this.IsIGEmpty = this.InstagramJobs.Count == 0;
+            this.IsTTEmpty = this.TikTokJobs.Count == 0;
         }
 
         /// <summary>
         /// Invoked when an item is selected.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob, false, false));
+        private async void ItemSelected() {
+            if(Application.Current.Properties["UserType"].ToString() == UserType.Admin.ToString()) {
+                switch (selectedJob.jobStatus) {
+                    case nameof(JobStatus.OPEN):
+                        await Application.Current.MainPage.Navigation.PushAsync(new EditJobPage(SelectedJob));
+                        break;
+                    case nameof(JobStatus.SELECTION):
+                        // list of influencers who applied
+                        break;
+                    case nameof(JobStatus.ONGOING):
+                        // list of influencers with ongoing Job Status ref: my jobs
+                        break;
+                    case nameof(JobStatus.DONE):
+                        // like ongoing, payment if any
+                        break;
+                    case nameof(JobStatus.CLOSE):
+                        // admin can close when all done
+                        break;
+                }
+                
+            }
+                
+
+            else if(Application.Current.Properties["UserType"].ToString() == UserType.Influencer.ToString())
+                await Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob, false, ""));
         }
 
         /// <summary>
@@ -205,7 +292,21 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <param name="obj">The Object</param>
         private void NotificationButtonClicked(object obj) {
-            Application.Current.MainPage.Navigation.PushAsync(new NotificationListPage(this));
+            Application.Current.MainPage.Navigation.PushAsync(new NotificationListPage(this.Notifications));
+        }
+
+        public void LogOutClicked(object obj) {
+            Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            Application.Current.Properties["UserId"] = "";
+            Application.Current.Properties["UserType"] = "";
+            App.Current.SavePropertiesAsync();
+            Application.Current.MainPage = new MainLoginPage();
+        }
+
+        public void OnAppearing() {
+            IsBusy = true;
+            SelectedJob = null;
+            InitializeProperties();
         }
     }
     

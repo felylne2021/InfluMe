@@ -79,12 +79,14 @@
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
             <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
             <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
             
 
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
+        
         <Grid
             ColumnSpacing="0"
             RowDefinitions="Auto, *"
@@ -104,6 +106,7 @@
                 HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
                 HorizontalOptions="FillAndExpand"
                 IsStickyHeader="False"
+                IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
                 ItemSize="170"
                 SelectionGesture="Tap"
                 ItemSpacing="0,0,0,16"
@@ -119,6 +122,18 @@
                 </listView:SfListView.ItemTemplate>
 
             </listView:SfListView>
+
+            <StackLayout 
+                Grid.Row="1"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsEmpty}">
+                <Image  
+                    Source = "empty"
+                    HeightRequest="130"/>
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="No Jobs Applied"/>
+            </StackLayout>
 
         </Grid>
 

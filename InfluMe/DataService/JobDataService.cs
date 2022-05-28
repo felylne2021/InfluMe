@@ -1,4 +1,5 @@
-﻿using InfluMe.Models;
+﻿using InfluMe.Helpers;
+using InfluMe.Models;
 using InfluMe.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Reflection;
 using System.Runtime.Serialization.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace InfluMe.DataService
 {
@@ -15,7 +17,8 @@ namespace InfluMe.DataService
     {
         #region fields
 
-        private string _hostname = "https://influmebe.herokuapp.com";
+        private static readonly string _hostname = "https://influmebe.herokuapp.com";
+        private HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_hostname) };
 
         #endregion
 
@@ -33,13 +36,11 @@ namespace InfluMe.DataService
 
         #region Methods
 
-        public async Task<List<Notification>> GetNotifications(string id) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
+        public async Task<List<Notification>> GetNotifications(string id, string userType) {
 
             NotificationResponse resp = new NotificationResponse();
 
-            var response = await client.GetAsync($"/notification/influencer/{id}");
+            var response = userType == UserType.Admin.ToString() ? await client.GetAsync($"/notification/admin/{id}"): await client.GetAsync($"/notification/influencer/{id}");
 
             if (response.IsSuccessStatusCode) {
                 var jsonString = await response.Content.ReadAsStringAsync();
@@ -50,8 +51,6 @@ namespace InfluMe.DataService
         }
 
         public async Task<List<JobResponse>> GetAllJob() {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.GetAsync("/job");
 
@@ -64,8 +63,6 @@ namespace InfluMe.DataService
         }
 
         public async Task<JobResponse> GetJobById(string jobId) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.GetAsync($"/job/get/{jobId}");
 
@@ -78,8 +75,6 @@ namespace InfluMe.DataService
         }
 
         public async Task<JobAppliedResponse> ApplyJob(JobApplied jobApplied) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync("/appliedJob/apply", jobApplied);
 
@@ -91,9 +86,19 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
+        public async Task<JobResponse> AddJob(JobRequest req) {
+
+            var response = await client.PostAsJsonAsync("/job/save", req);
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                JobResponseBody respBody = JsonSerializer.Deserialize<JobResponseBody>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
         public async Task SubmitPoW(PoWSubmission submission) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync("/appliedJob/submitPOW", submission);
 
@@ -104,8 +109,6 @@ namespace InfluMe.DataService
         }
 
         public async Task SubmitDraft(DraftSubmission submission) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync("/appliedJob/submitContentDraft", submission);
 
@@ -119,6 +122,28 @@ namespace InfluMe.DataService
             client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync($"/appliedJob/changeProgressStatus", request);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
+        public async Task DeleteJob(string jobId) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.DeleteAsync($"/job/delete/{jobId}");
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
+        public async Task UpdateJob(JobResponse job) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PutAsJsonAsync($"/job/update/{job.jobId}", job);
 
             if (!response.IsSuccessStatusCode) {
                 throw new Exception();

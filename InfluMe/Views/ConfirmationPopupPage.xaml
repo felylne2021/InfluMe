@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<pages:PopupPage  
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:pages="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup"
+    xmlns:animations="clr-namespace:Rg.Plugins.Popup.Animations;assembly=Rg.Plugins.Popup" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    x:Class="InfluMe.Views.ConfirmationPopupPage">
+
+
+
+
+    <pages:PopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center"
+            PositionOut="Center"
+           
+            DurationIn="400"
+            DurationOut="300"
+            EasingIn="SinOut"
+            EasingOut="SinIn"
+            HasBackgroundAnimation="True"/>
+    </pages:PopupPage.Animation>
+    <!--You can use any elements here which are extended from Xamarin.Forms.View-->
+    <StackLayout 
+        VerticalOptions="CenterAndExpand" 
+        HorizontalOptions="CenterAndExpand" 
+       >
+        <Frame CornerRadius="15"  HorizontalOptions="FillAndExpand" HeightRequest="250" WidthRequest="300" VerticalOptions="CenterAndExpand">
+            <StackLayout>
+                <!--  Close button  -->
+                <buttons:SfButton
+                    Margin="0,0"
+                    Command="{Binding ClosePopupCommand}"
+                    FontSize="20"
+                    HorizontalOptions="End"
+                    Style="{StaticResource IconButtonStyle}"
+                    Text="{StaticResource Close}"
+                    TextColor="{DynamicResource Gray-Black}"
+                    VerticalOptions="Start" />
+                <Label 
+                    FontFamily="Montserrat-Medium" 
+                    HorizontalTextAlignment="Center" 
+                    VerticalTextAlignment="Center"
+                    Margin="0,0"
+                    FontSize="Medium" 
+                    TextColor="DimGray"
+                    Text="{Binding SelectedInf.influencerName}"
+                    FontAttributes="Bold"></Label>
+                <Label
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    Text="{Binding SelectedInf.influencerInstagramId, StringFormat='Instagram @{0}'}"/>
+                <Label
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    Text="{Binding SelectedInf.influencerTiktokId, StringFormat='TikTok @{0}'}"/>
+                <Label
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    Text="{Binding SelectedInf.whatsappNumber, StringFormat='WhatsApp {0}'}"/>
+                <StackLayout
+                    Orientation="Horizontal"
+                    HorizontalOptions="CenterAndExpand">
+                    <Label
+                        TextColor="DarkBlue"
+                        Style="{StaticResource DescriptionLabelStyle}"
+                        Text="{Binding SelectedInf.bankName, StringFormat='Payment to {0}'}">
+                        <Label.Triggers>
+                            <DataTrigger 
+                                TargetType="Label"
+                                Binding="{Binding SelectedInf.bankName}"
+                                Value="">
+                                <Setter Property="Text" Value="Payment Not Set" />
+                            </DataTrigger>
+                        </Label.Triggers>
+                    </Label>
+                    <Label
+                        TextColor="DarkBlue"
+                        Style="{StaticResource DescriptionLabelStyle}"
+                        Text="{Binding SelectedInf.bankAccountNumber}"/>
+                </StackLayout>
+                <Label
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    Text="{Binding SelectedInf.influencerAddress, StringFormat='&#xf3c5; {0}'}"/>
+                <buttons:SfButton
+                    Style="{StaticResource TransparentButtonStyle}"
+                    TextColor="DarkRed"
+                    HorizontalOptions="Center"
+                    Command="{Binding Deactivate}"
+                    CommandParameter="{Binding SelectedInf.influencerId}">
+                    <buttons:SfButton.Triggers>
+                        <DataTrigger 
+                                TargetType="buttons:SfButton"
+                                Binding="{Binding SelectedInf.influencerStatus}"
+                                Value="ACTIVE">
+                            <Setter Property="Text" Value="DEACTIVATE" />
+                        </DataTrigger>
+                        <DataTrigger 
+                                TargetType="buttons:SfButton"
+                                Binding="{Binding SelectedInf.influencerStatus}"
+                                Value="INACTIVE">
+                            <Setter Property="Text" Value="ACTIVATE" />
+                        </DataTrigger>
+                    </buttons:SfButton.Triggers>
+                </buttons:SfButton>
+
+
+            </StackLayout>
+        </Frame>
+
+    </StackLayout>
+</pages:PopupPage>

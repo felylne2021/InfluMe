@@ -1,4 +1,5 @@
-﻿using InfluMe.ViewModels;
+﻿using InfluMe.Services;
+using InfluMe.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,14 @@ namespace InfluMe.Views {
         public MyJobsPage() {
             InitializeComponent();
             BindingContext = new MyJobsViewModel();
+        }
+
+        protected override void OnAppearing() {
+            base.OnAppearing();
+            InfluMeService service = new InfluMeService();
+            MyJobsViewModel viewModel = (MyJobsViewModel)this.BindingContext;
+
+            viewModel.InitializeProperties();
         }
     }
 }

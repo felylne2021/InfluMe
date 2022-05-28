@@ -14,8 +14,16 @@ namespace InfluMe.Views {
             datePicker.IsOpen = true;
         }
 
+        private void SecDatePicker_Clicked(object sender, System.EventArgs e) {
+            secDatePicker.IsOpen = true;
+        }
+
         private void DatePicker_OkButtonClicked(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e) {
             pickerButton.Text = string.Format("{0:dd/MM/yyyy}", e.NewValue);
+        }
+
+        private void SecDatePicker_OkButtonClicked(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e) {
+            secondPickerButton.Text = string.Format("{0:dd/MM/yyyy}", e.NewValue);
         }
     }
 }

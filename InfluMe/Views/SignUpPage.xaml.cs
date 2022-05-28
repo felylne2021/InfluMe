@@ -1,4 +1,5 @@
-﻿using Xamarin.Forms.Internals;
+﻿using System;
+using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
 namespace InfluMe.Views
@@ -23,7 +24,7 @@ namespace InfluMe.Views
         }
 
         private void DatePicker_OkButtonClicked(object sender, Syncfusion.XForms.Pickers.DateChangedEventArgs e) {
-            birthdatePickerButton.Text = string.Format("{0:dd/MM/yyyy}", e.NewValue);
+            birthdatePickerButton.Text = string.Format("{0:dd/MM/yyyy}", Convert.ToDateTime(e.NewValue).Date);
         }
     }
 }

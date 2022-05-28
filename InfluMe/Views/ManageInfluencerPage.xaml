@@ -11,11 +11,17 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+    xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:converter="clr-namespace:InfluMe.Converters"
     BackgroundColor="{DynamicResource Gray-Bg}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
 
         <Grid
@@ -97,19 +103,30 @@
             <BoxView Grid.Row="1" Style="{StaticResource HorizontalSeparatorStyle}" />
 
             <StackLayout Grid.Row="2">
-
+                <StackLayout 
+                IsVisible="{Binding IsInfluEmpty}"
+                Margin="0,250">
+                    <Image  
+                        Source = "empty"
+                        HeightRequest="130"/>
+                    <Label
+                        HorizontalTextAlignment="Center"
+                        Text="No Influencers"/>
+                </StackLayout>
+                
                 <controls:SearchableContactsList
                     x:Name="InfluencerList"
                     AllowSwiping="True"
                     AutoFitMode="Height"
                     IsScrollBarVisible="False"
+                    IsVisible="{Binding IsInfluEmpty, Converter={StaticResource InverseBoolConverter}}"
                     ItemSpacing="0"
-                    ItemsSource="{Binding InfluencerList}"
+                    ItemsSource="{Binding RegularList}"
                     SearchText="{Binding SearchText}"
                     SelectionBackgroundColor="{DynamicResource Gray-200}"
                     SelectionGesture="Tap"
                     SelectionMode="Single"
-                    TapCommand="{Binding ItemTappedCommand}"
+                    SelectedItem="{Binding SelectedInf, Mode=TwoWay}"
                     VerticalOptions="FillAndExpand">
 
                     <controls:SearchableContactsList.DataSource>
@@ -159,13 +176,14 @@
                                         HeightRequest="56"
                                         RowDefinitions="Auto, Auto"
                                         RowSpacing="0">
-
+                                        
                                         <!--  Contact name avatar  -->
                                         <sfavatar:SfAvatarView
-                                            Margin="16,0,8,16"
-                                            AvatarName="{Binding influencerName}"
-                                            BackgroundColor="{Binding influencerColorHex}"
-                                            Style="{StaticResource AvatarViewStyle}" />
+                                            Margin="16,0,8,0"
+                                            ImageSource="{Binding influencerColorHex}"
+                                            Style="{StaticResource AvatarViewStyle}"
+                                            ContentType="Custom"/>
+                                        
 
                                         <!--  Contact name  -->
                                         <Label
@@ -178,18 +196,34 @@
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center" />
 
-                                        <!--  X button  -->
-                                        <buttons:SfButton
+                                        <Label
                                             Grid.Column="4"
-                                            Margin="0,16"
-                                            HorizontalOptions="Center"
+                                            Margin="-30,6"
+                                            HorizontalOptions="Start"
                                             VerticalOptions="Center"
-                                            Style="{StaticResource IconButtonStyle}"
-                                            Text="{StaticResource Close}" />    
+                                            Style="{StaticResource DescriptionLabelStyle}"
+                                            Text="{Binding influencerStatus}" >
+
+                                            <Label.Triggers>
+                                                <DataTrigger 
+                                                    TargetType="Label"
+                                                    Binding="{Binding influencerStatus}"
+                                                    Value="ACTIVE">
+                                                    <Setter Property="TextColor" Value="DarkBlue" />
+                                                </DataTrigger>
+                                                <DataTrigger 
+                                                    TargetType="Label"
+                                                    Binding="{Binding influencerStatus}"
+                                                    Value="INACTIVE">
+                                                    <Setter Property="TextColor" Value="DarkRed" />
+                                                </DataTrigger>
+                                                
+                                            </Label.Triggers>
+                                        </Label>
 
                                         <!--  Seperator  -->
                                         <BoxView
-                                            Grid.Row="1"
+                                            Grid.Row="01"
                                             Grid.ColumnSpan="2"
                                             Style="{StaticResource HorizontalSeparatorStyle}" />
 

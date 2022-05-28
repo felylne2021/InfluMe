@@ -8,5 +8,9 @@
             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
             android:TabbedPage.ToolbarPlacement="Bottom">
   <!--Pages can be added as references or inline-->
+
+    <local:ManageJobPage Title="Manage Job" IconImageSource="icon_list" />
     <local:ManageInfluencerPage Title="Influencers" IconImageSource="icon_influencers" />
+    <local:AddJobPage Title="New Job" IconImageSource="icon_job" />
+    <local:EnrollmentsPage Title="Enrollments" IconImageSource="icon_enrollment" />
 </TabbedPage>

@@ -14,14 +14,25 @@ namespace InfluMe.Services {
 
     public class InfluMeService {
 
-        private readonly string _hostname = "https://influmebe.herokuapp.com";
+        private static readonly string _hostname = "https://influmebe.herokuapp.com";
+        private HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_hostname) };
         public InfluMeService() {
         }
 
-        public async Task<LoginResponse> Login(string username, string password) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
+        public async Task<JobAppliedResponse> GetDummyAppliedJob() {
+            
+            var response = await client.GetAsync("appliedJob/get/83");
 
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                JobAppliedResponseBody respBody = JsonSerializer.Deserialize<JobAppliedResponseBody>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
+        public async Task<LoginResponse> Login(string username, string password) {
+           
             LoginRequest req = new LoginRequest() {
                 email = username,
                 password = password
@@ -37,9 +48,19 @@ namespace InfluMe.Services {
             else throw new Exception();
         }
 
+        public async Task<ForgotPasswordResponse> SendForgotPasswordMail(ForgotPasswordRequest req) {
+
+            var response = await client.PostAsJsonAsync("/mail/resetPassword", req);
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                ForgotPasswordResponseBody respBody = JsonSerializer.Deserialize<ForgotPasswordResponseBody>(jsonString);
+                return respBody.body;
+            }
+            else throw new Exception();
+        }
+
         public async Task<InfluencerResponse> GetInfluencerById(string influencerId) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.GetAsync($"/influencer/get/{influencerId}");
 
@@ -51,9 +72,15 @@ namespace InfluMe.Services {
             else throw new Exception();
         }
 
+        public async Task UpdateInfluencerStatus(string influencerId, string status) {
+            var response = await client.GetAsync($"/influencer/updateStatus?influencerId={influencerId}&influencerStatus={status}");
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
         public async Task<List<InfluencerResponse>> GetInfluencers() {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.GetAsync($"/influencer/get");
 
@@ -66,8 +93,6 @@ namespace InfluMe.Services {
         }
 
         public async Task<OTPResponse> GetOTP(string email) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             OTPRequest req = new OTPRequest() {
                 influencerEmail = email
@@ -85,8 +110,6 @@ namespace InfluMe.Services {
         }
 
         public async Task<OTPResponse> GetOTPEditProfile(string email) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             OTPRequest req = new OTPRequest() {
                 influencerEmail = email
@@ -104,8 +127,6 @@ namespace InfluMe.Services {
         }
 
         public async Task<OTPVerificationResponse> GetOTPVerification(string email, string otp) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             OTPVerificationResponse resp = new OTPVerificationResponse();
 
@@ -120,8 +141,6 @@ namespace InfluMe.Services {
         }
 
         public async Task<InfluencerResponse> SignUp(InfluencerRequest req) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync("/influencer/save", req);
 
@@ -135,8 +154,6 @@ namespace InfluMe.Services {
         }
 
         public async Task<JobStatsResponse> GetInfluencerStats(string id) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             JobStatsResponseBody resp = new JobStatsResponseBody();
 
@@ -151,8 +168,6 @@ namespace InfluMe.Services {
         }        
 
         public async Task UpdateProfile(InfluencerUpdateRequest req) {
-            HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync("/influencer/updateProfile", req);
 
@@ -161,6 +176,32 @@ namespace InfluMe.Services {
                 throw new Exception();
             }
 
+        }
+
+        public async Task SubmitEnrollments(List<Enrollment> req) {
+
+            var response = await client.PostAsJsonAsync("/influencer/updateStatusBulk", req);
+
+            if (!response.IsSuccessStatusCode) {
+
+                throw new Exception();
+            }
+
+        }
+
+        //ToDo: wait for service
+        public async Task<bool> GetInfluencerActiveStatus(int id) {
+
+            InfluencerStatusBody resp = new InfluencerStatusBody();
+
+            var response = await client.GetAsync($"/influencer/getInfluencerStatus/{id}");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                resp = JsonSerializer.Deserialize<InfluencerStatusBody>(jsonString);
+                return resp.body.influencerStatus.Equals(Helpers.InfluencerStatus.ACTIVE.ToString());
+            }
+            else throw new Exception();
         }
     }
 }
