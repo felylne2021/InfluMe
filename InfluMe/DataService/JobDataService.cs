@@ -19,6 +19,7 @@ namespace InfluMe.DataService
 
         private static readonly string _hostname = "https://influmebe.herokuapp.com";
         private HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_hostname) };
+        
 
         #endregion
 
@@ -29,6 +30,8 @@ namespace InfluMe.DataService
         /// </summary>
         public JobDataService()
         {
+            //client.DefaultRequestHeaders.CacheControl.MustRevalidate = true;
+            //client.DefaultRequestHeaders.CacheControl.NoCache = false;
         }
 
         #endregion

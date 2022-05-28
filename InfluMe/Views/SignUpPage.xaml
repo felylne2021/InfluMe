@@ -350,7 +350,7 @@
                         HorizontalOptions="Start"
                         WidthRequest="250"
                         Text="{Binding WhatsappNumber.Value}"
-                        Keyboard="Text"
+                        Keyboard="Telephone"
                         TextTransform="Lowercase"
                         VerticalOptions="Center" />
                 </Grid>

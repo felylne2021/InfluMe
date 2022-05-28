@@ -15,8 +15,13 @@ namespace InfluMe.Services {
     public class InfluMeService {
 
         private static readonly string _hostname = "https://influmebe.herokuapp.com";
+        private static readonly string _pyHostname = "https://influmebe-python.herokuapp.com";
         private HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_hostname) };
+        private HttpClient pyClient = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_pyHostname) };
+
         public InfluMeService() {
+            //pyClient.DefaultRequestHeaders.CacheControl.MinFresh = TimeSpan.FromDays(1);
+            //pyClient.DefaultRequestHeaders.CacheControl.NoCache = false;
         }
 
         public async Task<JobAppliedResponse> GetDummyAppliedJob() {
@@ -189,7 +194,6 @@ namespace InfluMe.Services {
 
         }
 
-        //ToDo: wait for service
         public async Task<bool> GetInfluencerActiveStatus(int id) {
 
             InfluencerStatusBody resp = new InfluencerStatusBody();
@@ -202,6 +206,30 @@ namespace InfluMe.Services {
                 return resp.body.influencerStatus.Equals(Helpers.InfluencerStatus.ACTIVE.ToString());
             }
             else throw new Exception();
+        }
+
+
+        public async Task<bool> GetInstagram(string username) {
+
+            try {
+                var response = await pyClient.GetAsync($"/instagramFollowerCount?username={username}");
+
+                return (response.IsSuccessStatusCode);
+            }
+            catch (Exception) {
+                return false;
+            }
+        }
+
+        public async Task<bool> GetTikTok(string username) {
+            try {
+                var response = await pyClient.GetAsync($"/tiktokFollowerCount?username={username}");
+
+                return (response.IsSuccessStatusCode);
+            }
+            catch (Exception) {
+                return false;
+            }
         }
     }
 }
