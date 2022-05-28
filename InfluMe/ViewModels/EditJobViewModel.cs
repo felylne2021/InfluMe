@@ -30,6 +30,7 @@ namespace InfluMe.ViewModels {
 
         public async void Save() {
             try {
+
                 await service.UpdateJob(selectedJob);
 
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Job Updated"));

@@ -3,6 +3,7 @@ using InfluMe.Models;
 using InfluMe.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Reflection;
@@ -145,6 +146,8 @@ namespace InfluMe.DataService
         public async Task UpdateJob(JobResponse job) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
+            job.jobDeadline = DateTime.ParseExact(job.jobDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
+            job.jobRegistrationDeadline = DateTime.ParseExact(job.jobRegistrationDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd");
 
             var response = await client.PutAsJsonAsync($"/job/update/{job.jobId}", job);
 

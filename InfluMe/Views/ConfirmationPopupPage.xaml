@@ -78,10 +78,17 @@
                         Style="{StaticResource DescriptionLabelStyle}"
                         Text="{Binding SelectedInf.bankAccountNumber}"/>
                 </StackLayout>
-                <Label
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Label
                     Style="{StaticResource DescriptionLabelStyle}"
                     FontFamily="{StaticResource FontAwesomeSolid}"
-                    Text="{Binding SelectedInf.influencerAddress, StringFormat='&#xf3c5; {0}'}"/>
+                    Text="&#xf3c5;"/>
+                    <Label
+                    Style="{StaticResource DescriptionLabelStyle}"
+                    Text="{Binding SelectedInf.influencerAddress, StringFormat=' {0}'}"/>
+                </StackLayout>
+                
                 <buttons:SfButton
                     Style="{StaticResource TransparentButtonStyle}"
                     TextColor="DarkRed"
