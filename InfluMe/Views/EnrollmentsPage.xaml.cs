@@ -1,4 +1,5 @@
-﻿using InfluMe.ViewModels;
+﻿using InfluMe.Models;
+using InfluMe.ViewModels;
 using Syncfusion.ListView.XForms;
 using System;
 using System.Collections.Generic;
@@ -15,11 +16,13 @@ namespace InfluMe.Views {
         public EnrollmentsPage() {
             InitializeComponent();
             this.BindingContext = new InfluencerPageViewModel();
-            //EnrollmentList.ItemTapped += ListTapped();
         }
 
-        private ItemTappedEventHandler ListTapped() {
-            throw new NotImplementedException();
+        void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e) {
+            var cb = (CheckBox)sender;
+            InfluencerPageViewModel vm = (InfluencerPageViewModel)this.BindingContext;
+            vm.Enrollments.Where(x => x.influencerId.Equals(cb.BindingContext)).Select(c => { c.isChecked = !c.isChecked; return c; }).ToList();
+            
         }
     }
 }

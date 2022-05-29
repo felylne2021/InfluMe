@@ -70,7 +70,7 @@ namespace InfluMe.Models {
     }
 
     public class Enrollment {
-        public bool isActive { get; set; }
+        public bool isChecked { get; set; }
         public int influencerId { get; set; }
     }
 
@@ -81,4 +81,5 @@ namespace InfluMe.Models {
     public class InfluencerIsActive {
         public string influencerStatus { get; set; }
     }
+
 }

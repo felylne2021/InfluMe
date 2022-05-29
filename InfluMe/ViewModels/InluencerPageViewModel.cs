@@ -86,17 +86,7 @@ namespace InfluMe.ViewModels {
         }
 
         public List<Enrollment> Enrollments { get; set; }
-            //get {
-            //    return this.enrollments;
-            //}
-
-            //set {
-            //    if (this.enrollments == value) {
-            //        return;
-            //    }
-
-            //    this.SetProperty(ref this.enrollments, value);
-            //}        
+                
 
         public List<InfluencerResponse> InfluencerList {
             get {
@@ -150,9 +140,11 @@ namespace InfluMe.ViewModels {
 
             try {
                 this.InfluencerList = await service.GetInfluencers();
-                this.EnrolledList = new ObservableCollection<InfluencerResponse>(InfluencerList.Where(x => x.influencerStatus.Equals(InfluencerStatus.ENROLLED.ToString())));
-                
-                var temp_enrollments = this.EnrolledList.ToList().Select(x => new Enrollment { influencerId = x.influencerId, isActive = false }).ToList();
+
+
+                this.EnrolledList = new ObservableCollection<InfluencerResponse>(this.InfluencerList.ToList().Where(x => x.influencerStatus.Equals(InfluencerStatus.ENROLLED.ToString())));
+
+                var temp_enrollments = this.EnrolledList.ToList().Select(x => new Enrollment { influencerId = x.influencerId, isChecked = false }).ToList();
                 this.Enrollments = (List<Enrollment>)temp_enrollments;
 
                 this.RegularList = new ObservableCollection<InfluencerResponse>(InfluencerList.Where(x => !x.influencerStatus.Equals(InfluencerStatus.ENROLLED.ToString())));
@@ -183,8 +175,8 @@ namespace InfluMe.ViewModels {
         }
 
         private void EnrollmentChecked() {
-            Enrollment curr = this.Enrollments.FirstOrDefault(x => x.influencerId.Equals(40));
-            curr.isActive = !curr.isActive;
+            Enrollment curr = this.Enrollments.FirstOrDefault(x => x.influencerId.Equals(38));
+            curr.isChecked = !curr.isChecked;
         }
 
         private async void SubmitEnrollments() {

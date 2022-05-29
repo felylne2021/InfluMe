@@ -79,7 +79,8 @@
                         Text="{Binding SelectedInf.bankAccountNumber}"/>
                 </StackLayout>
                 <StackLayout
-                    Orientation="Horizontal">
+                    Orientation="Horizontal"
+                    HorizontalOptions="Center">
                     <Label
                     Style="{StaticResource DescriptionLabelStyle}"
                     FontFamily="{StaticResource FontAwesomeSolid}"

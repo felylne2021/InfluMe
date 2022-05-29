@@ -125,10 +125,10 @@
                     ItemSpacing="0"
                     ItemsSource="{Binding EnrolledList}"
                     SearchText="{Binding SearchText}"
+                    SelectedItem="{Binding SelectedInf}"
                     SelectionBackgroundColor="{DynamicResource Gray-200}"
                     SelectionGesture="Tap"
                     SelectionMode="Single"
-                    SelectedItem="{Binding SelectedInf, Mode=TwoWay}"
                     VerticalOptions="FillAndExpand">
 
                     <controls:SearchableContactsList.DataSource>
@@ -201,10 +201,10 @@
 
                                         <CheckBox
                                             Grid.Column="2"
-                                            HorizontalOptions="End">
-                                            <CheckBox.Behaviors>
-                                                <behaviors1:EventToCommandBehavior                                      EventName="CheckedChanged"                                            Command="{Binding ChangeIsActiveCommand}"                             />
-                                            </CheckBox.Behaviors>
+                                            HorizontalOptions="End"
+                                            BindingContext="{Binding influencerId}"
+                                            CheckedChanged="OnCheckBoxCheckedChanged">
+                                            
                                         </CheckBox>
 
                                         <!--  Seperator  -->

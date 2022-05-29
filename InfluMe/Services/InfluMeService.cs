@@ -184,7 +184,6 @@ namespace InfluMe.Services {
         }
 
         public async Task SubmitEnrollments(List<Enrollment> req) {
-
             var response = await client.PostAsJsonAsync("/influencer/updateStatusBulk", req);
 
             if (!response.IsSuccessStatusCode) {
