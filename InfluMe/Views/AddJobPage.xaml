@@ -92,7 +92,7 @@
                     <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" 
                            Source ="upload">
                     </Image>
-                    <Label x:Name="imageBlob" IsVisible="False" Text="{Binding ImageBlob, Mode=TwoWay}"></Label>
+                    <Label x:Name="imageBlob" IsVisible="False" Text="{Binding ImageBlob, Mode=TwoWay}"/>
                     <buttons:SfButton
                     Margin="0,8,0,8"
                     Clicked="Upload_Clicked"
