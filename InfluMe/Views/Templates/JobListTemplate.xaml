@@ -40,16 +40,39 @@
             Text="{Binding jobId}" />
 
         <!--  Name  -->
-        <Label
+        <StackLayout
             Grid.Column="1"
+            Grid.ColumnSpan="2"
+            Orientation="Horizontal">
+            <Label
+            HorizontalOptions="StartAndExpand"
             Margin="0,0,0,4"
             FontSize="Medium"
-            HorizontalOptions="Start"
             LineBreakMode="TailTruncation"
             MaxLines="1"
             Style="{StaticResource TitleLabelStyle}"
             Text="{Binding jobName}"
             VerticalOptions="Center" />
+
+            <Label
+                Text="{Binding jobStatus}"
+                TextColor="Gray"
+                VerticalOptions="Center"
+                FontSize="Small"/>
+        </StackLayout>
+        
+
+        <!--  progress status  -->
+        <!--<Label
+            Grid.Row="0"
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Margin="0,0,0,4"
+            FontSize="Medium"
+            HorizontalOptions="End"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding progressStatus}"
+            VerticalOptions="Center" />-->
 
         <!--  Brand  -->
         <Label
@@ -67,6 +90,7 @@
         <Label
             Grid.Row="2"
             Grid.Column="1"
+            Grid.ColumnSpan="2"
             Margin="0,2"
             Style="{StaticResource SimpleLabelStyle}"
             Text="{Binding jobGender, StringFormat='Gender:  {0}'}"/>
@@ -87,8 +111,7 @@
             Margin="0,0,2,0"
             FontSize="Medium"
             TextColor="MediumVioletRed"
-            FontFamily="{StaticResource FontAwesomeBrands}"
-            Text="">
+            FontFamily="{StaticResource FontAwesomeBrands}">
             <Label.Triggers>
                 <DataTrigger 
                     TargetType="Label"
@@ -131,8 +154,9 @@
         <StackLayout 
             Grid.Row="3"
             Grid.Column="2"
-            HorizontalOptions="End">
-            
+            HorizontalOptions="End"
+            Margin="0,0,0,4">
+
             <Label
                 Margin="-20,4,0,0"
                 FontFamily="{StaticResource FontAwesomeSolid}"
@@ -147,10 +171,8 @@
                 Text="{Binding jobFee, StringFormat='IDR {0:N2}'}"
                 TextColor="{DynamicResource PrimaryColor}" />
         </StackLayout>
-        
 
-
+        <BoxView Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
 
     </Grid>
-    <BoxView Grid.Row="2" Style="{StaticResource HorizontalSeparatorStyle}" />
 </Grid>

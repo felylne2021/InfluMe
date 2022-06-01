@@ -265,4 +265,43 @@
   <ItemGroup>
     <BundleResource Include="Resources\Banner.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_account.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_job.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_influencers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\empty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_list.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_setting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\checked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pending.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon_enrollment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submission.png" />
+  </ItemGroup>
 </Project>

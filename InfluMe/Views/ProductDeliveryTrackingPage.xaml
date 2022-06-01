@@ -28,7 +28,7 @@
                         <!--  Back button command  -->
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{Binding BindingContext.BackButtonCommand, Source={x:Reference ProductTrackingPage}}"
+                            Command="{Binding BackButtonCommand, Source={x:Reference ProductTrackingPage}}"
                             CommandParameter="{x:Reference backButton}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Back}" />
@@ -64,7 +64,7 @@
                         Grid.RowSpan="4"
                         Grid.Column="0"
                         Margin="16,8,16,16"
-                        Aspect="Fill"
+                        Aspect="AspectFill"
                         BackgroundColor="{DynamicResource Gray-200}"
                         HeightRequest="80"
                         WidthRequest="80">
@@ -72,7 +72,7 @@
                             <UriImageSource
                                 CacheValidity="14"
                                 CachingEnabled="true"
-                                Uri="{Binding ProductImage}" />
+                                Uri="{Binding ImageURL}" />
                         </Image.Source>
                     </Image>
 
@@ -84,9 +84,9 @@
                         FontSize="14"
                         HorizontalOptions="Start"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="{Binding ProductName}" />
+                        Text="{Binding Job.job.jobProduct}" />
 
-                    <!--  Description label  -->
+                    <!--  Product Brand -->
                     <Label
                         Grid.Row="1"
                         Grid.Column="1"
@@ -94,7 +94,7 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding Description}" />
+                        Text="{Binding Job.job.jobBrand}" />
 
                     <!--  Order ID  -->
                     <Label
@@ -103,23 +103,22 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding OrderID, StringFormat='Order ID: {0}'}" />
+                        Text="{Binding Job.delivery.deliveryId, StringFormat='Order ID: {0}'}" />
 
                 </Grid>
-
+                
                 <!--  Product delivery tracking  -->
                 <progressBar:SfStepProgressBar
                     x:Name="stepProgress"
                     Margin="0,20,0,0"
                     BackgroundColor="{DynamicResource Gray-Bg}"
-                    BindableLayout.ItemsSource="{Binding ProductDeliveryTrackings}"
+                    BindableLayout.ItemsSource="{Binding ProgressesCollection, Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Vertical"
                     TitleAlignment="Start"
                     TitleSpace="12"
                     VerticalOptions="FillAndExpand">
-
-                    <!--  Style for step progress not started  -->
+ 
                     <progressBar:SfStepProgressBar.NotStartedStepStyle>
                         <progressBar:StepStyle
                             x:TypeArguments="progressBar:NotStartedStepState"
@@ -129,7 +128,6 @@
                             TrackColor="{DynamicResource Gray-200}" />
                     </progressBar:SfStepProgressBar.NotStartedStepStyle>
 
-                    <!--  Style for step progress inprogress  -->
                     <progressBar:SfStepProgressBar.InProgressStepStyle>
                         <progressBar:StepStyle
                             x:TypeArguments="progressBar:InProgressStepState"
@@ -138,8 +136,8 @@
                             MarkerStrokeColor="{DynamicResource PrimaryDarkColor}"
                             ProgressLineColor="{DynamicResource PrimaryColor}" />
                     </progressBar:SfStepProgressBar.InProgressStepStyle>
-
-                    <!--  Style for step progress completed  -->
+                    
+  
                     <progressBar:SfStepProgressBar.CompletedStepStyle>
                         <progressBar:StepStyle
                             x:TypeArguments="progressBar:CompletedStepState"
@@ -154,8 +152,8 @@
                         <DataTemplate>
                             <progressBar:StepView
                                 Margin="20,16,0,0"
-                                ProgressValue="{Binding ProgressValue}"
-                                Status="{Binding StepStatus}">
+                                ProgressValue="{Binding progressVal}"
+                                Status="{Binding stepStatus}">
                                 <progressBar:StepView.PrimaryFormattedText>
                                     <FormattedString>
                                         <Span
@@ -163,10 +161,9 @@
                                             FontSize="16"
                                             LineHeight="{OnPlatform Default=1.25,
                                                                     iOS=-1}"
-                                            Text="{Binding Title}"
-                                            TextColor="{Binding Status, Converter={x:StaticResource StringToColorConverter}, ConverterParameter=1}" />
+                                            Text="{Binding status}"/>
                                         <Span Text="&#10;&#10;" />
-                                        <Span
+                                        <!--<Span
                                             FontFamily="Montserrat-SemiBold"
                                             FontSize="12"
                                             LineHeight="{OnPlatform Default=1.25,
@@ -197,7 +194,7 @@
                                                                     iOS=-1}"
                                             Text="{Binding OrderDate}"
                                             TextColor="{DynamicResource Gray-700}" />
-                                        <Span Text="&#10;&#10;" />
+                                        <Span Text="&#10;&#10;" />-->
                                     </FormattedString>
                                 </progressBar:StepView.PrimaryFormattedText>
                             </progressBar:StepView>

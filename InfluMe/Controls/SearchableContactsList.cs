@@ -16,12 +16,12 @@ namespace InfluMe.Controls {
         /// <returns>Returns the filtered item</returns>
         public override bool FilterContacts(object obj) {
             if (base.FilterContacts(obj)) {
-                var taskInfo = obj as Contact;
-                if (taskInfo == null || string.IsNullOrEmpty(taskInfo.Name)) {
+                var taskInfo = obj as InfluencerResponse;
+                if (taskInfo == null || string.IsNullOrEmpty(taskInfo.influencerName)) {
                     return false;
                 }
 
-                return taskInfo.Name.ToUpperInvariant().Contains(this.SearchText.ToUpperInvariant());
+                return taskInfo.influencerName.ToUpperInvariant().Contains(this.SearchText.ToUpperInvariant());
             }
 
             return false;

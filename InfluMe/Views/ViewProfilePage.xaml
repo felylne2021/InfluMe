@@ -8,11 +8,13 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:svg="clr-namespace:InfluMe.Controls"
+    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
     BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
+  
+    
     <ContentPage.Content>
         <ScrollView>
             <Grid RowDefinitions="Auto, *">
@@ -44,15 +46,23 @@
                         VerticalOptions="StartAndExpand"
                         WidthRequest="120">
 
-                        <Image Aspect="AspectFill" BackgroundColor="{DynamicResource GrayShadowBackgroundColor}">
+                        <!--<Image Aspect="AspectFill" BackgroundColor="{DynamicResource GrayShadowBackgroundColor}">
                             <Image.Source>
                                 <UriImageSource
                                     CacheValidity="14"
                                     CachingEnabled="True"
                                     Uri="{Binding ProfileImage}" />
                             </Image.Source>
-                        </Image>
-
+                        </Image>-->
+                        <sfavatar:SfAvatarView
+                            AvatarShape="Circle"
+                            AvatarSize="ExtraLarge"
+                            ImageSource="{Binding Influencer.influencerColorHex}"
+                            FontFamily="Montserrat-Medium"
+                            InitialsColor="DimGray"
+                            ContentType="Custom"
+                            AvatarName="{Binding Influencer.influencerName}"
+                            BorderWidth="0"/>
                     </border:SfBorder>
 
                     <!--  Profile Name  -->
@@ -61,41 +71,31 @@
                         Margin="0,0,0,2"
                         FontSize="20"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="{Binding ProfileName}"
+                        Text="{Binding Influencer.influencerName}"
                         TextColor="{DynamicResource Gray-White}" />
 
-                    <!--  State and Country  -->
+                    <!--  Age & Sex  -->
                     <Label
                         Grid.Row="2"
                         FontSize="12"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        TextColor="{DynamicResource Gray-White}">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="{Binding Bio}" />
-                            </FormattedString>
-                        </Label.FormattedText>
+                        TextColor="{DynamicResource Gray-White}"
+                        Text="{Binding InfluencerAgeSex}">
                     </Label>
                 </Grid>
 
-                <border:SfBorder
+                <Grid
                     Grid.Row="1"
-                    Margin="0,-69,0,0"
-                    Padding="0,61,0,0"
-                    BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
-                    BorderWidth="0"
-                    CornerRadius="14,14,0,0"
-                    VerticalOptions="Start">
-                    <listView:SfListView
-                        AutoFitMode="Height"
-                        IsScrollingEnabled="False"
-                        ItemSize="74"
-                        ItemsSource="{Binding CardItems}"
-                        SelectionMode="None"
-                        TapCommand="{Binding ItemTappedCommand}">
-                        <listView:SfListView.ItemTemplate>
-                            <DataTemplate>
-                                <svg:CustomShadowFrame
+                    RowDefinitions="Auto,Auto">
+                    <border:SfBorder
+                        Margin="0,-69,0,0"
+                        Padding="0,61,0,0"
+                        BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                        BorderWidth="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="Start">
+
+                        <svg:CustomShadowFrame
                                     Margin="16,8"
                                     Padding="0"
                                     BackgroundColor="{DynamicResource GrayShadowColor}"
@@ -107,43 +107,105 @@
                                     WidthRequest="{OnIdiom Phone=343,
                                                            Default=736}">
 
-                                    <Grid
-                                        Padding="16"
-                                        RowDefinitions="Auto, *"
-                                        RowSpacing="0">
+                            <Grid
+                            Padding="16"
+                            RowDefinitions="Auto, *"                            
+                            RowSpacing="0">
 
-                                        <!--  Category  -->
-                                        <Label
-                                            HeightRequest="24"
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource TitleLabelStyle}"
-                                            Text="{Binding CategoryValue}" />
+                                <!--  Category  -->
+                                <Label
+                                HeightRequest="24"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="{Binding Influencer.influencerInstagramId, StringFormat='@{0}'}" />
 
-                                        <!--  Category Value  -->
-                                        <Label
-                                            Grid.Row="1"
-                                            FontSize="12"
-                                            HeightRequest="18"
-                                            HorizontalOptions="Start"
-                                            Style="{StaticResource DescriptionLabelStyle}"
-                                            Text="{Binding Category}" />
+                                <!--  Category Value  -->
+                                <Label
+                                Grid.Row="1"
+                                FontSize="12"
+                                HeightRequest="18"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource DescriptionLabelStyle}"
+                                Text="{Binding Influencer.instagramFollowersCount, StringFormat='have {0} followers'}"/>
 
-                                        <!--  Category Image  -->
-                                        <svg:SVGImage
-                                            Grid.RowSpan="2"
-                                            BackgroundColor="Transparent"
-                                            HeightRequest="31"
-                                            HorizontalOptions="End"
-                                            Source="{Binding CategoryImage}"
-                                            VerticalOptions="Center"
-                                            WidthRequest="32" />
-                                    </Grid>
+                                <!--  Category Image  -->
+                                <svg:SVGImage
+                                Grid.RowSpan="2"
+                                BackgroundColor="Transparent"
+                                HeightRequest="31"
+                                HorizontalOptions="End"
+                                Source="instagram.svg"
+                                VerticalOptions="Center"
+                                WidthRequest="32" />
 
-                                </svg:CustomShadowFrame>
-                            </DataTemplate>
-                        </listView:SfListView.ItemTemplate>
-                    </listView:SfListView>
-                </border:SfBorder>
+                            </Grid>
+
+
+
+                        </svg:CustomShadowFrame>
+
+                    </border:SfBorder>
+
+                    <border:SfBorder
+                        Grid.Row="2"
+                        BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                        BorderWidth="0"
+                        CornerRadius="14,14,0,0"
+                        VerticalOptions="Start">
+
+                        <svg:CustomShadowFrame
+                                    Margin="16,8"
+                                    Padding="0"
+                                    BackgroundColor="{DynamicResource GrayShadowColor}"
+                                    BorderWidth="0"
+                                    CornerRadius="4"
+                                    HasShadow="True"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Radius="4"
+                                    WidthRequest="{OnIdiom Phone=343,
+                                                           Default=736}">
+
+                            <Grid
+                            Padding="16"
+                            RowDefinitions="Auto, *"                            
+                            RowSpacing="0">
+
+                                <!--  Category  -->
+                                <Label
+                                HeightRequest="24"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="{Binding Influencer.influencerTiktokId, StringFormat='@{0}'}" />
+
+                                <!--  Category Value  -->
+                                <Label
+                                Grid.Row="1"
+                                FontSize="12"
+                                HeightRequest="18"
+                                HorizontalOptions="Start"
+                                Style="{StaticResource DescriptionLabelStyle}"
+                                Text="{Binding Influencer.tiktokFollowersCount, StringFormat='have {0} followers'}" />
+
+                                <!--  Category Image  -->
+                                <svg:SVGImage
+                                Grid.RowSpan="2"
+                                BackgroundColor="Transparent"
+                                HeightRequest="31"
+                                HorizontalOptions="End"
+                                Source="tiktok.svg"
+                                VerticalOptions="Center"
+                                WidthRequest="32" />
+                                
+                            </Grid>
+
+
+
+                        </svg:CustomShadowFrame>
+
+                    </border:SfBorder>
+                </Grid>
+                
+                
 
                 <svg:CustomShadowFrame
                     Grid.Row="0"
@@ -169,32 +231,11 @@
                             WidthRequest="{OnIdiom Phone=343,
                                                    Default=480}">
 
-                            <!--  Completed Jobs  -->
-                            <Label
-                                HeightRequest="24"
-                                Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding CompletedJobs}"
-                                VerticalOptions="End" />
-
-                            <Label
-                                Grid.Row="1"
-                                FontSize="12"
-                                Style="{StaticResource DescriptionLabelStyle}"
-                                Text="Completed Jobs" />
-
-                            <!--  Seperator  -->
-                            <BoxView
-                                Grid.RowSpan="2"
-                                Grid.Column="1"
-                                BackgroundColor="{DynamicResource Gray-400}"
-                                HeightRequest="24"
-                                Style="{StaticResource VerticalSeparatorStyle}" />
-
-
+                            
                             <!--  Ongoing Jobs  -->
                             <Label
                                 Grid.Row="0"
-                                Grid.Column="2"
+                                Grid.Column="0"
                                 HeightRequest="24"
                                 Style="{StaticResource TitleLabelStyle}"
                                 Text="{Binding OngoingJobs}"
@@ -202,12 +243,36 @@
 
                             <Label
                                 Grid.Row="1"
-                                Grid.Column="2"
+                                Grid.Column="0"
                                 FontSize="12"
                                 Style="{StaticResource DescriptionLabelStyle}"
                                 Text="Ongoing Jobs" />
+                            
+                            <!--  Separator  -->
+                            <BoxView
+                                Grid.RowSpan="2"
+                                Grid.Column="1"
+                                BackgroundColor="{DynamicResource Gray-400}"
+                                HeightRequest="24"
+                                Style="{StaticResource VerticalSeparatorStyle}" />
 
-                            <!--  Seperator  -->
+                            <!--  Completed Jobs  -->
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="2"
+                                HeightRequest="24"
+                                Style="{StaticResource TitleLabelStyle}"
+                                Text="{Binding CompletedJobs}"
+                                VerticalOptions="End" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                FontSize="12"
+                                Style="{StaticResource DescriptionLabelStyle}"
+                                Text="Completed Jobs" />
+
+                            <!--  Separator  -->
                             <BoxView
                                 Grid.RowSpan="2"
                                 Grid.Column="3"
@@ -221,7 +286,7 @@
                                 Grid.Column="4"
                                 HeightRequest="24"
                                 Style="{StaticResource TitleLabelStyle}"
-                                Text="{Binding Earnings}"
+                                Text="{Binding JobStats.earnings}"
                                 VerticalOptions="End" />
 
                             <Label
@@ -235,6 +300,33 @@
                     </svg:CustomShadowFrame.Content>
 
                 </svg:CustomShadowFrame>
+
+                <StackLayout
+                    HorizontalOptions="End"
+                    Orientation="Horizontal"
+                    Grid.Row="1"
+                    Spacing="10"
+                    Margin="0,0,20,20"
+                    VerticalOptions="End">
+
+                    
+                    <!--  Edit Profile button  -->
+                    <buttons:SfButton
+                            Command="{Binding EditProfileCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Edit Profile"
+                            TextColor="DimGray" />
+                    <Label 
+                        VerticalOptions="Center"
+                        Text="|"/>
+                    <!--  Log Out button  -->
+                    <buttons:SfButton
+                            Command="{Binding LogOutCommand}"
+                            Style="{StaticResource TransparentButtonStyle}"
+                            Text="Log Out"
+                            TextColor="DarkRed" />
+
+                </StackLayout>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

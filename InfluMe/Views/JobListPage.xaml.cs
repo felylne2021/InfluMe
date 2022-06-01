@@ -1,4 +1,5 @@
 using InfluMe.DataService;
+using InfluMe.ViewModels;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 
@@ -14,10 +15,12 @@ namespace InfluMe.Views
         /// <summary>
         /// Initializes a new instance of the <see cref="JobListPage" /> class.
         /// </summary>
-        public JobListPage(string jobPlatform)
+        public JobListPage(string jobPlatform, JobViewModel jobViewModel)
         {
             this.InitializeComponent();
-            JobPlatform.Text = jobPlatform;
+            jobViewModel.JobPlatformFilter = jobPlatform;
+            BindingContext = jobViewModel;
         }
+
     }
 }

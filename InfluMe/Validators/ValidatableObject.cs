@@ -49,6 +49,7 @@ namespace InfluMe.Validators
         /// Gets or Sets the Validations
         /// </summary>
         public List<IValidationRule<T>> Validations { get; } = new List<IValidationRule<T>>();
+        public List<IValidationRuleAsync<T>> ValidationsAsync { get; } = new List<IValidationRuleAsync<T>>();
 
         /// <summary>
         /// Gets or Sets the Errors
@@ -132,6 +133,14 @@ namespace InfluMe.Validators
 
             IEnumerable<string> errors = this.Validations.Where(v => !v.Check(this.Value))
                 .Select(v => v.ValidationMessage);
+            
+            if(this.ValidationsAsync.Count != 0) {
+                var res = this.ValidationsAsync.First().Check(this.Value).Result;
+                if (res == false)
+                    this.Errors.Add(this.ValidationsAsync.First().ValidationMessage);
+            }
+
+            //errors.Concat(asyncVal.Valida);
 
             this.Errors = errors.ToList();
             this.IsValid = !this.Errors.Any();

@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" 
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" 
+             xmlns:control="clr-namespace:InfluMe.Controls" 
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms" 
+             xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" 
+             xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+             x:Class="InfluMe.Views.InputDeliveryReceiptPage"
+             BackgroundColor="{DynamicResource Gray-100}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <button:SfButton
+                Margin="8"
+                Command="{Binding BackButtonCommand}"
+                FontSize="20"
+                HorizontalOptions="End"
+                Style="{StaticResource IconButtonStyle}"
+                Text="{StaticResource Close}"
+                VerticalOptions="Start" />
+
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Spacing="0"
+                    VerticalOptions="Center">
+
+                    <!--  Submission image  -->
+                    <Image
+                        Margin="0,10,0,0"
+                        HeightRequest="100"
+                        Source="delivery.png"
+                        WidthRequest="100" />
+
+                    <!--  Delivery Header label  -->
+                    <Label
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        TextTransform="Uppercase"
+                        Text="DELIVERY FROM ONEX" />
+                    <Label
+                        Margin="0,0,0,0"
+                        FontSize="20"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        TextTransform="Uppercase"
+                        Text="For Bob" />
+                    
+                    <!--Job Detail-->
+                    <Label
+                        Margin="17,8"
+                        FontFamily="Montserrat-Medium"
+                        LineBreakMode="WordWrap"
+                        WidthRequest="310"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Realfood 2x Story Sebulan from Realfood" />
+
+                    <!--  Deliver Courier label  -->
+                    <StackLayout
+                        Orientation="Vertical"
+                        Margin="8, 0">
+                        <inputLayout:SfTextInputLayout Style="{DynamicResource TextInputLayoutStyle}">
+                            <combobox:SfComboBox
+                                x:Name="CourierPicker" 
+                                Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                                Watermark = "Delivery Courier" >
+                                <combobox:SfComboBox.ComboBoxSource>
+                                    <ListCollection:List x:TypeArguments="x:String">
+                                        <x:String>JNE Express</x:String>
+                                        <x:String>POS Indonesia</x:String>
+                                        <x:String>J&amp;T Express Indonesia</x:String>
+                                        <x:String>SiCepat</x:String>
+                                        <x:String>TIKI</x:String>
+                                        <x:String>AnterAja</x:String>
+                                        <x:String>Wahana</x:String>
+                                        <x:String>Ninja Express</x:String>
+                                        <x:String>Lion Parcel</x:String>
+                                        <x:String>PCP Express</x:String>
+                                        <x:String>JET Express</x:String>
+                                        <x:String>REX Express</x:String>
+                                        <x:String>First Logistics</x:String>
+                                        <x:String>ID Express</x:String>
+                                        <x:String>Shopee Express</x:String>
+                                        <x:String>KGXpress</x:String>
+                                        <x:String>SAP Express</x:String>
+                                        <x:String>RPX</x:String>
+                                    </ListCollection:List>
+                                </combobox:SfComboBox.ComboBoxSource>
+                            </combobox:SfComboBox>
+                        </inputLayout:SfTextInputLayout>
+                        
+                        <border:SfBorder
+                        Margin="0,8,0,0"
+                        Padding="12,8"
+                        BorderColor="Gray"
+                        Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
+                        VerticalOptions="Start">
+                            <control:BorderlessEntry
+                            x:Name="DeliveryReceiptEntry"
+                            Placeholder="Delivery Tracking Number"
+                            Style="{StaticResource BorderlessEntryStyle}"
+                            Text="" />
+                        </border:SfBorder>
+                    </StackLayout>
+
+
+                </StackLayout>
+            </ScrollView>
+            <StackLayout
+                        Orientation="Horizontal"
+                        VerticalOptions="End">
+                <button:SfButton
+                            Margin="8,0,8,10"
+                            HorizontalOptions="FillAndExpand"
+                            Command="{Binding SaveCommand}"
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Text="SUBMIT" />
+                
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

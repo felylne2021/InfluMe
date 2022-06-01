@@ -164,20 +164,26 @@ namespace InfluMe.ViewModels {
             if (this.AreFieldsValid()) {
                 try {
                     LoginResponse resp = await service.Login(this.Email.Value, this.Password.Value);
-                    bool isLoginValid = resp.status.Equals(ResponseStatusEnum.VALID.ToString()) ? true : false;
+                    bool isLoginValid = resp.status.Equals(ResponseStatus.VALID.ToString()) ? true : false;
 
                     if (isLoginValid) {
                         var previousPage = Application.Current.MainPage.Navigation.NavigationStack.LastOrDefault();
                         Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
                         Application.Current.Properties["UserId"] = resp.userId.ToString();
                         Application.Current.Properties["UserType"] = resp.userType;
+                        await App.Current.SavePropertiesAsync();
 
-                        if (resp.userType.Equals(UserTypeEnum.Influencer.ToString()))
-                            await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.userId.ToString()));
-                        else if (resp.userType.Equals(UserTypeEnum.Admin.ToString())) 
-                            await Application.Current.MainPage.Navigation.PushAsync(new AdminHomePage());
+                        if (resp.userType.Equals(UserType.Influencer.ToString()))
+                        {
+                            Application.Current.MainPage = new MainPage();
+                        }
 
-                        Application.Current.MainPage.Navigation.RemovePage(previousPage);
+                        else if (resp.userType.Equals(UserType.Admin.ToString()))
+                        {
+                            Application.Current.MainPage = new AdminMainPage();
+                        }
+                        
+                        //Application.Current.MainPage.Navigation.RemovePage(previousPage);
                         
                     }
                     else {
@@ -204,15 +210,16 @@ namespace InfluMe.ViewModels {
         /// Invoked when the Forgot Password button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void ForgotPasswordClicked(object obj) {
+        private async void ForgotPasswordClicked(object obj) {
             // Do something
+            await Application.Current.MainPage.Navigation.PushAsync(new ForgotPasswordPage());
         }
 
         private async void ResendOTPClicked(object obj) {
             if (IsEmailValid()) {
                 try {
                     OTPResponse resp = await service.GetOTP(this.Email.Value);
-                    if (resp.otpStatus.Equals(ResponseStatusEnum.REGISTERED.ToString())) {
+                    if (resp.otpStatus.Equals(ResponseStatus.REGISTERED.ToString())) {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailRegisteredPopupPage());
                     }
                 }
@@ -227,7 +234,7 @@ namespace InfluMe.ViewModels {
             if (IsEmailValid()) {
                 try {
                     OTPResponse resp = await service.GetOTP(this.Email.Value);
-                    if (resp.otpStatus.Equals(ResponseStatusEnum.REGISTERED.ToString())) {
+                    if (resp.otpStatus.Equals(ResponseStatus.REGISTERED.ToString())) {
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new EmailRegisteredPopupPage());
                     }
                     else
@@ -244,11 +251,11 @@ namespace InfluMe.ViewModels {
             if (!string.IsNullOrEmpty(this.OTP) && this.OTP.Length == 6) {
                 try {
                     OTPVerificationResponse resp = await service.GetOTPVerification(email, OTP);
-                    if (resp.body.Equals(ResponseStatusEnum.VALID.ToString())) {
+                    if (resp.body.Equals(ResponseStatus.VALID.ToString())) {
                         await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PushAsync(new SignUpPage(email));
                     }
-                    else if (resp.body.Equals(ResponseStatusEnum.INVALID.ToString())) {
+                    else if (resp.body.Equals(ResponseStatus.INVALID.ToString())) {
                         IsOTPErrorMessageVisible = true;
                     }
                 }

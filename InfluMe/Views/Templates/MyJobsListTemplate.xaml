@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="InfluMe.Views.Templates.MyJobsListTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:helper="clr-namespace:InfluMe.Helpers"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    x:Name="myJobsListTemplate"
+    RowDefinitions="Auto, Auto">
+
+
+    <Grid.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
+            <converter:BooleanToColorConverter x:Key="boolToColorConverter" />
+        </ResourceDictionary>
+    </Grid.Resources>
+
+    <Grid
+        Grid.Row="1"
+        Margin="16,0"
+        ColumnSpacing="0"
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto, Auto, Auto, Auto, Auto"
+        VerticalOptions="FillAndExpand">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Default=Auto, Desktop=0.2*}" />
+            <ColumnDefinition Width="{OnIdiom Default=*, Desktop=*}" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--  ID  -->
+        <Label
+            x:Name="JobId"
+            IsVisible="False"
+            Text="{Binding jobId}" />
+
+        
+            <!--  Name  -->
+            <Label
+            Grid.Column="1"
+            Margin="0,0,0,4"
+            FontSize="Medium"
+            HorizontalOptions="Start"
+            LineBreakMode="TailTruncation"
+            MaxLines="1"
+            Style="{StaticResource TitleLabelStyle}"
+            Text="{Binding job.jobName}"
+            VerticalOptions="Center" />
+            
+            <!-- Job Progress Status-->
+        <Label
+            Grid.Column="2"
+            Margin="0,0,0,4"
+            HorizontalTextAlignment="End"
+            HorizontalOptions="End"
+            FontSize="Default"
+            Style="{StaticResource SimpleLabelStyle}" 
+            Text="{Binding progressStatus}"
+            VerticalOptions="Center" />
+
+
+        <!--  Brand  -->
+        <Label
+            Grid.Row="1"
+            Grid.Column="1"
+            Margin="0,2"
+            LineBreakMode="TailTruncation"
+            LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+            MaxLines="1"
+            Style="{StaticResource SimpleLabelStyle}"            
+            Text="{Binding job.jobBrand}" />
+
+        <!--  Delivery Status  -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,4"
+            FontSize="Default"
+            Style="{StaticResource SimpleLabelStyle}"
+            TextColor="Orange"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            Text="&#xf0d1;">
+        </Label>
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="15,4,0,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="Montserrat-SemiBold"
+            Text="{Binding deliveryStatus, StringFormat='  {0}'}"/>
+
+        <!-- Job Deadline -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="2"
+            Margin="0,0,0,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            TextColor="Black"
+            Text="{Binding job.jobDeadline, StringFormat='Job deadline: {0:dd/MM/yyyy}'}"/>
+                
+
+        <!--  Payment Status  -->
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="0,4"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="{StaticResource FontAwesomeSolid}"
+            FontSize="Medium"
+            TextColor="Green"
+            Text="&#xf555;"/>
+        <Label
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="15,4,0,0"
+            Style="{StaticResource SimpleLabelStyle}"
+            FontFamily="Montserrat-SemiBold"
+            Text="{Binding paymentStatus, StringFormat='  {0}'}"/>
+
+        <!--  Fee  -->
+        <StackLayout 
+            Grid.Row="3"
+            Grid.Column="2"
+            HorizontalOptions="End">
+
+            <Label
+                Margin="-20,4,0,0"
+                FontFamily="{StaticResource FontAwesomeSolid}"
+                Text="&#xf0d6;"/>
+            <Label
+                FontFamily="Montserrat-SemiBold"
+                FontSize="Small"
+                Margin="0,-24,0,0"
+                LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                Style="{StaticResource SimpleLabelStyle}"
+                Text="{Binding job.jobFee, StringFormat='IDR {0:N2}'}"
+                TextColor="{DynamicResource PrimaryColor}" />
+        </StackLayout>
+
+        
+
+        <BoxView Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
+
+    </Grid>
+    
+</Grid>

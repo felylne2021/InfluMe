@@ -11,24 +11,18 @@
     xmlns:converter="clr-namespace:InfluMe.Converters"
     xmlns:helper="clr-namespace:InfluMe.Helpers"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
     xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
     xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
     xmlns:syncEffectsView="clr-namespace:Syncfusion.XForms.EffectsView;assembly=Syncfusion.Core.XForms"
-    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels"
+    xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms" xmlns:behaviors="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
     x:Name="jobListPage"
     Title="Job List page"
     BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
                               Desktop={DynamicResource Gray-100},
                               Converter={StaticResource DynamicResourceToColorConverter}}"
     NavigationPage.HasNavigationBar="False">
-
-    <ContentPage.Behaviors>
-        <behavior:CartBehavior />
-    </ContentPage.Behaviors>
-
-    <ContentPage.BindingContext>
-        <viewModel:JobViewModel />
-    </ContentPage.BindingContext>
+  
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -42,64 +36,38 @@
                     Spacing="8"
                     VerticalOptions="Center">
 
-                    <!--  Filter Button  -->
-                    <buttons:SfButton
-                        BackgroundColor="Transparent"
-                        Command="{Binding FilterCommand}"
-                        CornerRadius="4"
-                        HeightRequest="32"
-                        TextColor="{DynamicResource Gray-700}">
-                        <buttons:SfButton.Content>
-                            <StackLayout
-                                Padding="8,5,8,6"
-                                Orientation="Horizontal"
-                                Spacing="8"
-                                VerticalOptions="Center">
-                                <Label
-                                    FontFamily="FontIcons"
-                                    FontSize="18"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="{StaticResource Filter}"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="End" />
-                                <Label
-                                    FontFamily="Montserrat-SemiBold"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="Filter"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
+                    <!--  Filter Platform -->
 
-                    <!--  Sort Button  -->
-                    <buttons:SfButton
-                        BackgroundColor="Transparent"
-                        Command="{Binding SortCommand}"
-                        CornerRadius="4"
-                        TextColor="{DynamicResource Gray-700}">
-                        <buttons:SfButton.Content>
-                            <StackLayout
-                                Padding="8,5,16,6"
-                                Orientation="Horizontal"
-                                Spacing="8">
-                                <Label
-                                    FontFamily="FontIcons"
-                                    FontSize="18"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="{StaticResource Sort}"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="End" />
-                                <Label
-                                    FontFamily="Montserrat-SemiBold"
-                                    Style="{StaticResource DescriptionLabelStyle}"
-                                    Text="Sorting"
-                                    VerticalOptions="Center"
-                                    VerticalTextAlignment="Center" />
-                            </StackLayout>
-                        </buttons:SfButton.Content>
-                    </buttons:SfButton>
-
+                    <StackLayout
+                        Padding="8,5,8,6"
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        VerticalOptions="Center">
+                        <Label
+                            FontFamily="FontIcons"
+                            FontSize="18"
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{StaticResource Filter}"
+                            VerticalOptions="Center"
+                            VerticalTextAlignment="End" />
+                        <combobox:SfComboBox
+                            x:Name="JobPlatformPicker"
+                            Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                            Watermark="Filter Platform"
+                            SelectedValue="{Binding JobPlatformFilter, Mode=TwoWay}"
+                            FontFamily="Montserrat-Medium">
+                            <combobox:SfComboBox.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="SelectionChanged"
+                                          Command="{Binding FilterJobByPlatformCommand}" />
+                            </combobox:SfComboBox.Behaviors>
+                            <combobox:SfComboBox.ComboBoxSource>
+                                <ListCollection:List x:TypeArguments="x:String">
+                                    <x:String>Instagram</x:String>
+                                    <x:String>TikTok</x:String>
+                                </ListCollection:List>
+                            </combobox:SfComboBox.ComboBoxSource>
+                        </combobox:SfComboBox>
+                    </StackLayout>
                 </StackLayout>
             </DataTemplate>
 
@@ -107,12 +75,12 @@
             <converter:BooleanToStringConverter x:Key="boolToStringConverter" />
             <converter:IntToThicknessConverter x:Key="intToThicknessConverter" />
             <converter:DynamicResourceToColorConverter x:Key="DynamicResourceToColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
 
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <ContentPage.Content>
-
         <Grid
             ColumnSpacing="0"
             RowDefinitions="Auto, *"
@@ -128,15 +96,9 @@
                         Style="{StaticResource IconButtonStyle}"
                         Text="{StaticResource Back}" />
                 </controls:TitleView.LeadingView>
-                
+
             </controls:TitleView>
 
-            <!--  Initial Filter based on Job Platform -->
-            <Label
-                x:Name="JobPlatform"
-                Text="{Binding JobPlatform}"
-                IsVisible="false"/>
-            
             <!--  ListView for catalog list  -->
             <listView:SfListView
                 x:Name="ListViewList"
@@ -147,21 +109,33 @@
                 HeaderTemplate="{StaticResource CatalogDefaultHeaderTemplate}"
                 HorizontalOptions="FillAndExpand"
                 IsStickyHeader="False"
+                IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
                 ItemSize="170"
+                SelectionGesture="Tap"
                 ItemSpacing="0,0,0,16"
-                ItemsSource="{Binding Jobs}"
+                ItemsSource="{Binding Jobs, Mode=TwoWay}"
                 SelectedItem="{Binding SelectedJob}"
                 Style="{StaticResource TransparentSelectionListView}">
 
                 <listView:SfListView.ItemTemplate>
                     <DataTemplate>
-
                         <template:JobListTemplate ParentBindingContext="{Binding Path=BindingContext, Source={x:Reference jobListPage}}" />
                     </DataTemplate>
                 </listView:SfListView.ItemTemplate>
 
             </listView:SfListView>
 
+            <StackLayout 
+                Grid.Row="1"
+                VerticalOptions="Center"
+                IsVisible="{Binding IsEmpty}">
+                <Image  
+                    Source = "empty"
+                    HeightRequest="130"/>
+                <Label
+                    HorizontalTextAlignment="Center"
+                    Text="No Jobs Applied"/>
+            </StackLayout>
         </Grid>
 
     </ContentPage.Content>

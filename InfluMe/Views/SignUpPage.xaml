@@ -110,6 +110,7 @@
                         HorizontalOptions="Start"
                         WidthRequest="250"
                         VerticalOptions="Center"
+                        TextTransform="Uppercase"
                         Text="{Binding InfluencerName.Value}"/>
                 </Grid>
                 <Label
@@ -242,7 +243,7 @@
                 <Label
                     x:Name="birthdateErrorMessage"
                     Margin="15,-20,0,5"
-                    IsVisible="{Binding IsBirthdateErrorMessageVisible}"
+                    IsVisible="{Binding IsBirthdateErrorMessageVisible, Mode=TwoWay}"
                     Style="{StaticResource SimpleLabelStyle}"
                     Text="Age Must Be At Least 13 Years Old"
                     TextColor="{DynamicResource Red}"
@@ -330,6 +331,34 @@
                         IsVisible="{Binding InfluencerTiktokId.IsValid, Converter={StaticResource InverseBoolConverter}}"
                         Style="{StaticResource SimpleLabelStyle}"
                         Text="{Binding InfluencerTiktokId.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                        TextColor="{DynamicResource Red}"
+                        VerticalOptions="FillAndExpand" />
+
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Text="Whatsapp Number"
+                        Margin="0,-15"/>
+
+                    <Entry
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        WidthRequest="250"
+                        Text="{Binding WhatsappNumber.Value}"
+                        Keyboard="Telephone"
+                        TextTransform="Lowercase"
+                        VerticalOptions="Center" />
+                </Grid>
+                <Label
+                        Margin="15,-20,0,5"
+                        IsVisible="{Binding WhatsappNumber.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                        Style="{StaticResource SimpleLabelStyle}"
+                        Text="{Binding WhatsappNumber.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
                         TextColor="{DynamicResource Red}"
                         VerticalOptions="FillAndExpand" />
 

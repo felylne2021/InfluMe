@@ -13,7 +13,7 @@ namespace InfluMe.DataService {
 
         private static ContactsDataService contactsDataService;
 
-        private ManageInfluencerPageViewModel contactsViewModel;
+        private InfluencerPageViewModel contactsViewModel;
 
         #endregion
 
@@ -27,9 +27,9 @@ namespace InfluMe.DataService {
         /// <summary>
         /// Gets or sets the value of contacts page view model.
         /// </summary>
-        public ManageInfluencerPageViewModel ManageInfluencerPageViewModel =>
+        public InfluencerPageViewModel ManageInfluencerPageViewModel =>
             this.contactsViewModel ??
-            (this.contactsViewModel = PopulateData<ManageInfluencerPageViewModel>("navigation.json"));
+            (this.contactsViewModel = PopulateData<InfluencerPageViewModel>("navigation.json"));
 
         #endregion
 

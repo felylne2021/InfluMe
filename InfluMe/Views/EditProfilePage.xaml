@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="InfluMe.Views.EditProfilePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:InfluMe.Controls"
+    xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    x:Name="profilePage"
+    Title="Profile Page"
+    BackgroundColor="{DynamicResource Gray-Bg}"
+    Shell.NavBarIsVisible="False"
+    NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.ControlTemplate>
+        <ControlTemplate>
+            <StackLayout Spacing="0">
+                <!--  Title View  -->
+                <controls:TitleView Title="Edit Profile" BackgroundColor="{DynamicResource Blue}">
+                    <controls:TitleView.LeadingView>
+                        <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding Path=BindingContext.BackButtonCommand, Source={x:Reference profilePage}}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"                            
+                            Text="{StaticResource Back}" />
+                    </controls:TitleView.LeadingView>
+                </controls:TitleView>
+                <ContentPresenter />
+            </StackLayout>
+        </ControlTemplate>
+    </ContentPage.ControlTemplate>
+
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout Spacing="0">
+
+                <!--  Profile image with edit label  -->
+                <buttons:SfButton
+                    Margin="0,10,0,0"
+                    BackgroundColor="Transparent"
+                    BorderColor="{DynamicResource Gray-Bg}"
+                    BorderWidth="2"
+                    Command="{Binding EditProfileCommand}"
+                    CornerRadius="60"
+                    HorizontalOptions="Center"
+                    WidthRequest="120">
+                    <buttons:SfButton.Content>
+                        <Grid HeightRequest="120" WidthRequest="120">
+                            <!--  Profile Image  -->
+                            <border:SfBorder
+                            BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                            BorderColor="{DynamicResource Gray-White}"
+                            BorderWidth="2"
+                            CornerRadius="60"
+                            HeightRequest="120"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="StartAndExpand"
+                            WidthRequest="120">
+                                <sfavatar:SfAvatarView
+                                    AvatarShape="Circle"
+                                    AvatarSize="ExtraLarge"
+                                    BackgroundColor="{Binding Influencer.influencerColorHex}"
+                                    FontFamily="Montserrat-Medium"
+                                    InitialsColor="DimGray"
+                                    ContentType="Initials"
+                                    AvatarName="{Binding Influencer.influencerName}"
+                                    BorderWidth="0"/>
+                            </border:SfBorder>
+                            <!--<Image
+                                x:Name="ProfileImage"
+                                Aspect="AspectFill"
+                                BackgroundColor="{DynamicResource Gray-200}" />
+                            <BoxView
+                                BackgroundColor="{DynamicResource Gray-700}"
+                                HeightRequest="32"
+                                Opacity="0.6"
+                                VerticalOptions="End" />
+                            <Label
+                                FontFamily="Montserrat-SemiBold"
+                                FontSize="12"
+                                HeightRequest="32"
+                                HorizontalTextAlignment="Center"
+                                Text="CHANGE"
+                                TextColor="{DynamicResource Gray-100}"
+                                VerticalOptions="End"
+                                VerticalTextAlignment="Center" />-->
+                        </Grid>
+                    </buttons:SfButton.Content>
+                </buttons:SfButton>
+
+                <!--  Grid for name  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"                        
+                        Text="Name" />
+                    
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="{Binding Influencer.influencerName}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+                
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for birthdate  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"                        
+                        Text="Date of Birth" />
+
+                    <Label
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="{Binding Influencer.influencerDOB}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for address  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="0">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Address" />
+
+                    <Editor
+                        Margin="0,16,0,0"
+                        Grid.Column="0"
+                        HeightRequest="90"
+                        WidthRequest="350"
+                        MaxLength="130"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Fill"
+                        Text="{Binding Influencer.influencerAddress}"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for email  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="Email" />
+
+                    <Label
+                        Grid.Column="0"
+                        Margin="0,16,0,0"
+                        FontFamily="Montserrat-Medium"
+                        Text="{Binding MaskedEmail}"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                <!--  Grid for password  -->
+                <Grid
+                    Padding="16"
+                    ColumnDefinitions="Auto, *"
+                    ColumnSpacing="16">
+
+                    <Label
+                        Grid.Column="0"
+                        Text="New Password" />
+
+                    <Entry
+                        Grid.Column="0"
+                        Margin="0,16,0,0"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Start"
+                        WidthRequest="350"
+                        IsPassword="True"
+                        Text="{Binding Influencer.influencerPassword, Mode=TwoWay}"
+                        Placeholder="Change password here"
+                        VerticalOptions="Center" />
+
+                </Grid>
+
+                <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
+
+                
+
+                <!--  Grid for Bank Name  -->
+                <Grid
+                    x:Name="BankGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Bank Name" />
+
+                    <combobox:SfComboBox
+                        x:Name="BankPicker"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                        Watermark="Choose Bank"
+                        SelectedValue="{Binding Influencer.bankName, Mode=TwoWay}"
+                        FontFamily="Montserrat-Medium">
+                        <combobox:SfComboBox.ComboBoxSource>
+                            <ListCollection:List x:TypeArguments="x:String">
+                                <x:String>BCA</x:String>
+                                <x:String>BNI</x:String>
+                                <x:String>BRI</x:String>
+                                <x:String>Bank Permata</x:String>
+                                <x:String>Mandiri</x:String>
+                                <x:String>BCA Syariah</x:String>
+                                <x:String>BNI Syariah</x:String>
+                                <x:String>BCA Digital</x:String>
+                                <x:String>BSI</x:String>
+                                <x:String>DBS</x:String>
+                                <x:String>UOB</x:String>
+                                <x:String>BTPN</x:String>
+                                <x:String>OCBC NISP</x:String>
+                                <x:String>Citibank</x:String>
+                                <x:String>Bank Jago</x:String>
+                                <x:String>LINE Bank</x:String>
+                                <x:String>HSBC</x:String>
+                                <x:String>Panin Bank</x:String>
+                                <x:String>Bank DKI</x:String>
+                                <x:String>Other</x:String>
+                            </ListCollection:List>
+                        </combobox:SfComboBox.ComboBoxSource>
+                    </combobox:SfComboBox>
+
+                </Grid>
+
+                <!--  Grid for Bank Account Number  -->
+                <Grid
+                    x:Name="BankAccountGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Bank Account" />
+
+                    <Entry
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Margin="0,-12,0,0"
+                        WidthRequest="190"
+                        Keyboard="Numeric"
+                        Text="{Binding Influencer.bankAccountNumber, Mode=TwoWay}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
+
+                </Grid>
+
+                <!--  Grid for WA  -->
+                <Grid
+                    x:Name="WAGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Whatsapp" />
+
+                    <Entry
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Keyboard="Telephone"
+                        Text="{Binding Influencer.whatsappNumber, Mode=TwoWay}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
+
+                </Grid>
+                
+                <!--  Grid for IG  -->
+                <Grid
+                    x:Name="InstagramGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Instagram" />
+
+                    <Entry
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Text="{Binding Influencer.influencerInstagramId, Mode=TwoWay}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
+
+                </Grid>
+
+                <!--  Grid for TikTok  -->
+                <Grid
+                    x:Name="TikTokGrid"
+                    Padding="16"
+                    ColumnDefinitions="Auto, *, Auto"
+                    ColumnSpacing="16">
+                    <Label
+                        Grid.Column="0"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="TikTok" />
+
+                    <Entry
+                        Grid.Column="1"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="End"
+                        Margin="0,-12,0,0"
+                        WidthRequest="220"
+                        Text="{Binding Influencer.influencerTiktokId, Mode=TwoWay}"
+                        VerticalOptions="Center" />
+
+                    <Label
+                        Grid.Column="2"
+                        HorizontalOptions="End"
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf303;" />
+
+                </Grid>
+
+                <!--  Save Changes button  -->
+                <buttons:SfButton 
+                    Margin="16,16"
+                    Command="{Binding SaveChangesCommand}"
+                    HorizontalOptions="Fill"
+                    Style="{StaticResource OrangeButtonStyle}"
+                    Text="Save Changes" />
+
+
+            </StackLayout>
+
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

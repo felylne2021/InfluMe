@@ -23,12 +23,20 @@ namespace InfluMe
 
         public App()
         {
+            // Syncfusion License Key
+            Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjQ0NDM1QDMxMzkyZTM0MmUzMGlEeDFYMXVtR0FUcGxaaENvYU82ZjNoa3gzRzRIZGtuaitjVVBNSDJEdUk9");
+
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
+
 
             bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"].ToString()) : false;
             string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
             string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
+
+            //Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            //Application.Current.Properties["UserId"] = "";
+            //Application.Current.Properties["UserType"] = "";
 
 
             if (!isLoggedIn) {
@@ -38,9 +46,9 @@ namespace InfluMe
             }
             else {
                 //Load if Logged In
-                if (Application.Current.Properties["UserType"].Equals(UserTypeEnum.Influencer.ToString()))
-                    MainPage = new NavigationPage(new JobDetailPage("37"));
-                else MainPage = new NavigationPage(new AdminHomePage());
+                if (Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
+                    MainPage = new NavigationPage(new MainPage());
+                else MainPage = new NavigationPage(new AdminMainPage());
             }
 
         }

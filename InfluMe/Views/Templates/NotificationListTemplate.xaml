@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Grid
+    x:Class="InfluMe.Views.Templates.NotificationListTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:converter="clr-namespace:InfluMe.Converters"
+    xmlns:helper="clr-namespace:InfluMe.Helpers"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    x:Name="notificationListTemplate"
+    RowDefinitions="Auto, Auto">
+
+
+    <Grid
+        Grid.Row="1"
+        Margin="16,0"
+        ColumnSpacing="0"
+        HorizontalOptions="FillAndExpand"
+        RowDefinitions="Auto, Auto, Auto"
+        RowSpacing="0"
+        VerticalOptions="FillAndExpand">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="{OnIdiom Default=Auto, Desktop=0.2*}" />
+            <ColumnDefinition Width="{OnIdiom Default=*, Desktop=*}" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+
+        <!--  ID  -->
+        <Label
+            x:Name="NotificationId"
+            IsVisible="False"
+            Text="{Binding notificationId}" />
+
+        <!--  Message  -->
+        <Editor
+            Grid.Column="1"
+            Grid.ColumnSpan="2"
+            HorizontalOptions="StartAndExpand"
+            VerticalOptions="StartAndExpand"
+            BackgroundColor="{StaticResource Transparent}"
+            IsEnabled="True"
+            TextColor="Black"
+            Margin="0,0,0,0"
+            FontSize="Medium"
+            IsReadOnly="True"
+            Text="{Binding notificationMessage}"/>
+
+        
+
+        <!--  Date  -->
+        <Label
+            Grid.Row="2"
+            Grid.Column="1"
+            Margin="0,2"
+            LineBreakMode="TailTruncation"
+            LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+            MaxLines="1"
+            Style="{StaticResource SimpleLabelStyle}"            
+            Text="{Binding notificationDate}" />
+
+       
+
+        <BoxView Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" Style="{StaticResource HorizontalSeparatorStyle}" />
+
+    </Grid>
+</Grid>

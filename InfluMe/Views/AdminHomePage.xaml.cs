@@ -21,24 +21,24 @@ namespace InfluMe.Views
             this.BindingContext = CategoryDataService.Instance.AdminHomePageViewModel;
         }
 
-        protected override void OnSizeAllocated(double width, double height)
-        {
-            base.OnSizeAllocated(width, height);
+        //protected override void OnSizeAllocated(double width, double height)
+        //{
+        //    base.OnSizeAllocated(width, height);
 
-            if (width < height)
-            {
-                if (this.MenuTile.LayoutManager is GridLayout)
-                {
-                    (this.MenuTile.LayoutManager as GridLayout).SpanCount = 2;
-                }
-            }
-            else
-            {
-                if (this.MenuTile.LayoutManager is GridLayout)
-                {
-                    (this.MenuTile.LayoutManager as GridLayout).SpanCount = 3;
-                }
-            }
-        }
+        //    if (width < height)
+        //    {
+        //        if (this.MenuTile.LayoutManager is GridLayout)
+        //        {
+        //            (this.MenuTile.LayoutManager as GridLayout).SpanCount = 2;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (this.MenuTile.LayoutManager is GridLayout)
+        //        {
+        //            (this.MenuTile.LayoutManager as GridLayout).SpanCount = 3;
+        //        }
+        //    }
+        //}
     }
 }

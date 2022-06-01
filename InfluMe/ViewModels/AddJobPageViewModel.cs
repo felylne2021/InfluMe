@@ -1,6 +1,12 @@
-﻿using InfluMe.Validators;
+﻿using InfluMe.DataService;
+using InfluMe.Helpers;
+using InfluMe.Models;
+using InfluMe.Validators;
 using InfluMe.Validators.Rules;
+using InfluMe.Views;
+using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Globalization;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 
@@ -12,8 +18,13 @@ namespace InfluMe.ViewModels {
     public class AddJobPageViewModel : BaseViewModel {
         #region Fields
 
-        private DateTime date = DateTime.Now;
+        private string date = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy");
         private string fee = "0.00";
+        private string jobDeadline = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
+        private string imageBlob;
+        private bool hasContentApproval;
+
+        private JobDataService service => new JobDataService();
 
         #endregion
 
@@ -45,7 +56,7 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Gets or sets the property that bounds with a date picker that gets the date from user in the Add Contact page.
         /// </summary>
-        public DateTime RegistrationDeadline { 
+        public string RegistrationDeadline {
             get {
                 return this.date;
             }
@@ -56,6 +67,34 @@ namespace InfluMe.ViewModels {
                 }
 
                 this.SetProperty(ref this.date, value);
+            }
+        }
+
+        public string JobDeadline {
+            get {
+                return this.jobDeadline;
+            }
+
+            set {
+                if (this.jobDeadline == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.jobDeadline, value);
+            }
+        }
+
+        public string ImageBlob {
+            get {
+                return this.imageBlob;
+            }
+
+            set {
+                if (this.imageBlob == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.imageBlob, value);
             }
         }
 
@@ -79,17 +118,21 @@ namespace InfluMe.ViewModels {
         /// </summary>
         public string AgeRange { get; set; }
 
-        public string Fee
-        {
-            get
-            {
+        public bool HasContentApproval {
+            get => hasContentApproval;
+            set {
+                hasContentApproval = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string Fee {
+            get {
                 return this.fee;
             }
 
-            set
-            {
-                if (this.fee == value)
-                {
+            set {
+                if (this.fee == value) {
                     return;
                 }
 
@@ -129,36 +172,71 @@ namespace InfluMe.ViewModels {
         /// </summary>
         /// <returns>returns bool value</returns>
         public bool AreFieldsValid() {
-            bool isFirstNameValid = this.JobName.Validate();
-            bool isLastNameValid = this.Brand.Validate();
-            return isFirstNameValid && isLastNameValid;
+            bool isJobNameValid = this.JobName.Validate();
+            bool isBrandNameValid = this.Brand.Validate();
+            return isJobNameValid && isBrandNameValid;
         }
 
         /// <summary>
         /// Intialize the methods for validation
         /// </summary>
         private void InitializeProperties() {
-            this.JobName = new ValidatableObject<string>();
-            this.Brand = new ValidatableObject<string>();
+            this.JobName = new ValidatableObject<string>() { Value = "" };
+            this.Brand = new ValidatableObject<string>() { Value = "" };
+            this.ImageBlob = "upload";
+            this.Platform = null;
+            this.Gender = null;
+            this.SOW = "";
+            this.AdditionalRequirements = "";
+            this.Product = "";
+            this.AgeRange = "";
+            this.HasContentApproval = false;
+            this.Domicile = "";
         }
 
         /// <summary>
         /// Validation Rules for firstname and lastname
         /// </summary>
         private void AddValidationRules() {
-            this.JobName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
-            this.Brand.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Name Required" });
+            this.JobName.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Job Name Required" });
+            this.Brand.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Brand Name Required" });
         }
 
         /// <summary>
         /// Invoked when the submit button is clicked.
         /// </summary>
         /// <param name="obj">The Object</param>
-        private void SubmitButtonClicked(object obj) {
+        private async void SubmitButtonClicked(object obj) {
             if (this.AreFieldsValid()) {
                 // Do Something
+                JobRequest req = new JobRequest() {
+                    jobImageBlob = ImageBlob,
+                    jobName = JobName.Value,
+                    jobBrand = Brand.Value,
+                    jobRegistrationDeadline = DateTime.ParseExact(RegistrationDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
+                    jobDeadline = DateTime.ParseExact(JobDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
+                    jobStatus = JobStatus.OPEN.ToString(),
+                    jobGender = Gender ?? "Any",
+                    jobPlatform = Platform ?? "Both",
+                    jobDomicile = String.IsNullOrEmpty(Domicile) ? "Anywhere" : Domicile,
+                    jobFee = Fee,
+                    jobProduct = Product,
+                    jobSOW = SOW,
+                    jobAdditionalRequirement = AdditionalRequirements,
+                    hasContentApproval = HasContentApproval ? "true" : "false"
+                };
+                try {
+                    JobResponse resp = await service.AddJob(req);
+                    InitializeProperties();
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Add Job Success"));
+                }
+                catch (Exception) {
+                    await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+                }
             }
         }
+
+       
 
         #endregion
     }

@@ -5,6 +5,7 @@ using InfluMe.Validators.Rules;
 using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using System;
+using System.Globalization;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
@@ -22,12 +23,13 @@ namespace InfluMe.ViewModels {
         private ValidatableObject<string> influencerAddress;
         private ValidatableObject<string> influencerInstagramId;
         private ValidatableObject<string> influencerTiktokId;
+        private ValidatableObject<string> whatsappNumber;
 
         private InfluMeService service = new InfluMeService();
         private bool _isPasswordConfirmationErrorMessageVisible;
         private bool _isBirthdateErrorMessageVisible;
 
-        private DateTime influencerDOB = DateTime.Now;
+        private string influencerDOB = DateTime.Now.ToString("dd/MM/yyyy");
         #endregion
 
         #region Constructor
@@ -53,7 +55,7 @@ namespace InfluMe.ViewModels {
         
         public string passwordConfirmation { get; set; }
 
-        public DateTime InfluencerDOB {
+        public string InfluencerDOB {
             get {
                 return this.influencerDOB;
             }
@@ -164,6 +166,22 @@ namespace InfluMe.ViewModels {
         }
 
 
+            public ValidatableObject<string> WhatsappNumber {
+            get {
+                return this.whatsappNumber;
+            }
+
+            set {
+                if (this.whatsappNumber == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.whatsappNumber, value);
+            }
+        }
+
+
+
         #endregion
 
         #region Command
@@ -198,10 +216,12 @@ namespace InfluMe.ViewModels {
             bool isAddressValid = this.InfluencerAddress.Validate();
             bool isInstagramIdValid = this.InfluencerInstagramId.Validate();
             bool isTiktokIdValid = this.InfluencerTiktokId.Validate();
+            bool isWhatsappNumberValid = this.WhatsappNumber.Validate();
 
             var today = DateTime.Today;
-            var age = today.Year - this.InfluencerDOB.Year;
-            if (this.InfluencerDOB.Date > today.AddYears(-age)) age--;
+            DateTime birthdate = DateTime.ParseExact(this.InfluencerDOB, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+            var age = today.Year - birthdate.Year;
+            if (birthdate.Date > today.AddYears(-age)) age--;
 
             this.IsBirthdateErrorMessageVisible = age > 12 ? false : true;
 
@@ -221,6 +241,7 @@ namespace InfluMe.ViewModels {
             this.InfluencerAddress = new ValidatableObject<string>();
             this.InfluencerInstagramId = new ValidatableObject<string>();
             this.InfluencerTiktokId = new ValidatableObject<string>();
+            this.WhatsappNumber = new ValidatableObject<string>();
         }
 
         private void AddValidationRules() {
@@ -232,8 +253,16 @@ namespace InfluMe.ViewModels {
             this.InfluencerAddress.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Address Required" });
             this.InfluencerInstagramId.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Instagram Username Required" });
             this.InfluencerInstagramId.Validations.Add(new IsUsernameValidRule<string> { ValidationMessage = "Username Without '@'" });
+
+            this.InfluencerInstagramId.ValidationsAsync.Add(new IsIGExists<string> { ValidationMessage = "Username Not Found" });
+
             this.InfluencerTiktokId.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Tiktok Username Required" });
             this.InfluencerTiktokId.Validations.Add(new IsUsernameValidRule<string> { ValidationMessage = "Username Without '@'" });
+
+            this.InfluencerTiktokId.ValidationsAsync.Add(new IsTTExists<string> { ValidationMessage = "Username Not Found" });
+
+            this.WhatsappNumber.Validations.Add(new IsNotNullOrEmptyRule<string> { ValidationMessage = "Whatsapp Number Required" });
+
         }
 
         /// <summary>
@@ -252,16 +281,15 @@ namespace InfluMe.ViewModels {
                     influencerPassword = this.InfluencerPassword.Value,
                     influencerGender = this.InfluencerGender.Value,
                     influencerAddress = this.InfluencerAddress.Value,
-                    influencerDOB = this.influencerDOB.ToString("yyyy-MM-dd"),
+                    influencerDOB = DateTime.ParseExact(this.InfluencerDOB, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
                     influencerInstagramId = this.InfluencerInstagramId.Value,
-                    influencerTiktokId = this.InfluencerTiktokId.Value
+                    influencerTiktokId = this.InfluencerTiktokId.Value,
+                    whatsappNumber = this.WhatsappNumber.Value
                 };
 
                 try {                    
-                    InfluencerResponse resp = await service.SignUp(signUpRequest);
-                    await Application.Current.MainPage.Navigation.PopAsync();
-                    await Application.Current.MainPage.Navigation.PushAsync(new HomePage(resp.influencerId.ToString()));
-                    Application.Current.MainPage.Navigation.RemovePage(new MainLoginPage());
+                    InfluencerResponse resp = await service.SignUp(signUpRequest);                    
+                    Application.Current.MainPage = new MainPage();
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
