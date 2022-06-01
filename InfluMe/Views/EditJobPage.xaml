@@ -26,7 +26,7 @@
             <converter:NameValidationConverter x:Key="FirstValidationErrorConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
     <ContentPage.ControlTemplate>
         <ControlTemplate>
             <StackLayout x:Name="titleLayout" Spacing="0">
@@ -49,9 +49,52 @@
     <ContentPage.Content>
         <ScrollView>
             <Grid>
-                
+                <datePicker:SfDatePicker x:Name="datePicker"
+                                         PickerMode="Dialog"
+                                         PickerWidth="310"
+                                         PickerHeight="360"
+                                         ShowFooter="True"
+                                         OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         OkButtonClicked="DatePicker_OkButtonClicked"
+                                         CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                         HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                         OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                         CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                         BackgroundColor="{DynamicResource Gray-Bg}"
+                                         SelectedItemFontFamily="Montserrat-Regular"
+                                         SelectedItemFontSize="16"
+                                         SelectedItemTextColor="{DynamicResource PrimaryColor}"
+                                         UnselectedItemFontFamily="Montserrat-Regular"
+                                         UnselectedItemFontSize="16"
+                                         UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                         Format="dd_MM_yyyy" />
+
+                <datePicker:SfDatePicker x:Name="secDatePicker"
+                                         PickerMode="Dialog"
+                                         PickerWidth="310"
+                                         PickerHeight="360"
+                                         ShowFooter="True"
+                                         OKButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         OkButtonClicked="SecDatePicker_OkButtonClicked"
+                                         CancelButtonBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderBackgroundColor="{DynamicResource Gray-Bg}"
+                                         ColumnHeaderTextColor="{DynamicResource Gray-900}"
+                                         HeaderBackgroundColor="{DynamicResource PrimaryColor}"
+                                         OKButtonTextColor="{DynamicResource PrimaryColor}"
+                                         CancelButtonTextColor="{DynamicResource PrimaryColor}"
+                                         BackgroundColor="{DynamicResource Gray-Bg}"
+                                         SelectedItemFontFamily="Montserrat-Regular"
+                                         SelectedItemFontSize="16"
+                                         SelectedItemTextColor="{DynamicResource PrimaryColor}"
+                                         UnselectedItemFontFamily="Montserrat-Regular"
+                                         UnselectedItemFontSize="16"
+                                         UnselectedItemTextColor="{DynamicResource Gray-900}"
+                                         Format="dd_MM_yyyy" />
                 <StackLayout Padding="16">
-                    <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" Aspect="AspectFit" Source ="{Binding SelectedJob.jobImage}">
+                    <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" 
+                           Source ="upload">
                     </Image>
                     <buttons:SfButton
                     Margin="0,8,0,8"
@@ -75,17 +118,22 @@
                             Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
                             VerticalOptions="Start">
                                 <Grid ColumnDefinitions="*, Auto">
+
+
                                     <control:BorderlessEntry
-                                        x:Name="JobNameEntry"
-                                        IsReadOnly="True"
-                                        Placeholder="Job Name"
-                                        Style="{StaticResource BorderlessEntryStyle}"
-                                        TextColor="DimGray"
-                                        Text="{Binding SelectedJob.jobName}">
+                                    x:Name="JobNameEntry"
+                                    Placeholder="Job Name"
+                                    Style="{StaticResource BorderlessEntryStyle}"
+                                    Text="{Binding SelectedJob.jobName, Mode=TwoWay}">
                                     </control:BorderlessEntry>
+
+                                    
                                 </Grid>
                             </border:SfBorder>
+
+                            
                         </StackLayout>
+
                         <StackLayout Grid.Column="2">
                             <border:SfBorder
                             Margin="0,8,0,0"
@@ -96,14 +144,17 @@
                                 <Grid ColumnDefinitions="*, Auto">
 
                                     <control:BorderlessEntry
-                                        x:Name="BrandEntry"
-                                        IsReadOnly="True"
-                                        Style="{StaticResource BorderlessEntryStyle}"
-                                        Text="{Binding SelectedJob.jobBrand}"
-                                        TextColor="DimGray">
+                                    x:Name="BrandEntry"
+                                    Placeholder="Brand"
+                                    Style="{StaticResource BorderlessEntryStyle}"
+                                    Text="{Binding SelectedJob.jobBrand, Mode=TwoWay}">
                                     </control:BorderlessEntry>
+
+                                   
                                 </Grid>
                             </border:SfBorder>
+
+                            
                         </StackLayout>
 
                         <border:SfBorder
@@ -113,16 +164,16 @@
                         Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
                         VerticalOptions="FillAndExpand">
 
-
-                            <Grid ColumnDefinitions="*, Auto">
-
-                                <control:BorderlessEntry
-                                    IsReadOnly="True"
-                                    Style="{StaticResource BorderlessEntryStyle}"
-                                    Text="{Binding SelectedJob.jobRegistrationDeadline}"
-                                    TextColor="DimGray">
-                                </control:BorderlessEntry>
-                            </Grid>
+                            <buttons:SfButton x:Name="pickerButton" 
+                                              Text="{Binding SelectedJob.jobRegistrationDeadline, StringFormat='{0:dd/MM/yyyy}', Mode=TwoWay}"
+                                              FontSize="16"
+                                              Padding="-5, 0, 0 ,0"                                            
+                                              FontFamily="Montserrat-Regular"
+                                              HorizontalOptions="FillAndExpand"
+                                              HorizontalTextAlignment="Start"
+                                              TextColor="{DynamicResource Gray-900}"
+                                              BackgroundColor="Transparent" 
+                                              Clicked="DatePicker_Clicked" />
 
                         </border:SfBorder>
 
@@ -143,27 +194,28 @@
                         Style="{StaticResource DataFormBorderlessEntryBorderStyle}"
                         VerticalOptions="FillAndExpand">
 
-                            <Grid ColumnDefinitions="*, Auto">
-
-                                <control:BorderlessEntry
-                                    IsReadOnly="True"
-                                    Style="{StaticResource BorderlessEntryStyle}"
-                                    Text="{Binding SelectedJob.jobDeadline}"
-                                    TextColor="DimGray">
-                                </control:BorderlessEntry>
-                            </Grid>
+                            <buttons:SfButton x:Name="secondPickerButton" 
+                                              Text="{Binding SelectedJob.jobDeadline, StringFormat='{0:dd/MM/yyyy}', Mode=TwoWay}"
+                                              FontSize="16"
+                                              Padding="-5, 0, 0 ,0"                                            
+                                              FontFamily="Montserrat-Regular"
+                                              HorizontalOptions="FillAndExpand"
+                                              HorizontalTextAlignment="Start"
+                                              TextColor="{DynamicResource Gray-900}"
+                                              BackgroundColor="Transparent" 
+                                              Clicked="SecDatePicker_Clicked" />
 
                         </border:SfBorder>
 
                         <Label
                             Grid.Row="1"
                             Grid.Column="2"
+                            Padding="0,0"
                             Margin="0,-8,0,0"
                             Style="{StaticResource SimpleLabelStyle}"
                             Text="Job Deadline"
                             TextColor="{DynamicResource Gray-600}"
                             VerticalOptions="Start" />
-
 
 
                     </Grid>
@@ -318,7 +370,7 @@
                             Style="{StaticResource BorderlessEntryStyle}"
                             Text="{Binding SelectedJob.jobAdditionalRequirement}" />
                     </border:SfBorder>
-                    
+
                     <StackLayout
                         Orientation="Horizontal"
                         HorizontalOptions="Center">
@@ -335,7 +387,7 @@
                             Text="DELETE JOB"
                             WidthRequest="180" />
                     </StackLayout>
-                    
+
                 </StackLayout>
             </Grid>
         </ScrollView>

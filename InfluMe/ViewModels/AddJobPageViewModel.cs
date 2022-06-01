@@ -21,6 +21,7 @@ namespace InfluMe.ViewModels {
         private string date = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy");
         private string fee = "0.00";
         private string jobDeadline = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy");
+        private string imageBlob;
         private bool hasContentApproval;
 
         private JobDataService service => new JobDataService();
@@ -80,6 +81,20 @@ namespace InfluMe.ViewModels {
                 }
 
                 this.SetProperty(ref this.jobDeadline, value);
+            }
+        }
+
+        public string ImageBlob {
+            get {
+                return this.imageBlob;
+            }
+
+            set {
+                if (this.imageBlob == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.imageBlob, value);
             }
         }
 
@@ -168,7 +183,7 @@ namespace InfluMe.ViewModels {
         private void InitializeProperties() {
             this.JobName = new ValidatableObject<string>() { Value = "" };
             this.Brand = new ValidatableObject<string>() { Value = "" };
-
+            this.ImageBlob = "upload";
             this.Platform = null;
             this.Gender = null;
             this.SOW = "";
@@ -195,6 +210,7 @@ namespace InfluMe.ViewModels {
             if (this.AreFieldsValid()) {
                 // Do Something
                 JobRequest req = new JobRequest() {
+                    jobImageBlob = ImageBlob,
                     jobName = JobName.Value,
                     jobBrand = Brand.Value,
                     jobRegistrationDeadline = DateTime.ParseExact(RegistrationDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
@@ -219,6 +235,8 @@ namespace InfluMe.ViewModels {
                 }
             }
         }
+
+       
 
         #endregion
     }

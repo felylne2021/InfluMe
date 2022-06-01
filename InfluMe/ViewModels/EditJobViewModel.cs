@@ -4,6 +4,7 @@ using InfluMe.Views;
 using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text;
 using Xamarin.Forms;
 
@@ -20,7 +21,10 @@ namespace InfluMe.ViewModels {
         }
 
         public JobResponse SelectedJob {
-            get { return selectedJob; }
+            get { 
+               
+                return selectedJob; 
+            }
             set {
                 if (value != null) {
                     selectedJob = value;

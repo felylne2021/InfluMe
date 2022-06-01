@@ -92,9 +92,10 @@
                     <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" 
                            Source ="upload">
                     </Image>
+                    <Label x:Name="imageBlob" IsVisible="False" Text="{Binding ImageBlob, Mode=TwoWay}"></Label>
                     <buttons:SfButton
                     Margin="0,8,0,8"
-                    Command="{Binding UploadCommand}"
+                    Clicked="Upload_Clicked"
                     Style="{StaticResource SimpleButtonStyle}"
                     Text="Upload Image"
                     WidthRequest="200" />

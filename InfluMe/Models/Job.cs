@@ -23,6 +23,8 @@ namespace InfluMe.Models
         public string jobAdditionalRequirement { get; set; }
         public string jobStatus { get; set; }
         public string hasContentApproval { get; set; }
+        public string jobImage { get; set; }
+        public string jobImageBlob { get; set; }
 
     }
 
@@ -53,6 +55,7 @@ namespace InfluMe.Models
         public string jobStatus { get; set; }
         public string hasContentApproval { get; set; }
         public string jobImage { get; set; }
+        public string jobImageBlob { get; set; }
 
 
     }
