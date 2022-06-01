@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="InfluMe.Views.ApproveSubmissionPage"
+             BackgroundColor="{DynamicResource Gray-100}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <Grid>
+            <button:SfButton
+                Margin="8"
+                Command="{Binding BackButtonCommand}"
+                FontSize="20"
+                HorizontalOptions="End"
+                Style="{StaticResource IconButtonStyle}"
+                Text="{StaticResource Close}"
+                VerticalOptions="Start" />
+
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Spacing="0"
+                    VerticalOptions="Center">
+
+                    <!--  Submission image  -->
+                    <Image
+                        Margin="0,10,0,0"
+                        HeightRequest="100"
+                        Source="submission.png"
+                        WidthRequest="100" />
+
+                    <!--  Submission Header label  -->
+                    <Label
+                        Margin="0,20,0,0"
+                        FontSize="20"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        TextTransform="Uppercase"
+                        Text="PROOF OF WORK&#x0a;LINK SUBMISSION" />
+
+                    <!--Job Detail-->
+                    <Label
+                        Margin="17,8"
+                        FontFamily="Montserrat-Medium"
+                        LineBreakMode="WordWrap"
+                        WidthRequest="310"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="Realfood 2x Story Sebulan from Realfood" />
+
+                    <!--  Submission label  -->
+                    <Label
+                        Margin="17,8"
+                        FontFamily="Montserrat-Medium"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="ALENAD JSJS" />
+
+                    <Editor
+                        Margin="0,16,0,0"
+                        Grid.Column="0"
+                        HeightRequest="90"
+                        WidthRequest="350"
+                        MaxLength="130"
+                        IsReadOnly="True"
+                        FontFamily="Montserrat-Medium"
+                        HorizontalOptions="Fill"
+                        Text="https://sdsshdhsj.cdkc"
+                        VerticalOptions="Center" />
+
+                    
+                </StackLayout>
+            </ScrollView>
+            <StackLayout
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        VerticalOptions="End">
+                <button:SfButton
+                            Margin="0,0,0,10"
+                            Command="{Binding SaveCommand}"
+                            Style="{StaticResource GradientButtonStyle}"
+                            Text="APPROVE"
+                            WidthRequest="180" />
+                <button:SfButton
+                            Margin="0,0,0,10"
+                            Command="{Binding DeleteCommand}"
+                            Style="{StaticResource DangerButtonStyle}"
+                            Text="REJECT"
+                            WidthRequest="180" />
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

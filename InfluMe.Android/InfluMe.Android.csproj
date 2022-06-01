@@ -242,5 +242,11 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\icon_enrollment.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\submission.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

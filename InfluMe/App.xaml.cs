@@ -29,26 +29,28 @@ namespace InfluMe
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
 
-            bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"].ToString()) : false;
-            string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
-            string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
+            MainPage = new NavigationPage(new InputDeliveryReceiptPage());
 
-            //Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
-            //Application.Current.Properties["UserId"] = "";
-            //Application.Current.Properties["UserType"] = "";
+            //bool isLoggedIn = Current.Properties.ContainsKey("IsLoggedIn") ? Convert.ToBoolean(Current.Properties["IsLoggedIn"].ToString()) : false;
+            //string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
+            //string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
+
+            ////Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            ////Application.Current.Properties["UserId"] = "";
+            ////Application.Current.Properties["UserType"] = "";
 
 
-            if (!isLoggedIn) {
-                //Load if Not Logged In
-                Current.Properties["IsLoggedIn"] = Boolean.FalseString;
-                MainPage = new NavigationPage(new MainLoginPage());
-            }
-            else {
-                //Load if Logged In
-                if (Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
-                    MainPage = new NavigationPage(new MainPage());
-                else MainPage = new NavigationPage(new AdminMainPage());
-            }
+            //if (!isLoggedIn) {
+            //    //Load if Not Logged In
+            //    Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            //    MainPage = new NavigationPage(new MainLoginPage());
+            //}
+            //else {
+            //    //Load if Logged In
+            //    if (Current.Properties["UserType"].Equals(UserType.Influencer.ToString()))
+            //        MainPage = new NavigationPage(new MainPage());
+            //    else MainPage = new NavigationPage(new AdminMainPage());
+            //}
 
         }
 

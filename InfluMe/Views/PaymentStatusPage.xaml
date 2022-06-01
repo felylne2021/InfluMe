@@ -45,6 +45,8 @@
                     <Label
                         Margin="17,8"
                         FontFamily="Montserrat-Medium"
+                        LineBreakMode="WordWrap"
+                        WidthRequest="310"
                         LineHeight="{OnPlatform Android=1.25,
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"

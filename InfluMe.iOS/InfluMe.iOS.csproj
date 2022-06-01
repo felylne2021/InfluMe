@@ -298,4 +298,10 @@
   <ItemGroup>
     <BundleResource Include="Resources\icon_enrollment.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\delivery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\submission.png" />
+  </ItemGroup>
 </Project>
