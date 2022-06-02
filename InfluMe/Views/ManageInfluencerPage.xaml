@@ -19,6 +19,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
     
@@ -180,10 +181,11 @@
                                         <!--  Contact name avatar  -->
                                         <sfavatar:SfAvatarView
                                             Margin="16,0,8,0"
-                                            ImageSource="{Binding influencerColorHex}"
+                                            ImageSource="{Binding influencerColorHex, Converter={StaticResource StringToImageSourceConverter}}"
                                             Style="{StaticResource AvatarViewStyle}"
-                                            ContentType="Custom"/>
-                                        
+                                            ContentType="Custom">
+                                        </sfavatar:SfAvatarView>
+
 
                                         <!--  Contact name  -->
                                         <Label
