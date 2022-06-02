@@ -30,6 +30,18 @@
             RowDefinitions="Auto, Auto, *"
             RowSpacing="0">
 
+            <StackLayout 
+                Grid.Row="2"
+                IsVisible="{Binding IsEnrollEmpty, Mode=TwoWay}"
+                VerticalOptions="Center">
+                <Image  
+                        Source = "empty"
+                        HeightRequest="130"/>
+                <Label
+                        HorizontalTextAlignment="Center"
+                        Text="No Enrollments"/>
+            </StackLayout>
+            
             <StackLayout
                 x:Name="ContactsTitleView"
                 Grid.Row="0"
@@ -104,18 +116,6 @@
             <BoxView Grid.Row="1" Style="{StaticResource HorizontalSeparatorStyle}" />
 
             <StackLayout Grid.Row="2">
-
-                <StackLayout 
-                IsVisible="{Binding IsEnrollEmpty, Mode=TwoWay}"
-                Margin="0,250">
-                    <Image  
-                        Source = "empty"
-                        HeightRequest="130"/>
-                    <Label
-                        HorizontalTextAlignment="Center"
-                        Text="No Enrollments"/>
-                </StackLayout>
-
                 <controls:SearchableContactsList
                     x:Name="EnrollmentList"
                     AllowSwiping="True"
