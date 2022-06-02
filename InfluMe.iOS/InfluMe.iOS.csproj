@@ -65,6 +65,9 @@
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
     <AppExtensionDebugBundleId />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>InfluMeLogoOrange.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -306,5 +309,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\submission.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\InfluMeLogoOrange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="InfluMeLogoOrange.ico" />
   </ItemGroup>
 </Project>
