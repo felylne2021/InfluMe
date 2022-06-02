@@ -1,4 +1,5 @@
-﻿using System;
+﻿using InfluMe.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,13 @@ namespace InfluMe.Views
 		public ViewJobApplicantsPage ()
 		{
 			InitializeComponent ();
+		}
+
+		void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e) {
+			var cb = (CheckBox)sender;
+			JobApplicantsViewModel vm = (JobApplicantsViewModel)this.BindingContext;
+			vm.Applicants.Where(x => x.influencerId.Equals(cb.BindingContext)).Select(c => { c.isChecked = !c.isChecked; return c; }).ToList();
+
 		}
 	}
 }

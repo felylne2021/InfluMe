@@ -8,14 +8,21 @@
     xmlns:gradient="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:converter="clr-namespace:InfluMe.Converters"
     BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
 
-  
+
+    <ContentPage.Resources>
+    <ResourceDictionary>
+        <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+        <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+    </ResourceDictionary>
+    </ContentPage.Resources>
     
     <ContentPage.Content>
+        
         <ScrollView>
             <Grid RowDefinitions="Auto, *">
 
@@ -60,7 +67,7 @@
                                     <Image
                                         x:Name="ProfileImage"
                                         Aspect="AspectFill"
-                                        Source="{Binding Influencer.influencerColorHex}"
+                                        Source="{Binding Influencer.influencerColorHex, Converter={StaticResource StringToImageSourceConverter}}"
                                      BackgroundColor="{DynamicResource Gray-200}" />
                                     <BoxView
                                         BackgroundColor="{DynamicResource Gray-700}"
