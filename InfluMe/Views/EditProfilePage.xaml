@@ -253,6 +253,7 @@
                                 <x:String>HSBC</x:String>
                                 <x:String>Panin Bank</x:String>
                                 <x:String>Bank DKI</x:String>
+                                <x:String>E-Wallet</x:String>
                                 <x:String>Other</x:String>
                             </ListCollection:List>
                         </combobox:SfComboBox.ComboBoxSource>

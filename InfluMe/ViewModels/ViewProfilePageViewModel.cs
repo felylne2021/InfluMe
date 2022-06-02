@@ -6,6 +6,7 @@ using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -164,6 +165,7 @@ namespace InfluMe.ViewModels {
 
             try {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
+                
                 this.JobStats = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
 
                

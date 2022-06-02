@@ -142,6 +142,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Image
+                            x:Name="imageView"
                             Grid.Row="0"
                             Grid.Column="1"
                             Aspect="AspectFill"
@@ -151,12 +152,12 @@
                             VerticalOptions="Center"
                             HeightRequest="300"
                             WidthRequest="360">
-                            <Image.Source>
+                            <!--<Image.Source>
                                 <UriImageSource
                                     CacheValidity="14"
                                     CachingEnabled="true"
                                     Uri="{Binding ImageURL}" />
-                            </Image.Source>
+                            </Image.Source>-->
                         </Image>
 
                         <Label

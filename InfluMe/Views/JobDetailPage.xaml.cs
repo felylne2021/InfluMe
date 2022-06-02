@@ -4,6 +4,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
 using InfluMe.Helpers;
+using System;
+using System.IO;
 
 namespace InfluMe.Views
 {
@@ -21,9 +23,11 @@ namespace InfluMe.Views
         {
             this.InitializeComponent();
             JobId.Text = selectedJob.jobId.ToString();
-            BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied, ThisJobProgressStatus = jobProgressStatus, IsSubmissionVisible = (jobProgressStatus.Equals(JobProgressStatus.PendingDraft) || jobProgressStatus.Equals(JobProgressStatus.PendingProof)), ImageURL = new System.Uri(selectedJob.jobImage) };
-            //((ListView)sender).SelectedItem = null;
 
+            var bytes = Convert.FromBase64String(selectedJob.jobImageBlob);
+            imageView.Source = ImageSource.FromStream(() => new MemoryStream(bytes));
+
+            BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied, ThisJobProgressStatus = jobProgressStatus, IsSubmissionVisible = (jobProgressStatus.Equals(JobProgressStatus.PendingDraft) || jobProgressStatus.Equals(JobProgressStatus.PendingProof)), ImageURL = new System.Uri(selectedJob.jobImage) };
         }       
 
 

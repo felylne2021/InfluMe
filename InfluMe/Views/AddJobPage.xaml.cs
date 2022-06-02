@@ -1,4 +1,6 @@
 ﻿using InfluMe.ViewModels;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
 using System;
 using System.IO;
 using Xamarin.Essentials;
@@ -31,16 +33,22 @@ namespace InfluMe.Views {
         }
 
         private async void Upload_Clicked(object sender, System.EventArgs e) {
-            FileResult res = await MediaPicker.PickPhotoAsync(new MediaPickerOptions {
-                Title = "Pick job thumbnail image"
+           
+            var res = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions {
+                PhotoSize = PhotoSize.Medium,
+                CompressionQuality = 25
             });
 
             if (res != null) {
-                Stream stream = await res.OpenReadAsync();
-                imageView.Source = ImageSource.FromStream(() => stream);
 
-                
-                byte[] imageArray = System.IO.File.ReadAllBytes($@"{res.FullPath}");
+                byte[] imageArray = System.IO.File.ReadAllBytes($@"{res.Path}");
+
+                imageView.Source = ImageSource.FromStream(() => {
+                    var stream = res.GetStream();
+                    res.Dispose();
+                    return stream;
+                });
+
                 string base64ImageRepresentation = Convert.ToBase64String(imageArray);
                 imageBlob.Text = base64ImageRepresentation;
             }

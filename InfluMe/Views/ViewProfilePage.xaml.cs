@@ -1,4 +1,6 @@
 ﻿using InfluMe.ViewModels;
+using System;
+using System.IO;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -16,6 +18,7 @@ namespace InfluMe.Views {
         public ViewProfilePage() {
             this.InitializeComponent();
             BindingContext = new ViewProfilePageViewModel();
+            ViewProfilePageViewModel vm = (ViewProfilePageViewModel)this.BindingContext;
         }
     }
 }

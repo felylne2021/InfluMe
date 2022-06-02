@@ -56,12 +56,14 @@ namespace InfluMe.Models
         public string hasContentApproval { get; set; }
         public string jobImage { get; set; }
         public string jobImageBlob { get; set; }
+    }
 
-
+    public class AllJobAppliedBody {
+        public List<JobAppliedResponse> body { get; set; }
     }
 
     [Preserve(AllMembers = true)]
-    public class JobApplied {
+    public class JobAppliedRequest {
         public int influencerId { get; set; }
         public int jobId { get; set; }
         public string approvalStatus { get; set; }
@@ -86,7 +88,10 @@ namespace InfluMe.Models
         public string deliveryStatus { get; set; }
         public string paymentStatus { get; set; }
         public string approvalStatus { get; set; }
+
+        // Applied,NotApproved,OnDelivery,PendingProof,PendingDraft,DraftSubmitted,ProofSubmitted,PendingPayment,Completed
         public string progressStatus { get; set; }
+        
         public string proofOfWork { get; set; }
         public string contentDraft { get; set; }
         public string isApply { get; set; }
