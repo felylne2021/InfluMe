@@ -135,12 +135,10 @@ namespace InfluMe.Validators
                 .Select(v => v.ValidationMessage);
             
             if(this.ValidationsAsync.Count != 0) {
-                var res = this.ValidationsAsync.First().Check(this.Value).Result;
-                if (res == false)
-                    this.Errors.Add(this.ValidationsAsync.First().ValidationMessage);
+                //var res = this.ValidationsAsync.First().Check(this.Value).Result;
+                //if (res == false)
+                //    this.Errors.Add(this.ValidationsAsync.First().ValidationMessage);
             }
-
-            //errors.Concat(asyncVal.Valida);
 
             this.Errors = errors.ToList();
             this.IsValid = !this.Errors.Any();

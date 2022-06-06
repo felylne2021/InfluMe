@@ -46,6 +46,7 @@
         <ScrollView>
             <Grid>
                 <datePicker:SfDatePicker x:Name="datePicker"
+                                         MinimumDate="{Binding RegistrationDeadline}"
                                          PickerMode="Dialog"
                                          PickerWidth="310"
                                          PickerHeight="360"
@@ -68,6 +69,7 @@
                                          Format="dd_MM_yyyy" />
 
                 <datePicker:SfDatePicker x:Name="secDatePicker"
+                                         MinimumDate="{Binding JobDeadline}"
                                          PickerMode="Dialog"
                                          PickerWidth="310"
                                          PickerHeight="360"
