@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="InfluMe.Views.ViewJobApplicantsPage"
+    x:Class="InfluMe.Views.OngoingJobPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:behavior="clr-namespace:InfluMe.Behaviors;assembly=InfluMe"
@@ -33,7 +33,7 @@
 
             <StackLayout 
                 Grid.Row="2"
-                IsVisible="{Binding IsAppliEmpty, Mode=TwoWay}"
+                IsVisible="{Binding IsApprovedsEmpty, Mode=TwoWay}"
                 VerticalOptions="Center">
                 <Image  
                         Source = "empty"
@@ -65,27 +65,22 @@
                             CommandParameter="{x:Reference backButton}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Back}" />
-                    
-                    <!--  Contacts List page Title  -->
+
+                    <!--  Title  -->
                     <Label
                         Margin="16,0"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="FillAndExpand"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Approve Applicants"
+                        Text="{Binding SelectedJob.jobName}"
+                        LineBreakMode="TailTruncation"
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
 
-                    <buttons:SfButton
-                        Command="{Binding CopyCommand}"
-                        FontSize="24"
-                        Style="{StaticResource IconButtonStyle}"
-                        FontFamily="{StaticResource FontAwesomeSolid}"
-                        Text="&#xf0c5;" />
 
                 </StackLayout>
 
-               
+
 
             </StackLayout>
 
@@ -94,13 +89,15 @@
 
             <StackLayout Grid.Row="2">
                 <listView:SfListView
-                    x:Name="ApplicantList"
+                    x:Name="OngoingList"
                     AllowSwiping="True"
                     AutoFitMode="Height"
                     IsScrollBarVisible="False"
-                    IsVisible="{Binding IsAppliEmpty, Converter={StaticResource InverseBoolConverter}}"
+                    IsVisible="{Binding IsApprovedsEmpty, Converter={StaticResource InverseBoolConverter}}"
                     ItemSpacing="0"
-                    ItemsSource="{Binding JobApplieds}"
+                    ItemsSource="{Binding Approveds}"
+                    SelectionBackgroundColor="{StaticResource Transparent}"
+                    SelectedItem="{Binding Selected, Mode=TwoWay}"
                     SelectionGesture="Tap"
                     SelectionMode="Single"
                     VerticalOptions="FillAndExpand">
@@ -170,13 +167,14 @@
                                             VerticalOptions="Center" />
 
 
-                                        <CheckBox
+                                        <Label
+                                            Grid.Row="0"
+                                            VerticalOptions="Center"
                                             Grid.Column="2"
-                                            HorizontalOptions="End"
-                                            BindingContext="{Binding influencerId}"
-                                            CheckedChanged="OnCheckBoxCheckedChanged">
-
-                                        </CheckBox>
+                                            HorizontalTextAlignment="End"
+                                            Margin="0,0,8,0"
+                                            Text="{Binding progressStatus}">
+                                        </Label>
 
                                         <StackLayout
                                             Grid.Row="2"
@@ -223,7 +221,7 @@
                                                     </DataTrigger>
                                                 </StackLayout.Triggers>
                                             </StackLayout>
-                                            
+
                                         </StackLayout>
 
                                         <!--  Seperator  -->
@@ -239,12 +237,12 @@
                     </listView:SfListView.ItemTemplate>
                 </listView:SfListView>
                 <buttons:SfButton
-                    IsVisible="{Binding IsAppliEmpty, Converter={StaticResource InverseBoolConverter}}"
+                    IsVisible="{Binding IsApprovedsEmpty, Converter={StaticResource InverseBoolConverter}}"
                     Margin="8,0,8,10"
-                    Command="{Binding SubmitCommand}"
+                    Command="{Binding CompleteCommand}"
                     HorizontalOptions="Fill"
                     Style="{StaticResource OrangeButtonStyle}"
-                    Text="SUBMIT"
+                    Text="COMPLETE JOB"
                     WidthRequest="200" />
             </StackLayout>
         </Grid>

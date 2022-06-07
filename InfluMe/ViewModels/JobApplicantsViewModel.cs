@@ -14,9 +14,12 @@ namespace InfluMe.ViewModels
 {
     class JobApplicantsViewModel : BaseViewModel
     {
+        private JobAppliedResponse selected;
         private List<Applicant> applicants;
         private List<JobAppliedResponse> jobApplieds;
-        private bool isEmpty;
+        private List<JobAppliedResponse> approveds;
+        private bool isAppliEmpty;
+        private bool isApprovedsEmpty;
         private JobDataService service => new JobDataService();
 
 
@@ -30,6 +33,19 @@ namespace InfluMe.ViewModels
         }
 
         public JobResponse SelectedJob { get; set; }
+
+        public JobAppliedResponse Selected{
+            get {
+                return this.selected;
+            }
+
+            set {
+                if (value != null) {
+                    selected = value;
+                    ItemSelected();
+                }
+            }
+        }
 
         public List<Applicant> Applicants {
             get {
@@ -59,32 +75,93 @@ namespace InfluMe.ViewModels
             }
         }
 
-
-        public bool IsEmpty {
+        public List<JobAppliedResponse> Approveds {
             get {
-                return this.isEmpty;
+                return this.approveds;
             }
 
             set {
-                if (this.isEmpty == value) {
+                if (this.approveds == value) {
                     return;
                 }
 
-                this.SetProperty(ref this.isEmpty, value);
+                this.SetProperty(ref this.approveds, value);
             }
         }
+
+
+        public bool IsAppliEmpty {
+            get {
+                return this.isAppliEmpty;
+            }
+
+            set {
+                if (this.isAppliEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isAppliEmpty, value);
+            }
+        }
+
+        public bool IsApprovedsEmpty {
+            get {
+                return this.isApprovedsEmpty;
+            }
+
+            set {
+                if (this.isApprovedsEmpty == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.isApprovedsEmpty, value);
+            }
+        }
+
 
         private async void InitializeProperties() {
             try {
                  this.JobApplieds = await service.GetAllAppliedJobByJobId(SelectedJob.jobId);
 
-                this.Applicants = this.JobApplieds.ToList().Select(x => new Applicant { influencerId = x.influencerId, jobId = SelectedJob.jobId, isChecked = false }).ToList();
+                if (SelectedJob.jobStatus.Equals(JobStatus.SELECTION.ToString())) {
+                    this.Applicants = this.JobApplieds.Select(x => new Applicant { influencerId = x.influencerId, jobId = SelectedJob.jobId, isChecked = false }).ToList();
+
+                    this.IsAppliEmpty = Applicants.Count == 0;
+                }
+
+                else {
+                    this.Approveds
+                        = this.JobApplieds.Where(x => x.progressStatus != JobProgressStatus.NotApproved.ToString()).ToList();
+
+                    this.IsApprovedsEmpty = Approveds.Count == 0;
+                }
+                    
 
 
-                this.IsEmpty = Applicants.Count == 0;
+                
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
+
+        private async void ItemSelected() {
+            switch (selected.progressStatus) {
+                case (JobProgressStatus.OnDelivery):
+                    await Application.Current.MainPage.Navigation.PushAsync(new InputDeliveryReceiptPage(Selected));
+                    break;
+
+                case (JobProgressStatus.DraftSubmitted):
+                    
+                    break;
+
+                case (JobProgressStatus.ProofSubmitted):
+                    
+                    break;
+
+                case (JobProgressStatus.PendingPayment):
+                    
+                    break;
             }
         }
 

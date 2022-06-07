@@ -423,8 +423,7 @@
                                 Text="APPLY JOB"
                                 WidthRequest="200" />
 
-                            <Label 
-                                Text="{Binding 'Ongoing',Converter={StaticResource StatusOngoingBoolConverter}}"/>
+                           
 
                             <!-- Submission Button -->
                             <buttons:SfButton 

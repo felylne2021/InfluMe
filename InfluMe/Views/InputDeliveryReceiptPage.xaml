@@ -42,18 +42,18 @@
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
                         TextTransform="Uppercase"
-                        Text="DELIVERY FROM ONEX" />
+                        Text="{Binding Selected.job.jobBrand, StringFormat ='DELIVERY FROM {0}'}" />
                     <Label
-                        Margin="0,0,0,0"
+                        Margin="0,0,0,16"
                         FontSize="20"
                         LineHeight="{OnPlatform Android=1.25,
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
                         TextTransform="Uppercase"
-                        Text="For Bob" />
+                        Text="{Binding Selected.influencer.influencerName, StringFormat ='FOR {0}'}" />
                     
                     <!--Job Detail-->
-                    <Label
+                    <!--<Label
                         Margin="17,8"
                         FontFamily="Montserrat-Medium"
                         LineBreakMode="WordWrap"
@@ -61,7 +61,7 @@
                         LineHeight="{OnPlatform Android=1.25,
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Realfood 2x Story Sebulan from Realfood" />
+                        Text="{Binding Selected.job.jobProduct, StringFormat='Product: {0}'}" />-->
 
                     <!--  Deliver Courier label  -->
                     <StackLayout
@@ -71,6 +71,7 @@
                             <combobox:SfComboBox
                                 x:Name="CourierPicker" 
                                 Style="{StaticResource TextInputLayoutComboBoxStyle}"
+                                SelectedValue="{Binding DeliveryCompany, Mode=TwoWay}"
                                 Watermark = "Delivery Courier" >
                                 <combobox:SfComboBox.ComboBoxSource>
                                     <ListCollection:List x:TypeArguments="x:String">
@@ -107,7 +108,7 @@
                             x:Name="DeliveryReceiptEntry"
                             Placeholder="Delivery Tracking Number"
                             Style="{StaticResource BorderlessEntryStyle}"
-                            Text="" />
+                            Text="{Binding DeliveryReceipt}" />
                         </border:SfBorder>
                     </StackLayout>
 

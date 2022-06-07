@@ -12,6 +12,7 @@ namespace InfluMe.ViewModels {
     public class InputDeliveryViewModel {
 
         private JobDataService service = new JobDataService();
+        private JobAppliedResponse selected;
 
         public InputDeliveryViewModel() {
             this.InitializeProperties();
@@ -26,10 +27,22 @@ namespace InfluMe.ViewModels {
             
         }
 
+        public JobAppliedResponse Selected {
+            get {
+                return this.selected;
+            }
+
+            set {
+                if (value != null) {
+                    selected = value;
+                }
+            }
+        }
+
         private async void SaveClicked() {
             this.DeliveryCompany = DeliveryCourier.Couriers.FirstOrDefault(x => x.courierName == DeliveryCompany).courierCode;
 
-            Delivery delivery = new Delivery() { appliedJobId = JobApplied.appliedJobId, deliveryCompany = DeliveryCompany, deliveryReceipt = DeliveryReceipt, deliveryItemName = JobApplied.job.jobProduct, deliveryStatus = "On Delivery" };
+            Delivery delivery = new Delivery() { appliedJobId = Selected.appliedJobId, deliveryCompany = DeliveryCompany, deliveryReceipt = DeliveryReceipt, deliveryItemName = Selected.job.jobProduct, deliveryStatus = "On Delivery" };
             try {
                 await service.SaveDelivery(delivery);
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Delivery Saved"));
@@ -38,7 +51,6 @@ namespace InfluMe.ViewModels {
             catch (Exception ex) { await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage()); 
             }
         }
-        public JobAppliedResponse JobApplied { get; set; }
 
         public Command BackButtonCommand { get; set; }
         public Command SaveCommand { get; set; }

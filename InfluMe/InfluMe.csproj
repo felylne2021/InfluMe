@@ -253,6 +253,9 @@
     <EmbeddedResource Update="Views\OngoingJobListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\OngoingJobPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\PaymentStatusPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>

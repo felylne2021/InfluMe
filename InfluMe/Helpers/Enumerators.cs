@@ -40,15 +40,15 @@ namespace InfluMe.Helpers {
     }
 
     public static class JobProgressStatus {
-        public static string Applied = "Applied"; // influencer applied
-        public static string NotApproved = "Not Accepted"; // influencer not chosen
-        public static string OnDelivery = "On Delivery"; // influencer chosen and product not null
-        public static string PendingProof = "Pending Proof"; // influencer accepted, no draft/ draft accepted
-        public static string PendingDraft = "Pending Draft"; // if job needs drafting, accepted
-        public static string DraftSubmitted = "Draft Submitted"; // if content needs approval (hasContentApproval) and submitted
-        public static string ProofSubmitted = "Proof Submitted"; // influencer posted proof of work approved
-        public static string PendingPayment = "Pending Payment"; // paid jobs only
-        public static string Completed = "Completed"; // payment done (for paid jobs)/PoW approved
+        public const string Applied = "Applied"; // influencer applied
+        public const string NotApproved = "Not Approved"; // influencer not chosen
+        public const string OnDelivery = "On Delivery"; // influencer chosen and product not null
+        public const string PendingProof = "Pending Proof"; // influencer accepted, no draft/ draft accepted
+        public const string PendingDraft = "Pending Draft"; // if job needs drafting, accepted
+        public const string DraftSubmitted = "Draft Submitted"; // if content needs approval (hasContentApproval) and submitted
+        public const string ProofSubmitted = "Proof Submitted"; // influencer posted proof of work approved
+        public const string PendingPayment = "Pending Payment"; // paid jobs only
+        public const string Completed = "Completed"; // payment done (for paid jobs)/PoW approved
     }
 
     public static class DeliveryStatus {
