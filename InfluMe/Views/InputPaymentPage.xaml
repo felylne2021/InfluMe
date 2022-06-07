@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             BackgroundColor="{DynamicResource Gray-100}"
+             NavigationPage.HasNavigationBar="False"
              x:Class="InfluMe.Views.InputPaymentPage">
     <ContentPage.Content>
         <Grid>
@@ -18,6 +20,20 @@
                     HorizontalOptions="Center"
                     Spacing="0"
                     VerticalOptions="Center">
+
+                    <Label
+                        Style="{StaticResource DescriptionLabelStyle}"
+                        Text="{Binding Selected.influencer.influencerName,StringFormat='Payment for {0}'}"/>
+
+                    <StackLayout
+                        Orientation="Horizontal">
+                        <Label
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Selected.influencer.bankName}"/>
+                        <Label
+                            Style="{StaticResource DescriptionLabelStyle}"
+                            Text="{Binding Selected.influencer.bankAccountNumber}"/>
+                    </StackLayout>
 
                     <!--  Submission image  -->
                     <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" 

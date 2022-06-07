@@ -31,6 +31,12 @@ namespace InfluMe.Helpers {
         True
     }
 
+    public enum PaymentStatusList {
+        NONE,
+        PAID,
+        PENDING
+    }
+
     public enum JobStatus {
         OPEN, // registration open
         SELECTION, // waiting for client selection

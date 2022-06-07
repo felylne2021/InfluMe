@@ -132,9 +132,19 @@ namespace InfluMe.Models
 
     }
 
+    public class SubmitPayment {
+        public string paymentStatus { get; set; } // PENDING , PAID , NONE
+        public string paymentAmount { get; set; }
+        public string paymentDate { get; set; }
+        public int influencerId { get; set; }
+        public int jobId { get; set; }
+        public string progressStatus { get; set; }
+        public string paymentProof { get; set; }
+    }
+
     public class Payment {
         public int paymentId { get; set; }
-        public string paymentStatus { get; set; }
+        public string paymentStatus { get; set; } // PENDING , PAID , NONE
         public string paymentAmount { get; set; }
         public string paymentDate { get; set; }
     }

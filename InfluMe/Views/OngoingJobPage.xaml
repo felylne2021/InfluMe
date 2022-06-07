@@ -236,14 +236,7 @@
                         </DataTemplate>
                     </listView:SfListView.ItemTemplate>
                 </listView:SfListView>
-                <buttons:SfButton
-                    IsVisible="{Binding IsApprovedsEmpty, Converter={StaticResource InverseBoolConverter}}"
-                    Margin="8,0,8,10"
-                    Command="{Binding CompleteCommand}"
-                    HorizontalOptions="Fill"
-                    Style="{StaticResource OrangeButtonStyle}"
-                    Text="COMPLETE JOB"
-                    WidthRequest="200" />
+                
             </StackLayout>
         </Grid>
     </ContentPage.Content>

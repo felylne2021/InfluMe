@@ -145,6 +145,17 @@ namespace InfluMe.DataService
             }
         }
 
+        public async Task SubmitPaymentProof(SubmitPayment request) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync($"/payment/save", request);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
         public async Task DeleteJob(string jobId) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
