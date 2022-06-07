@@ -28,7 +28,6 @@ namespace InfluMe.ViewModels {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
         }
-
         public List<JobAppliedResponse> Applications {
             get {
                 return this.applications;

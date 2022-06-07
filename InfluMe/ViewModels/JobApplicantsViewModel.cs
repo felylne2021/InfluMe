@@ -145,6 +145,10 @@ namespace InfluMe.ViewModels
             }
         }
 
+        public void OnAppearing() {
+            IsBusy = true;
+            InitializeProperties();
+        }
         private async void ItemSelected() {
             switch (selected.progressStatus) {
                 case (JobProgressStatus.OnDelivery):

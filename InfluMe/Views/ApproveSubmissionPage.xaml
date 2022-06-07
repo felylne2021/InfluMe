@@ -82,13 +82,13 @@
                         VerticalOptions="End">
                 <button:SfButton
                             Margin="0,0,0,10"
-                            Command="{Binding SaveCommand}"
+                            Command="{Binding ApproveCommand}"
                             Style="{StaticResource GradientButtonStyle}"
                             Text="APPROVE"
                             WidthRequest="180" />
                 <button:SfButton
                             Margin="0,0,0,10"
-                            Command="{Binding DeleteCommand}"
+                            Command="{Binding RejectCommand}"
                             Style="{StaticResource DangerButtonStyle}"
                             Text="REJECT"
                             WidthRequest="180" />
