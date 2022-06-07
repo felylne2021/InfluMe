@@ -164,7 +164,7 @@ namespace InfluMe.ViewModels
                     break;
 
                 case (JobProgressStatus.PendingPayment):
-                    
+                    await Application.Current.MainPage.Navigation.PushAsync(new ApproveSubmissionPage(Selected));
                     break;
             }
         }

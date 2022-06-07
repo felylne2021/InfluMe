@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             x:Class="InfluMe.Views.InputPaymentPage">
+    <ContentPage.Content>
+        <Grid>
+            <button:SfButton
+                Margin="8"
+                Command="{Binding BackButtonCommand}"
+                FontSize="20"
+                HorizontalOptions="End"
+                Style="{StaticResource IconButtonStyle}"
+                Text="{StaticResource Close}"
+                VerticalOptions="Start" />
+
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Spacing="0"
+                    VerticalOptions="Center">
+
+                    <!--  Submission image  -->
+                    <Image x:Name="imageView" HeightRequest="150" WidthRequest="200" 
+                           Source ="upload">
+                    </Image>
+                    
+                    <Label x:Name="imageBlob" IsVisible="False" Text="{Binding ImageBlob, Mode=TwoWay}"/>
+                    <button:SfButton
+                    Margin="0,8,0,8"
+                    Clicked="Upload_Clicked"
+                    Style="{StaticResource SimpleButtonStyle}"
+                    Text="Upload Payment Proof"
+                    WidthRequest="200" />
+
+                    
+
+                </StackLayout>
+            </ScrollView>
+            <StackLayout
+                        Orientation="Horizontal"
+                        VerticalOptions="End">
+                <button:SfButton
+                            Margin="8,0,8,10"
+                            HorizontalOptions="FillAndExpand"
+                            Command="{Binding SaveCommand}"
+                            Style="{StaticResource OrangeButtonStyle}"
+                            Text="SUBMIT" />
+
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

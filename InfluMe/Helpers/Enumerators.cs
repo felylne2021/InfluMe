@@ -35,8 +35,8 @@ namespace InfluMe.Helpers {
         OPEN, // registration open
         SELECTION, // waiting for client selection
         ONGOING, // registration closed and approved influencers has been announced
-        DONE, // all influencers' proof approved and payment pending (paid jobs only)
-        CLOSE // all influencers' proof approved (if no payment), all payment status paid (if any)
+        DONE, // all influencers' proof approved and payment pending (paid jobs only) -- removed
+        COMPLETE // all influencers' proof approved (if no payment), all payment status paid (if any)
     }
 
     public static class JobProgressStatus {

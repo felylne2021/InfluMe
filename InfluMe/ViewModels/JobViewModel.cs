@@ -56,6 +56,7 @@ namespace InfluMe.ViewModels {
                     selectedJob = value;
                     ItemSelected();
                 }
+                else selectedJob = null;
             }
         }
 
@@ -262,10 +263,8 @@ namespace InfluMe.ViewModels {
                         // list of influencers with ongoing Job Status ref: my jobs
                         await Application.Current.MainPage.Navigation.PushAsync(new OngoingJobPage(SelectedJob));
                         break;
-                    case nameof(JobStatus.DONE):
-                        // like ongoing, payment if any
-                        break;
-                    case nameof(JobStatus.CLOSE):
+                    
+                    case nameof(JobStatus.COMPLETE):
                         // admin can close when all done
                         break;
                 }
