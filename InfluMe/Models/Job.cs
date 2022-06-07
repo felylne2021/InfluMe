@@ -81,6 +81,7 @@ namespace InfluMe.Models
     [Preserve(AllMembers = true)]
     public class JobAppliedResponse {
         public int influencerId { get; set; }
+        public string influencerName { get; set; }
         public int adminId { get; set; }
         public int deliveryId { get; set; }
         public int paymentId { get; set; }
@@ -145,5 +146,11 @@ namespace InfluMe.Models
         public string deliveryReceipt { get; set; }
         public string deliveryCompany { get; set; }
         public string deliveryItemName { get; set; }
+    }
+
+    public class Applicant {
+        public int appliedJobId { get; set; }
+        public int influencerId { get; set; }
+        public bool isChecked { get; set; }
     }
 }

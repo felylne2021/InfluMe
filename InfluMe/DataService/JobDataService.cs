@@ -66,9 +66,10 @@ namespace InfluMe.DataService
             else throw new Exception();
         }
 
-        public async Task<List<JobAppliedResponse>> GetAllAppliedJob() {
+        
+        public async Task<List<JobAppliedResponse>> GetAllAppliedJobByJobId(int jobId) {
 
-            var response = await client.GetAsync("/job");
+            var response = await client.GetAsync($"/appliedJob/get/job/{jobId}");
 
             if (response.IsSuccessStatusCode) {
                 var jsonString = await response.Content.ReadAsStringAsync();
@@ -173,6 +174,17 @@ namespace InfluMe.DataService
             client.BaseAddress = new Uri(_hostname);
 
             var response = await client.PostAsJsonAsync($"/delivery/save", delivery);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
+        public async Task SubmitJobApplicants(List<Applicant> applicants) {
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync($"/appliedJob/changeProgressStatus/bulk", applicants);
 
             if (!response.IsSuccessStatusCode) {
                 throw new Exception();

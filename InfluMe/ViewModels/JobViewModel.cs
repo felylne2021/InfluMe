@@ -256,6 +256,7 @@ namespace InfluMe.ViewModels {
                         break;
                     case nameof(JobStatus.SELECTION):
                         // list of influencers who applied
+                        await Application.Current.MainPage.Navigation.PushAsync(new ViewJobApplicantsPage(SelectedJob));
                         break;
                     case nameof(JobStatus.ONGOING):
                         // list of influencers with ongoing Job Status ref: my jobs

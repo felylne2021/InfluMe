@@ -144,8 +144,8 @@ namespace InfluMe.ViewModels {
 
                 this.EnrolledList = new ObservableCollection<InfluencerResponse>(this.InfluencerList.ToList().Where(x => x.influencerStatus.Equals(InfluencerStatus.ENROLLED.ToString())));
 
-                var temp_enrollments = this.EnrolledList.ToList().Select(x => new Enrollment { influencerId = x.influencerId, isChecked = false }).ToList();
-                this.Enrollments = (List<Enrollment>)temp_enrollments;
+                
+                this.Enrollments = this.EnrolledList.ToList().Select(x => new Enrollment { influencerId = x.influencerId, isChecked = false }).ToList();
 
                 this.RegularList = new ObservableCollection<InfluencerResponse>(InfluencerList.Where(x => !x.influencerStatus.Equals(InfluencerStatus.ENROLLED.ToString())));
 

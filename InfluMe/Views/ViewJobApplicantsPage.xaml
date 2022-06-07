@@ -12,7 +12,7 @@
     xmlns:datePicker="clr-namespace:Syncfusion.XForms.Pickers;assembly=Syncfusion.SfPicker.XForms"
     xmlns:data="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:converter="clr-namespace:InfluMe.Converters" xmlns:behaviors1="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack"
+    xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:converter="clr-namespace:InfluMe.Converters" xmlns:behaviors1="clr-namespace:Xamarin.Forms.BehaviorsPack;assembly=Xamarin.Forms.BehaviorsPack" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
     BackgroundColor="{DynamicResource Gray-Bg}"
     NavigationPage.HasNavigationBar="False"
     mc:Ignorable="d">
@@ -20,6 +20,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -32,16 +33,16 @@
 
             <StackLayout 
                 Grid.Row="2"
-                IsVisible="{Binding IsEnrollEmpty, Mode=TwoWay}"
+                IsVisible="{Binding IsEmpty, Mode=TwoWay}"
                 VerticalOptions="Center">
                 <Image  
                         Source = "empty"
                         HeightRequest="130"/>
                 <Label
                         HorizontalTextAlignment="Center"
-                        Text="No Enrollments"/>
+                        Text="No Applicants"/>
             </StackLayout>
-            
+
             <StackLayout
                 x:Name="ContactsTitleView"
                 Grid.Row="0"
@@ -58,89 +59,62 @@
                     Orientation="Horizontal"
                     Spacing="0"
                     VerticalOptions="FillAndExpand">
-
+                    <buttons:SfButton
+                            x:Name="backButton"
+                            Command="{Binding BackButtonCommand}"
+                            CommandParameter="{x:Reference backButton}"
+                            Style="{StaticResource IconButtonStyle}"
+                            Text="{StaticResource Back}" />
+                    
                     <!--  Contacts List page Title  -->
                     <Label
                         Margin="16,0"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="FillAndExpand"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Approve Enrollments"
+                        Text="Approve Applicants"
                         VerticalOptions="Center"
                         VerticalTextAlignment="Center" />
 
-                </StackLayout>
-
-                <StackLayout
-                    x:Name="Search"
-                    HorizontalOptions="EndAndExpand"
-                    IsVisible="False"
-                    Orientation="Horizontal"
-                    Spacing="0">
-
-                    <!--  Back to title layout  -->
                     <buttons:SfButton
-                        x:Name="BackToTitle"
+                        Command="{Binding CopyCommand}"
+                        FontSize="24"
                         Style="{StaticResource IconButtonStyle}"
-                        Text="{StaticResource Back}">
-                        <buttons:SfButton.Behaviors>
-                            <behaviors:SearchBarAnimationBehavior AnimationType="shrink" />
-                        </buttons:SfButton.Behaviors>
-                    </buttons:SfButton>
+                        FontFamily="{StaticResource FontAwesomeSolid}"
+                        Text="&#xf0c5;" />
 
-                    <!--  Rounded Search Entry  -->
-                    <border:SfBorder Style="{DynamicResource ThemeBorderStyle}">
-                        <controls:BorderlessEntry
-                            x:Name="SearchEntry"
-                            BindingContext="{x:Reference EnrollmentList}"
-                            HorizontalOptions="FillAndExpand"
-                            Placeholder="Search here"
-                            Style="{StaticResource BorderlessEntryStyle}"
-                            Text="{Binding SearchText, Mode=TwoWay}" />
-                    </border:SfBorder>
                 </StackLayout>
 
-                <!--  Search Button  -->
-                <buttons:SfButton
-                    x:Name="SearchButton"
-                    IsVisible="True"
-                    Style="{StaticResource IconButtonStyle}"
-                    Text="{StaticResource Search}">
-                    <buttons:SfButton.Behaviors>
-                        <behaviors:SearchBarAnimationBehavior AnimationType="expand" />
-                    </buttons:SfButton.Behaviors>
-                </buttons:SfButton>
+               
+
             </StackLayout>
 
             <!--  Seperator  -->
             <BoxView Grid.Row="1" Style="{StaticResource HorizontalSeparatorStyle}" />
 
             <StackLayout Grid.Row="2">
-                <controls:SearchableContactsList
+                <listView:SfListView
                     x:Name="EnrollmentList"
                     AllowSwiping="True"
                     AutoFitMode="Height"
                     IsScrollBarVisible="False"
-                    IsVisible="{Binding IsEnrollEmpty, Converter={StaticResource InverseBoolConverter}}"
+                    IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
                     ItemSpacing="0"
-                    ItemsSource="{Binding EnrolledList}"
-                    SearchText="{Binding SearchText}"
-                    SelectedItem="{Binding SelectedInf}"
-                    SelectionBackgroundColor="{DynamicResource Gray-200}"
+                    ItemsSource="{Binding JobApplieds}"
                     SelectionGesture="Tap"
                     SelectionMode="Single"
                     VerticalOptions="FillAndExpand">
 
-                    <controls:SearchableContactsList.DataSource>
+                    <listView:SfListView.DataSource>
                         <data:DataSource>
                             <data:DataSource.SortDescriptors>
                                 <data:SortDescriptor Direction="Ascending" PropertyName="influencerName" />
                             </data:DataSource.SortDescriptors>
                         </data:DataSource>
-                    </controls:SearchableContactsList.DataSource>
+                    </listView:SfListView.DataSource>
 
                     <!--  Group Header  -->
-                    <controls:SearchableContactsList.GroupHeaderTemplate>
+                    <listView:SfListView.GroupHeaderTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
@@ -162,27 +136,24 @@
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
-                    </controls:SearchableContactsList.GroupHeaderTemplate>
+                    </listView:SfListView.GroupHeaderTemplate>
 
-                    <controls:SearchableContactsList.Behaviors>
-                        <behavior:ContactsListViewBehavior />
-                    </controls:SearchableContactsList.Behaviors>
-
-                    <controls:SearchableContactsList.ItemTemplate>
+                    <listView:SfListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <ViewCell.View>
                                     <Grid
                                         ColumnDefinitions="Auto, 200, *"
                                         ColumnSpacing="1"
-                                        HeightRequest="56"
+                                        HeightRequest="86"
                                         RowDefinitions="Auto, Auto"
-                                        RowSpacing="0">
+                                        RowSpacing="1">
 
                                         <!--  Contact name avatar  -->
                                         <sfavatar:SfAvatarView
+                                            VerticalOptions="End"
                                             Margin="16,0,8,0"
-                                            ImageSource="{Binding influencerColorHex}"
+                                            ImageSource="{Binding influencer.influencerColorHex, Converter={StaticResource StringToImageSourceConverter}}"
                                             Style="{StaticResource AvatarViewStyle}"
                                             ContentType="Custom"/>
 
@@ -194,7 +165,7 @@
                                             FontFamily="Montserrat-Medium"
                                             HorizontalOptions="Start"
                                             Style="{StaticResource TitleLabelStyle}"
-                                            Text="{Binding influencerName}"
+                                            Text="{Binding influencer.influencerName}"
                                             LineBreakMode="TailTruncation"
                                             VerticalOptions="Center" />
 
@@ -207,9 +178,57 @@
 
                                         </CheckBox>
 
+                                        <StackLayout
+                                            Grid.Row="2"
+                                            Grid.Column="1"
+                                            Grid.ColumnSpan="2"
+                                            Margin="0,-12,0,0"
+                                            Orientation="Horizontal">
+                                            <StackLayout
+                                                Orientation="Horizontal">
+                                                <Label
+                                                FontSize="Small"
+                                                TextColor="MediumVioletRed"
+                                                FontFamily="{StaticResource FontAwesomeBrands}"
+                                                Text="&#xf16d;"/>
+                                                <Label
+                                                FontSize="Small"
+                                                Text="{Binding influencer.influencerInstagramId}"/>
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger 
+                    TargetType="StackLayout"
+                    Binding="{Binding job.jobPlatform}"
+                    Value="TikTok">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                            </StackLayout>
+
+                                            <StackLayout
+                                                Orientation="Horizontal">
+                                                <Label
+                                                FontSize="Small"
+                                                TextColor="MediumVioletRed"
+                                                FontFamily="{StaticResource FontAwesomeBrands}"
+                                                Text="&#xe07b;"/>
+                                                <Label
+                                                FontSize="Small"
+                                                Text="{Binding influencer.influencerTiktokId}"/>
+                                                <StackLayout.Triggers>
+                                                    <DataTrigger 
+                    TargetType="StackLayout"
+                    Binding="{Binding job.jobPlatform}"
+                    Value="Instagram">
+                                                        <Setter Property="IsVisible" Value="false" />
+                                                    </DataTrigger>
+                                                </StackLayout.Triggers>
+                                            </StackLayout>
+                                            
+                                        </StackLayout>
+
                                         <!--  Seperator  -->
                                         <BoxView
-                                            Grid.Row="01"
+                                            Grid.Row="2"
                                             Grid.ColumnSpan="2"
                                             Style="{StaticResource HorizontalSeparatorStyle}" />
 
@@ -217,11 +236,11 @@
                                 </ViewCell.View>
                             </ViewCell>
                         </DataTemplate>
-                    </controls:SearchableContactsList.ItemTemplate>
-                </controls:SearchableContactsList>
+                    </listView:SfListView.ItemTemplate>
+                </listView:SfListView>
                 <buttons:SfButton
-                    IsVisible="{Binding IsEnrollEmpty, Converter={StaticResource InverseBoolConverter}}"
-                    Margin="12,0"
+                    IsVisible="{Binding IsEmpty, Converter={StaticResource InverseBoolConverter}}"
+                    Margin="8,0,8,10"
                     Command="{Binding SubmitCommand}"
                     HorizontalOptions="Fill"
                     Style="{StaticResource OrangeButtonStyle}"

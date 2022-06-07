@@ -1,4 +1,5 @@
-﻿using InfluMe.ViewModels;
+﻿using InfluMe.Models;
+using InfluMe.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,10 @@ namespace InfluMe.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class ViewJobApplicantsPage : ContentPage
 	{
-		public ViewJobApplicantsPage ()
+		public ViewJobApplicantsPage (JobResponse selectedJob)
 		{
 			InitializeComponent ();
+			BindingContext = new JobApplicantsViewModel(selectedJob);
 		}
 
 		void OnCheckBoxCheckedChanged(object sender, CheckedChangedEventArgs e) {
