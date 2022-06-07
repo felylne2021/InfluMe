@@ -27,7 +27,7 @@ namespace InfluMe.Views
             var bytes = Convert.FromBase64String(selectedJob.jobImageBlob);
             imageView.Source = ImageSource.FromStream(() => new MemoryStream(bytes));
 
-            BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied, ThisJobProgressStatus = jobProgressStatus, IsSubmissionVisible = (jobProgressStatus.Equals(JobProgressStatus.PendingDraft) || jobProgressStatus.Equals(JobProgressStatus.PendingProof)), ImageURL = new System.Uri(selectedJob.jobImage) };
+            BindingContext = new JobDetailPageViewModel() { Job = selectedJob, IsApplied = isApplied, ThisJobProgressStatus = jobProgressStatus, IsSubmissionVisible = (jobProgressStatus.Equals(JobProgressStatus.PendingDraft) || jobProgressStatus.Equals(JobProgressStatus.PendingProof)) };
         }       
 
 
