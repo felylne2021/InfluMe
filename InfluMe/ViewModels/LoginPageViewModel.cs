@@ -119,7 +119,7 @@ namespace InfluMe.ViewModels {
 
         #endregion
 
-        #region methods
+        #region Methods
 
         /// <summary>
         /// Check the login credentials
@@ -175,15 +175,14 @@ namespace InfluMe.ViewModels {
 
                         if (resp.userType.Equals(UserType.Influencer.ToString()))
                         {
-                            Application.Current.MainPage = new MainPage();
+                            Application.Current.MainPage = new NavigationPage(new MainPage());
                         }
 
                         else if (resp.userType.Equals(UserType.Admin.ToString()))
                         {
-                            Application.Current.MainPage = new AdminMainPage();
+                            Application.Current.MainPage = new NavigationPage(new AdminMainPage());
                         }
                         
-                        //Application.Current.MainPage.Navigation.RemovePage(previousPage);
                         
                     }
                     else {

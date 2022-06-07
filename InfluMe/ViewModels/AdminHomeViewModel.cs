@@ -72,7 +72,7 @@ namespace InfluMe.ViewModels
             Application.Current.Properties["UserId"] = "";
             Application.Current.Properties["UserType"] = "";
             App.Current.SavePropertiesAsync();
-            Application.Current.MainPage = new MainLoginPage();
+            Application.Current.MainPage = new NavigationPage(new MainLoginPage());
         }
 
        private void NotificationClicked() {

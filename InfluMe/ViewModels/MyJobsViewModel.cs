@@ -132,8 +132,9 @@ namespace InfluMe.ViewModels {
                 JobStatsResponse resp = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
 
                 this.AllMyJobs = resp.appliedJobList;
-                this.AllMyJobs = this.AllMyJobs.Where(x => (String.IsNullOrEmpty(x.delivery.deliveryReceipt)) && !String.IsNullOrEmpty(x.job.jobProduct)).Select(x => { x.delivery.deliveryStatus = "Pending Receipt"; return x; }).ToList();
-                this.AllMyJobs = this.AllMyJobs.Where(x => x.delivery.deliveryReceipt != null ).Select(x => { x.delivery.deliveryStatus = "On Delivery"; return x; }).ToList();
+
+                this.AllMyJobs = this.AllMyJobs.Where(x => (x.delivery == null) && !String.IsNullOrEmpty(x.job.jobProduct)).Select(x => { x.delivery.deliveryStatus = "Pending Receipt"; return x; }).ToList();
+                this.AllMyJobs = this.AllMyJobs.Where(x => x.delivery != null ).Select(x => { x.delivery.deliveryStatus = "On Delivery"; return x; }).ToList();
                 this.MyJobs = AllMyJobs;
 
                 this.IsEmpty = this.AllMyJobs.Count == 0;
