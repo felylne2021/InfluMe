@@ -78,7 +78,7 @@ namespace InfluMe.ViewModels
             try {
                  this.JobApplieds = await service.GetAllAppliedJobByJobId(SelectedJob.jobId);
 
-                this.Applicants = this.JobApplieds.ToList().Select(x => new Applicant { influencerId = x.influencerId, appliedJobId = x.appliedJobId, isChecked = false }).ToList();
+                this.Applicants = this.JobApplieds.ToList().Select(x => new Applicant { influencerId = x.influencerId, jobId = SelectedJob.jobId, isChecked = false }).ToList();
 
 
                 this.IsEmpty = Applicants.Count == 0;
@@ -98,10 +98,10 @@ namespace InfluMe.ViewModels
                 text += $"{i+1}. {JobApplieds[i].influencer.influencerName}\n";
 
                 if (!SelectedJob.jobPlatform.Equals(JobPlatformList.TikTok.ToString()))
-                    text += $"Instagram: @{JobApplieds[i].influencer.influencerInstagramId}\n";
+                    text += $"Instagram: https://instagram.com/{JobApplieds[i].influencer.influencerInstagramId}/\n";
 
                 if (!SelectedJob.jobPlatform.Equals(JobPlatformList.Instagram.ToString()))
-                    text += $"TikTok: @{JobApplieds[i].influencer.influencerTiktokId}\n";
+                    text += $"TikTok: https://www.tiktok.com/@{JobApplieds[i].influencer.influencerTiktokId}\n";
 
                 if (!String.IsNullOrEmpty(SelectedJob.jobProduct)) {
                     text += $"Address: {JobApplieds[i].influencer.influencerAddress}\n" +
@@ -118,6 +118,7 @@ namespace InfluMe.ViewModels
                 await service.SubmitJobApplicants(Applicants);
 
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Job Applicants Submitted"));
+                await Application.Current.MainPage.Navigation.PopAsync();
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

@@ -149,7 +149,7 @@ namespace InfluMe.Models
     }
 
     public class Applicant {
-        public int appliedJobId { get; set; }
+        public int jobId { get; set; }
         public int influencerId { get; set; }
         public bool isChecked { get; set; }
     }
