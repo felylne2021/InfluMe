@@ -191,7 +191,7 @@ namespace InfluMe.DataService
             }
         }
 
-        public async Task SubmitJobApplicants(List<Applicant> applicants) {
+        public async Task SubmitJobApplicants(List<Applicant> applicants, int jobId) {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(_hostname);
 
@@ -199,6 +199,13 @@ namespace InfluMe.DataService
 
             if (!response.IsSuccessStatusCode) {
                 throw new Exception();
+            }
+            else {
+                var waRes = await client.GetAsync($"/job/sendClosedJobWA/{jobId}");
+
+                if (!waRes.IsSuccessStatusCode) {
+                    throw new Exception();
+                }
             }
         }
 
