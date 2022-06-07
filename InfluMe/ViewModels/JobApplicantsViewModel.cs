@@ -152,11 +152,11 @@ namespace InfluMe.ViewModels
                     break;
 
                 case (JobProgressStatus.DraftSubmitted):
-                    
+                    await Application.Current.MainPage.Navigation.PushAsync(new ApproveSubmissionPage(Selected));
                     break;
 
                 case (JobProgressStatus.ProofSubmitted):
-                    
+                    await Application.Current.MainPage.Navigation.PushAsync(new ApproveSubmissionPage(Selected));
                     break;
 
                 case (JobProgressStatus.PendingPayment):

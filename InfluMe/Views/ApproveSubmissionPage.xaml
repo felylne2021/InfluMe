@@ -36,9 +36,18 @@
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
                         TextTransform="Uppercase"
-                        Text="PROOF OF WORK&#x0a;LINK SUBMISSION" />
+                        Text="{Binding Header}" />
 
-                    <!--Job Detail-->
+                    <!--  Job  -->
+                    <Label
+                        Margin="17,8"
+                        FontFamily="Montserrat-Medium"
+                        LineHeight="{OnPlatform Android=1.25,
+                                                Default=-1}"
+                        Style="{StaticResource TitleLabelStyle}"
+                        Text="{Binding JobDetail}" />
+
+                    <!--Job SOW-->
                     <Label
                         Margin="17,8"
                         FontFamily="Montserrat-Medium"
@@ -47,19 +56,12 @@
                         LineHeight="{OnPlatform Android=1.25,
                                                 Default=-1}"
                         Style="{StaticResource TitleLabelStyle}"
-                        Text="Realfood 2x Story Sebulan from Realfood" />
+                        Text="{Binding Selected.job.jobSOW}" />
 
-                    <!--  Submission label  -->
-                    <Label
-                        Margin="17,8"
-                        FontFamily="Montserrat-Medium"
-                        LineHeight="{OnPlatform Android=1.25,
-                                                Default=-1}"
-                        Style="{StaticResource TitleLabelStyle}"
-                        Text="ALENAD JSJS" />
+                   
 
                     <Editor
-                        Margin="0,16,0,0"
+                        Margin="20,0"
                         Grid.Column="0"
                         HeightRequest="90"
                         WidthRequest="350"
@@ -67,6 +69,7 @@
                         IsReadOnly="True"
                         FontFamily="Montserrat-Medium"
                         HorizontalOptions="Fill"
+                        TextColor="{StaticResource FacebookBlue}"
                         Text="https://sdsshdhsj.cdkc"
                         VerticalOptions="Center" />
 
