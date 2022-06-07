@@ -200,7 +200,7 @@
 
                                         <Label
                                             Grid.Column="4"
-                                            Margin="-30,6"
+                                            Margin="-35,6"
                                             HorizontalOptions="Start"
                                             VerticalOptions="Center"
                                             Style="{StaticResource DescriptionLabelStyle}"

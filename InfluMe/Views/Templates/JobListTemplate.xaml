@@ -45,35 +45,25 @@
             Grid.ColumnSpan="2"
             Orientation="Horizontal">
             <Label
-            HorizontalOptions="StartAndExpand"
-            Margin="0,0,0,4"
-            FontSize="Medium"
-            LineBreakMode="TailTruncation"
-            MaxLines="1"
-            Style="{StaticResource TitleLabelStyle}"
-            Text="{Binding jobName}"
-            VerticalOptions="Center" />
+                HorizontalOptions="StartAndExpand"
+                Margin="0,0,0,4"
+                FontSize="Medium"
+                LineBreakMode="TailTruncation"
+                MaxLines="1"
+                Style="{StaticResource TitleLabelStyle}"
+                Text="{Binding jobName}"
+                VerticalOptions="Center" />
 
             <Label
+                HorizontalOptions="End"
+                HorizontalTextAlignment="End"
+                WidthRequest="100"
                 Text="{Binding jobStatus}"
                 TextColor="Gray"
                 VerticalOptions="Center"
                 FontSize="Small"/>
         </StackLayout>
         
-
-        <!--  progress status  -->
-        <!--<Label
-            Grid.Row="0"
-            Grid.Column="0"
-            Grid.ColumnSpan="2"
-            Margin="0,0,0,4"
-            FontSize="Medium"
-            HorizontalOptions="End"
-            Style="{StaticResource TitleLabelStyle}"
-            Text="{Binding progressStatus}"
-            VerticalOptions="Center" />-->
-
         <!--  Brand  -->
         <Label
             Grid.Row="1"

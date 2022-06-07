@@ -140,7 +140,9 @@ namespace InfluMe.Models
 
     public class Delivery {
         public int deliveryId { get; set; }
+        public int appliedJobId { get; set; }
         public string deliveryStatus { get; set; }
+        public string deliveryReceipt { get; set; }
         public string deliveryCompany { get; set; }
         public string deliveryItemName { get; set; }
     }

@@ -9,5 +9,8 @@ namespace InfluMe.ViewModels
     {
         public List<Enrollment> Applicants { get; set; }
 
+        public JobApplicantsViewModel(JobResponse jobResponse) {
+
+        }
     }
 }

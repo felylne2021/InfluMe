@@ -6,7 +6,7 @@ namespace InfluMe.Models
 {
     public static class DeliveryCourier
     {
-        public static List<CourierMapping> couriers = new List<CourierMapping>()
+        public static List<CourierMapping> Couriers = new List<CourierMapping>()
         {
             new CourierMapping(){ courierCode = "jne", courierName = "JNE Express"},
             new CourierMapping(){ courierCode = "pos", courierName = "POS Indonesia"},

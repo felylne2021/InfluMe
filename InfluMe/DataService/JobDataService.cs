@@ -168,6 +168,17 @@ namespace InfluMe.DataService
             }
         }
 
+        public async Task SaveDelivery(Delivery delivery){
+            HttpClient client = new HttpClient();
+            client.BaseAddress = new Uri(_hostname);
+
+            var response = await client.PostAsJsonAsync($"/delivery/save", delivery);
+
+            if (!response.IsSuccessStatusCode) {
+                throw new Exception();
+            }
+        }
+
         #endregion
     }
 }
