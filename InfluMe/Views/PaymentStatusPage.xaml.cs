@@ -1,4 +1,5 @@
-﻿using InfluMe.ViewModels;
+﻿using InfluMe.Models;
+using InfluMe.ViewModels;
 using Xamarin.Forms;
 using Xamarin.Forms.Internals;
 using Xamarin.Forms.Xaml;
@@ -13,9 +14,9 @@ namespace InfluMe.Views {
         /// <summary>
         /// Initializes a new instance of the <see cref="PaymentStatusPage" /> class.
         /// </summary>
-        public PaymentStatusPage() {
+        public PaymentStatusPage(JobAppliedResponse selected) {
             this.InitializeComponent();
-            this.BindingContext = new PaymentViewModel();
+            this.BindingContext = new PaymentViewModel(selected);
         }
     }
 }

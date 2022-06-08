@@ -30,7 +30,8 @@ namespace InfluMe.ViewModels {
         /// <summary>
         /// Initializes a new instance for the <see cref="PaymentViewModel"/> class.
         /// </summary>
-        public PaymentViewModel() {
+        public PaymentViewModel(JobAppliedResponse selected) {
+            this.Job = selected;
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
         }
@@ -69,10 +70,9 @@ namespace InfluMe.ViewModels {
         #region Methods
         public async void InitializeProperties() {
             try {
-                this.Job = await service.GetDummyAppliedJob();
                 this.JobString = $"{Job.job.jobName} from {Job.job.jobBrand}";
                 var payment = Job.payment;
-                if (payment.paymentStatus.Equals("Paid")) {
+                if (payment.paymentStatus.Equals("PAID")) {
                     this.ImageSource = "checked";
                 }
                 else this.ImageSource = "pending";

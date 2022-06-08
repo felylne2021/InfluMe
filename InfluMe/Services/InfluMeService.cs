@@ -24,17 +24,17 @@ namespace InfluMe.Services {
             //pyClient.DefaultRequestHeaders.CacheControl.NoCache = false;
         }
 
-        public async Task<JobAppliedResponse> GetDummyAppliedJob() {
+        //public async Task<JobAppliedResponse> GetDummyAppliedJob() {
             
-            var response = await client.GetAsync("appliedJob/get/83");
+        //    var response = await client.GetAsync("appliedJob/get/83");
 
-            if (response.IsSuccessStatusCode) {
-                var jsonString = await response.Content.ReadAsStringAsync();
-                JobAppliedResponseBody respBody = JsonSerializer.Deserialize<JobAppliedResponseBody>(jsonString);
-                return respBody.body;
-            }
-            else throw new Exception();
-        }
+        //    if (response.IsSuccessStatusCode) {
+        //        var jsonString = await response.Content.ReadAsStringAsync();
+        //        JobAppliedResponseBody respBody = JsonSerializer.Deserialize<JobAppliedResponseBody>(jsonString);
+        //        return respBody.body;
+        //    }
+        //    else throw new Exception();
+        //}
 
         public async Task<LoginResponse> Login(string username, string password) {
            

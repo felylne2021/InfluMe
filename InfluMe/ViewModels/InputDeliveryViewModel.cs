@@ -42,7 +42,7 @@ namespace InfluMe.ViewModels {
         private async void SaveClicked() {
             this.DeliveryCompany = DeliveryCourier.Couriers.FirstOrDefault(x => x.courierName == DeliveryCompany).courierCode;
 
-            Delivery delivery = new Delivery() { appliedJobId = Selected.appliedJobId, deliveryCompany = DeliveryCompany, deliveryReceipt = DeliveryReceipt, deliveryItemName = Selected.job.jobProduct, deliveryStatus = "On Delivery" };
+            Delivery delivery = new Delivery() { appliedJobId = Selected.appliedJobId, deliveryCompany = DeliveryCompany, deliveryReceipt = DeliveryReceipt, deliveryItemName = Selected.job.jobProduct, deliveryStatus = "Ongoing" };
             try {
                 await service.SaveDelivery(delivery);
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Delivery Saved"));

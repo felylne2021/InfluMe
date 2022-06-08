@@ -133,8 +133,7 @@ namespace InfluMe.ViewModels {
 
                 this.AllMyJobs = resp.appliedJobList;
 
-                this.AllMyJobs = this.AllMyJobs.Where(x => (x.delivery == null) && !String.IsNullOrEmpty(x.job.jobProduct)).Select(x => { x.delivery.deliveryStatus = "Pending Receipt"; return x; }).ToList();
-                this.AllMyJobs = this.AllMyJobs.Where(x => x.delivery != null ).Select(x => { x.delivery.deliveryStatus = "On Delivery"; return x; }).ToList();
+                
                 this.MyJobs = AllMyJobs;
 
                 this.IsEmpty = this.AllMyJobs.Count == 0;
@@ -151,8 +150,22 @@ namespace InfluMe.ViewModels {
             else this.MyJobs = this.AllMyJobs;
         }
 
-        private void ItemSelected() {
-            Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true, SelectedJob.progressStatus));
+        private async void ItemSelected() {
+            switch (this.SelectedJob.progressStatus) {
+                case JobProgressStatus.OnDelivery:
+                    await Application.Current.MainPage.Navigation.PushAsync(new ProductDeliveryTrackingPage());
+                    break;
+
+                case JobProgressStatus.Completed:
+                    if(!this.SelectedJob.job.jobFee.Equals("0.00"))
+                        await Application.Current.MainPage.Navigation.PushAsync(new PaymentStatusPage(this.SelectedJob));
+                    break;
+
+                default:
+                    await Application.Current.MainPage.Navigation.PushAsync(new JobDetailPage(SelectedJob.job, true, SelectedJob.progressStatus));
+                    break;
+            }
+            
         }
 
         #endregion

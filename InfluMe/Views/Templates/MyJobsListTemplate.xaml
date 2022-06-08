@@ -92,7 +92,7 @@
             Margin="15,4,0,0"
             Style="{StaticResource SimpleLabelStyle}"
             FontFamily="Montserrat-SemiBold"
-            Text="{Binding deliveryStatus, StringFormat='  {0}'}"/>
+            Text="{Binding delivery.deliveryStatus, StringFormat='  {0}'}"/>
 
         <!-- Job Deadline -->
         <Label
@@ -120,7 +120,7 @@
             Margin="15,4,0,0"
             Style="{StaticResource SimpleLabelStyle}"
             FontFamily="Montserrat-SemiBold"
-            Text="{Binding paymentStatus, StringFormat='  {0}'}"/>
+            Text="{Binding payment.paymentStatus, StringFormat='  {0}'}"/>
 
         <!--  Fee  -->
         <StackLayout 
