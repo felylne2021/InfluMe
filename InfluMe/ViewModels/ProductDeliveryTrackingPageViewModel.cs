@@ -1,4 +1,5 @@
-﻿using InfluMe.Helpers;
+﻿using InfluMe.DataService;
+using InfluMe.Helpers;
 using InfluMe.Models;
 using InfluMe.Services;
 using InfluMe.Views;
@@ -22,6 +23,7 @@ namespace InfluMe.ViewModels {
         private JobAppliedResponse job;
 
         private InfluMeService service => new InfluMeService();
+        private JobDataService jobService => new JobDataService();
 
 
         #endregion
@@ -39,6 +41,7 @@ namespace InfluMe.ViewModels {
         /// Gets or sets the step status.
         /// </summary>
         public StepStatus StepStatus { get; set; }
+        public DeliveryData Data { get; set; }
 
         private List<DelivProg> progresses;
         public List<DelivProg> Progresses {
@@ -50,42 +53,44 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        public ObservableCollection<DelivProg> ProgressesCollection { get; set;}
+        public ObservableCollection<DelivProg> ProgressesCollection { get; set; }
 
-        public class DelivProg{
+        public class DelivProg {
+            public string date { get; set; }
             public string status { get; set; }
             public StepStatus stepStatus { get; set; }
             public int progressVal { get; set; }
 
         }
 
+        private static string Wrap(string v, int size) {
+            v = v.TrimStart();
+            if (v.Length <= size) return v;
+            var nextspace = v.LastIndexOf(' ', size);
+            if (-1 == nextspace) nextspace = Math.Min(v.Length, size);
+            return v.Substring(0, nextspace) + ((nextspace >= v.Length) ?
+            "" : "\n" + Wrap(v.Substring(nextspace), size));
+        }
 
-        
 
         public async void InitializeProperties() {
+
             try {
-                var status = this.Job.delivery.deliveryStatus;
-                
+                this.Data = await jobService.TrackDelivery(this.Job.delivery.deliveryCompany, this.Job.delivery.deliveryReceipt);
+                var status = this.Data.summary.status;
+
                 this.Progresses = new List<DelivProg>();
 
-                foreach (string delivStat in DeliveryStatus.DeliveryStatusList) {
-                    
-                    if (status.Equals(delivStat, StringComparison.OrdinalIgnoreCase)) {
-                        this.Progresses.Add(new DelivProg() {
-                            status = delivStat,
-                            stepStatus = delivStat == DeliveryStatus.OnShipping || status == DeliveryStatus.OnDelivery ? StepStatus.InProgress : status == DeliveryStatus.Received ? StepStatus.Completed : StepStatus.NotStarted,
-                            progressVal = 100
-                        });
-                        break;
-                    }
-                    else {
-                        this.Progresses.Add(new DelivProg() {
-                            status = delivStat,
-                            stepStatus = delivStat == DeliveryStatus.OnShipping || status == DeliveryStatus.OnDelivery ? StepStatus.InProgress : status == DeliveryStatus.Received ? StepStatus.Completed : StepStatus.NotStarted,
-                            progressVal = 100
-                        });
-                    }
-                        
+                foreach (History history in Data.history) {
+
+                    this.Progresses.Add(new DelivProg() {
+                        date = history.date,
+                        status = Wrap(history.desc, 30),
+                        stepStatus = StepStatus.Completed,
+                        progressVal = 100
+                    });
+
+
                 }
 
                 this.ProgressesCollection = new ObservableCollection<DelivProg>(Progresses);
@@ -108,7 +113,7 @@ namespace InfluMe.ViewModels {
             }
         }
 
-       
+
         #endregion
 
         public Command BackButtonCommand { get; set; }

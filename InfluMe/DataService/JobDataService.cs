@@ -19,8 +19,11 @@ namespace InfluMe.DataService
         #region fields
 
         private static readonly string _hostname = "https://influmebe.herokuapp.com";
+        private static readonly string _delivHostname = "https://api.binderbyte.com";
         private HttpClient client = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_hostname) };
-        
+        private HttpClient delivClient = new HttpClient() { Timeout = TimeSpan.FromSeconds(30), BaseAddress = new Uri(_delivHostname
+            ) };
+
 
         #endregion
 
@@ -207,6 +210,18 @@ namespace InfluMe.DataService
                     throw new Exception();
                 }
             }
+        }
+
+        public async Task<DeliveryData> TrackDelivery(string courier, string awb) {
+
+            var response = await delivClient.GetAsync($"/v1/track?api_key=83a01043e7d02757d94c9d517e6e6e8caccf5a8fc44ee63f1116e09b5d64f557&courier={courier}&awb={awb}");
+
+            if (response.IsSuccessStatusCode) {
+                var jsonString = await response.Content.ReadAsStringAsync();
+                DeliveryTrackingResponse respBody = JsonSerializer.Deserialize<DeliveryTrackingResponse>(jsonString);
+                return respBody.data;
+            }
+            else throw new Exception();
         }
 
         #endregion

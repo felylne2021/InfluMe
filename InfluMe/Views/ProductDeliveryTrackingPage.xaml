@@ -81,6 +81,7 @@
                         HorizontalOptions="Start"
                         Style="{StaticResource TitleLabelStyle}"
                         Text="{Binding Job.job.jobProduct}" />
+                    
 
                     <!--  Product Brand -->
                     <Label
@@ -92,14 +93,34 @@
                         Style="{StaticResource DescriptionLabelStyle}"
                         Text="{Binding Job.job.jobBrand}" />
 
-                    <!--  Order ID  -->
-                    <Label
+                    <StackLayout
                         Grid.Row="2"
+                        Grid.Column="1"
+                        Orientation="Horizontal">
+                        
+                        <!--  Courier  -->
+                        <Label
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource DescriptionLabelStyle}"
+                        Text="{Binding Data.summary.courier, StringFormat='Delivery by {0} -'}" />
+
+                        <!--  Order ID  -->
+                        <Label
+                        FontSize="12"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource DescriptionLabelStyle}"
+                        Text="{Binding Job.delivery.deliveryReceipt, StringFormat=' {0}'}" />
+                    </StackLayout>
+                    
+                    <!--  Status  -->
+                    <Label
+                        Grid.Row="3"
                         Grid.Column="1"
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding Job.delivery.deliveryReceipt, StringFormat='Order ID: {0}'}" />
+                        Text="{Binding Data.summary.status, StringFormat='Status: {0}'}" />
 
                 </Grid>
                 
@@ -147,6 +168,7 @@
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
                             <progressBar:StepView
+                                WidthRequest="150"
                                 Margin="20,16,0,0"
                                 ProgressValue="{Binding progressVal}"
                                 Status="{Binding stepStatus}">
@@ -159,38 +181,15 @@
                                                                     iOS=-1}"
                                             Text="{Binding status}"/>
                                         <Span Text="&#10;&#10;" />
-                                        <!--<Span
-                                            FontFamily="Montserrat-SemiBold"
-                                            FontSize="12"
-                                            LineHeight="{OnPlatform Default=1.25,
-                                                                    iOS=-1}"
-                                            Text="{Binding TitleStatus}"
-                                            TextColor="{DynamicResource Gray-900}" />
-                                        <Span Text="&#10;" />
-                                        <Span
-                                            FontFamily="Montserrat-Medium"
-                                            FontSize="12"
-                                            LineHeight="{OnPlatform Default=1.25,
-                                                                    iOS=-1}"
-                                            Text="{Binding Date}"
-                                            TextColor="{DynamicResource Gray-700}" />
-                                        <Span Text="&#10;&#10;" />
                                         <Span
                                             FontFamily="Montserrat-SemiBold"
                                             FontSize="12"
                                             LineHeight="{OnPlatform Default=1.25,
                                                                     iOS=-1}"
-                                            Text="{Binding OrderStatus}"
+                                            Text="{Binding date}"
                                             TextColor="{DynamicResource Gray-900}" />
                                         <Span Text="&#10;" />
-                                        <Span
-                                            FontFamily="Montserrat-Medium"
-                                            FontSize="12"
-                                            LineHeight="{OnPlatform Default=1.25,
-                                                                    iOS=-1}"
-                                            Text="{Binding OrderDate}"
-                                            TextColor="{DynamicResource Gray-700}" />
-                                        <Span Text="&#10;&#10;" />-->
+                                        
                                     </FormattedString>
                                 </progressBar:StepView.PrimaryFormattedText>
                             </progressBar:StepView>
