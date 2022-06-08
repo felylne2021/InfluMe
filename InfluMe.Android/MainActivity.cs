@@ -4,6 +4,7 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using AndroidX.AppCompat.App;
 
 namespace InfluMe.Droid
 {
@@ -13,6 +14,7 @@ namespace InfluMe.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+            AppCompatDelegate.DefaultNightMode = AppCompatDelegate.ModeNightNo; // force light mode appp
 
             Rg.Plugins.Popup.Popup.Init(this);
 
