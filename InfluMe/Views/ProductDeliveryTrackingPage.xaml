@@ -29,7 +29,7 @@
                         <!--  Back button command  -->
                         <buttons:SfButton
                             x:Name="backButton"
-                            Command="{Binding BackButtonCommand, Source={x:Reference ProductTrackingPage}}"
+                            Command="{Binding Path=BindingContext.BackButtonCommand, Source={x:Reference ProductTrackingPage}}"
                             CommandParameter="{x:Reference backButton}"
                             Style="{StaticResource IconButtonStyle}"
                             Text="{StaticResource Back}" />
@@ -99,7 +99,7 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding Job.delivery.deliveryId, StringFormat='Order ID: {0}'}" />
+                        Text="{Binding Job.delivery.deliveryReceipt, StringFormat='Order ID: {0}'}" />
 
                 </Grid>
                 
