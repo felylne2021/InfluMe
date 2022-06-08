@@ -16,6 +16,7 @@ namespace InfluMe.Models {
     }
 
     public class InfluencerRequest {
+        public string influencerColorHex { get; set; }
         public string influencerEmail { get; set; }
         public string influencerPassword { get; set; }
         public string influencerName { get; set; }
@@ -58,6 +59,7 @@ namespace InfluMe.Models {
     }
 
     public class InfluencerUpdateRequest {
+        public string influencerColorHex { get; set; }
         public string influencerId { get; set; }
         public string influencerEmail { get; set; }
         public string influencerPassword { get; set; }

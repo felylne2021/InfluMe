@@ -280,6 +280,7 @@ namespace InfluMe.ViewModels {
         /// Invoked when an view all is selected.
         /// </summary>
         private void ViewAllClicked(string jobPlatform) {
+            this.SelectedJob = null;
             Application.Current.MainPage.Navigation.PushAsync(new JobListPage(jobPlatform, this));
         }
 

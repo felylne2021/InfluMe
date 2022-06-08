@@ -113,7 +113,6 @@ namespace InfluMe.ViewModels {
 
             try {
                 this.IsInfluActive = await influService.GetInfluencerActiveStatus(Convert.ToInt32(Application.Current.Properties["UserId"]));
-                if (this.IsInfluActive) { }
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

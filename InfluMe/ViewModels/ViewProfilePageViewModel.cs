@@ -6,6 +6,7 @@ using Rg.Plugins.Popup.Extensions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -24,6 +25,7 @@ namespace InfluMe.ViewModels {
     public class ViewProfilePageViewModel : BaseViewModel {
         #region Fields
 
+        private string imageBlob;
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
         private JobStatsResponse jobStats;
@@ -57,6 +59,20 @@ namespace InfluMe.ViewModels {
 
         #region Public properties
         public string OTP { get; set; }
+
+        public string ImageBlob {
+            get {
+                return this.imageBlob;
+            }
+
+            set {
+                if (this.imageBlob == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.imageBlob, value);
+            }
+        }
 
         public bool IsOTPErrorMessageVisible {
             get => _isOTPErrorMessageVisible;
@@ -176,6 +192,7 @@ namespace InfluMe.ViewModels {
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
+            this.Influencer.influencerDOB = DateTime.ParseExact(this.Influencer.influencerDOB, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"); ;
             this.InfluencerAgeSex = CalculateAge(this.Influencer.influencerDOB) + " y.o | " + Influencer.influencerGender;
             this.Influencer.influencerPassword = "";
             var email = this.Influencer.influencerEmail;
@@ -185,7 +202,7 @@ namespace InfluMe.ViewModels {
         private string CalculateAge(string birthdate) {
             // Save today's date.
             var today = DateTime.Today;
-            var Birthdate = DateTime.ParseExact(birthdate, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture);
+            var Birthdate = DateTime.ParseExact(birthdate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
             // Calculate the age.
             var age = today.Year - Birthdate.Year;
 
@@ -200,7 +217,7 @@ namespace InfluMe.ViewModels {
             Application.Current.Properties["UserId"] = "";
             Application.Current.Properties["UserType"] = "";
             await App.Current.SavePropertiesAsync();
-            Application.Current.MainPage = new MainLoginPage();
+            Application.Current.MainPage = new NavigationPage(new MainLoginPage());
 
         }
 
@@ -235,6 +252,7 @@ namespace InfluMe.ViewModels {
                     OTPVerificationResponse resp = await service.GetOTPVerification(this.Influencer.influencerEmail, OTP);
                     if (resp.body.Equals(ResponseStatus.VALID.ToString())) {
                         InfluencerUpdateRequest req = new InfluencerUpdateRequest() {
+                            influencerColorHex = this.ImageBlob,
                             influencerId = this.Influencer.influencerId.ToString(),
                             influencerEmail = this.Influencer.influencerEmail,
                             influencerAddress = this.Influencer.influencerAddress,
@@ -246,6 +264,7 @@ namespace InfluMe.ViewModels {
                             bankAccountNumber = this.Influencer.bankAccountNumber
                         };
                         await service.UpdateProfile(req);
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Update Profile Success"));
                         await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PopAsync();
                         this.InitializeProperties();

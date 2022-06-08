@@ -152,12 +152,7 @@
                             VerticalOptions="Center"
                             HeightRequest="300"
                             WidthRequest="360">
-                            <!--<Image.Source>
-                                <UriImageSource
-                                    CacheValidity="14"
-                                    CachingEnabled="true"
-                                    Uri="{Binding ImageURL}" />
-                            </Image.Source>-->
+                            
                         </Image>
 
                         <Label
@@ -409,19 +404,37 @@
                             Orientation="Horizontal"
                             Spacing="10">
 
-                            <!--  Apply Job Button  -->
-                            <buttons:SfButton
+                            <StackLayout
+                                HorizontalOptions="{OnIdiom Default=Center,
+                                                            Phone=CenterAndExpand}"
+                                Orientation="Vertical">
+                                <buttons:SfButton
                                 IsVisible="{Binding IsApplied, Converter={StaticResource InverseBoolConverter}}"
-                                IsEnabled="{Binding IsInfluActive}"
+                                IsEnabled="{Binding IsInfluActive, Mode=TwoWay}"
                                 Margin="0"
                                 Command="{Binding ApplyJobCommand}"
                                 CommandParameter="{Binding Source={x:Reference JobId}, Path=Text}"
                                 VerticalOptions="Center"
-                                HorizontalOptions="{OnIdiom Default=Center,
-                                                            Phone=CenterAndExpand}"
                                 Style="{StaticResource GradientButtonStyle}"
                                 Text="APPLY JOB"
-                                WidthRequest="200" />
+                                WidthRequest="200" >
+                                    <buttons:SfButton.Triggers>
+                                        <DataTrigger 
+                                            TargetType="buttons:SfButton"
+                                            Binding="{Binding IsApplied}"
+                                            Value="False">
+                                            <Setter Property="Style" Value="{StaticResource GrayButtonStyle}" />
+                                        </DataTrigger>
+                                    </buttons:SfButton.Triggers>
+                                </buttons:SfButton>
+
+                                <Label
+                                    IsVisible="{Binding IsInfluActive, Converter={StaticResource InverseBoolConverter}}"
+                                    TextColor="DarkRed"
+                                    Text="your enrollment status is pending"/>
+                            </StackLayout>
+                            <!--  Apply Job Button  -->
+                            
 
                            
 

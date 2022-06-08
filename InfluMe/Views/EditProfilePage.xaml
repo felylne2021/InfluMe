@@ -7,12 +7,19 @@
     xmlns:controls="clr-namespace:InfluMe.Controls"
     xmlns:viewModel="clr-namespace:InfluMe.ViewModels" xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms" xmlns:sfavatar="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms" xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
     xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
-    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard" xmlns:converter="clr-namespace:InfluMe.Converters"
     x:Name="profilePage"
     Title="Profile Page"
     BackgroundColor="{DynamicResource Gray-Bg}"
     Shell.NavBarIsVisible="False"
     NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <ContentPage.ControlTemplate>
         <ControlTemplate>
@@ -42,38 +49,31 @@
                 <buttons:SfButton
                     Margin="0,10,0,0"
                     BackgroundColor="Transparent"
-                    BorderColor="{DynamicResource Gray-Bg}"
+                    BorderColor="{DynamicResource FacebookBlue}"
                     BorderWidth="2"
-                    Command="{Binding EditProfileCommand}"
                     CornerRadius="60"
+                    Clicked="Upload_Clicked"
                     HorizontalOptions="Center"
                     WidthRequest="120">
                     <buttons:SfButton.Content>
                         <Grid HeightRequest="120" WidthRequest="120">
                             <!--  Profile Image  -->
                             <border:SfBorder
-                            BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
-                            BorderColor="{DynamicResource Gray-White}"
-                            BorderWidth="2"
-                            CornerRadius="60"
-                            HeightRequest="120"
-                            HorizontalOptions="CenterAndExpand"
-                            VerticalOptions="StartAndExpand"
-                            WidthRequest="120">
-                                <sfavatar:SfAvatarView
-                                    AvatarShape="Circle"
-                                    AvatarSize="ExtraLarge"
-                                    BackgroundColor="{Binding Influencer.influencerColorHex}"
-                                    FontFamily="Montserrat-Medium"
-                                    InitialsColor="DimGray"
-                                    ContentType="Initials"
-                                    AvatarName="{Binding Influencer.influencerName}"
-                                    BorderWidth="0"/>
-                            </border:SfBorder>
-                            <!--<Image
                                 x:Name="ProfileImage"
-                                Aspect="AspectFill"
-                                BackgroundColor="{DynamicResource Gray-200}" />
+                                BackgroundColor="{DynamicResource GrayShadowBackgroundColor}"
+                                BorderColor="{DynamicResource Gray-White}"
+                                BorderWidth="2"
+                                CornerRadius="60"
+                                HeightRequest="120"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="StartAndExpand"
+                                WidthRequest="120">
+                                <Image
+                                    x:Name="EditProfileImage"
+                                    Aspect="AspectFill"
+                                    Source="{Binding Influencer.influencerColorHex, Converter={StaticResource StringToImageSourceConverter}}"
+                                    BackgroundColor="{DynamicResource Gray-200}" />
+                            </border:SfBorder>
                             <BoxView
                                 BackgroundColor="{DynamicResource Gray-700}"
                                 HeightRequest="32"
@@ -87,10 +87,11 @@
                                 Text="CHANGE"
                                 TextColor="{DynamicResource Gray-100}"
                                 VerticalOptions="End"
-                                VerticalTextAlignment="Center" />-->
+                                VerticalTextAlignment="Center" />
                         </Grid>
                     </buttons:SfButton.Content>
                 </buttons:SfButton>
+                <Label x:Name="imageBlob" IsVisible="False" Text="{Binding ImageBlob, Mode=TwoWay}"/>
 
                 <!--  Grid for name  -->
                 <Grid
@@ -101,7 +102,7 @@
                     <Label
                         Grid.Column="0"                        
                         Text="Name" />
-                    
+
                     <Label
                         Grid.Column="0"
                         Grid.Row="1"
@@ -112,7 +113,7 @@
                         VerticalOptions="Center" />
 
                 </Grid>
-                
+
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
                 <!--  Grid for birthdate  -->
@@ -210,7 +211,7 @@
 
                 <BoxView Style="{StaticResource HorizontalSeparatorStyle}" />
 
-                
+
 
                 <!--  Grid for Bank Name  -->
                 <Grid
@@ -318,7 +319,7 @@
                         Text="&#xf303;" />
 
                 </Grid>
-                
+
                 <!--  Grid for IG  -->
                 <Grid
                     x:Name="InstagramGrid"

@@ -17,6 +17,7 @@ namespace InfluMe.ViewModels {
     [Preserve(AllMembers = true)]
     public class ProfilePageViewModel : BaseViewModel {
         #region Fields
+        private string imageBlob;
         private ValidatableObject<string> influencerPassword;
         private ValidatableObject<string> influencerName;
         private ValidatableObject<string> influencerGender;
@@ -54,6 +55,20 @@ namespace InfluMe.ViewModels {
         public string influencerEmail { get; set; }
         
         public string passwordConfirmation { get; set; }
+
+        public string ImageBlob {
+            get {
+                return this.imageBlob;
+            }
+
+            set {
+                if (this.imageBlob == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.imageBlob, value);
+            }
+        }
 
         public string InfluencerDOB {
             get {
@@ -276,6 +291,7 @@ namespace InfluMe.ViewModels {
         private async void SignUpClicked(object obj) {
             if (AreFieldsValid()) {
                 InfluencerRequest signUpRequest = new InfluencerRequest() {
+                    influencerColorHex = this.ImageBlob,
                     influencerEmail = this.influencerEmail,
                     influencerName = this.InfluencerName.Value,
                     influencerPassword = this.InfluencerPassword.Value,
