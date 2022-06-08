@@ -21,14 +21,13 @@ namespace InfluMe.ViewModels {
         #region Fields
         private JobAppliedResponse job;
 
-        private Uri imagerURL;
-
         private InfluMeService service => new InfluMeService();
 
 
         #endregion
 
-        public ProductDeliveryTrackingPageViewModel() {
+        public ProductDeliveryTrackingPageViewModel(JobAppliedResponse selected) {
+            this.Job = selected;
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
 
@@ -61,21 +60,10 @@ namespace InfluMe.ViewModels {
         }
 
 
-        public Uri ImageURL {
-            get {
-                return this.imagerURL;
-            }
-            set {
-                this.SetProperty(ref this.imagerURL, value);
-            }
-        }
+        
 
         public async void InitializeProperties() {
             try {
-                this.Job = await service.GetDummyAppliedJob();
-
-                this.ImageURL = new Uri(Job.job.jobImage);
-
                 var status = this.Job.delivery.deliveryStatus;
                 
                 this.Progresses = new List<DelivProg>();

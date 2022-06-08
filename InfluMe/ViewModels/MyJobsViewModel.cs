@@ -153,7 +153,7 @@ namespace InfluMe.ViewModels {
         private async void ItemSelected() {
             switch (this.SelectedJob.progressStatus) {
                 case JobProgressStatus.OnDelivery:
-                    await Application.Current.MainPage.Navigation.PushAsync(new ProductDeliveryTrackingPage());
+                    await Application.Current.MainPage.Navigation.PushAsync(new ProductDeliveryTrackingPage(this.SelectedJob));
                     break;
 
                 case JobProgressStatus.Completed:

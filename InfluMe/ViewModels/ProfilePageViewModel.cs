@@ -1,4 +1,5 @@
-﻿using InfluMe.Models;
+﻿using InfluMe.Helpers;
+using InfluMe.Models;
 using InfluMe.Services;
 using InfluMe.Validators;
 using InfluMe.Validators.Rules;
@@ -304,8 +305,11 @@ namespace InfluMe.ViewModels {
                 };
 
                 try {                    
-                    InfluencerResponse resp = await service.SignUp(signUpRequest);                    
-                    Application.Current.MainPage = new MainPage();
+                    InfluencerResponse resp = await service.SignUp(signUpRequest);
+                    Application.Current.Properties["IsLoggedIn"] = Boolean.TrueString;
+                    Application.Current.Properties["UserId"] = resp.influencerId.ToString();
+                    Application.Current.Properties["UserType"] = UserType.Influencer.ToString();
+                    Application.Current.MainPage = new NavigationPage(new MainPage());
                 }
                 catch (Exception) {
                     await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());

@@ -16,7 +16,8 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converter:StringToColorConverter x:Key="StringToColorConverter" />
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -66,14 +67,9 @@
                         Margin="16,8,16,16"
                         Aspect="AspectFill"
                         BackgroundColor="{DynamicResource Gray-200}"
+                        Source="{Binding Job.job.jobImageBlob, Converter={StaticResource StringToImageSourceConverter}}"
                         HeightRequest="80"
                         WidthRequest="80">
-                        <Image.Source>
-                            <UriImageSource
-                                CacheValidity="14"
-                                CachingEnabled="true"
-                                Uri="{Binding ImageURL}" />
-                        </Image.Source>
                     </Image>
 
                     <!--  Product name  -->
