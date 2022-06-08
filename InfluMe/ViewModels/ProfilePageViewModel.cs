@@ -31,6 +31,7 @@ namespace InfluMe.ViewModels {
         private bool _isPasswordConfirmationErrorMessageVisible;
         private bool _isBirthdateErrorMessageVisible;
 
+        private string today = DateTime.Now.ToString("dd/MM/yyyy");
         private string influencerDOB = DateTime.Now.ToString("dd/MM/yyyy");
         #endregion
 
@@ -52,6 +53,20 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Property
+        public string Today {
+            get {
+                return this.today;
+            }
+
+            set {
+                if (this.today == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.today, value);
+                OnPropertyChanged();
+            }
+        }
 
         public string influencerEmail { get; set; }
         
@@ -294,7 +309,7 @@ namespace InfluMe.ViewModels {
                 InfluencerRequest signUpRequest = new InfluencerRequest() {
                     influencerColorHex = this.ImageBlob,
                     influencerEmail = this.influencerEmail,
-                    influencerName = this.InfluencerName.Value,
+                    influencerName = this.InfluencerName.Value.ToUpper(),
                     influencerPassword = this.InfluencerPassword.Value,
                     influencerGender = this.InfluencerGender.Value,
                     influencerAddress = this.InfluencerAddress.Value,

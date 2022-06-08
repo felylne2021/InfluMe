@@ -78,6 +78,7 @@
                     Style="{StaticResource OrangeButtonStyle}"/>
                 <Label
                     x:Name="OTPEmail"
+                    Text="{Binding Email}"
                     IsVisible="false"/>
             </StackLayout>
         </Frame>

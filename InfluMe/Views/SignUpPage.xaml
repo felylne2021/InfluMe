@@ -50,7 +50,7 @@
             <StackLayout Spacing="0">
 
                 <datePicker:SfDatePicker x:Name="birthdatePicker"
-                                         MaximumDate="{Binding InfluencerDOB}"
+                                         MaximumDate="{Binding Today}"
                                          PickerMode="Dialog"
                                          PickerWidth="310"
                                          PickerHeight="360"
