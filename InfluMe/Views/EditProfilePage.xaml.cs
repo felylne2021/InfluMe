@@ -21,6 +21,7 @@ namespace InfluMe.Views
         public EditProfilePage(ViewProfilePageViewModel viewProfilePageViewModel)
         {
             this.InitializeComponent();
+            
             this.BindingContext = viewProfilePageViewModel;
         }
 

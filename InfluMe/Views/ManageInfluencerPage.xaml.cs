@@ -17,5 +17,10 @@ namespace InfluMe.Views {
             this.InitializeComponent();
             this.BindingContext = new InfluencerPageViewModel();
         }
+
+        protected override void OnAppearing() {
+            InfluencerList.SelectedItem = null;
+
+        }
     }
 }

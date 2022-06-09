@@ -22,5 +22,9 @@ namespace InfluMe.Views
             BindingContext = jobViewModel;
         }
 
+        protected override void OnAppearing() {
+            ListViewList.SelectedItem = null;
+        }
+
     }
 }

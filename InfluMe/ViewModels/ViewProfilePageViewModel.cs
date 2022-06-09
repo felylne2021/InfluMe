@@ -233,6 +233,7 @@ namespace InfluMe.ViewModels {
 
         private async void SaveChanges() {
             try {
+                this.OTP = "";
                 OTPResponse resp = await service.GetOTPEditProfile(this.Influencer.influencerEmail);
 
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new EditProfileOTPPopupPage(this));
@@ -270,6 +271,7 @@ namespace InfluMe.ViewModels {
                         };
                         await service.UpdateProfile(req);
                         await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Update Profile Success"));
+                        await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PopAsync();
                         this.InitializeProperties();

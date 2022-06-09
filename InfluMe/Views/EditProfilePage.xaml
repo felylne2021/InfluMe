@@ -42,7 +42,6 @@
 
     <ContentPage.Content>
         <ScrollView>
-
             <StackLayout Spacing="0">
 
                 <!--  Profile image with edit label  -->

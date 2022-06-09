@@ -17,6 +17,12 @@ namespace InfluMe.Views
         {
             this.InitializeComponent();
             InfluencerId.Text = Application.Current.Properties["UserId"].ToString();
-        }      
+        }
+
+        protected override void OnAppearing() {
+            tiktokLV.SelectedItem = null;
+            igLV.SelectedItem = null;
+
+        }
     }
 }

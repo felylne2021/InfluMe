@@ -50,7 +50,7 @@ namespace InfluMe.Views {
            
             var res = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions {
                 PhotoSize = PhotoSize.Medium,
-                CompressionQuality = 15
+                CompressionQuality = 25
             });
 
             if (res != null) {

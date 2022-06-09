@@ -94,6 +94,7 @@
                     Text="No Available Instagram Jobs"/>
                 
                 <listView:SfListView
+                    x:Name="igLV"
                     Margin="8,0,8,32"
                     AutoFitMode="Height"
                     ColumnSpacing="0"
@@ -215,6 +216,7 @@
                     Text="No Available TikTok Jobs"/>
                 
                 <listView:SfListView
+                    x:Name="tiktokLV"
                     Margin="8,0,8,32"
                     AutoFitMode="Height"
                     ColumnSpacing="0"
