@@ -247,7 +247,7 @@ namespace InfluMe.ViewModels {
                     jobBrand = Brand.Value,
                     jobRegistrationDeadline = DateTime.ParseExact(RegistrationDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
                     jobDeadline = DateTime.ParseExact(JobDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
-                    jobAgeRange = AgeRange ?? "Any Age"
+                    jobAgeRange = AgeRange ?? "Any Age",
                     jobStatus = JobStatus.OPEN.ToString(),
                     jobGender = Gender ?? "Any Gender",
                     jobPlatform = Platform ?? "Both",

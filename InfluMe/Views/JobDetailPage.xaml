@@ -421,7 +421,7 @@
                                     <buttons:SfButton.Triggers>
                                         <DataTrigger 
                                             TargetType="buttons:SfButton"
-                                            Binding="{Binding IsApplied}"
+                                            Binding="{Binding IsInfluActive}"
                                             Value="False">
                                             <Setter Property="Style" Value="{StaticResource GrayButtonStyle}" />
                                         </DataTrigger>
