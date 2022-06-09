@@ -196,7 +196,7 @@ namespace InfluMe.ViewModels
 
         private async void SubmitClicked() {
             try {
-                await service.SubmitJobApplicants(Applicants, Selected.job.jobId);
+                await service.SubmitJobApplicants(Applicants, SelectedJob.jobId);
 
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Job Applicants Submitted"));
                 await Application.Current.MainPage.Navigation.PopAsync();
