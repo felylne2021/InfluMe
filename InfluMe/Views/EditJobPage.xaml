@@ -262,6 +262,7 @@
                     <StackLayout Orientation="Horizontal" VerticalOptions="Center" >
                         <CheckBox
                         x:Name="contentApprovalCheckbox"
+                            IsChecked="{Binding SelectedJob.hasContentApproval}"
                         />
                         <Label Margin="0,6,0,0" HorizontalOptions="Start" Text="Requires Content Drafting"  Style="{StaticResource DescriptionLabelStyle}"/>
                     </StackLayout>

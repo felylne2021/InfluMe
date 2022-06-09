@@ -27,9 +27,6 @@ namespace InfluMe.ViewModels {
             }
 
             set {
-                if (this.imageBlob == value) {
-                    return;
-                }
 
                 this.SetProperty(ref this.imageBlob, value);
             }

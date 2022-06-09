@@ -19,9 +19,12 @@ namespace InfluMe.Views {
         }
 
         private void Reload(object sender, System.EventArgs e) {
+            imageView.Source = "upload";
             JobNameEntry.Text = string.Empty;
             BrandEntry.Text = string.Empty;
             AgeEntry.Text = string.Empty;
+            Domicile.Text = string.Empty;
+            Product.Text = string.Empty;
             Fee.Text = "0.00";
             SOW.Text = string.Empty;
             AdditionalRequirementsEntry.Text = string.Empty;
