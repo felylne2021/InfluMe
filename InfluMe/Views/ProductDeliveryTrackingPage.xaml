@@ -129,7 +129,7 @@
                     x:Name="stepProgress"
                     Margin="0,20,0,0"
                     BackgroundColor="{DynamicResource Gray-Bg}"
-                    BindableLayout.ItemsSource="{Binding ProgressesCollection, Mode=TwoWay}"
+                    BindableLayout.ItemsSource="{Binding ProgressesCollection}"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Vertical"
                     TitleAlignment="Start"
@@ -196,7 +196,10 @@
                         </DataTemplate>
                     </BindableLayout.ItemTemplate>
                 </progressBar:SfStepProgressBar>
+
+                
             </StackLayout>
+            
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

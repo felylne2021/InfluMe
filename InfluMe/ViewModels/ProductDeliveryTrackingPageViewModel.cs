@@ -32,7 +32,7 @@ namespace InfluMe.ViewModels {
             this.Job = selected;
             this.InitializeProperties();
             this.BackButtonCommand = new Command(_ => Application.Current.MainPage.Navigation.PopAsync());
-
+            this.ReceivedCommand = new Command(Receive);
         }
 
         public double ProgressValue { get; set; }
@@ -101,6 +101,23 @@ namespace InfluMe.ViewModels {
             }
         }
 
+        private async void Receive() {
+            try {
+                ChangeJobProgressRequest req = new ChangeJobProgressRequest();
+                req.influencerId = Job.influencerId;
+                req.jobId = Job.job.jobId;
+                req.progressStatus = Job.job.hasContentApproval.ToLower().Equals("true") ? JobProgressStatus.PendingDraft : JobProgressStatus.PendingProof;
+
+                await jobService.ChangeJobProgress(req);
+                await Application.Current.MainPage.Navigation.PopAsync();
+
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Product Accepted"));
+            }
+            catch (Exception) {
+                await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
+            }
+        }
+
         #region Properties
 
         public JobAppliedResponse Job {
@@ -117,5 +134,6 @@ namespace InfluMe.ViewModels {
         #endregion
 
         public Command BackButtonCommand { get; set; }
+        public Command ReceivedCommand { get; set; }
     }
 }

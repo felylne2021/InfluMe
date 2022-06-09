@@ -270,10 +270,10 @@ namespace InfluMe.ViewModels {
                             bankAccountNumber = this.Influencer.bankAccountNumber
                         };
                         await service.UpdateProfile(req);
-                        await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Update Profile Success"));
-                        await Application.Current.MainPage.Navigation.PopPopupAsync();
-                        await Application.Current.MainPage.Navigation.PopPopupAsync();
                         await Application.Current.MainPage.Navigation.PopAsync();
+                        await Application.Current.MainPage.Navigation.PopPopupAsync();
+
+                        await Application.Current.MainPage.Navigation.PushPopupAsync(new InfoPopupPage("Update Profile Success"));
                         this.InitializeProperties();
                     }
                     else if (resp.body.Equals(ResponseStatus.INVALID.ToString())) {
