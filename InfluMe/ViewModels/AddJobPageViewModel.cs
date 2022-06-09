@@ -17,6 +17,8 @@ namespace InfluMe.ViewModels {
     [Preserve(AllMembers = true)]
     public class AddJobPageViewModel : BaseViewModel {
         #region Fields
+        private DateTime today = DateTime.Now;
+        private DateTime tomorrow = DateTime.Now.AddDays(1);
 
         private string date = DateTime.Now.AddDays(1).ToString("dd/MM/yyyy");
         private string fee = "0.00";
@@ -42,6 +44,36 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Property
+
+        public DateTime Today {
+            get {
+                return this.today;
+            }
+
+            set {
+                if (this.today == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.today, value);
+                OnPropertyChanged();
+            }
+        }
+
+        public DateTime Tomorrow {
+            get {
+                return this.tomorrow;
+            }
+
+            set {
+                if (this.tomorrow == value) {
+                    return;
+                }
+
+                this.SetProperty(ref this.tomorrow, value);
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Gets or sets the property that bounds with an entry that gets the first name from user in the Add Contact page.
@@ -215,12 +247,13 @@ namespace InfluMe.ViewModels {
                     jobBrand = Brand.Value,
                     jobRegistrationDeadline = DateTime.ParseExact(RegistrationDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
                     jobDeadline = DateTime.ParseExact(JobDeadline, "dd/MM/yyyy", CultureInfo.InvariantCulture).ToString("yyyy-MM-dd"),
+                    jobAgeRange = AgeRange ?? "Any Age"
                     jobStatus = JobStatus.OPEN.ToString(),
-                    jobGender = Gender ?? "Any",
+                    jobGender = Gender ?? "Any Gender",
                     jobPlatform = Platform ?? "Both",
                     jobDomicile = String.IsNullOrEmpty(Domicile) ? "Anywhere" : Domicile,
                     jobFee = Fee,
-                    jobProduct = Product,
+                    jobProduct = String.IsNullOrEmpty(Product) ? "No Product" : Product,
                     jobSOW = SOW,
                     jobAdditionalRequirement = AdditionalRequirements,
                     hasContentApproval = HasContentApproval ? "true" : "false"

@@ -31,7 +31,7 @@ namespace InfluMe.ViewModels {
         private bool _isPasswordConfirmationErrorMessageVisible;
         private bool _isBirthdateErrorMessageVisible;
 
-        private string today = DateTime.Now.ToString("dd/MM/yyyy");
+        private DateTime today = DateTime.Now;
         private string influencerDOB = DateTime.Now.ToString("dd/MM/yyyy");
         #endregion
 
@@ -53,7 +53,7 @@ namespace InfluMe.ViewModels {
         #endregion
 
         #region Property
-        public string Today {
+        public DateTime Today {
             get {
                 return this.today;
             }

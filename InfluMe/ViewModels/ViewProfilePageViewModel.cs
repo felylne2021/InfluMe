@@ -25,7 +25,7 @@ namespace InfluMe.ViewModels {
     public class ViewProfilePageViewModel : BaseViewModel {
         #region Fields
 
-        private string imageBlob;
+        private string imageBlob = "";
         private InfluMeService service = new InfluMeService();
         private InfluencerResponse influencer;
         private JobStatsResponse jobStats;
@@ -162,7 +162,7 @@ namespace InfluMe.ViewModels {
         }
 
         #endregion
-        
+
 
         #region Commands
         public Command BackButtonCommand { get; set; }
@@ -181,18 +181,24 @@ namespace InfluMe.ViewModels {
 
             try {
                 this.Influencer = await service.GetInfluencerById(Application.Current.Properties["UserId"].ToString());
-                
+
                 this.JobStats = await service.GetInfluencerStats(Application.Current.Properties["UserId"].ToString());
 
-               
-                this.OngoingJobs = JobStats.appliedJobList.Count(x => !x.progressStatus.Equals(JobProgressStatus.Applied) && !x.progressStatus.Equals(JobProgressStatus.NotApproved) && !x.progressStatus.Equals(JobProgressStatus.Completed)) ;
+
+                this.OngoingJobs = JobStats.appliedJobList.Count(x => !x.progressStatus.Equals(JobProgressStatus.Applied) && !x.progressStatus.Equals(JobProgressStatus.NotApproved) && !x.progressStatus.Equals(JobProgressStatus.Completed));
                 this.CompletedJobs = JobStats.appliedJobList.Count(x => x.progressStatus.Equals(JobProgressStatus.Completed));
 
             }
             catch (Exception) {
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new ErrorPopupPage());
             }
-            this.Influencer.influencerDOB = DateTime.ParseExact(this.Influencer.influencerDOB, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy"); ;
+            if (this.Influencer.bankAccountNumber == null)
+                this.Influencer.bankAccountNumber = "";
+
+            if (this.Influencer.appliedJobList == null)
+                this.Influencer.appliedJobList = new List<JobResponse>();
+
+            this.Influencer.influencerDOB = DateTime.ParseExact(this.Influencer.influencerDOB, "yyyy-MM-dd", CultureInfo.InvariantCulture).ToString("dd/MM/yyyy");
             this.InfluencerAgeSex = CalculateAge(this.Influencer.influencerDOB) + " y.o | " + Influencer.influencerGender;
             this.Influencer.influencerPassword = "";
             var email = this.Influencer.influencerEmail;
@@ -211,7 +217,7 @@ namespace InfluMe.ViewModels {
             return age.ToString();
         }
 
-        
+
         private async void LogOutClicked(object obj) {
             Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
             Application.Current.Properties["UserId"] = "";
@@ -221,15 +227,14 @@ namespace InfluMe.ViewModels {
 
         }
 
-        private void EditProfileClicked(object obj)
-        {
-            Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage(this));
+        private async void EditProfileClicked() {
+            await Application.Current.MainPage.Navigation.PushAsync(new EditProfilePage(this));
         }
 
         private async void SaveChanges() {
             try {
                 OTPResponse resp = await service.GetOTPEditProfile(this.Influencer.influencerEmail);
-                
+
                 await Application.Current.MainPage.Navigation.PushPopupAsync(new EditProfileOTPPopupPage(this));
             }
             catch (Exception) {

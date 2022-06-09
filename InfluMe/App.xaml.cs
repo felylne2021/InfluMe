@@ -25,6 +25,7 @@ namespace InfluMe
         {
             // Syncfusion License Key
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("NjQ0NDM1QDMxMzkyZTM0MmUzMGlEeDFYMXVtR0FUcGxaaENvYU82ZjNoa3gzRzRIZGtuaitjVVBNSDJEdUk9");
+            
 
             InitializeComponent();
             DependencyService.Register<MockDataStore>();
@@ -34,7 +35,7 @@ namespace InfluMe
             string userId = Current.Properties.ContainsKey("UserId") ? Current.Properties["UserId"].ToString() : "";
             string userType = Current.Properties.ContainsKey("UserType") ? Current.Properties["UserType"].ToString() : "";
 
-            //Application.Current.Properties["IsLoggedIn"] = Boolean.FalseString;
+            //isLoggedIn = false;
             //Application.Current.Properties["UserId"] = "";
             //Application.Current.Properties["UserType"] = "";
 

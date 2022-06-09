@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:InfluMe.Controls" xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms" xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms" xmlns:template="clr-namespace:InfluMe.Views.Templates" xmlns:converter="clr-namespace:InfluMe.Converters"
              x:Class="InfluMe.Views.NotificationListPage"
              Shell.NavBarIsVisible="False"
+             BackgroundColor="{DynamicResource Gray-100}"
             NavigationPage.HasNavigationBar="False"
              x:Name="notificationListPage">
 

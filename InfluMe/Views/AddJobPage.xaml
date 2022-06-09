@@ -46,7 +46,7 @@
         <ScrollView>
             <Grid>
                 <datePicker:SfDatePicker x:Name="datePicker"
-                                         MinimumDate="{Binding RegistrationDeadline}"
+                                         MinimumDate="{Binding Today}"
                                          PickerMode="Dialog"
                                          PickerWidth="310"
                                          PickerHeight="360"
@@ -69,7 +69,7 @@
                                          Format="dd_MM_yyyy" />
 
                 <datePicker:SfDatePicker x:Name="secDatePicker"
-                                         MinimumDate="{Binding JobDeadline}"
+                                         MinimumDate="{Binding Tomorrow}"
                                          PickerMode="Dialog"
                                          PickerWidth="310"
                                          PickerHeight="360"
@@ -390,11 +390,12 @@
                     </border:SfBorder>
 
                     <buttons:SfButton
-                    Margin="0,8,0,0"
-                    Command="{Binding SubmitCommand}"
-                    Style="{StaticResource GradientButtonStyle}"
-                    Text="ADD JOB"
-                    WidthRequest="200" />
+                        Clicked="Reload"
+                        Margin="0,8,0,0"
+                        Command="{Binding SubmitCommand}"
+                        Style="{StaticResource GradientButtonStyle}"
+                        Text="ADD JOB"
+                        WidthRequest="200" />
                 </StackLayout>
             </Grid>
         </ScrollView>

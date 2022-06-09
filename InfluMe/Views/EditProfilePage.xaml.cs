@@ -20,8 +20,8 @@ namespace InfluMe.Views
         /// </summary>
         public EditProfilePage(ViewProfilePageViewModel viewProfilePageViewModel)
         {
+            this.BindingContext = viewProfilePageViewModel;
             this.InitializeComponent();
-            BindingContext = viewProfilePageViewModel;
         }
 
         private async void Upload_Clicked(object sender, System.EventArgs e) {

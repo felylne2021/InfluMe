@@ -14,6 +14,20 @@ namespace InfluMe.Views {
     public partial class AddJobPage : ContentPage {
         public AddJobPage() {
             this.InitializeComponent();
+
+            
+        }
+
+        private void Reload(object sender, System.EventArgs e) {
+            JobNameEntry.Text = string.Empty;
+            BrandEntry.Text = string.Empty;
+            AgeEntry.Text = string.Empty;
+            Fee.Text = "0.00";
+            SOW.Text = string.Empty;
+            AdditionalRequirementsEntry.Text = string.Empty;
+
+            GenderPicker.SelectedValue = null;
+            PlatformPicker.SelectedValue = null;
         }
 
         private void DatePicker_Clicked(object sender, System.EventArgs e) {
@@ -36,7 +50,7 @@ namespace InfluMe.Views {
            
             var res = await CrossMedia.Current.PickPhotoAsync(new PickMediaOptions {
                 PhotoSize = PhotoSize.Medium,
-                CompressionQuality = 25
+                CompressionQuality = 15
             });
 
             if (res != null) {
