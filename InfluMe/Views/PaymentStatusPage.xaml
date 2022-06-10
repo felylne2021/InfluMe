@@ -4,11 +4,18 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:button="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
-    xmlns:svg="clr-namespace:InfluMe.Controls"
+    xmlns:svg="clr-namespace:InfluMe.Controls" xmlns:converter="clr-namespace:InfluMe.Converters"
     Title="Payment Success Page"
     BackgroundColor="{DynamicResource Gray-100}"
     NavigationPage.HasNavigationBar="False">
 
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converter:StringToImageSourceConverter x:Key="StringToImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ContentPage.Content>
         <Grid>
             <button:SfButton
@@ -29,9 +36,10 @@
                     <!--  Payment status image  -->
                     <Image
                         Margin="0,10,0,0"
-                        HeightRequest="80"
-                        Source="{Binding ImageSource}"
-                        WidthRequest="80" />
+                        Aspect="AspectFit"
+                        HeightRequest="200"
+                        Source="{Binding Job.payment.paymentProof, Converter={StaticResource StringToImageSourceConverter}}"
+                        WidthRequest="200" />
 
                     <!--  Payment status label  -->
                     <Label

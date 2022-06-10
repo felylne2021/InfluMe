@@ -1,0 +1,1504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="InfluMe.Behaviors.BehaviorBase&lt;T&gt;">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAgAAAABIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behaviors\BehaviorBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.CartBehavior">
+    <Position X="72.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Behaviors\CartBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.ContactsListViewBehavior">
+    <Position X="72.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Behaviors\ContactsListViewBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.EntryLineValidationBehaviour">
+    <Position X="0.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAABAAQAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>Behaviors\EntryLineValidationBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.EntryMaskedBehavior">
+    <Position X="65.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAsgIAADAgAAAgAAAECAAAAAAAA=</HashCode>
+      <FileName>Behaviors\EntryMaskedBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.SearchBarAnimationBehavior">
+    <Position X="69" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAgAAoAgAQBIAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Behaviors\SearchbarAnimationBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.SegmentedControlCommandBehavior">
+    <Position X="70.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAgABIARIQAgAAAAAAAAAAACCAA=</HashCode>
+      <FileName>Behaviors\SegmentedControlCommandBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Behaviors.SfListViewExtendHeightBehavior">
+    <Position X="74.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAABAAAAAAgAAAABAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>Behaviors\SfListViewExtendHeightBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.BorderlessEditor">
+    <Position X="63.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>Controls\BorderlessEditor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.BorderlessEntry">
+    <Position X="65.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\BorderlessEntry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.CustomShadowFrame">
+    <Position X="76" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIoAAABAABIAgIABAAgAAAAABAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Controls\CustomShadowFrame.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.PlatformComboBox" BaseTypeListCollapsed="true">
+    <Position X="70.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAACACAAAAAgAA=</HashCode>
+      <FileName>Controls\PlatformComboBox.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Controls.SearchableContactsList">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controls\SearchableContactsList.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.SearchableListView">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAACAAAAQAAAAEAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Controls\SearchableListView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.SVGImage">
+    <Position X="65.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAIAIAAAAAAgAAAgAAA=</HashCode>
+      <FileName>Controls\SVGImage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Controls.TitleView">
+    <Position X="69" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAQBAAAkAQFEAAAgCABgEgAACAAACEAACAAAAAgAg=</HashCode>
+      <FileName>Controls\TitleView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Converters.BooleanToColorConverter" BaseTypeListCollapsed="true">
+    <Position X="83" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\BooleanToColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.BooleanToStringConverter" BaseTypeListCollapsed="true">
+    <Position X="62" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\BooleanToStringConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.DynamicResourceToColorConverter" BaseTypeListCollapsed="true">
+    <Position X="69" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\DynamicResourceToColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.IntToThicknessConverter" BaseTypeListCollapsed="true">
+    <Position X="67.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\IntToThicknessConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.InverseBoolConverter" BaseTypeListCollapsed="true">
+    <Position X="69" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\InverseBoolConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.NameValidationConverter" BaseTypeListCollapsed="true">
+    <Position X="69" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\NameValidationConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.StatusOngoingBoolConverter" BaseTypeListCollapsed="true">
+    <Position X="77.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\StatusOngoingBoolConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.StringToColorConverter" BaseTypeListCollapsed="true">
+    <Position X="79.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\StringToColorConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.StringToImageSourceConverter" BaseTypeListCollapsed="true">
+    <Position X="81.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\StringToImageSourceConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Converters.VisibilityConverter" BaseTypeListCollapsed="true">
+    <Position X="77.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Converters\VisibilityConverter.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.DataService.CatalogDataService">
+    <Position X="74.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAIAAAAAAAEAAAAAAAAAABQAAAAAAAAAA=</HashCode>
+      <FileName>DataService\CatalogDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.DataService.CategoryDataService">
+    <Position X="77.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIBQAAAAEAAAAA=</HashCode>
+      <FileName>DataService\CategoryDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.DataService.ContactsDataService">
+    <Position X="70.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAABQAAAAIAAAEA=</HashCode>
+      <FileName>DataService\ContactsDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.DataService.JobDataService">
+    <Position X="70.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEIIAEAAAAAgAgAgAAAAAAIAIEAgAghAQBAIAAIE=</HashCode>
+      <FileName>DataService\JobDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.DataService.ProductDeliveryTrackingDataService">
+    <Position X="76" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAICAAEAAAAAAABQAAAAAAAAAA=</HashCode>
+      <FileName>DataService\ProductDeliveryTrackingDataService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Helpers.JobProgressStatus">
+    <Position X="77.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAIAAGAAAQAAAAAAAAAAgAAAAABAQAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Helpers.DeliveryStatus">
+    <Position X="62" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAQAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Helpers.ColorHelper">
+    <Position X="83" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\RandomColor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Helpers.RTLHelper">
+    <Position X="67.25" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAJAAAAEQAIEAAAAAAEBEACAAQAAJAAFACABAAQAAAg=</HashCode>
+      <FileName>Helpers\RTLHelper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Category">
+    <Position X="76" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAEAAAAAAAAAQAAAAAAAAAAQAAAAEQAAA=</HashCode>
+      <FileName>Models\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Contact">
+    <Position X="67.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAQACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.DeliveryCourier">
+    <Position X="81.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\DeliveryCourier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.CourierMapping">
+    <Position X="74.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAg=</HashCode>
+      <FileName>Models\DeliveryCourier.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.DeliveryTrackingResponse">
+    <Position X="63.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>Models\DeliveryTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.DeliveryData">
+    <Position X="83" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAggA=</HashCode>
+      <FileName>Models\DeliveryTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Summary">
+    <Position X="63.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAEAAAAAIAAA=</HashCode>
+      <FileName>Models\DeliveryTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Detail">
+    <Position X="65.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAABAAAAAA=</HashCode>
+      <FileName>Models\DeliveryTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.History">
+    <Position X="65.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAQAAAAA=</HashCode>
+      <FileName>Models\DeliveryTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.HealthProfile" BaseTypeListCollapsed="true">
+    <Position X="63.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAKAAAAAAAgAAAAAAAAAAAAAEACAA=</HashCode>
+      <FileName>Models\HealthProfile.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Models.ForgotPasswordRequest">
+    <Position X="77.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.ForgotPasswordResponseBody">
+    <Position X="81.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.ForgotPasswordResponse">
+    <Position X="79.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerRequest">
+    <Position X="70.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAEAAAAAAAAAAAAAAAAAAAxEBAAAAQAABAAAIA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerResponseAll">
+    <Position X="74.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerResponseBody">
+    <Position X="76" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerResponse">
+    <Position X="72.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAACAEAACAAAAAAAABAIgAAAAxEBAAAAQAABAABIA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerUpdateRequest">
+    <Position X="79.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAxEBAAAAQAABAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Enrollment">
+    <Position X="62" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerStatusBody">
+    <Position X="77.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.InfluencerIsActive">
+    <Position X="69" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Influencer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Item">
+    <Position X="83" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Models\Item.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobRequest">
+    <Position X="79.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwAAJIAAAAAQAIAABAAgAAIAAEBAAQAIAAEAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.AllJobResponseBody">
+    <Position X="70.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobResponseBody">
+    <Position X="83" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobResponse">
+    <Position X="81.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACwAAJIAAAAAQAIAABAAgAAIAAEBAAQAIAAEAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.AllJobAppliedBody">
+    <Position X="69" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobAppliedRequest">
+    <Position X="65.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAEAAABAAAAAAAAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobAppliedResponseBody">
+    <Position X="69" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobAppliedResponse">
+    <Position X="67.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASCAAAAAAAAsAQABAQAAqBEAABAAAAACAAAAAAAIA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobStatsResponseBody">
+    <Position X="65.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.JobStatsResponse">
+    <Position X="63.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.PoWSubmission">
+    <Position X="74.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.DraftSubmission">
+    <Position X="67.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.ChangeJobProgressRequest">
+    <Position X="79.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.SubmitPayment">
+    <Position X="62" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAARABAAAAAAAAIBABAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Payment">
+    <Position X="67.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAARAAAAAAAAEAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Delivery">
+    <Position X="79.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAoAAEAAQAAAAAQAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Applicant">
+    <Position X="74.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAABABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Job.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.LoginRequest">
+    <Position X="72.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Models\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.LoginResponseBody">
+    <Position X="76" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.LoginResponse">
+    <Position X="74.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAgCAAAAAAAAAAAAAAAAAgAAgAAAAA=</HashCode>
+      <FileName>Models\Login.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Notification">
+    <Position X="72.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAgAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Models\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.NotificationResponse">
+    <Position X="77.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Notification.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.OTPRequest">
+    <Position X="83" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.OTPResponseBody">
+    <Position X="63.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.OTPResponse">
+    <Position X="62" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>Models\OTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.OTPVerificationResponse">
+    <Position X="65.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\OTP.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.PlatformModel">
+    <Position X="72.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Models\PlatformModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.ProductDeliveryTrackingModel">
+    <Position X="77.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAQAAAAEAAACAEAAAAAAAAAAAAAAAAABgAAAAAwAAAA=</HashCode>
+      <FileName>Models\ProductDeliveryTrackingModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Models.Review">
+    <Position X="63.75" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAACAAEAAgAAAAAAAAgAAAAYAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Review.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Services.InfluMeService">
+    <Position X="81.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABABAIAAEASAAAAQCAAAAABAAACAAAAAASBAUACAA=</HashCode>
+      <FileName>Services\InfluMeService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Services.MockDataStore" BaseTypeListCollapsed="true">
+    <Position X="63.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAgAABAAAABAAAAAAEAAAAAQAAA=</HashCode>
+      <FileName>Services\MockDataStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Styles.AvatarViewStyles">
+    <Position X="81.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\AvatarViewStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.BorderStyles">
+    <Position X="67.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\BorderStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.BoxViewStyles">
+    <Position X="69" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\BoxViewStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.ButtonStyles">
+    <Position X="70.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\ButtonStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.CheckBoxStyles">
+    <Position X="81.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\CheckBoxStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.Colors">
+    <Position X="62" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\Colors.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.ComboBoxStyles">
+    <Position X="63.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\ComboBoxStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.EditorStyles">
+    <Position X="72.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\EditorStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.EntryStyles">
+    <Position X="67.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\EntryStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.FontIcons">
+    <Position X="74.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\FontIcons.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.FrameStyles">
+    <Position X="83" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\FrameStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.GradientViewStyles">
+    <Position X="62" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\GradientViewStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.LabelStyles">
+    <Position X="67.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\LabelStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.ListViewStyles">
+    <Position X="70.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\ListViewStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.RadioButtonStyles">
+    <Position X="83" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\RadioButtonStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.RatingStyles">
+    <Position X="62" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\RatingStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.SegmentedControlStyles">
+    <Position X="72.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\SegmentedControlStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Styles.TextInputLayoutStyles">
+    <Position X="67.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Styles\TextInputLayoutStyles.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Themes.DarkTheme">
+    <Position X="77.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Themes\DarkTheme.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Themes.LightTheme">
+    <Position X="69" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Themes\LightTheme.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsEmailValidRule&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="70.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsEmailValidRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsIGExists&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="72.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsIGExists.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsLengthValidRule&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="74.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsLengthValidRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsNotNullOrEmptyRule&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="76" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsNotNullOrEmptyRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsTTExists&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="77.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsTTExists.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsUsernameValidRule&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="79.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsUsernameValidRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.Rules.IsValidEmailRule&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="81.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\Rules\IsValidEmailRule.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.ValidatableObject&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="70.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAwAAAAACACYAEAAkAgAAAgIAAACAAAAAgAAAAAAA=</HashCode>
+      <FileName>Validators\ValidatableObject.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.Validators.ValidatablePair&lt;T&gt;" BaseTypeListCollapsed="true">
+    <Position X="72.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABQAAAAICACYAAAAgAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\ValidatablePair.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="InfluMe.ViewModels.AboutViewModel">
+    <Position X="39.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ViewModels\AboutViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.AddJobPageViewModel">
+    <Position X="43.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IJACkAAAAgAAAQCgAAAAIAGAAAAAkACIGEACARERAAA=</HashCode>
+      <FileName>ViewModels\AddJobPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.AdminHomeViewModel">
+    <Position X="48.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAgAEAAAAAAACAAEAAAAAAIAAAAABAAIAACAAAAAA=</HashCode>
+      <FileName>ViewModels\AdminHomeViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ApproveSubmissionViewModel">
+    <Position X="77.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAgAAAAAAAAAAAAAAAAAAQAAAAAAAAgIAUAAAgAAAII=</HashCode>
+      <FileName>ViewModels\ApproveSubmissionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.BaseViewModel">
+    <Position X="31.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAEAAIEAAAQBAgAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\BaseViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="InfluMe.ViewModels.CatalogPageViewModel">
+    <Position X="57.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQEAEAGAAAIACACAiEgJgAAAKUAAAAAAAIAQAAABIAA=</HashCode>
+      <FileName>ViewModels\CatalogPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.AdminHomePageViewModel">
+    <Position X="3.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAAQAAAIEABAAAAASAABAAA=</HashCode>
+      <FileName>ViewModels\CategoryPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.DetailPageViewModel">
+    <Position X="7.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAHBEELEEAIiDBgAiAgCAASQKkEAkAABAMIAogQBcKA=</HashCode>
+      <FileName>ViewModels\DetailPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.EditJobViewModel">
+    <Position X="12.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAEAAAAAAACAAAEAgAgAAEAAAABEAAA=</HashCode>
+      <FileName>ViewModels\EditJobViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ForgotPasswordViewModel">
+    <Position X="55" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwACEAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\ForgotPasswordViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.InfluencerPageViewModel">
+    <Position X="19" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AMAAEABAAABAAAAACBCAIAATACAAISAIgGAAAIAQAAA=</HashCode>
+      <FileName>ViewModels\InluencerPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.InputDeliveryViewModel">
+    <Position X="63.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAEAAAAgIAEAAggAEAAI=</HashCode>
+      <FileName>ViewModels\InputDeliveryViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.InputPaymentViewModel">
+    <Position X="25.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAgAgAAEAAgAAEAAI=</HashCode>
+      <FileName>ViewModels\InputPaymentViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ItemDetailViewModel">
+    <Position X="30.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAACgAAAAoAAAAAAAAAAAQAAIAAAACAAAAAA=</HashCode>
+      <FileName>ViewModels\ItemDetailViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ItemsViewModel">
+    <Position X="34.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAgACBAAAAIAAAAABQAEAAAAABAAAAAAAEA=</HashCode>
+      <FileName>ViewModels\ItemsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.JobApplicantsViewModel">
+    <Position X="41.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEhACAAhAAQAACAkQAAAAEABAAAhIAEAAQgBAAAI=</HashCode>
+      <FileName>ViewModels\JobApplicantsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.JobDetailPageViewModel">
+    <Position X="46" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAEAAABBAAAEAABAgAAAIAAAACAAgIBECAAAQAAAA=</HashCode>
+      <FileName>ViewModels\JobDetailPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.JobViewModel">
+    <Position X="50.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RABAgyBAAAogAAABCEAoCABAIAgAACgIBNAQQARAQAA=</HashCode>
+      <FileName>ViewModels\JobViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.LoginPageViewModel">
+    <Position X="52.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgAACaAAUCAAAAQgAAIAEAIAgAAAAAoLAEACAiCyAAA=</HashCode>
+      <FileName>ViewModels\LoginPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.LoginViewModel">
+    <Position X="55" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAgAAAAAAAAAAAAAAAIAIACAAAAAAA=</HashCode>
+      <FileName>ViewModels\LoginViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.MyJobsViewModel">
+    <Position X="59.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAIAAAAAAAAAAACAQAgAAAAAABAAgICUAAAAhAQCA=</HashCode>
+      <FileName>ViewModels\MyJobsViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.NewItemViewModel">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>UAAAACAAAAAgAAQAIAAAAAAAAAAAAAAIAAAACAAEAAA=</HashCode>
+      <FileName>ViewModels\NewItemViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.NotificationViewModel">
+    <Position X="10" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAACAAAAAgAAAAAAAAAAAAAAAAAAgAAAAAAAAAQAA=</HashCode>
+      <FileName>ViewModels\NotificationViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.OngoingJobViewModel">
+    <Position X="14.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAABAAAAAAAAAAAAAAAAAAAAgIAEAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\OngoingJobViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.PaymentViewModel">
+    <Position X="16.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAIAAEAAAIAAAACAAgIAEAAAAAAAAg=</HashCode>
+      <FileName>ViewModels\PaymentViewmodel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ProductDeliveryTrackingPageViewModel">
+    <Position X="21.25" Y="1.75" Width="1.5" />
+    <NestedTypes>
+      <Class Name="InfluMe.ViewModels.ProductDeliveryTrackingPageViewModel.DelivProg" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>ViewModels\ProductDeliveryTrackingPageViewModel.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAgAAEgAAABAAAAAAAAAAIAAAACABiYgkAAAAQAAAA=</HashCode>
+      <FileName>ViewModels\ProductDeliveryTrackingPageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ProfilePageViewModel">
+    <Position X="23.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IEASgCAGAhAlBAQAAAIEgCCAEAAxgJhIEEACAAAQAIA=</HashCode>
+      <FileName>ViewModels\ProfilePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.SimplePopupViewModel">
+    <Position X="28" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SImplePopupViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.SubmissionViewModel">
+    <Position X="32.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQEAAACAAAAAgBAAgAAAABAAAAABgAAEAAAAAAAAA=</HashCode>
+      <FileName>ViewModels\SubmissionViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.ViewModels.ViewProfilePageViewModel">
+    <Position X="37" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>xhAAgAAQwgQAAEAAgAAEEICAgAAAoIgJAGACACAgAAA=</HashCode>
+      <FileName>ViewModels\ViewProfilePageViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.Templates.JobListTemplate">
+    <Position X="76" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Views\Templates\JobListTemplate.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.Templates.MyJobsListTemplate">
+    <Position X="65.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Views\Templates\MyJobsListTemplate.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.Templates.NotificationListTemplate">
+    <Position X="76" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Views\Templates\NotificationListTemplate.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.Templates.ReviewTemplate">
+    <Position X="65.5" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\Templates\ReviewTemplate.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.AboutPage">
+    <Position X="62" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AboutPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.AddJobPage">
+    <Position X="63.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAQABAAAAAAAAACAAEAABAAAA=</HashCode>
+      <FileName>Views\AddJobPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.AdminHomePage">
+    <Position X="65.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AdminHomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.AdminMainPage">
+    <Position X="67.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\AdminMainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ApproveSubmissionPage">
+    <Position X="76" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ApproveSubmissionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ConfirmationPopupPage">
+    <Position X="65.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ConfirmationPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ContactEmailEntry">
+    <Position X="69" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ContactEmailEntry.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EditJobPage">
+    <Position X="70.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAQABAAAAAAAAAAAAEAABAAAA=</HashCode>
+      <FileName>Views\EditJobPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EditProfileOTPPopupPage">
+    <Position X="74.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditProfileOTPPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EditProfilePage">
+    <Position X="76" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EditProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EmailEntry">
+    <Position X="77.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmailEntry.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EmailOTPPopupPage">
+    <Position X="79.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmailOTPPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EmailRegisteredPopupPage">
+    <Position X="81.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmailRegisteredPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EmailSignUpPage">
+    <Position X="83" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EmailSignUpPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.EnrollmentsPage">
+    <Position X="63.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\EnrollmentsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ErrorMessagePopupPage">
+    <Position X="69" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ErrorMesagePopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ErrorPopupPage">
+    <Position X="70.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ErrorPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.FeedbackView">
+    <Position X="72.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\FeedbackView.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ForgotPasswordPage">
+    <Position X="76" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ForgotPasswordPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.HomePage">
+    <Position X="67.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\HomePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.InfoPopupPage">
+    <Position X="83" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InfoPopupPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.InputDeliveryReceiptPage">
+    <Position X="62" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InputDeliveryReceiptPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.InputPaymentPage">
+    <Position X="65.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\InputPaymentPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ItemDetailPage">
+    <Position X="62" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ItemDetailPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ItemsPage">
+    <Position X="63.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ItemsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.JobDetailPage">
+    <Position X="72.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\JobDetailPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.JobListPage">
+    <Position X="74.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\JobListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.JobSelectionPage">
+    <Position X="62" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\JobSelectionPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.MainLoginPage">
+    <Position X="77.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainLoginPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.MainPage">
+    <Position X="79.5" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MainPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ManageInfluencerPage">
+    <Position X="81.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ManageInfluencerPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ManageJobPage">
+    <Position X="83" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ManageJobPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ManageJobProgressPage">
+    <Position X="62" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ManageJobProgressPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.MyJobsPage">
+    <Position X="67.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\MyJobsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.NewItemPage">
+    <Position X="70.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\NewItemPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.NotificationListPage">
+    <Position X="74.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\NotificationListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.OngoingJobListPage">
+    <Position X="79.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OngoingJobListPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.OngoingJobPage">
+    <Position X="81.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\OngoingJobPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.PaymentStatusPage">
+    <Position X="69" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\PaymentStatusPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ProductDeliveryTrackingPage">
+    <Position X="79.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ProductDeliveryTrackingPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ProfilePage">
+    <Position X="81.25" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.SignUpPage">
+    <Position X="76" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Views\SignUpPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.SubmissionJobContentPage">
+    <Position X="83" Y="11.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\SubmissionJobContentPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ViewJobApplicantsPage">
+    <Position X="74.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ViewJobApplicantsPage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.Views.ViewProfilePage">
+    <Position X="76" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\ViewProfilePage.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.App">
+    <Position X="72.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAABAAAAgAEAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InfluMe.AppShell">
+    <Position X="79.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AppShell.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="InfluMe.Services.IDataStore&lt;T&gt;">
+    <Position X="62" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAABAAAABAAAAAAEAAAAAQAAA=</HashCode>
+      <FileName>Services\IDataStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="InfluMe.Validators.IValidatable&lt;T&gt;">
+    <Position X="63.75" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAACAAQAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\IValidatable.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="InfluMe.Validators.IValidationRule&lt;T&gt;">
+    <Position X="65.5" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\IValidationRule.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="InfluMe.Validators.IValidationRuleAsync&lt;T&gt;">
+    <Position X="67.25" Y="13.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Validators\IValidationRuleAsync.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="InfluMe.Behaviors.AnimationType">
+    <Position X="62" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Behaviors\SearchbarAnimationBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.ResponseStatus">
+    <Position X="72.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAABAAAAAAABAAAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.InfluencerStatus">
+    <Position X="63.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.UserType">
+    <Position X="74.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.JobPlatformList">
+    <Position X="67.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.JobApplicationStatus">
+    <Position X="65.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.PaymentStatusList">
+    <Position X="70.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAACQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="InfluMe.Helpers.JobStatus">
+    <Position X="69" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ADBAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Helpers\Enumerators.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

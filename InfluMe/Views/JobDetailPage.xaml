@@ -391,6 +391,8 @@
 
 
                         <StackLayout
+                            HorizontalOptions="{OnIdiom Default=Center,
+                                                            Phone=CenterAndExpand}"
                             Grid.Row="13"
                             Grid.Column="{OnIdiom Default=1,
                                                   Phone=0}"
@@ -398,15 +400,12 @@
                                                       Phone=5}"
                             Margin="0,6"
                             Padding="0,16"
-                            BackgroundColor="{OnIdiom Default={DynamicResource Gray-Bg},
-                                                      Phone={DynamicResource Gray-100},
-                                                      Converter={StaticResource DynamicResourceToColorConverter}}"
+                           
                             Orientation="Horizontal"
                             Spacing="10">
 
                             <StackLayout
-                                HorizontalOptions="{OnIdiom Default=Center,
-                                                            Phone=CenterAndExpand}"
+                                
                                 Orientation="Vertical">
                                 <buttons:SfButton
                                 IsVisible="{Binding IsApplied, Converter={StaticResource InverseBoolConverter}}"
@@ -441,9 +440,7 @@
                             <!-- Submission Button -->
                             <buttons:SfButton 
                                 VerticalOptions="Center"
-                                HorizontalOptions="{OnIdiom Default=Center,
-                                                            Phone=CenterAndExpand}"
-                                WidthRequest="200" 
+                                
                                 Command="{Binding SubmitCommand}" CommandParameter="{Binding ThisJobProgressStatus}"
                                 IsVisible="{Binding IsSubmissionVisible}"
                                 Style="{StaticResource OrangeButtonStyle}">

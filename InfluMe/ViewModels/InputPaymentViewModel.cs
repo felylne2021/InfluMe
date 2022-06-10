@@ -44,7 +44,7 @@ namespace InfluMe.ViewModels {
             req.progressStatus = JobProgressStatus.Completed.ToString();
             req.paymentAmount = Selected.job.jobFee;
             req.paymentDate = DateTime.Now.ToString("yyyy-MM-dd");
-            req.progressStatus = PaymentStatusList.PAID.ToString();
+            req.paymentStatus = PaymentStatusList.PAID.ToString();
             req.paymentProof = this.ImageBlob;
 
             try {

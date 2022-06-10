@@ -19,6 +19,7 @@ namespace InfluMe.Views {
 
         protected override void OnAppearing() {
             base.OnAppearing();
+            ListViewList.SelectedItem = null;
             InfluMeService service = new InfluMeService();
             MyJobsViewModel viewModel = (MyJobsViewModel)this.BindingContext;
 

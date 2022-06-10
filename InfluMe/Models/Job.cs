@@ -147,6 +147,7 @@ namespace InfluMe.Models
         public string paymentStatus { get; set; } // PENDING , PAID , NONE
         public string paymentAmount { get; set; }
         public string paymentDate { get; set; }
+        public string paymentProof { get; set; }
     }
 
     public class Delivery {
