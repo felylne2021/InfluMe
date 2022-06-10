@@ -20,7 +20,9 @@ namespace InfluMe.Views {
 
         protected override void OnAppearing() {
             InfluencerList.SelectedItem = null;
+            InfluencerPageViewModel viewModel = (InfluencerPageViewModel)this.BindingContext;
 
+            viewModel.InitializeProperties();
         }
     }
 }

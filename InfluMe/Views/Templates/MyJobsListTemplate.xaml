@@ -36,7 +36,7 @@
         <Label
             x:Name="JobId"
             IsVisible="False"
-            Text="{Binding jobId}" />
+            Text="{Binding job.jobId}" />
 
         
             <!--  Name  -->

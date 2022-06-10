@@ -24,6 +24,9 @@ namespace InfluMe.ViewModels {
 
         private InfluMeService service => new InfluMeService();
         private JobDataService jobService => new JobDataService();
+        private List<DelivProg> progresses;
+        private DeliveryData data;
+        private ObservableCollection<DelivProg> progressesCollection;
 
 
         #endregion
@@ -41,9 +44,15 @@ namespace InfluMe.ViewModels {
         /// Gets or sets the step status.
         /// </summary>
         public StepStatus StepStatus { get; set; }
-        public DeliveryData Data { get; set; }
+        public DeliveryData Data {
+            get {
+                return this.data;
+            }
+            set {
+                this.SetProperty(ref this.data, value);
+            }
+        }
 
-        private List<DelivProg> progresses;
         public List<DelivProg> Progresses {
             get {
                 return this.progresses;
@@ -53,7 +62,17 @@ namespace InfluMe.ViewModels {
             }
         }
 
-        public ObservableCollection<DelivProg> ProgressesCollection { get; set; }
+        public ObservableCollection<DelivProg> ProgressesCollection {
+            get {
+                return this.progressesCollection;
+            }
+            set {
+                if (this.progressesCollection == value) {
+                    return;
+                }
+                this.SetProperty(ref this.progressesCollection, value);
+            }
+        }
 
         public class DelivProg {
             public string date { get; set; }
@@ -73,7 +92,7 @@ namespace InfluMe.ViewModels {
         }
 
 
-        public async void InitializeProperties() {
+        private async void InitializeProperties() {
 
             try {
                 this.Data = await jobService.TrackDelivery(this.Job.delivery.deliveryCompany, this.Job.delivery.deliveryReceipt);

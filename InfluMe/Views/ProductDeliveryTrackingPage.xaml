@@ -103,7 +103,7 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding Data.summary.courier, StringFormat='Delivery by {0} -'}" />
+                        Text="{Binding Data.summary.courier, Mode=TwoWay, StringFormat='Delivery by {0}:'}" />
 
                         <!--  Order ID  -->
                         <Label
@@ -120,7 +120,7 @@
                         FontSize="12"
                         HorizontalOptions="Start"
                         Style="{StaticResource DescriptionLabelStyle}"
-                        Text="{Binding Data.summary.status, StringFormat='Status: {0}'}" />
+                        Text="{Binding Data.summary.status, Mode=TwoWay, StringFormat='Status: {0}'}" />
 
                 </Grid>
                 
@@ -129,7 +129,7 @@
                     x:Name="stepProgress"
                     Margin="0,20,0,0"
                     BackgroundColor="{DynamicResource Gray-Bg}"
-                    BindableLayout.ItemsSource="{Binding ProgressesCollection}"
+                    BindableLayout.ItemsSource="{Binding ProgressesCollection, Mode=TwoWay}"
                     HorizontalOptions="FillAndExpand"
                     Orientation="Vertical"
                     TitleAlignment="Start"

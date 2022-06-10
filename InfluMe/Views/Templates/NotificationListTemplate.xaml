@@ -33,7 +33,7 @@
             Text="{Binding notificationId}" />
 
         <!--  Message  -->
-        <Editor
+        <Label
             Grid.Column="1"
             Grid.ColumnSpan="2"
             HorizontalOptions="StartAndExpand"
@@ -43,7 +43,6 @@
             TextColor="Black"
             Margin="0,0,0,0"
             FontSize="Medium"
-            IsReadOnly="True"
             Text="{Binding notificationMessage}"/>
 
         

@@ -136,7 +136,7 @@ namespace InfluMe.ViewModels {
 
         #region Methods
 
-        private async void InitializeProperties() {
+        public async void InitializeProperties() {
 
             try {
                 this.InfluencerList = await service.GetInfluencers();
